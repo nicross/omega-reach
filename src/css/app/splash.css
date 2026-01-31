@@ -1,6 +1,7 @@
 .a-splash {
   align-items: center;
   max-width: unset;
+  overflow: hidden;
   text-align: center;
 }
   .a-splash--details {
@@ -28,13 +29,14 @@
     line-height: 0.75;
     opacity: 0;
     position: relative;
-    transform: translateY(4rem);
+    transform: translateY(2rem);
     transition: all 1s ease;
     transition-property: opacity, transform;
   }
     .a-app--screen-active .a-splash--logo {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(-4rem);
+      transition-duration: 4s;
     }
   .a-splash--logoLine {
     position: relative;
@@ -57,11 +59,14 @@
     animation: a-splash--logoSymbol 4s ease-in-out 0s infinite alternate both;
     color: #FF0069;
     font-size: 24em;
+    z-index: 1;
+  }
+  .a-splash--logoSymbol i {
+    animation: a-splash--logoSymbol--i 3s ease 0s infinite alternate both;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    z-index: 1;
   }
 
 @keyframes a-splash--instruction {
@@ -79,5 +84,24 @@
   }
   100% {
     opacity: 1.0;
+  }
+}
+
+@keyframes a-splash--logoSymbol--i {
+  0% {
+    transform: translateX(-50%) translateY(calc(-50% + 0.25rem));
+  }
+  100% {
+    transform: translateX(-50%) translateY(calc(-50% - 0.25rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a-splash--logo {
+    transform: translateY(-4rem) !important;
+  }
+
+  .a-splash--logoSymbol i {
+    animation: none;
   }
 }
