@@ -1,0 +1,46 @@
+.a-splash {
+  align-items: center;
+  max-width: unset;
+  text-align: center;
+}
+  .a-splash--details {
+    bottom: 1.75rem;
+    font-family: FiraCodeLight, monospace;
+    font-size: 0.75em;
+    font-weight: 300;
+    left: 1.75rem;
+    letter-spacing: 0;
+    padding: 0.5rem 0.75rem;
+    position: absolute;
+    text-align: left;
+  }
+  .a-splash--instruction {
+    animation: a-splash--instruction 1s linear 0s infinite alternate both;
+    bottom: 1.75rem;
+    line-height: 2;
+    padding: 0.5em 0.75em;
+    position: absolute;
+    right: 1.75rem;
+    text-transform: uppercase;
+  }
+  .a-splash--logo {
+    font-size: 1.25em;
+    position: relative;
+    top: -2em;
+  }
+  .a-splash--logoLine {
+    line-height: 0.666;
+  }
+    .a-splash--logoLine-1 {}
+    .a-splash--logoLine-2 {}
+    .a-splash--logoLine-3 {}
+  .a-splash--logoSymbol {}
+
+@keyframes a-splash--instruction {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}

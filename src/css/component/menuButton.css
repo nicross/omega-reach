@@ -1,0 +1,27 @@
+.c-menuButton {
+  border: 0.125em solid rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: 1;
+  padding: 0.5em 0.75em;
+  text-align: left;
+  transition: border-color 0.125s ease;
+}
+.c-menuButton:active,
+.c-menuButton:focus,
+.c-menuButton:hover {
+  border-color: rgba(255, 255, 255, 1);
+}
+.c-menuButton[aria-disabled="true"] {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: rgba(255, 255, 255, 0.666);
+  cursor: not-allowed;
+  text-decoration: line-through rgba(255, 255, 255, 0.666) 0.0625em;
+}
+.c-menuButton[aria-disabled="true"]:active,
+.c-menuButton[aria-disabled="true"]:focus,
+.c-menuButton[aria-disabled="true"]:hover {
+  color: rgba(255, 255, 255, 1.0);
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+}

@@ -1,0 +1,76 @@
+.a-app {
+  height: 100%;
+  left: 0;
+  letter-spacing: 0.125em;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  transition: opacity 1s linear;
+  width: 100%;
+}
+  .a-app--canvas {
+    background-color: #000000;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transition: all 0.5s ease;
+    transition-property: filter, opacity;
+    width: 100%;
+    z-index: 0;
+  }
+    .a-app--canvas-blur {
+      filter: blur(1em);
+      opacity: 0;
+    }
+  .a-app--overlaySupport {
+    height: 100%;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 666;
+  }
+  .a-app--screen {
+    align-items: center;
+    background-color: #000000;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    transition: all 0.25s ease;
+    transition-property: opacity;
+    width: 100%;
+    z-index: 1;
+  }
+    .a-app--screen > * {
+      flex: 1 1 auto;
+      max-width: 64em;
+    }
+    .a-app--screen-active {
+      opacity: 1;
+      z-index: 3;
+    }
+    .a-app--screen-inactive {
+      opacity: 0;
+      z-index: 2;
+    }
+    .a-app--screen-transparent {
+      background-color: transparent;
+    }
+  .a-app--toasts {
+    left: 1.75rem;
+    position: absolute;
+    top: 1.75rem;
+    z-index: 4;
+  }
+
+.a-app-active {
+  opacity: 1;
+}

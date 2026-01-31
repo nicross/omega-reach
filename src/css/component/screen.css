@@ -1,0 +1,102 @@
+.c-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 2em;
+  width: 100%;
+}
+  .c-screen:focus {
+    outline: 0;
+  }
+  .c-screen > * {
+    max-width: 75%;
+  }
+  .c-screen > * + * {
+    margin-top: 1rem;
+  }
+  .c-screen > * + *,
+  .c-screen--actions > * + *,
+  .c-screen--fields > * + *,
+  .c-screen--items > * + * {
+    margin-top: 1rem;
+  }
+  .c-screen--actions,
+  .c-screen--description,
+  .c-screen--fields,
+  .c-screen--status {
+    margin-top: 2rem;
+  }
+  .c-screen--actions {
+    list-style-type: none;
+  }
+  .c-screen--field {
+    line-height: 1;
+    list-style-type: none;
+  }
+  .c-screen--label {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  .c-screen--scrollable {
+    overflow-y: auto;
+    max-height: calc(2.925rem * 6);
+    padding: 0.25em;
+  }
+    .c-screen--scrollable-smooth {
+      scroll-behavior: smooth;
+    }
+  .c-screen--status {
+    margin-bottom: -0.5em;
+  }
+  .c-screen--table {
+    border-spacing: 0;
+    width: 100%;
+  }
+  .c-screen--table:not(:empty) {
+    border-top: 1px solid rgba(255, 255, 255, 1.0);
+  }
+    .c-screen--table tr {
+      color: rgba(255, 255, 255, 1.0);
+      transition: color 0.125s ease;
+    }
+    .c-screen--table tr > :first-child::before,
+    .c-screen--table tr > :only-child::before {
+      content: '[' / '';
+    }
+    .c-screen--table tr > :last-child::after,
+    .c-screen--table tr > :only-child::after {
+      content: ']' / '';
+    }
+    .c-screen--table tr td,
+    .c-screen--table tr th {
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .c-screen--table td,
+    .c-screen--table th {
+      padding: 0.5rem 0;
+    }
+    .c-screen--table td {
+      text-align: right;
+      white-space: nowrap;
+      width: 1px;
+    }
+    .c-screen--table td:only-child,
+    .c-screen--table th {
+      text-align: left;
+      width: 100%;
+    }
+    .c-screen--table tr[aria-disabled="true"] {
+      color: rgba(255, 255, 255, 0.666);
+      text-decoration: line-through rgba(255, 255, 255, 0.666) 0.0625em;
+    }
+    .c-screen--table tr[aria-disabled="true"]:active,
+    .c-screen--table tr[aria-disabled="true"]:focus,
+    .c-screen--table tr[aria-disabled="true"]:hover {
+      color: rgba(255, 255, 255, 1.0);
+      text-decoration-color: rgba(255, 255, 255, 0.5);
+    }
+  .c-screen--title {
+    font-size: 4em;
+    line-height: 0.75;
+  }
