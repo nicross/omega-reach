@@ -18,7 +18,6 @@ app.component.select.prototype = {
 
     this.setOptions(options)
     this.setValue(initialValue)
-    this.setAriaLive(true)
 
     engine.tool.pubsub.decorate(this)
 
@@ -42,15 +41,6 @@ app.component.select.prototype = {
   previous: function () {
     return this.setIndex(this.selectedIndex - 1)
   },
-  setAriaLive: function (state) {
-    if (state) {
-      this.valueElement.setAttribute('aria-live', 'assertive')
-    } else {
-      this.valueElement.removeAttribute('aria-live')
-    }
-
-    return this
-  },
   setOptions: function (options = []) {
     this.options = [...options]
     return this
@@ -68,7 +58,7 @@ app.component.select.prototype = {
     return this
   },
   setValue: function (value) {
-    for (const i in this.options) {
+    for (let i = 0; i < this.options.length; i += 1) {
       const option = this.options[i]
 
       if (option.value == value) {
