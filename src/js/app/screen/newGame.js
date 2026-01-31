@@ -8,8 +8,6 @@ app.screen.newGame = app.screenManager.invent({
       this.change('mainMenu')
     },
     confirm: function () {
-      app.screen.mainMenu.clearFocusMemory()
-
       app.storage.game.new()
       app.gameState.setLoaded(true)
 
@@ -30,7 +28,9 @@ app.screen.newGame = app.screenManager.invent({
       element.addEventListener('click', () => app.screenManager.dispatch(event))
     })
   },
-  onEnter: function () {},
+  onEnter: function () {
+    app.screen.mainMenu.clearFocusMemory()
+  },
   onExit: function () {},
   onFrame: function () {
     this.handleBasicInput()

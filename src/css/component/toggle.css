@@ -19,7 +19,7 @@
   .c-toggle--off,
   .c-toggle--on {
     background-color: #FFFFFF;
-    color: #FF0069;
+    color: var(--background-color);
     font-size: calc(1em - 2px);
     line-height: 1;
     opacity: 1;

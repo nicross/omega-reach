@@ -15,9 +15,9 @@ void main() {
   vec2 co1 = vec2(gl_FragCoord.yx * (time + 1.0));
 
   float value = round(rand(co0));
-  float opacity = rand(co1) / 50.0;
+  float opacity = rand(co1) / 25.0;
 
-  color = vec4(value, value, value, opacity);
+  color = vec4(value, 0.0, value * 0.412, opacity);
 }
 `
 

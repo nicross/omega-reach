@@ -9,7 +9,7 @@
   width: 100%;
 }
   .a-app--canvas {
-    background-color: #000000;
+    background-color: var(--background-color);
     height: 100%;
     left: 0;
     opacity: 1;
@@ -36,7 +36,7 @@
   }
   .a-app--screen {
     align-items: center;
-    background-color: #000000;
+    background-color: var(--background-color);
     display: flex;
     height: 100%;
     justify-content: center;

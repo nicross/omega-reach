@@ -1,7 +1,8 @@
 :root {
-  background-color: #000000;
+  --background-color: #180009;
+  background-color: var(--background-color);
   color: #FFFFFF;
-  font-family: FiraCodeRegular, sans-serif;
+  font-family: RobotoRegular, sans-serif;
   color-scheme: var(--color-scheme);
   font-size: 20px;
   line-height: 1.5;

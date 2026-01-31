@@ -97,6 +97,7 @@
       text-decoration-color: rgba(255, 255, 255, 0.5);
     }
   .c-screen--title {
+    font-family: FiraCodeRegular, monospace;
     font-size: 4em;
     line-height: 0.75;
   }
