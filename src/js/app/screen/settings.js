@@ -25,6 +25,19 @@ app.screen.settings = app.screenManager.invent({
       element.addEventListener('click', () => app.screenManager.dispatch(event))
     })
 
+    // Selects
+    this.selects = [
+      ['.a-settings--inputPreference', app.settings.raw.inputPreference, app.settings.setInputPreference, [
+        {value: 'gamepad', label: 'Gamepad (full sphere)'},
+        {value: 'mouse', label: 'Mouse (front hemisphere)'},
+        {value: 'keyboard', label: 'Keyboard (fixed points)'},
+      ]],
+    ].map(([selector, initialValue, setter, options]) => {
+      const component = app.component.select.hydrate(root.querySelector(selector), initialValue, options)
+      component.on('change', () => setter(component.getValue()))
+      return component
+    })
+
     // Sliders
     this.sliders = [
       ['.a-settings--gamepadVibration', app.settings.raw.gamepadVibration, app.settings.setGamepadVibration],
@@ -38,6 +51,7 @@ app.screen.settings = app.screenManager.invent({
     // Toggles
     this.toggles = [
       ['.a-settings--graphicsOn', app.settings.raw.graphicsOn, app.settings.setGraphicsOn],
+      ['.a-settings--inputHold', app.settings.raw.inputHold, app.settings.setInputHold],
     ].map(([selector, initialValue, setter]) => {
       const component = app.component.toggle.hydrate(root.querySelector(selector), initialValue)
       component.on('change', () => setter(component.getValue()))
@@ -46,16 +60,32 @@ app.screen.settings = app.screenManager.invent({
   },
   onEnter: function (e) {
     this.state.previousState = e.previousState
+
+    this.selects[0].setValue(app.settings.raw.inputPreference)
   },
   onExit: function () {
     app.settings.save()
   },
   onFrame: function () {
+    const ui = app.controls.ui()
+
+    for (const select of this.selects) {
+      if (app.utility.focus.isWithin(select.rootElement)) {
+        if (ui.up) {
+          return app.utility.focus.setPreviousFocusable(this.rootElement, (element) => !app.utility.dom.contains(select.rootElement, element))
+        } else if (ui.down) {
+          return app.utility.focus.setNextFocusable(this.rootElement, (element) => !app.utility.dom.contains(select.rootElement, element))
+        } else if (ui.right) {
+          return app.utility.focus.setPreviousFocusable(select.rootElement)
+        } else if (ui.left) {
+          return app.utility.focus.setNextFocusable(select.rootElement)
+        }
+      }
+    }
+
     if (this.handleBasicInput()) {
       return
     }
-
-    const ui = app.controls.ui()
 
     if (ui.left) {
       for (const slider of this.sliders) {

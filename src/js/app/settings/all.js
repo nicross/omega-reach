@@ -21,6 +21,15 @@ app.settings.register('graphicsOn', {
   },
 })
 
+app.settings.register('inputHold', {
+  compute: (rawValue) => Boolean(rawValue),
+  default: true,
+})
+
+app.settings.register('inputPreference', {
+  default: 'keyboard',
+})
+
 app.settings.register('mainVolume', {
   compute: (rawValue) => engine.fn.fromDb(engine.fn.lerpExp(engine.const.zeroDb, 0, rawValue, 0.1)),
   default: 1,

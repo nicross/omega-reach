@@ -1,0 +1,36 @@
+.c-select {
+  box-sizing: content-box;
+  display: flex;
+  font-size: calc(1em - 2px);
+}
+  .c-select--button {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-sizing: content-box;
+    color: #FFFFFF;
+    flex: 0 0 auto;
+    position: relative;
+    transition: all 0.125s ease;
+    transition-property: border-color, color;
+    width: 3rem;
+  }
+  .c-select--button:focus,
+  .c-select--button:hover {
+    border-color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1);
+  }
+  .c-select--button i {
+    font-size: 0.75em;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .c-select--value {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    box-sizing: content-box;
+    flex: 1 1 auto;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
