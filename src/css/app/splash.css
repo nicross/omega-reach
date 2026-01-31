@@ -35,7 +35,7 @@
   }
     .a-app--screen-active .a-splash--logo {
       opacity: 1;
-      transform: translateY(-4rem);
+      transform: translateY(-2rem);
       transition-duration: 4s;
     }
   .a-splash--logoLine {
@@ -98,7 +98,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .a-splash--logo {
-    transform: translateY(-4rem) !important;
+    transform: translateY(-2rem) !important;
   }
 
   .a-splash--logoSymbol i {
