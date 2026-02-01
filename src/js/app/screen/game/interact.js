@@ -1,30 +1,30 @@
-app.screen.game.scan = (() => {
-  const progressElement = document.querySelector('.a-game--scanProgress'),
+app.screen.game.interact = (() => {
+  const progressElement = document.querySelector('.a-game--interactProgress'),
     pubsub = engine.tool.pubsub.create(),
-    rootElement = document.querySelector('.a-game--scan')
+    rootElement = document.querySelector('.a-game--interact')
 
-  let canScan,
-    cooldown,
+  let canInteract,
+    isCooldown = false,
     value = 0
 
   rootElement.addEventListener('click', () => {
     if (!app.settings.computed.inputHold) {
-      app.screen.game.scan.click()
+      app.screen.game.interact.click()
     }
   })
 
   function trigger() {
-    cooldown = true
+    isCooldown = true
 
     pubsub.emit('trigger')
-    console.log('scan trigger')
+    console.log('interact trigger')
 
     app.screen.game.update()
   }
 
   return pubsub.decorate({
     click: function () {
-      if (cooldown || !canScan) {
+      if (isCooldown || !canInteract) {
         return this
       }
 
@@ -33,8 +33,6 @@ app.screen.game.scan = (() => {
       return this
     },
     decrement: function () {
-      cooldown = false
-
       value = app.settings.computed.inputHold
         ? engine.fn.accelerateValue(value, 0, 8)
         : 0
@@ -44,7 +42,7 @@ app.screen.game.scan = (() => {
       return this
     },
     increment: function () {
-      if (cooldown || !canScan) {
+      if (isCooldown || !canInteract) {
         return this
       }
 
@@ -60,18 +58,23 @@ app.screen.game.scan = (() => {
 
       return this
     },
+    setCooldown: function (nextValue) {
+      isCooldown = Boolean(nextValue)
+
+      return this
+    },
     update: function () {
       value = 0
 
-      canScan = Math.random() > 0.5
+      canInteract = Math.random() > 0.5
 
       if (app.settings.computed.inputHold) {
-        rootElement.classList.remove('a-game--scan-instant')
+        rootElement.classList.remove('a-game--interact-instant')
       } else {
-        rootElement.classList.add('a-game--scan-instant')
+        rootElement.classList.add('a-game--interact-instant')
       }
 
-      if (canScan) {
+      if (canInteract) {
         rootElement.removeAttribute('aria-disabled')
       } else {
         rootElement.setAttribute('aria-disabled', true)

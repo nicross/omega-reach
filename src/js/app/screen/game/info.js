@@ -4,16 +4,16 @@ app.screen.game.info = (() => {
     nameElement = document.querySelector('.a-game--name')
 
   function generateRandomInfo() {
-    const isScanned = Math.random() > 0.5
+    const isDiscovered = Math.random() > 0.5
 
     const info = {
       attributes: [],
-      description: isScanned ? 'Object description' : 'Unscanned',
-      isScanned,
+      description: isDiscovered ? 'Object description' : 'Undiscovered',
+      isDiscovered,
       name: `Object #${engine.fn.randomInt(1000, 9999)}`,
     }
 
-    if (isScanned) {
+    if (isDiscovered) {
       const count = engine.fn.randomInt(0, 3)
 
       for (let i = 0; i < count; i += 1) {
@@ -37,7 +37,7 @@ app.screen.game.info = (() => {
       const {
         attributes,
         description,
-        isScanned,
+        isDiscovered,
         name,
       } = generateRandomInfo()
 
@@ -48,10 +48,10 @@ app.screen.game.info = (() => {
         ({label, modifiers}) => `<li class="a-game--attribute${modifiers.map((modifier) => ` a-game--attribute-${modifier}`).join('')}">${label}</li>`
       ).join('')
 
-      if (isScanned) {
-        descriptionElement.classList.remove('a-game--description-unscanned')
+      if (isDiscovered) {
+        descriptionElement.classList.remove('a-game--description-undiscovered')
       } else {
-        descriptionElement.classList.add('a-game--description-unscanned')
+        descriptionElement.classList.add('a-game--description-undiscovered')
       }
 
       return this

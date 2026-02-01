@@ -1,6 +1,6 @@
 app.controls.mappings = {
   game: {
-    scan: {
+    interact: {
       gamepadAnalog: [],
       gamepadAxis: [],
       gamepadDigital: [
@@ -194,7 +194,7 @@ app.controls.mappings = {
         3,
       ],
     },
-    scan: {
+    interact: {
       gamepadAnalog: [],
       gamepadAxis: [],
       gamepadDigital: [

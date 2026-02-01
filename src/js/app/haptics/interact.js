@@ -3,7 +3,7 @@ engine.loop.on('frame', ({paused}) => {
     return
   }
 
-  const value = app.screen.game.scan.value()
+  const value = app.screen.game.interact.value()
 
   if (!value) {
     return
@@ -17,7 +17,7 @@ engine.loop.on('frame', ({paused}) => {
 })
 
 engine.ready(() => {
-  app.screen.game.scan.on('trigger', () => {
+  app.screen.game.interact.on('trigger', () => {
     app.haptics.enqueue({
       duration: 100,
       startDelay: 200,

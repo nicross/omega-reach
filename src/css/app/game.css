@@ -38,7 +38,7 @@
     font-size: 1.5em;
     width: fit-content;
   }
-    .a-game--description-unscanned {
+    .a-game--description-undiscovered {
       color: #888888;
     }
   .a-game--description:empty {
@@ -135,7 +135,7 @@
     margin-top: 2rem !important;
   }
 
-  .a-game--scan {
+  .a-game--interact {
     flex: 1 1 100%;
     font-family: FiraCodeRegular, monospace;
     height: unset !important;
@@ -144,10 +144,10 @@
     position: relative;
     padding-bottom: 0.25em !important;
   }
-    .a-game--scan-instant {
+    .a-game--interact-instant {
       padding-bottom: 0 !important;
     }
-  .a-game--scanProgress {
+  .a-game--interactProgress {
     background-color: #FFFFFF;
     bottom: 0;
     height: 0.25em;
@@ -156,7 +156,7 @@
     width: 50%;
     z-index: 2;
   }
-  .a-game--scanProgressBackground {
+  .a-game--interactProgressBackground {
     background-color: #333333;
     bottom: 0;
     height: 0.25em;
@@ -165,11 +165,13 @@
     width: 100%;
     z-index: 1;
   }
-  .a-game--scan-instant .a-game--scanProgress,
-  .a-game--scan[aria-disabled="true"] .a-game--scanProgress,
-  .a-game--scan-instant .a-game--scanProgressBackground,
-  .a-game--scan[aria-disabled="true"] .a-game--scanProgressBackground {
+  .a-game--interact-instant .a-game--interactProgress,
+  .a-game--interact[aria-disabled="true"] .a-game--interactProgress {
     display: none;
+  }
+  .a-game--interact-instant .a-game--interactProgressBackground,
+  .a-game--interact[aria-disabled="true"] .a-game--interactProgressBackground {
+    background-color: #111111;
   }
 
   /* Dialog */

@@ -17,7 +17,7 @@ app.screen.game = app.screenManager.invent({
     this.leftElement = this.rootElement.querySelector('.a-game--left')
     this.menuElement = this.rootElement.querySelector('.a-game--menu')
     this.rightElement = this.rootElement.querySelector('.a-game--right')
-    this.scanElement = this.rootElement.querySelector('.a-game--scan')
+    this.interactElement = this.rootElement.querySelector('.a-game--interact')
     this.upElement = this.rootElement.querySelector('.a-game--up')
 
     this.downElement.addEventListener('click', () => this.movement.down())
@@ -75,23 +75,23 @@ app.screen.game = app.screenManager.invent({
     }
 
     // Scan
-    if (ui.scan) {
-      if (focus !== this.scanElement && focus?.matches('button,[role="button"]')) {
+    if (ui.interact) {
+      if (focus !== this.interactElement && focus?.matches('button,[role="button"]')) {
         return focus.click()
       } else if (!app.settings.computed.inputHold) {
-        return this.scan.click()
+        return this.interact.click()
       }
     }
 
     if (app.settings.computed.inputHold) {
-      if (game.scan && (focus === this.scanElement || !focus?.matches('button,[role="button"]'))) {
-        return this.scan.increment()
-      } else if (focus === this.scanElement && engine.input.mouse.isButton(0)) {
-        return this.scan.increment()
+      if (game.interact && (focus === this.interactElement || !focus?.matches('button,[role="button"]'))) {
+        return this.interact.increment()
+      } else if (focus === this.interactElement && engine.input.mouse.isButton(0)) {
+        return this.interact.increment()
       }
     }
 
-    this.scan.decrement()
+    this.interact.decrement().setCooldown(false)
   },
   // Methods
   getFocusWithinTarget: function () {
@@ -110,7 +110,7 @@ app.screen.game = app.screenManager.invent({
   update: function () {
     this.info.update()
     this.movement.update()
-    this.scan.update()
+    this.interact.update().setCooldown(true)
 
     this.infoElement.focus()
 
