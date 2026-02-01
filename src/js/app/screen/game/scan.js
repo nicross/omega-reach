@@ -1,5 +1,6 @@
 app.screen.game.scan = (() => {
   const progressElement = document.querySelector('.a-game--scanProgress'),
+    pubsub = engine.tool.pubsub.create(),
     rootElement = document.querySelector('.a-game--scan')
 
   let canScan,
@@ -14,11 +15,14 @@ app.screen.game.scan = (() => {
 
   function trigger() {
     cooldown = true
+
+    pubsub.emit('trigger')
     console.log('scan trigger')
+
     app.screen.game.update()
   }
 
-  return {
+  return pubsub.decorate({
     click: function () {
       if (cooldown || !canScan) {
         return this
@@ -45,7 +49,7 @@ app.screen.game.scan = (() => {
       }
 
       value = app.settings.computed.inputHold
-        ? engine.fn.accelerateValue(value, 1, 2)
+        ? engine.fn.accelerateValue(value, 1, 1/2)
         : 0
 
       progressElement.style.width = `${value * 100}%`
@@ -78,5 +82,5 @@ app.screen.game.scan = (() => {
       return this
     },
     value: () => value,
-  }
+  })
 })()
