@@ -114,6 +114,9 @@
     cursor: not-allowed;
     outline-color: #666666;
   }
+  .a-game--nav button[aria-disabled="true"] * {
+    cursor: not-allowed;
+  }
   .a-game--up {
     flex: 0 1 50%;
   }
