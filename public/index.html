@@ -12,8 +12,30 @@
       <canvas class="a-app--overlaySupport"></canvas>
 
       <div class="a-app--screen a-app--screen-transparent a-app--game">
-        <section class="c-screen a-game" tabindex="-1" aria-label="Game">
-
+        <section class="c-screen a-game" aria-label="Game" aria-describedby="a-game--info">
+          <header class="a-game--info" id="a-game--info" tabindex="0">
+            <h1 class="a-game--name">Object name</h1>
+            <p class="a-game--description">Object description</p>
+            <ul class="a-game--attributes">
+              <li class="a-game--attribute">Common trait</li>
+              <li class="a-game--attribute a-game--attribute-rare">Rare trait</li>
+              <li class="a-game--attribute a-game--attribute-undiscovered">Undiscovered trait</li>
+              <li class="a-game--attribute a-game--attribute-instrument a-game--attribute-undiscovered">Unrecovered instrument</li>
+              <li class="a-game--attribute a-game--attribute-instrument">Instrument recovered</li>
+            </ul>
+          </header>
+          <nav class="a-game--nav">
+            <button class="a-game--scan">
+              <div class="a-game--scanLabel">Scan</div>
+              <div class="a-game--scanProgress" aria-hidden="true" role="presentation"></div>
+              <div class="a-game--scanProgressBackground" aria-hidden="true" role="presentation"></div>
+            </button>
+            <button class="a-game--navButton a-game--up" aria-label="Move Up" title="Move Up" type="button">⮝</button>
+            <button class="a-game--navButton a-game--left" aria-label="Move Left" title="Move Left" type="button" aria-disabled="true">⮜</button>
+            <button class="a-game--navButton a-game--right" aria-label="Move Right" title="Move Right" type="button" aria-disabled="true">⮞</button>
+            <button class="a-game--navButton a-game--down" aria-label="Move Down" title="Move Down" type="button">⮟</button>
+            <button class="a-game--navButton a-game--menu" type="button">Menu</button>
+          </nav>
         </section>
       </div>
 
@@ -25,7 +47,7 @@
               <button class="c-menuButton a-gameMenu--settings" type="button">Settings</button>
             </li>
             <li class="c-screen--action">
-              <button class="c-menuButton a-gameMenu--back" type="button">Resume</button>
+              <button class="c-menuButton a-gameMenu--back" type="button">Resume collection</button>
             </li>
             <li class="c-screen--action">
               <button class="c-menuButton a-gameMenu--mainMenu" type="button">Exit to main menu</button>
@@ -45,7 +67,7 @@
               <button class="c-menuButton a-mainMenu--continue" type="button">Continue</button>
             </li>
             <li class="c-screen--action">
-              <button class="c-menuButton a-mainMenu--newGame" type="button">Curate new collection</button>
+              <button class="c-menuButton a-mainMenu--newGame" type="button">New collection</button>
             </li>
             <li class="c-screen--action">
               <button class="c-menuButton a-mainMenu--settings" type="button">Settings</button>
@@ -65,7 +87,7 @@
           </div>
           <ul class="c-screen--actions">
             <li class="c-screen--action">
-              <button class="c-menuButton a-newGame--back" type="button">Keep existing collection</button>
+              <button class="c-menuButton a-newGame--back" type="button">Keep current collection</button>
             </li>
             <li class="c-screen--action">
               <button class="c-menuButton a-newGame--confirm" type="button">Curate new collection</button>

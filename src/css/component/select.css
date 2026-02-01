@@ -1,7 +1,7 @@
 .c-select {
   box-sizing: content-box;
   display: flex;
-  font-size: calc(1em - 2px);
+  line-height: 1.5;
 }
   .c-select--button {
     border: 1px solid rgba(255, 255, 255, 0.5);

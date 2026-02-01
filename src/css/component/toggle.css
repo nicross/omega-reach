@@ -20,8 +20,7 @@
   .c-toggle--on {
     background-color: #FFFFFF;
     color: var(--background-color);
-    font-size: calc(1em - 2px);
-    line-height: 1;
+    line-height: 1.5;
     opacity: 1;
     text-align: center;
     text-transform: uppercase;

@@ -1,4 +1,5 @@
 .a-game {
+  display: block;
   max-width: unset;
   position: relative;
 }
@@ -10,5 +11,149 @@
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 0;
+  }
+
+  /* Information */
+  .a-game--info {
+    outline: none !important;
+    pointer-events: none;
+  }
+  .a-game--name {
+    background-color: #000000;
+    font-family: FiraCodeMedium, monospace;
+    font-size: 2.5em;
+    font-weight: 500;
+    width: fit-content;
+  }
+  .a-game--description {
+    background-color: #000000;
+    font-family: FiraCodeRegular, monospace;
+    font-size: 1.5em;
+    width: fit-content;
+  }
+  .a-game--description:empty {
+    display: none;
+  }
+  .a-game--attributes {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    font-family: FiraCodeLight, monospace;
+    font-weight: 300;
+    list-style-type: none;
+    margin-top: 2em;
+  }
+  .a-game--attributes:empty {
+    display: none;
+  }
+  .a-game--attribute {
+    background-color: #000000;
+    padding: 0 0.25em;
+  }
+  .a-game--attribute + .a-game--attribute {
+    margin-top: 0.25em;
+  }
+    .a-game--attribute-rare {
+      color: #FF6900;
+      font-family: FiraCodeMedium, monospace;
+      font-weight: 500;
+    }
+    .a-game--attribute-undiscovered {
+      color: #888888;
+    }
+    .a-game--attribute-instrument {
+      background-color: #FF6900;
+      color: #000000;
+      font-family: FiraCodeMedium, monospace;
+      font-weight: 500;
+    }
+    .a-game--attribute-instrument.a-game--attribute-undiscovered {
+      background-color: #888888;
+    }
+
+  /* Navigation */
+  .a-game--nav {
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2em;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
+  .a-game--nav button {
+    background-color: #000000;
+    border: 1px solid #FF0069;
+    border-radius: 0.125em;
+    height: 2em;
+    line-height: 2em;
+    margin: 1px;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+  }
+  .a-game--nav button:focus,
+  .a-game--nav button:hover {
+    border-color: #FFFFFF;
+    z-index: 2;
+  }
+  .a-game--nav button[aria-disabled="true"] {
+    border-color: #333333;
+    color: #333333;
+    cursor: not-allowed;
+    outline-color: #666666;
+  }
+  .a-game--up {
+    flex: 0 1 50%;
+  }
+  .a-game--right {
+    flex: 0 1 calc(50% - 2px);
+  }
+  .a-game--left {
+    flex: 0 1 calc(50% - 2px);
+  }
+  .a-game--down {
+    flex: 0 1 50%;
+  }
+  .a-game--menu {
+    flex: 0 1 50%;
+    font-family: FiraCodeLight, monospace;
+    font-size: 0.75em;
+    font-weight: 300;
+    height: unset !important;
+    margin-top: 2rem !important;
+  }
+
+  .a-game--scan {
+    flex: 1 1 100%;
+    font-family: FiraCodeRegular, monospace;
+    height: unset !important;
+    margin-bottom: 2rem !important;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 0.25em !important;
+  }
+  .a-game--scanProgress {
+    background-color: #FFFFFF;
+    bottom: 0;
+    height: 0.25em;
+    left: 0;
+    position: absolute;
+    width: 50%;
+    z-index: 2;
+  }
+  .a-game--scanProgressBackground {
+    background-color: #333333;
+    bottom: 0;
+    height: 0.25em;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+  .a-game--scan[aria-disabled="true"] .a-game--scanProgress,
+  .a-game--scan[aria-disabled="true"] .a-game--scanProgressBackground {
+    display: none;
   }
