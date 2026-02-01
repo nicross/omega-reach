@@ -78,18 +78,20 @@ app.screen.game = app.screenManager.invent({
     if (ui.scan) {
       if (focus !== this.scanElement && focus?.matches('button,[role="button"]')) {
         return focus.click()
-      } else {
+      } else if (!app.settings.computed.inputHold) {
         return this.scan.click()
       }
     }
 
     if (app.settings.computed.inputHold) {
       if (game.scan && (focus === this.scanElement || !focus?.matches('button,[role="button"]'))) {
-        return this.scan.click()
-      } else {
-        this.scan.decrement()
+        return this.scan.increment()
+      } else if (focus === this.scanElement && engine.input.mouse.isButton(0)) {
+        return this.scan.increment()
       }
     }
+
+    this.scan.decrement()
   },
   // Methods
   getFocusWithinTarget: function () {

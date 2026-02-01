@@ -6,8 +6,40 @@ app.screen.game.scan = (() => {
     cooldown,
     value = 0
 
+  rootElement.addEventListener('click', () => {
+    if (!app.settings.computed.inputHold) {
+      app.screen.game.scan.click()
+    }
+  })
+
+  function trigger() {
+    cooldown = true
+    console.log('scan trigger')
+    app.screen.game.update()
+  }
+
   return {
     click: function () {
+      if (cooldown || !canScan) {
+        return this
+      }
+
+      trigger()
+
+      return this
+    },
+    decrement: function () {
+      cooldown = false
+
+      value = app.settings.computed.inputHold
+        ? engine.fn.accelerateValue(value, 0, 8)
+        : 0
+
+      progressElement.style.width = `${value * 100}%`
+
+      return this
+    },
+    increment: function () {
       if (cooldown || !canScan) {
         return this
       }
@@ -18,28 +50,13 @@ app.screen.game.scan = (() => {
 
       progressElement.style.width = `${value * 100}%`
 
-      if (value >= 1 || !app.settings.computed.inputHold) {
-        cooldown = true
-        console.log('scan click')
+      if (value >= 1) {
+        trigger()
       }
-
-      return this
-    },
-    decrement: function () {
-      if (cooldown || !canScan) {
-        return this
-      }
-
-      value = app.settings.computed.inputHold
-        ? engine.fn.accelerateValue(value, 0, 8)
-        : 0
-
-      progressElement.style.width = `${value * 100}%`
 
       return this
     },
     update: function () {
-      cooldown = false
       value = 0
 
       canScan = Math.random() > 0.5
