@@ -172,11 +172,17 @@
     height: 100%;
     justify-content: center;
     left: 0;
+    opacity: 1;
     padding: 2rem;
     position: absolute;
     top: 0;
+    transition: opacity 0.25s linear;
     width: 100%;
     z-index: 9;
+  }
+  .a-game--dialog[aria-hidden="true"] {
+    opacity: 0;
+    pointer-events: none;
   }
   .a-game--dialogContent {
     background-color: rgba(0, 0, 0, 0.85);
@@ -188,15 +194,19 @@
     margin-top: 1rem;
   }
   .a-game--dialogText {
+    cursor: default !important;
     outline: none !important;
   }
-  .a-game--dialogName {
+  .a-game--dialogText * {
+    cursor: default !important;
+  }
+  .a-game--dialogTitle {
     font-family: FiraCodeMedium, monospace;
     font-size: 1.5em;
     font-weight: 500;
     line-height: 1;
   }
-  .a-game--dialogName:empty {
+  .a-game--dialogTitle:empty {
     display: none;
   }
   .a-game--dialogDescription {

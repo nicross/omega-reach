@@ -12,8 +12,8 @@
       <canvas class="a-app--overlaySupport"></canvas>
 
       <div class="a-app--screen a-app--screen-transparent a-app--game">
-        <section class="c-screen a-game" aria-label="Game" aria-describedby="a-game--info">
-          <header class="a-game--info" id="a-game--info" tabindex="0">
+        <section class="c-screen a-game" aria-label="Game" tabindex="-1">
+          <div class="a-game--info" id="a-game--info" tabindex="0">
             <h1 class="a-game--name">Object name</h1>
             <p class="a-game--description">Object description</p>
             <ul class="a-game--attributes">
@@ -23,7 +23,7 @@
               <li class="a-game--attribute a-game--attribute-instrument a-game--attribute-undiscovered">Unrecovered instrument</li>
               <li class="a-game--attribute a-game--attribute-instrument">Instrument recovered</li>
             </ul>
-          </header>
+          </div>
 
           <nav class="a-game--nav">
             <button class="a-game--scan">
@@ -38,10 +38,10 @@
             <button class="a-game--menu" type="button">Menu</button>
           </nav>
 
-          <section class="a-game--dialog" aria-label="Dialog">
+          <section class="a-game--dialog" aria-label="Dialog" aria-hidden="true">
             <div class="a-game--dialogContent">
               <div class="a-game--dialogText" tabindex="0">
-                <h1 class="a-game--dialogName">Dialog title</h1>
+                <h1 class="a-game--dialogTitle">Dialog title</h1>
                 <p class="a-game--dialogDescription">Dialog text content.</p>
               </div>
               <ul class="a-game--dialogActions">
@@ -119,11 +119,11 @@
             <li class="c-screen--field">
               <label class="c-screen--label">Input preference</label>
               <div class="c-select a-settings--inputPreference">
-                <button class="c-select--button c-select--previous" aria-label="Previous input preference" aria-describedby="a-settings--inputPreferenceValue">
+                <button class="c-select--button c-select--previous" aria-label="Input preference" aria-describedby="a-settings--inputPreferenceValue">
                   <i aria-hidden="true" role="presentation">◀</i>
                 </button>
                 <div class="c-select--value" id="a-settings--inputPreferenceValue"></div>
-                <button class="c-select--button c-select--next" aria-label="Next input preference" aria-describedby="a-settings--inputPreferenceValue">
+                <button class="c-select--button c-select--next" aria-label="Input preference" aria-describedby="a-settings--inputPreferenceValue">
                   <i aria-hidden="true" role="presentation">▶</i>
                 </button>
               </div>

@@ -35,10 +35,11 @@ app.screen.game = app.screenManager.invent({
     if (ui.pause) {
       return app.screenManager.dispatch('pause')
     }
-
-
   },
   // Methods
+  getFocusWithinTarget: function () {
+    return this.rootElement.querySelector('.a-game--info')
+  },
   setBlanked: function (value) {
     if (value) {
       this.rootElement.classList.add('a-game-blanked')
