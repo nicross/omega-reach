@@ -12,6 +12,7 @@ app.screen.game = app.screenManager.invent({
   state: {},
   // Hooks
   onReady: function () {
+    this.dialogElement = this.rootElement.querySelector('.a-game--dialog')
     this.downElement = this.rootElement.querySelector('.a-game--down')
     this.infoElement = this.rootElement.querySelector('.a-game--info')
     this.leftElement = this.rootElement.querySelector('.a-game--left')
@@ -35,6 +36,7 @@ app.screen.game = app.screenManager.invent({
     engine.loop.resume()
 
     this.update()
+    this.dialog.checkAdvance()
   },
   onExit: function () {
     app.autosave.disable()
@@ -44,6 +46,8 @@ app.screen.game = app.screenManager.invent({
   },
   onFrame: function () {
     // Handle input when dialog is open
+    this.dialog.checkAdvance()
+
     if (this.dialog.isOpen()) {
       return this.dialog.handleInput()
     }
@@ -95,7 +99,7 @@ app.screen.game = app.screenManager.invent({
   },
   // Methods
   getFocusWithinTarget: function () {
-    return this.infoElement
+    return this.dialog.isOpen() ? this.dialogElement : this.infoElement
   },
   setBlanked: function (value) {
     if (value) {

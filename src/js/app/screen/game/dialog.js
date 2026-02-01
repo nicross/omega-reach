@@ -27,11 +27,29 @@ app.screen.game.dialog = (() => {
   rootElement.setAttribute('aria-hidden', 'true')
   app.utility.focus.trap(rootElement)
 
+  function advance() {
+    const next = queue.shift()
+
+    if (next) {
+      current = next
+      render(next)
+
+      if (!isOpen) {
+        open()
+      } else {
+        app.utility.focus.setWithin(rootElement)
+      }
+    } else if (isOpen) {
+      close()
+      current = undefined
+    }
+  }
+
   function close() {
     document.querySelector('.a-game--info').removeAttribute('aria-hidden')
     document.querySelector('.a-game--nav').removeAttribute('aria-hidden')
 
-    app.utility.focus.set(app.screen.game.rootElement)
+    app.utility.focus.set(app.screen.game.infoElement)
     rootElement.setAttribute('aria-hidden', true)
 
     isOpen = false
@@ -48,19 +66,24 @@ app.screen.game.dialog = (() => {
     actionsElement.innerHTML = '';
 
     for (const {
-      callback,
       label,
+      before,
+      after,
     } of actions) {
       const container = app.utility.dom.toElement(
         `<li><button class="c-menuButton" type="button">${label}</button></li>`
       )
 
       const clickHandler = () => {
-        if (callback) {
-          callback()
+        if (before) {
+          before()
         }
 
         advance()
+
+        if (after) {
+          after()
+        }
       }
 
       container.querySelector('button').addEventListener('click', clickHandler)
@@ -74,12 +97,11 @@ app.screen.game.dialog = (() => {
       textElement.ariaDescription = `${actions.length} actions`
       textElement.removeAttribute('role')
     }
-
-    app.utility.focus.setWithin(rootElement)
   }
 
   function open() {
     rootElement.removeAttribute('aria-hidden')
+    app.utility.focus.setWithin(rootElement)
 
     document.querySelector('.a-game--info').setAttribute('aria-hidden', true)
     document.querySelector('.a-game--nav').setAttribute('aria-hidden', true)
@@ -87,34 +109,31 @@ app.screen.game.dialog = (() => {
     isOpen = true
   }
 
-  function advance() {
-    const next = queue.shift()
-
-    if (next) {
+  return {
+    checkAdvance: function () {
       if (!isOpen) {
-        open()
+        advance()
       }
 
-      current = next
-      render(next)
-    } else {
-      current = undefined
-      close()
-    }
-  }
-
-  return {
+      return this
+    },
     handleInput: function () {
       const focus = app.utility.focus.get(),
         ui = app.controls.ui()
 
       if (ui.confirm) {
         if (current.actions.length == 1) {
-          if (current.actions[0].callback) {
-            current.actions[0].callback()
+          const action = current.actions[0]
+
+          if (action.before) {
+            action.before()
           }
 
           advance()
+
+          if (action.after) {
+            action.after()
+          }
         } else if (focus) {
           focus.click()
         }
@@ -133,10 +152,6 @@ app.screen.game.dialog = (() => {
     isOpen: () => isOpen,
     push: function (dialog) {
       queue.push(dialog)
-
-      if (!isOpen) {
-        advance()
-      }
 
       return this
     },
