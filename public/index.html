@@ -24,18 +24,34 @@
               <li class="a-game--attribute a-game--attribute-instrument">Instrument recovered</li>
             </ul>
           </header>
+
           <nav class="a-game--nav">
             <button class="a-game--scan">
               <div class="a-game--scanLabel">Scan</div>
               <div class="a-game--scanProgress" aria-hidden="true" role="presentation"></div>
               <div class="a-game--scanProgressBackground" aria-hidden="true" role="presentation"></div>
             </button>
-            <button class="a-game--navButton a-game--up" aria-label="Move Up" title="Move Up" type="button">⮝</button>
-            <button class="a-game--navButton a-game--left" aria-label="Move Left" title="Move Left" type="button" aria-disabled="true">⮜</button>
-            <button class="a-game--navButton a-game--right" aria-label="Move Right" title="Move Right" type="button" aria-disabled="true">⮞</button>
-            <button class="a-game--navButton a-game--down" aria-label="Move Down" title="Move Down" type="button">⮟</button>
-            <button class="a-game--navButton a-game--menu" type="button">Menu</button>
+            <button class="a-game--up" aria-label="Move Up" title="Move Up" type="button">⮝</button>
+            <button class="a-game--left" aria-label="Move Left" title="Move Left" type="button" aria-disabled="true">⮜</button>
+            <button class="a-game--right" aria-label="Move Right" title="Move Right" type="button" aria-disabled="true">⮞</button>
+            <button class="a-game--down" aria-label="Move Down" title="Move Down" type="button">⮟</button>
+            <button class="a-game--menu" type="button">Menu</button>
           </nav>
+
+          <section class="a-game--dialog" aria-label="Dialog">
+            <div class="a-game--dialogContent">
+              <div class="a-game--dialogText" tabindex="0">
+                <h1 class="a-game--dialogName">Dialog title</h1>
+                <p class="a-game--dialogDescription">Dialog text content.</p>
+              </div>
+              <ul class="a-game--dialogActions">
+                <li><button class="c-menuButton" type="button">Action 1</button></li>
+                <li><button class="c-menuButton" type="button">Action 2</button></li>
+              </ul>
+            </div>
+          </section>
+
+          <div class="u-screenReader a-game--live" aria-live="assertive"></div>
         </section>
       </div>
 
@@ -47,7 +63,7 @@
               <button class="c-menuButton a-gameMenu--settings" type="button">Settings</button>
             </li>
             <li class="c-screen--action">
-              <button class="c-menuButton a-gameMenu--back" type="button">Resume collection</button>
+              <button class="c-menuButton a-gameMenu--back" type="button">Resume</button>
             </li>
             <li class="c-screen--action">
               <button class="c-menuButton a-gameMenu--mainMenu" type="button">Exit to main menu</button>
