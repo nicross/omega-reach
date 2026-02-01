@@ -20,10 +20,10 @@ app.screen.game.interact = (() => {
 
     pubsub.emit('trigger')
 
-    const result = content.location.get().onInteract()
+    const result = content.location.get().interact()
 
     if (result) {
-      // Live region
+      app.screen.game.live.set(result)
     }
 
     app.screen.game.update()

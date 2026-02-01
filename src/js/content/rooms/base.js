@@ -51,6 +51,20 @@ content.rooms.base = {
   isDiscovered: () => true,
   // Interaction
   canInteract: () => false,
+  interact: function () {
+    if (!this.canInteract()) {
+      return this
+    }
+
+    const result = this.onInteract()
+
+    content.location.emit('interact', {
+      result,
+      room: this,
+    })
+
+    return result
+  },
   onInteract: () => {}, // Return a string to announce to interface
   // Movement
   canEnter: () => true,
