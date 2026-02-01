@@ -101,6 +101,11 @@
     transform: translateY(-2rem) !important;
   }
 
+  .a-splash--logoSymbol {
+    animation: none;
+    opacity: 0.75;
+  }
+
   .a-splash--logoSymbol i {
     animation: none;
   }

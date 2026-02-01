@@ -1,5 +1,6 @@
 app.screen.game.interact = (() => {
-  const progressElement = document.querySelector('.a-game--interactProgress'),
+  const labelElement = document.querySelector('.a-game--interactLabel'),
+    progressElement = document.querySelector('.a-game--interactProgress'),
     pubsub = engine.tool.pubsub.create(),
     rootElement = document.querySelector('.a-game--interact')
 
@@ -15,6 +16,7 @@ app.screen.game.interact = (() => {
 
   function trigger() {
     isCooldown = true
+    rootElement.classList.remove('a-game--interact-active')
 
     pubsub.emit('trigger')
     console.log('interact trigger')
@@ -37,6 +39,7 @@ app.screen.game.interact = (() => {
         ? engine.fn.accelerateValue(value, 0, 8)
         : 0
 
+      rootElement.classList.remove('a-game--interact-active')
       progressElement.style.width = `${value * 100}%`
 
       return this
@@ -50,6 +53,7 @@ app.screen.game.interact = (() => {
         ? engine.fn.accelerateValue(value, 1, 1/2)
         : 0
 
+      rootElement.classList.add('a-game--interact-active')
       progressElement.style.width = `${value * 100}%`
 
       if (value >= 1) {
@@ -67,6 +71,8 @@ app.screen.game.interact = (() => {
       value = 0
 
       canInteract = Math.random() > 0.5
+
+      labelElement.innerHTML = 'Examine'
 
       if (app.settings.computed.inputHold) {
         rootElement.classList.remove('a-game--interact-instant')

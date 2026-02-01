@@ -8,7 +8,7 @@ app.screen.game.info = (() => {
 
     const info = {
       attributes: [],
-      description: isDiscovered ? 'Object description' : 'Undiscovered',
+      description: isDiscovered ? 'Object description' : 'Unexamined',
       isDiscovered,
       name: `Object #${engine.fn.randomInt(1000, 9999)}`,
     }
@@ -19,9 +19,9 @@ app.screen.game.info = (() => {
       for (let i = 0; i < count; i += 1) {
         info.attributes.push(
           engine.fn.choose([
-            {label: 'Common trait', modifiers: []},
-            {label: 'Rare trait', modifiers: ['rare']},
-            {label: 'Undiscovered trait', modifiers: ['undiscovered']},
+            {label: 'Common quirk', modifiers: []},
+            {label: 'Rare quirk', modifiers: ['rare']},
+            {label: 'Unexamined quirk', modifiers: ['undiscovered']},
             {label: 'Unrecovered instrument', modifiers: ['undiscovered', 'instrument']},
             {label: 'Instrument recovered', modifiers: ['instrument']},
           ], Math.random())
