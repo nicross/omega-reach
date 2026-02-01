@@ -19,7 +19,12 @@ app.screen.game.interact = (() => {
     rootElement.classList.remove('a-game--interact-active')
 
     pubsub.emit('trigger')
-    console.log('interact trigger')
+
+    const result = content.location.get().onInteract()
+
+    if (result) {
+      // Live region
+    }
 
     app.screen.game.update()
   }
@@ -70,9 +75,11 @@ app.screen.game.interact = (() => {
     update: function () {
       value = 0
 
-      canInteract = Math.random() > 0.5
+      const room = content.location.get()
 
-      labelElement.innerHTML = 'Examine'
+      canInteract = room.canInteract()
+
+      labelElement.innerHTML = room.getInteractLabel()
 
       if (app.settings.computed.inputHold) {
         rootElement.classList.remove('a-game--interact-instant')

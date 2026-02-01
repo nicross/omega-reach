@@ -32,6 +32,17 @@ app.screen.game.info = (() => {
     return info
   }
 
+  function getRoomInfo() {
+    const room = content.location.get()
+
+    return {
+      attributes: room.getAttributeLabels(),
+      description: room.getDescription(),
+      isDiscovered: room.isDiscovered(),
+      name: room.getName(),
+    }
+  }
+
   return {
     update: function () {
       const {
@@ -39,7 +50,7 @@ app.screen.game.info = (() => {
         description,
         isDiscovered,
         name,
-      } = generateRandomInfo()
+      } = getRoomInfo()
 
       nameElement.innerHTML = name
       descriptionElement.innerHTML = description

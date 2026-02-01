@@ -6,6 +6,9 @@ app.storage.game = {
   // Helpers
   generate: function () {
     return {
+      location: {
+        id: 'atrium',
+      },
       seed: app.fn.generateSeed(),
     }
   },

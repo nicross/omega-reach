@@ -70,7 +70,7 @@
       font-weight: 500;
     }
     .a-game--attribute-undiscovered {
-      color: #888888;
+      animation: a-game--attribute-undiscovered 1s ease 0s infinite alternate both;
     }
     .a-game--attribute-instrument {
       background-color: #FF6900;
@@ -79,7 +79,6 @@
       font-weight: 500;
     }
     .a-game--attribute-instrument.a-game--attribute-undiscovered {
-      animation: a-game--attribute-undiscovered-instrument 1s ease 0s infinite alternate both;
       background-color: #FFFFFF;
       color: #000000;
     }
@@ -260,7 +259,7 @@
     margin-right: 1rem;
   }
 
-@keyframes a-game--attribute-undiscovered-instrument {
+@keyframes a-game--attribute-undiscovered {
   0% {
     opacity: 1;
   }

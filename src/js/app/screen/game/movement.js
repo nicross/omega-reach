@@ -15,7 +15,7 @@ app.screen.game.movement = (() => {
         return this
       }
 
-      console.log('moved down')
+      content.location.get().moveDown()
       app.screen.game.update()
 
       return this
@@ -25,7 +25,7 @@ app.screen.game.movement = (() => {
         return this
       }
 
-      console.log('moved left')
+      content.location.get().moveLeft()
       app.screen.game.update()
 
       return this
@@ -35,7 +35,7 @@ app.screen.game.movement = (() => {
         return this
       }
 
-      console.log('moved right')
+      content.location.get().moveRight()
       app.screen.game.update()
 
       return this
@@ -45,16 +45,18 @@ app.screen.game.movement = (() => {
         return this
       }
 
-      console.log('moved up')
+      content.location.get().moveUp()
       app.screen.game.update()
 
       return this
     },
     update: function () {
-      // Down
-      canDown = Math.random() > 0.5
+      const room = content.location.get()
 
-      const downLabel = 'Move down'
+      // Down
+      canDown = room.canMoveDown()
+
+      const downLabel = room.getMoveDownLabel()
 
       downElement.ariaLabel = downLabel
       downElement.title = downLabel
@@ -66,9 +68,9 @@ app.screen.game.movement = (() => {
       }
 
       // Left
-      canLeft = Math.random() > 0.5
+      canLeft = room.canMoveLeft()
 
-      const leftLabel = 'Move left'
+      const leftLabel = room.getMoveLeftLabel()
 
       leftElement.ariaLabel = leftLabel
       leftElement.title = leftLabel
@@ -80,9 +82,9 @@ app.screen.game.movement = (() => {
       }
 
       // Right
-      canRight = Math.random() > 0.5
+      canRight = room.canMoveRight()
 
-      const rightLabel = 'Move right'
+      const rightLabel = room.getMoveRightLabel()
 
       rightElement.ariaLabel = rightLabel
       rightElement.title = rightLabel
@@ -94,9 +96,9 @@ app.screen.game.movement = (() => {
       }
 
       // Up
-      canUp = Math.random() > 0.5
+      canUp = room.canMoveUp()
 
-      const upLabel = 'Move right'
+      const upLabel = room.getMoveUpLabel()
 
       upElement.ariaLabel = upLabel
       upElement.title = upLabel

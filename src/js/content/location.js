@@ -1,0 +1,55 @@
+content.location = (() => {
+  const pubsub = engine.tool.pubsub.create()
+
+  let room
+
+  function load(id) {
+    room = content.rooms.get(id)
+
+    if (!room) {
+      return
+    }
+
+    room.onEnter()
+    pubsub.emit('enter', room)
+  }
+
+  function unload() {
+    if (!room) {
+      return
+    }
+
+    room.onExit()
+    pubsub.emit('exit', room)
+    room = undefined
+  }
+
+  return pubsub.decorate({
+    export: function () {
+      return {
+        id: room?.id,
+      }
+    },
+    get: () => room,
+    import: function ({id} = {}) {
+      load(id)
+
+      return this
+    },
+    reset: function () {
+      unload()
+
+      return this
+    },
+    set: function (id) {
+      unload()
+      load(id)
+
+      return this
+    }
+  })
+})()
+
+engine.state.on('import', ({location}) => content.location.import(location))
+engine.state.on('export', (data) => data.location = content.location.export())
+engine.state.on('reset', () => content.location.reset())
