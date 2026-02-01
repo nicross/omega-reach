@@ -1,29 +1,64 @@
 app.tutorial = (() => {
-  let test = false
+  const registry = new Map()
+
+  let isImported = false
 
   return {
-    export: function() {
-      return {test}
+    export: function () {
+      const states = {}
+
+      for (const [id, tutorial] of registry.entries()) {
+        states[id] = tutorial.export()
+      }
+
+      return states
     },
-    import: function(data = {}) {
-      if (!data.test) {
-        [
-          {
-            title: 'Wake up',
-            description: 'You pull yourself from your nap at the center of time.',
-            actions: [
-              {
-                label: 'Continue',
-                before: () => test = true,
-              }
-            ],
-          },
-        ].forEach((x) => app.screen.game.dialog.push(x))
+    get: (id) => registry.get(id),
+    import: function (states = {}) {
+      for (const [id, tutorial] of registry.entries()) {
+        if (id in states) {
+          tutorial.import(states[id])
+        }
+      }
+
+      isImported = true
+      this.update()
+
+      return this
+    },
+    invent: function (prototype) {
+      if (!this.base.isPrototypeOf(prototype)) {
+        prototype = this.base.extend(prototype)
+      }
+
+      registry.set(prototype.id, prototype)
+
+      return prototype
+    },
+    isActive: function (id) {
+      return registry.get(id)?.active ?? false
+    },
+    isComplete: function (id) {
+      return registry.get(id)?.complete ?? false
+    },
+    reset: function () {
+      isImported = false
+
+      for (const [id, tutorial] of registry.entries()) {
+        tutorial.reset()
       }
 
       return this
     },
-    reset: function() {
+    update: function() {
+      if (!isImported) {
+        return this
+      }
+
+      for (const [id, tutorial] of registry.entries()) {
+        tutorial.update()
+      }
+
       return this
     },
   }
@@ -32,3 +67,9 @@ app.tutorial = (() => {
 engine.state.on('import', ({tutorial}) => app.tutorial.import(tutorial))
 engine.state.on('export', (data) => data.tutorial = app.tutorial.export())
 engine.state.on('reset', () => app.tutorial.reset())
+
+// Update tutorial on room enter / interact
+engine.ready(() => {
+  content.location.on('enter', () => app.tutorial.update())
+  content.location.on('interact', () => app.tutorial.update())
+})

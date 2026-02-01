@@ -12,7 +12,7 @@ content.rooms = (() => {
       return states
     },
     get: (id) => registry.get(id),
-    import: function (states) {
+    import: function (states = {}) {
       for (const [id, room] of registry.entries()) {
         if (id in states) {
           room.import(states[id])

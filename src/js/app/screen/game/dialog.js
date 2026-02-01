@@ -60,8 +60,8 @@ app.screen.game.dialog = (() => {
     description = '',
     title = '',
   } = {}) {
-    titleElement.innerHTML = `${title}:`
-    descriptionElement.innerHTML = description
+    titleElement.innerHTML = typeof title == 'function' ? title() : title
+    descriptionElement.innerHTML = typeof description == 'function' ? description() : description
 
     actionsElement.innerHTML = '';
 

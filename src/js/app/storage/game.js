@@ -10,6 +10,7 @@ app.storage.game = {
         id: 'atrium',
       },
       seed: app.fn.generateSeed(),
+      tutorial: {},
     }
   },
   load: function () {

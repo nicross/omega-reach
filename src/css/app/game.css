@@ -219,7 +219,7 @@
   }
   .a-game--dialogContent {
     background-color: rgba(0, 0, 0, 0.85);
-    max-width: 64rem;
+    max-width: 65ch;
     padding: 2rem;
     width: 100%;
   }
@@ -247,16 +247,24 @@
     font-weight: 300;
     margin-top: 0.5rem;
   }
+  .a-game--dialogDescription kbd {
+    background-color: #000000;
+    border: 0.125rem solid #FF0069;
+    border-radius: 0.125rem;
+    padding: 0 0.25rem;
+    white-space: nowrap;
+  }
   .a-game--dialogDescription:empty {
     display: none;
   }
   .a-game--dialogActions {
     list-style-type: none;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
   }
   .a-game--dialogActions li {
     display: inline-block;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
   }
 
 @keyframes a-game--attribute-undiscovered {

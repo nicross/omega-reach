@@ -4,10 +4,10 @@ content.rooms.base = {
   name: undefined,
   description: undefined,
   interactLabel: 'Examine',
-  moveDownLabel: 'No down',
-  moveLeftLabel: 'No left',
-  moveRightLabel: 'No right',
-  moveUpLabel: 'No up',
+  moveDownLabel: 'No south',
+  moveLeftLabel: 'No west',
+  moveRightLabel: 'No east',
+  moveUpLabel: 'No north',
   // Transitions
   transitions: {},
   // State

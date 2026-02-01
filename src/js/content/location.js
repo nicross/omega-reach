@@ -36,6 +36,9 @@ content.location = (() => {
 
       return this
     },
+    is: function (id) {
+      return id == room?.id
+    },
     reset: function () {
       unload()
 

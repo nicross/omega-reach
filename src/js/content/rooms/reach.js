@@ -26,7 +26,7 @@ content.rooms.reach = content.rooms.invent({
     return [
       {
         label: `Reach ${this.state.online ? 'online' : 'offline'}`,
-        modifiers: this.state.online ? [] : ['undiscovered'],
+        modifiers: this.state.online ? ['rare'] : ['undiscovered'],
       },
     ]
   },

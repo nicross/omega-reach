@@ -155,9 +155,10 @@ function getJs() {
 function getAppJs() {
   const srcs = [
     'src/js/app.js',
-    'src/js/app/screen/base.js',
     'src/js/app/utility/*.js',
     'src/js/app/*.js',
+    'src/js/app/tutorial/base.js',
+    'src/js/app/screen/base.js',
     'src/js/app/screen/game.js',
     'src/js/app/**/*.js',
   ]
