@@ -1,3 +1,16 @@
+/*
+  app.screen.game.dialog.push({
+    title: '',
+    description: '',
+    actions: [
+      {
+        label: '',
+        callback: () => {},
+      }
+    ],
+  })
+*/
+
 app.screen.game.dialog = (() => {
   const queue = []
 
@@ -8,14 +21,13 @@ app.screen.game.dialog = (() => {
     textElement = document.querySelector('.a-game--dialogText'),
     titleElement = document.querySelector('.a-game--dialogTitle')
 
-  let isOpen
+  let current,
+    isOpen
 
   rootElement.setAttribute('aria-hidden', 'true')
   app.utility.focus.trap(rootElement)
 
   function close() {
-    app.screen.game.rootElement.classList.remove('a-game-dialog')
-
     document.querySelector('.a-game--info').removeAttribute('aria-hidden')
     document.querySelector('.a-game--nav').removeAttribute('aria-hidden')
 
@@ -52,34 +64,21 @@ app.screen.game.dialog = (() => {
       }
 
       container.querySelector('button').addEventListener('click', clickHandler)
-
       actionsElement.appendChild(container)
     }
 
     if (actions.length == 1) {
-      textElement._clickHandler = (e) => {
-        if (actions[0].callback) {
-          actions[0].callback()
-        }
-
-        advance()
-      }
-
-      textElement.addEventListener('click', textElement._clickHandler)
       textElement.ariaDescription = actions[0].label
       textElement.role = 'button'
     } else {
       textElement.ariaDescription = `${actions.length} actions`
       textElement.removeAttribute('role')
-      textElement.removeEventListener('click', textElement._clickHandler)
     }
 
     app.utility.focus.setWithin(rootElement)
   }
 
   function open() {
-    app.screen.game.rootElement.classList.add('a-game-dialog')
-
     rootElement.removeAttribute('aria-hidden')
 
     document.querySelector('.a-game--info').setAttribute('aria-hidden', true)
@@ -96,25 +95,42 @@ app.screen.game.dialog = (() => {
         open()
       }
 
+      current = next
       render(next)
     } else {
+      current = undefined
       close()
     }
   }
 
   return {
-    /*
-      {
-        title: '',
-        description: '',
-        actions: [
-          {
-            label: '',
-            callback: () => {},
+    handleInput: function () {
+      const focus = app.utility.focus.get(),
+        ui = app.controls.ui()
+
+      if (ui.confirm) {
+        if (current.actions.length == 1) {
+          if (current.actions[0].callback) {
+            current.actions[0].callback()
           }
-        ],
+
+          advance()
+        } else if (focus) {
+          focus.click()
+        }
       }
-    */
+
+      if (ui.up || ui.left) {
+        app.utility.focus.setPreviousFocusable(rootElement)
+      }
+
+      if (ui.down || ui.right) {
+        app.utility.focus.setNextFocusable(rootElement)
+      }
+
+      return this
+    },
+    isOpen: () => isOpen,
     push: function (dialog) {
       queue.push(dialog)
 

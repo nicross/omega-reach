@@ -38,6 +38,9 @@
     font-size: 1.5em;
     width: fit-content;
   }
+    .a-game--description-unscanned {
+      color: #888888;
+    }
   .a-game--description:empty {
     display: none;
   }
@@ -141,6 +144,9 @@
     position: relative;
     padding-bottom: 0.25em !important;
   }
+    .a-game--scan-instant {
+      padding-bottom: 0 !important;
+    }
   .a-game--scanProgress {
     background-color: #FFFFFF;
     bottom: 0;
@@ -159,7 +165,9 @@
     width: 100%;
     z-index: 1;
   }
+  .a-game--scan-instant .a-game--scanProgress,
   .a-game--scan[aria-disabled="true"] .a-game--scanProgress,
+  .a-game--scan-instant .a-game--scanProgressBackground,
   .a-game--scan[aria-disabled="true"] .a-game--scanProgressBackground {
     display: none;
   }

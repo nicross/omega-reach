@@ -1,6 +1,19 @@
 app.controls.mappings = {
   game: {
-
+    scan: {
+      gamepadAnalog: [],
+      gamepadAxis: [],
+      gamepadDigital: [
+        0,
+      ],
+      keyboard: [
+        'Enter',
+        'NumpadEnter',
+        'Space',
+      ],
+      mouseAxis: [],
+      mouseButton: [],
+    },
   },
   ui: {
     // Navigation
@@ -76,6 +89,59 @@ app.controls.mappings = {
       mouseAxis: [],
       mouseButton: [],
     },
+    // Movement
+    moveUp: {
+      gamepadAnalog: [],
+      gamepadAxis: [],
+      gamepadDigital: [
+        12,
+      ],
+      keyboard: [
+        'ArrowUp',
+        'Numpad8',
+      ],
+      mouseAxis: [],
+      mouseButton: [],
+    },
+    moveDown: {
+      gamepadAnalog: [],
+      gamepadAxis: [],
+      gamepadDigital: [
+        13,
+      ],
+      keyboard: [
+        'ArrowDown',
+        'Numpad5',
+      ],
+      mouseAxis: [],
+      mouseButton: [],
+    },
+    moveLeft: {
+      gamepadAnalog: [],
+      gamepadAxis: [],
+      gamepadDigital: [
+        14,
+      ],
+      keyboard: [
+        'ArrowLeft',
+        'Numpad4',
+      ],
+      mouseAxis: [],
+      mouseButton: [],
+    },
+    moveRight: {
+      gamepadAnalog: [],
+      gamepadAxis: [],
+      gamepadDigital: [
+        15,
+      ],
+      keyboard: [
+        'ArrowRight',
+        'Numpad6',
+      ],
+      mouseAxis: [],
+      mouseButton: [],
+    },
     // Actions
     confirm: {
       gamepadAnalog: [],
@@ -127,6 +193,20 @@ app.controls.mappings = {
       mouseButton: [
         3,
       ],
+    },
+    scan: {
+      gamepadAnalog: [],
+      gamepadAxis: [],
+      gamepadDigital: [
+        0,
+      ],
+      keyboard: [
+        'Enter',
+        'NumpadEnter',
+        'Space',
+      ],
+      mouseAxis: [],
+      mouseButton: [],
     },
     // Individual special buttons
     enter: {
