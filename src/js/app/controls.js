@@ -131,6 +131,8 @@ app.controls = (() => {
       updateGame()
       updateUi()
 
+      this.interactions.update()
+
       return this
     },
   }
