@@ -161,6 +161,7 @@ app.controls.interactions = (() => {
   }
 
   return {
+    keyboardMappings: () => ({...keyboardMappings}),
     points: () => [...points],
     reset: function () {
       points.length = 0

@@ -52,6 +52,27 @@ app.screen.game = app.screenManager.invent({
       return this.dialog.handleInput()
     }
 
+    // Handle interactions
+    const interactions = app.controls.interactions.points(),
+      solution = content.location.get().solution
+
+    let interacted = false
+
+    if (solution) {
+      for (const interaction of interactions) {
+        if (engine.fn.distance(interaction, solution) < 1/3) {
+          interacted = true
+
+          if (app.settings.computed.inputHold) {
+            this.interact.increment()
+          } else {
+            this.interact.click()
+          }
+        }
+      }
+    }
+
+    // Handle UI controls
     const focus = app.utility.focus.get(),
       game = app.controls.game(),
       ui = app.controls.ui()
@@ -95,7 +116,9 @@ app.screen.game = app.screenManager.invent({
       }
     }
 
-    this.interact.decrement().setCooldown(false)
+    if (!interacted) {
+      this.interact.decrement().setCooldown(false)
+    }
   },
   // Methods
   getFocusWithinTarget: function () {

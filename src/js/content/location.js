@@ -10,7 +10,7 @@ content.location = (() => {
       return
     }
 
-    room.onEnter()
+    room.enter()
     pubsub.emit('enter', room)
   }
 
@@ -19,7 +19,7 @@ content.location = (() => {
       return
     }
 
-    room.onExit()
+    room.exit()
     pubsub.emit('exit', room)
     room = undefined
   }

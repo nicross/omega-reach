@@ -68,9 +68,38 @@ content.rooms.base = {
       room: this,
     })
 
+    this.generateSolution()
+
     return result
   },
   onInteract: () => {}, // Return a string to announce to interface
+  // Solution
+  solution: undefined,
+  generateSolution: function (preference = app.settings.computed.inputPreference) {
+    if (!this.canInteract()) {
+      return
+    }
+
+    if (preference == 'keyboard') {
+      this.solution = engine.fn.choose([...Object.values(
+        app.controls.interactions.keyboardMappings()
+      )], Math.random())
+    } else if (preference == 'mouse') {
+      this.solution = engine.tool.vector3d.create({
+        x: engine.fn.randomFloat(0, 1),
+        y: engine.fn.randomFloat(-1, 1),
+        z: engine.fn.randomFloat(-1, 1),
+      }).normalize()
+    } else {
+      this.solution = engine.tool.vector3d.create({
+        x: engine.fn.randomFloat(-1, 1),
+        y: engine.fn.randomFloat(-1, 1),
+        z: engine.fn.randomFloat(-1, 1),
+      }).normalize()
+    }
+
+    return this.solution
+  },
   // Movement
   canEnter: () => true,
   canMove: function (direction) {
@@ -90,6 +119,17 @@ content.rooms.base = {
   },
   canMoveUp: function () {
     return this.canMove('up')
+  },
+  enter: function () {
+    this.generateSolution()
+    this.onEnter()
+
+    return this
+  },
+  exit: function () {
+    this.onExit()
+
+    return this
   },
   move: function (direction) {
     if (!this.canMove(direction)) {

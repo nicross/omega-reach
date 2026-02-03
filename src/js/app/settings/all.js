@@ -28,6 +28,9 @@ app.settings.register('inputHold', {
 
 app.settings.register('inputPreference', {
   default: 'keyboard',
+  update: function (computedValue) {
+    content.location.get()?.generateSolution()
+  },
 })
 
 app.settings.register('mainVolume', {
