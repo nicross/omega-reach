@@ -11,7 +11,7 @@ content.rooms.reach = content.rooms.invent({
     down: 'atrium',
   },
   // State
-  state: {
+  defaultState: {
     online: false,
   },
   // Interaction

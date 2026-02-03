@@ -11,11 +11,12 @@ app.tutorial.galleryEmpty = app.tutorial.invent({
 
     [
       {
-        title: `It's empty.`,
-        description: `Briefly you entertain the sweet memory of how it will soon be. The cacophony of melodies shall be deafening!`,
+        title: `Something's missing.`,
+        description: `Briefly you entertain your sweet memories of how it will soon be. The cacophony of melodies shall be deafening!`,
         actions: [
           {
             label: 'Come back later',
+            before: () => this.markComplete(),
           }
         ],
       },

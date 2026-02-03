@@ -9,10 +9,6 @@ content.rooms.horizon = content.rooms.invent({
   transitions: {
     down: 'reach',
   },
-  // State
-  state: {
-    online: false,
-  },
   // Interaction
   canInteract: () => true,
   onInteract: function () {

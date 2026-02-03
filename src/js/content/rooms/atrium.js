@@ -12,7 +12,5 @@ content.rooms.atrium = content.rooms.invent({
     up: 'reach',
     down: 'gallery',
   },
-  // State
-  state: {},
   // ...
 })

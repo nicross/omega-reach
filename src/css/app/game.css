@@ -223,9 +223,6 @@
     padding: 2rem;
     width: 100%;
   }
-  .a-game--dialogContent > * + * {
-    margin-top: 1rem;
-  }
   .a-game--dialogText {
     cursor: default !important;
     outline: none !important;
@@ -245,7 +242,7 @@
   .a-game--dialogDescription {
     font-family: RobotoLight, sans-serif;
     font-weight: 300;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
   }
   .a-game--dialogDescription kbd {
     background-color: #000000;

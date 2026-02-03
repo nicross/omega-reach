@@ -39,3 +39,7 @@ content.rooms = (() => {
     },
   }
 })()
+
+engine.state.on('import', ({rooms}) => content.rooms.import(rooms))
+engine.state.on('export', (data) => data.rooms = content.rooms.export())
+engine.state.on('reset', () => content.rooms.reset())

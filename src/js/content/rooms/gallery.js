@@ -10,7 +10,5 @@ content.rooms.gallery = content.rooms.invent({
   transitions: {
     up: 'atrium',
   },
-  // State
-  state: {},
   // ...
 })

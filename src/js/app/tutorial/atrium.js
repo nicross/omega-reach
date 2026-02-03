@@ -16,8 +16,8 @@ app.tutorial.atrium = app.tutorial.invent({
         ],
       },
       {
-        title: `It's the atrium.`,
-        description: `It connects the various rooms of the Omega Conservatory. From this vantage, everything seems to happen all at once through the above skylight. Perhaps you dwell a bit longer to ponder its wonder?`,
+        title: `You're in the atrium.`,
+        description: `It connects the various rooms of The Omega Conservatory. From this vantage, everything seems to happen all at once through the above skylight. Perhaps you might dwell a bit longer to ponder its wonder?`,
         actions: [
           {
             label: 'Snap out of it',
@@ -25,8 +25,8 @@ app.tutorial.atrium = app.tutorial.invent({
         ],
       },
       {
-        title: `No, you are the curator.`,
-        description: `With the cycle soon ending and the auction house cleared, the gallery now sits empty. You find it best to preserve as much history as you can.`,
+        title: `No, you are the curator!`,
+        description: `With the auction house cleared and the cycle soon ending, the gallery sits criminally empty. It would be best for you to preserve as much as you can by using The Reach.`,
         actions: [
           {
             label: 'Get to work',

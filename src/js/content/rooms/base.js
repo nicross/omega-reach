@@ -11,16 +11,21 @@ content.rooms.base = {
   // Transitions
   transitions: {},
   // State
+  defaultState: {},
   state: {},
   // Main methods
   export: function () {
-    return {...this.state}
+    return {...this.defaultState, ...this.state}
   },
   extend: function (definition) {
     return engine.fn.extend(this, definition)
   },
   import: function (state) {
-    this.state = {...state}
+    this.state = {...this.defaultState, ...state}
+    return this
+  },
+  reset: function () {
+    this.state = {...this.defaultState}
     return this
   },
   // Attribute getters (override to return dynamic values)

@@ -12,7 +12,7 @@ app.tutorial.reachOffline = app.tutorial.invent({
     [
       {
         title: `It's the Omega Reach.`,
-        description: `...`,
+        description: `It's capable of feats only a telescope dreams, and fabled for its breakings of fourth ceilings. You enter the enclosure for what can only be described as a retractable hand—one that has both started—and ended—wars.`,
         actions: [
           {
             label: 'Approach the device',
@@ -45,12 +45,12 @@ app.tutorial.reachOffline = app.tutorial.invent({
         description: `You recall there being a specific input sequence to power it on. It's somewhere in that waking memory of yours.`,
         actions: [
           {
-            label: 'Turn on the device',
+            label: 'Try something',
           }
         ],
       },
       {
-        title: `[Tutorial] Interactions:`,
+        title: `[Tutorial] Interaction:`,
         description: () => ({
           gamepad: `Hold one or both <kbd>Triggers</kbd> and move the <kbd>Analog Sticks</kbd> to interact. Locate the sweet spot to proceed.`,
           keyboard: `Press one or more keys to interact. Each key points to a location. Locate the sweet spot to proceed.`,
@@ -63,11 +63,11 @@ app.tutorial.reachOffline = app.tutorial.invent({
         ],
       },
       {
-        title: `[Tutorial] Interactions:`,
+        title: `[Tutorial] Interaction:`,
         description: () => ({
-          gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} the <kbd>A</kbd> button to skip the current interaction.`,
-          keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd> to skip the current interaction.`,
-          mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Examine Button</kbd> to skip the current interaction.`,
+          gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} the <kbd>A</kbd> button to skip the current interaction. You will not be penalized for doing so.`,
+          keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd> to skip the current interaction. You will not be penalized for doing so.`,
+          mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Examine Button</kbd> to skip the current interaction. You will not be penalized for doing so.`,
         }[app.settings.computed.inputPreference]),
         actions: [
           {
