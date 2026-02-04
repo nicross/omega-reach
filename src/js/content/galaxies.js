@@ -58,22 +58,19 @@ content.galaxies = (() => {
   ]
 
   function generate(name) {
-    const srand = engine.fn.srand('galaxy', name)
-
-    const type = engine.fn.choose([
-      'Elliptical',
-      'Lenticular',
-      'Irregular',
-      'Peculiar',
-      'Spiral',
-    ], srand())
-
-    const age = srand()
+    const srand = (seed) => engine.fn.srand('galaxy', name, 'attribute', seed)()
 
     return {
-      age,
+      age: srand('age'),
       name,
-      type,
+      type: engine.fn.chooseWeighted([
+        {label: 'Elliptical', weight: 1/3},
+        {label: 'Lenticular', weight: 1/3/3},
+        {label: 'Irregular', weight: 1/3/3},
+        {label: 'Peculiar', weight: 1/3/3},
+        {label: 'Spiral', weight: 1/3},
+      ], srand('type')).label,
+      wildcard: srand('wildcard'),
     }
   }
 
