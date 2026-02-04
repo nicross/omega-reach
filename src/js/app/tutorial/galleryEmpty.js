@@ -4,11 +4,7 @@ app.tutorial.galleryEmpty = app.tutorial.invent({
   state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('gallery'),
-  onUpdate: function () {
-    if (!content.location.is('gallery')) {
-      return
-    }
-
+  onActivate: function () {
     [
       {
         title: `Something's missing.`,

@@ -3,57 +3,19 @@ content.galaxies = (() => {
     names = new Set()
 
   const greekLetters = [
-    'Alpha',
-    'Beta',
-    'Gamma',
-    'Delta',
-    'Epsilon',
-    'Zeta',
-    'Eta',
-    'Theta',
-    'Iota',
-    'Kappa',
-    'Lambda',
-    'Mu',
-    'Nu',
-    'Xi',
-    'Omicron',
-    'Pi',
-    'Rho',
-    'Sigma',
-    'Tau',
-    'Upsilon',
-    'Phi',
-    'Chi',
-    'Psi',
+    'Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon',
+    'Zeta', 'Eta', 'Theta', 'Iota', 'Kappa',
+    'Lambda', 'Mu', 'Nu', 'Xi', 'Omicron',
+    'Pi', 'Rho', 'Sigma', 'Tau', 'Upsilon',
+    'Phi', 'Chi', 'Psi',
   ]
 
   const latinLetters = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
+    'A', 'B', 'C', 'D', 'E',
+    'F', 'G', 'H', 'I', 'J',
+    'K', 'L', 'M', 'N', 'O',
+    'P', 'Q', 'R', 'S', 'T',
+    'U', 'V', 'W', 'X', 'Y',
     'Z',
   ]
 
@@ -74,15 +36,28 @@ content.galaxies = (() => {
     }
   }
 
+  function randomGreek() {
+    return engine.fn.choose(greekLetters, Math.random())
+  }
+
+  function randomInteger(max) {
+    return engine.fn.randomInt(1, max)
+  }
+
+  function randomLatin() {
+    return engine.fn.choose(latinLetters, Math.random())
+  }
+
   function uniqueName() {
     let name
 
     do {
-      const greek = engine.fn.choose(greekLetters, Math.random()),
-        latin = [engine.fn.choose(latinLetters, Math.random()), engine.fn.choose(latinLetters, Math.random())].join(''),
-        number = engine.fn.randomInt(1, 999)
-
-      name = `${greek} ${latin}-${number}`
+      name = engine.fn.choose([
+        () => `${randomLatin()} ${randomGreek()}`,
+        () => `${randomLatin()}${randomInteger(99)} ${randomGreek()}`,
+        () => `${randomInteger(99)}${randomLatin()} ${randomGreek()}`,
+        () => `${randomInteger(999)} ${randomGreek()}`,
+      ], Math.random())()
     } while (names.has(name))
 
     return name
@@ -93,6 +68,7 @@ content.galaxies = (() => {
     all: function () {
       return this.names().map((name) => this.get(name))
     },
+    count: () => names.size,
     export: () => ({
       discovered: [...names],
     }),

@@ -3,8 +3,8 @@ content.rooms.reach = content.rooms.invent({
   id: 'reach',
   name: 'The reach',
   description: 'Beyond the end of time',
-  moveDownLabel: 'To Atrium',
-  moveUpLabel: 'Zoom In',
+  moveDownLabel: 'To atrium',
+  moveUpLabel: 'Zoom in',
   // Transitions
   transitions: {
     up: 'horizon',

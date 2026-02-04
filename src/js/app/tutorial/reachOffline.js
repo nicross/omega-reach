@@ -4,15 +4,11 @@ app.tutorial.reachOffline = app.tutorial.invent({
   state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('reach'),
-  onUpdate: function () {
-    if (!content.location.is('reach')) {
-      return
-    }
-
+  onActivate: function () {
     [
       {
         title: `It's the Omega Reach.`,
-        description: `It's capable of feats only a telescope dreams, and fabled for its breakings of fourth ceilings. You enter the enclosure for what can only be described as a retractable hand—one that has started—and ended—wars.`,
+        description: `It's capable of feats only a telescope dreams, and fabled for its breakings of fourth ceilings. You enter the enclosure for what can only be described as a retractable hand—one that has started—and ended—intergalactic wars.`,
         actions: [
           {
             label: 'Approach the device',
@@ -20,7 +16,7 @@ app.tutorial.reachOffline = app.tutorial.invent({
         ],
       },
       {
-        title: `[Tutorial] Input preference:`,
+        title: `[Select input preference]`,
         description: `You sit at the device. Upon its inert console rests…`,
         actions: [
           {

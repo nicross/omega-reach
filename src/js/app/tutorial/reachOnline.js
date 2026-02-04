@@ -4,11 +4,7 @@ app.tutorial.reachOnline = app.tutorial.invent({
   state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('reach') && content.rooms.reach.state.online,
-  onUpdate: function () {
-    if (!content.location.is('reach')) {
-      return
-    }
-
+  onActivate: function () {
     [
       {
         title: `It's online!`,

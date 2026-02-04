@@ -44,9 +44,9 @@ content.rooms.galaxy = content.rooms.invent({
     ]
   },
   // Movement
-  canEnter: () => content.galaxies.names().length > 0,
-  canMoveLeft: () => content.galaxies.names().length > 1,
-  canMoveRight: () => content.galaxies.names().length > 1,
+  canEnter: () => content.galaxies.count() > 0,
+  canMoveLeft: () => content.galaxies.count() > 1,
+  canMoveRight: () => content.galaxies.count() > 1,
   moveLeft: function () {
     const names = content.galaxies.names()
 

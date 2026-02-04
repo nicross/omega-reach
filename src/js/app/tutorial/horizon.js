@@ -4,15 +4,11 @@ app.tutorial.horizon = app.tutorial.invent({
   state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('horizon'),
-  onUpdate: function () {
-    if (!content.location.is('horizon')) {
-      return
-    }
-
+  onActivate: function () {
     [
       {
         title: `It's full of galaxies!`,
-        description: `They resolve from the void as you reach into the galactic horizon—first as infrared blobs before more recognizable discs. Although the options are staggeringly numerous, you trust that there are no incorrect choices.`,
+        description: `They resolve from the void as you reach into <strong>the horizon</strong>—first as infrared blobs before more recognizable discs. Although the options are staggeringly numerous, you trust its lack of incorrect choices.`,
         actions: [
           {
             label: 'Reach deeper',
@@ -21,7 +17,7 @@ app.tutorial.horizon = app.tutorial.invent({
       },
       {
         title: `[Tutorial] Reaching:`,
-        description: `Interact to reach toward a new galaxy to examine. The galaxies you find from here will be saved to revisit later.`,
+        description: `Interact to zoom in to a new galaxy. The galaxies you find from here will be remembered for later.`,
         actions: [
           {
             label: 'Regain control',

@@ -4,7 +4,7 @@ app.tutorial.atrium = app.tutorial.invent({
   state: {},
   // Lifecycle
   shouldActivate: () => true,
-  onUpdate: function () {
+  onActivate: function () {
     [
       {
         title: `Wake up.`,
