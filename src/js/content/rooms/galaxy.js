@@ -4,20 +4,30 @@ content.rooms.galaxy = content.rooms.invent({
   name: '(Galaxy name)',
   description: '(Galaxy description)',
   moveDownLabel: 'Zoom out',
-  moteLeftLabel: 'Previous galaxy',
-  moteRightLabel: 'Next galaxy',
+  moveLeftLabel: 'Previous galaxy',
+  moveRightLabel: 'Next galaxy',
   moveUpLabel: 'Zoom in',
   // Transitions
   transitions: {
     up: 'star',
     down: 'horizon',
   },
+  // State
+  state: {},
   // Methods
+  getGalaxy: function () {
+    return content.galaxies.get(this.state.name)
+  },
   getDescription: function () {
-    return content.galaxies.get(this.state.name).description
+    return `${this.getGalaxy().type} galaxy`
   },
   getName: function () {
-    return this.state.name
+    return this.getGalaxy().name
+  },
+  setGalaxyByName: function (name) {
+    this.state.name = name
+
+    return this
   },
   // Interaction
   canInteract: () => true,
@@ -40,18 +50,22 @@ content.rooms.galaxy = content.rooms.invent({
   moveLeft: function () {
     const names = content.galaxies.names()
 
-    this.state.name = names[
-      engine.fn.wrap(names.indexOf(this.state.name) - 1, 0, names.length)
-    ]
+    this.setGalaxyByName(
+      names[
+        engine.fn.wrap(names.indexOf(this.state.name) - 1, 0, names.length)
+      ]
+    )
 
     return this.move('left')
   },
   moveRight: function () {
     const names = content.galaxies.names()
 
-    this.state.name = names[
-      engine.fn.wrap(names.indexOf(this.state.name) + 1, 0, names.length)
-    ]
+    this.setGalaxyByName(
+      names[
+        engine.fn.wrap(names.indexOf(this.state.name) + 1, 0, names.length)
+      ]
+    )
 
     return this.move('right')
   },

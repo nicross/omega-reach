@@ -60,12 +60,20 @@ content.galaxies = (() => {
   function generate(name) {
     const srand = engine.fn.srand('galaxy', name)
 
-    // TODO: Generate some parameters that influence star/planet generation
-    // TODO: Use these to determine galaxy description, e.g. Young elliptical galaxy
+    const type = engine.fn.choose([
+      'Elliptical',
+      'Lenticular',
+      'Irregular',
+      'Peculiar',
+      'Spiral',
+    ], srand())
+
+    const age = srand()
 
     return {
-      description: 'Spiral galaxy',
+      age,
       name,
+      type,
     }
   }
 
