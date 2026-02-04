@@ -76,10 +76,12 @@ app.controls.interactions = (() => {
   document.addEventListener('mouseup', (e) => mouseAllowed = true)
 
   document.addEventListener('mousemove', (e) => {
+    const dimension = Math.min(window.innerWidth, window.innerHeight)
+
     mouseMemory.x = engine.fn.clamp(
       engine.fn.scale(
         e.clientX,
-        0, window.innerWidth,
+        (window.innerWidth - dimension) * 0.5, window.innerWidth - ((window.innerWidth - dimension) * 0.5),
         -1, 1,
       ),
       -1, 1
@@ -88,7 +90,7 @@ app.controls.interactions = (() => {
     mouseMemory.y = engine.fn.clamp(
       engine.fn.scale(
         e.clientY,
-        0, window.innerHeight,
+        (window.innerHeight - dimension) * 0.5, window.innerHeight - ((window.innerHeight - dimension) * 0.5),
         1, -1
       ),
       -1, 1

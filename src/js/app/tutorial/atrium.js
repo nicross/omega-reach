@@ -36,9 +36,9 @@ app.tutorial.atrium = app.tutorial.invent({
       {
         title: `[Tutorial] Movement:`,
         description: () => ({
-          gamepad: `Use the <kbd>Directional Pad</kbd> to navigate the conservatory. Find your way to The Reach to fulfil your duties.`,
-          keyboard: `Use the <kbd>Arrow Keys</kbd> to navigate the conservatory. Find your way to The Reach to fulfil your duties.`,
-          mouse: `Click the <kbd>Arrow Buttons</kbd> to navigate the conservatory. Find your way to The Reach to fulfil your duties.`,
+          gamepad: `Use the <kbd>Directional Pad</kbd> to navigate the conservatory. Find your way to The Reach to fulfill your duties.`,
+          keyboard: `Use the <kbd>Arrow Keys</kbd> to navigate the conservatory. Find your way to The Reach to fulfill your duties.`,
+          mouse: `Click the <kbd>Arrow Buttons</kbd> to navigate the conservatory. Find your way to The Reach to fulfill your duties.`,
         }[app.settings.computed.inputPreference]),
         actions: [
           {

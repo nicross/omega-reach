@@ -12,7 +12,7 @@ app.tutorial.reachOffline = app.tutorial.invent({
     [
       {
         title: `It's the Omega Reach.`,
-        description: `It's capable of feats only a telescope dreams, and fabled for its breakings of fourth ceilings. You enter the enclosure for what can only be described as a retractable hand—one that has both started—and ended—wars.`,
+        description: `It's capable of feats only a telescope dreams, and fabled for its breakings of fourth ceilings. You enter the enclosure for what can only be described as a retractable hand—one that has started—and ended—wars.`,
         actions: [
           {
             label: 'Approach the device',
@@ -52,9 +52,9 @@ app.tutorial.reachOffline = app.tutorial.invent({
       {
         title: `[Tutorial] Interaction:`,
         description: () => ({
-          gamepad: `Hold one or both <kbd>Triggers</kbd> and move the <kbd>Analog Sticks</kbd> to interact. Locate the sweet spot to proceed.`,
-          keyboard: `Press one or more keys to interact. Each key points to a location. Locate the sweet spot to proceed.`,
-          mouse: `Click to interact at that location. Locate the sweet spot to proceed.`,
+          gamepad: `Hold one or both <kbd>Triggers</kbd> and move the <kbd>Analog Sticks</kbd> to interact. Locate the sweet spot using audio, visual, and haptic cues to proceed.`,
+          keyboard: `Press one or more keys to interact. Each key points to a location. Locate the sweet spot using audio and visual cues to proceed.`,
+          mouse: `Click to interact at that location. Locate the sweet spot using audio and visual cues to proceed.`,
         }[app.settings.computed.inputPreference]),
         actions: [
           {

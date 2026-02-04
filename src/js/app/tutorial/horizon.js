@@ -21,7 +21,7 @@ app.tutorial.horizon = app.tutorial.invent({
       },
       {
         title: `[Tutorial] The Horizon:`,
-        description: `Interact to find a new galaxy to examine.`,
+        description: `Interact to reach toward a new galaxy to examine. The galaxies you find from here will be saved to revisit later.`,
         actions: [
           {
             label: 'Regain control',

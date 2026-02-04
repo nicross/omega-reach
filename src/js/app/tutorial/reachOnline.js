@@ -12,7 +12,7 @@ app.tutorial.reachOnline = app.tutorial.invent({
     [
       {
         title: `It's online!`,
-        description: `The device thrums to life, returning virogously to its preferred state. And lo, its console glows with the promise of your recurring fate.`,
+        description: `The device thrums back to life, returning virogously to its preferred state! And lo, its console glows with the promise of your recurring fate.`,
         actions: [
           {
             label: 'Use the device',
@@ -22,9 +22,9 @@ app.tutorial.reachOnline = app.tutorial.invent({
       {
         title: `[Tutorial] The Reach:`,
         description: () => ({
-          gamepad: `Press <kbd>D-Pad Up</kbd> to extend it to the next zoom level.`,
-          keyboard: `Press the <kbd>Up Arrow</kbd> to extend it to the next zoom level.`,
-          mouse: `Click the <kbd>Up Button</kbd> to extend it to the next zoom level.`,
+          gamepad: `Press <kbd>D-Pad Up</kbd> to extend it to the next zoom level. You may power it off and on while not in-use.`,
+          keyboard: `Press the <kbd>Up Arrow</kbd> to extend it to the next zoom level. You may power it off and on while not in-use.`,
+          mouse: `Click the <kbd>Up Button</kbd> to extend it to the next zoom level. You may power it off and on while not in-use.`,
         }[app.settings.computed.inputPreference]),
         actions: [
           {
