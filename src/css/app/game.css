@@ -36,7 +36,6 @@
     background-color: #000000;
     font-family: FiraCodeRegular, monospace;
     font-size: 1.5em;
-    padding: 0 0.25rem;
     width: fit-content;
   }
     .a-game--description-undiscovered {
@@ -59,6 +58,7 @@
   }
   .a-game--attribute {
     background-color: #000000;
+    margin-left: -0.25em;
     padding: 0 0.25em;
   }
   .a-game--attribute + .a-game--attribute {
@@ -244,12 +244,20 @@
     font-weight: 300;
     margin-top: 0.75rem;
   }
+  .a-game--dialogDescription em {
+    font-family: RobotoRegularItalic, sans-serif;
+    font-style: italic;
+  }
   .a-game--dialogDescription kbd {
     background-color: #000000;
     border: 0.125rem solid #FF0069;
     border-radius: 0.125rem;
     padding: 0 0.25rem;
     white-space: nowrap;
+  }
+  .a-game--dialogDescription strong {
+    font-family: RobotoBold, sans-serif;
+    font-weight: 700;
   }
   .a-game--dialogDescription:empty {
     display: none;

@@ -12,7 +12,7 @@ app.tutorial.horizon = app.tutorial.invent({
     [
       {
         title: `It's full of galaxies!`,
-        description: `They resolve from the void as you reach into the galactic horizon—first as infrared blobs before more recognizable discs. Although the options are staggeringly numerous, you trust the statistics that there are no incorrect choices.`,
+        description: `They resolve from the void as you reach into the galactic horizon—first as infrared blobs before more recognizable discs. Although the options are staggeringly numerous, you trust that there are no incorrect choices.`,
         actions: [
           {
             label: 'Reach deeper',
@@ -20,7 +20,7 @@ app.tutorial.horizon = app.tutorial.invent({
         ],
       },
       {
-        title: `[Tutorial] The Horizon:`,
+        title: `[Tutorial] Reaching:`,
         description: `Interact to reach toward a new galaxy to examine. The galaxies you find from here will be saved to revisit later.`,
         actions: [
           {

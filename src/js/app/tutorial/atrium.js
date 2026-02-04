@@ -17,7 +17,7 @@ app.tutorial.atrium = app.tutorial.invent({
       },
       {
         title: `You're in the atrium.`,
-        description: `It connects the various rooms of The Omega Conservatory. From this vantage, everything seems to happen all at once through the above skylight. Perhaps you might dwell a bit longer to ponder its wonder?`,
+        description: `It connects the various rooms of <strong>The Omega Conservatory</strong>. From this vantage, everything seems to happen all at once through the above skylight. Perhaps you might dwell a bit longer to ponder its wonder?`,
         actions: [
           {
             label: 'Snap out of it',
@@ -26,7 +26,7 @@ app.tutorial.atrium = app.tutorial.invent({
       },
       {
         title: `No, you are the curator!`,
-        description: `With the auction house cleared and the cycle soon ending, the gallery sits criminally empty. It would be best for you to preserve as much as you can by using The Reach.`,
+        description: `With the auction house cleared and the cycle soon ending, the gallery sits criminally empty. It would be best for you to preserve as much as you can by using <strong>the reach</strong>.`,
         actions: [
           {
             label: 'Get to work',
@@ -34,11 +34,11 @@ app.tutorial.atrium = app.tutorial.invent({
         ],
       },
       {
-        title: `[Tutorial] Movement:`,
+        title: `[Tutorial] Moving:`,
         description: () => ({
-          gamepad: `Use the <kbd>Directional Pad</kbd> to navigate the conservatory. Find your way to The Reach to fulfill your duties.`,
-          keyboard: `Use the <kbd>Arrow Keys</kbd> to navigate the conservatory. Find your way to The Reach to fulfill your duties.`,
-          mouse: `Click the <kbd>Arrow Buttons</kbd> to navigate the conservatory. Find your way to The Reach to fulfill your duties.`,
+          gamepad: `Use the <kbd>Directional Pad</kbd> to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
+          keyboard: `Use the <kbd>Arrow Keys</kbd> to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
+          mouse: `Click the <kbd>Arrow Buttons</kbd> to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
         }[app.settings.computed.inputPreference]),
         actions: [
           {

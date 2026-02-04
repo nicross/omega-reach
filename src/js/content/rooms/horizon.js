@@ -1,7 +1,7 @@
 content.rooms.horizon = content.rooms.invent({
   // Attributes
   id: 'horizon',
-  name: 'The Horizon',
+  name: 'The horizon',
   description: 'Zooming into focus',
   moveDownLabel: 'Zoom out',
   moveUpLabel: 'Zoom in',

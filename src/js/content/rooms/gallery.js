@@ -1,7 +1,7 @@
 content.rooms.gallery = content.rooms.invent({
   // Attributes
   id: 'gallery',
-  name: 'The Gallery',
+  name: 'The gallery',
   description: 'Devoid of instruments',
   moveLeftLabel: 'Previous instrument',
   moveRightLabel: 'Next instrument',

@@ -1,7 +1,7 @@
 content.rooms.atrium = content.rooms.invent({
   // Attributes
   id: 'atrium',
-  name: 'The Atrium',
+  name: 'The atrium',
   description: 'At the center of time',
   moveDownLabel: 'To Gallery',
   moveLeftLabel: 'To Lobby',

@@ -1,7 +1,7 @@
 content.rooms.reach = content.rooms.invent({
   // Attributes
   id: 'reach',
-  name: 'The Reach',
+  name: 'The reach',
   description: 'Beyond the end of time',
   moveDownLabel: 'To Atrium',
   moveUpLabel: 'Zoom In',
@@ -20,8 +20,10 @@ content.rooms.reach = content.rooms.invent({
     this.state.online = !this.state.online
 
     if (!this.state.online) {
-      content.screen.galaxy.state = {}
-      // TODO: Reset star, planet, and moon screens
+      content.rooms.galaxy?.reset()
+      content.rooms.star?.reset()
+      content.rooms.planet?.reset()
+      content.rooms.moon?.reset()
     }
 
     return this.getAttributeLabels()[0]?.label
