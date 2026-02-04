@@ -1,0 +1,127 @@
+content.galaxies = (() => {
+  const generated = new Map(),
+    names = new Set()
+
+  const greekLetters = [
+    'Alpha',
+    'Beta',
+    'Gamma',
+    'Delta',
+    'Epsilon',
+    'Zeta',
+    'Eta',
+    'Theta',
+    'Iota',
+    'Kappa',
+    'Lambda',
+    'Mu',
+    'Nu',
+    'Xi',
+    'Omicron',
+    'Pi',
+    'Rho',
+    'Sigma',
+    'Tau',
+    'Upsilon',
+    'Phi',
+    'Chi',
+    'Psi',
+  ]
+
+  const latinLetters = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+  ]
+
+  function generate(name) {
+    const srand = engine.fn.srand('galaxy', name)
+
+    // TODO: Generate some parameters that influence star/planet generation
+    // TODO: Use these to determine galaxy description, e.g. Young elliptical galaxy
+
+    return {
+      description: 'Spiral galaxy',
+      name,
+    }
+  }
+
+  function uniqueName() {
+    let name
+
+    do {
+      const greek = engine.fn.choose(greekLetters, Math.random()),
+        latin = [engine.fn.choose(latinLetters, Math.random()), engine.fn.choose(latinLetters, Math.random())].join(''),
+        number = engine.fn.randomInt(1, 999)
+
+      name = `${greek} ${latin}-${number}`
+    } while (names.has(name))
+
+    return name
+  }
+
+  return {
+    // Not intended for use, instead prefer lazy loading via get() for individual entities
+    all: function () {
+      return this.names().map((name) => this.get(name))
+    },
+    export: () => ({
+      discovered: [...names],
+    }),
+    get: function (name) {
+      if (!generated.has(name)) {
+        generated.set(name, generate(name))
+      }
+
+      return generated.get(name)
+    },
+    import: function ({
+      discovered = [],
+    } = {}) {
+      for (const name of discovered) {
+        names.add(name)
+      }
+
+      return this
+    },
+    new: function () {
+      const name = uniqueName()
+      names.add(name)
+      return this.get(name)
+    },
+    names: () => [...names],
+    reset: function () {
+      generated.clear()
+      names.clear()
+
+      return this
+    },
+  }
+})()
+
+engine.state.on('import', ({galaxies}) => content.galaxies.import(galaxies))
+engine.state.on('export', (data) => data.galaxies = content.galaxies.export())
+engine.state.on('reset', () => content.galaxies.reset())

@@ -136,7 +136,6 @@ content.rooms.base = {
       return this
     }
 
-    // TODO: Handle scrollable rooms
     content.location.set(this.transitions[direction])
 
     return this

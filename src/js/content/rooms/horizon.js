@@ -7,12 +7,15 @@ content.rooms.horizon = content.rooms.invent({
   moveUpLabel: 'Zoom in',
   // Transitions
   transitions: {
+    up: 'galaxy',
     down: 'reach',
   },
   // Interaction
   canInteract: () => true,
   onInteract: function () {
-    // TODO: Galaxy discovery
+    const galaxy = content.galaxies.new()
+    content.rooms.galaxy.state = {name: galaxy.name}
+    content.location.set('galaxy')
   },
   // Attributes
   getAttributeLabels: function () {

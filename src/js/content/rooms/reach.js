@@ -19,6 +19,11 @@ content.rooms.reach = content.rooms.invent({
   onInteract: function () {
     this.state.online = !this.state.online
 
+    if (!this.state.online) {
+      content.screen.galaxy.state = {}
+      // TODO: Reset star, planet, and moon screens
+    }
+
     return this.getAttributeLabels()[0]?.label
   },
   // Attributes
