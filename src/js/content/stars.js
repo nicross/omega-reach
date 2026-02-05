@@ -24,9 +24,12 @@ content.stars = (() => {
 
     const srand = (seed) => engine.fn.srand('star', name, 'attribute', seed)()
 
+    const type = engine.fn.chooseWeighted(generateTypes(galaxy), srand('type'))
+
     const star = {
       age: srand('age') * galaxy.age,
-      children: Math.round(engine.fn.lerpExp(0, 12, srand('children'), 1.5)),
+      children: Math.round(engine.fn.lerp(0, 12, srand('children') * type.planets)),
+      habitability: srand('habitability') * galaxy.habitability * type.habitability,
       galaxy,
       mass: srand('mass') * galaxy.mass,
       name,
@@ -34,29 +37,169 @@ content.stars = (() => {
       quirks: [],
       radius: srand('radius'),
       scanCount: getScansForName(name),
-      type: engine.fn.chooseWeighted([
-        {label: 'Main Sequence Star', weight: engine.fn.lerp(1/2, 0, galaxy.age)},
-        {label: 'White Dwarf', weight: engine.fn.lerp(0, 1/2, galaxy.age)},
-        {label: 'Black Hole', weight: engine.fn.lerp(0, 1/6/2, galaxy.age)},
-        {label: 'Neutron Star', weight: engine.fn.lerp(0, 1/6/2, galaxy.age)},
-        {label: 'Red Supergiant', weight: engine.fn.lerp(1/3/2, 1/6/2, galaxy.age)},
-        {label: 'Blue Hypergiant', weight: engine.fn.lerp(1/3/2, 1/6/2, galaxy.age)},
-      ], srand('type')).label,
+      type: type.label,
       wildcard: srand('wildcard') * galaxy.wildcard,
     }
 
-    // TODO: Quirk generation
-    star.quirks.push({
-      name: 'Common Quirk',
-      isRare: false,
-    })
+    if (type.commonQuirks.length && srand('quirk', 'common1', 'roll') < star.wildcard) {
+      star.quirks.push({
+        name: engine.fn.chooseSplice(
+          type.commonQuirks,
+          srand('quirk', 'common1', 'type')
+        ),
+      })
+    }
 
-    star.quirks.push({
-      name: 'Rare Quirk',
-      isRare: true,
-    })
+    if (type.commonQuirks.length && srand('quirk', 'common2', 'roll') < star.wildcard/2) {
+      star.quirks.push({
+        name: engine.fn.chooseSplice(
+          type.commonQuirks,
+          srand('quirk', 'common2', 'type')
+        ),
+      })
+    }
+
+    if (type.rareQuirks.length && srand('quirk', 'rare', 'roll') < star.wildcard/3) {
+      star.quirks.push({
+        isRare: true,
+        name: engine.fn.chooseSplice(
+          type.rareQuirks,
+          srand('quirk', 'rare', 'type')
+        ),
+      })
+    }
 
     return star
+  }
+
+  function generateTypes(galaxy) {
+    return [
+      {
+        label: 'Main sequence star',
+        habitability: 1,
+        planets: 1,
+        weight: engine.fn.lerp(1/2, 0, galaxy.age),
+        commonQuirks: [
+          'Asteroid belt',
+          'Highly metallic',
+          'Irregular spin',
+          'Mass ejections',
+          'Stellar winds',
+          'Stellar flares',
+          'Unusual spectra',
+        ],
+        rareQuirks: [
+          'Planetary nebula',
+          'Distress beacon',
+          'Spaceship graveyard',
+        ],
+      },
+      {
+        label: 'White dwarf',
+        habitability: 1/2,
+        planets: 1/4,
+        weight: engine.fn.lerp(0, 1/2, galaxy.age),
+        commonQuirks: [
+          engine.fn.choose(['Carbon core', 'Neon core', 'Helium core'], Math.random()),
+          'High density',
+          'Highly magnetic',
+          'Highly metallic',
+          'Irregular spin',
+          'Unusual spectra',
+        ],
+        rareQuirks: [
+          'Distress beacon',
+          'Runaway fusion',
+          'Spaceship graveyard',
+          'Supernova remnant',
+        ],
+      },
+      {
+        label: 'Black hole',
+        habitability: 1/8,
+        planets: 1/4,
+        weight: engine.fn.lerp(0, 1/6/2, galaxy.age),
+        commonQuirks: [
+          'Dilated time',
+          'Gravitational lens',
+          'Irregular spin',
+          'Photon sphere',
+          'Relatavistic jets',
+          'Unusual charge',
+        ],
+        rareQuirks: [
+          'Accretion disk',
+          'Hawking radiation',
+          'Quasar',
+          'Supernova remnant',
+        ],
+      },
+      {
+        label: 'Neutron star',
+        habitability: 1/8,
+        planets: 1/4,
+        weight: engine.fn.lerp(0, 1/6/2, galaxy.age),
+        commonQuirks: [
+          'Dilated time',
+          'Irregular spin',
+          'High gravity',
+          'Highly magnetic',
+          'Unusual spectra',
+        ],
+        rareQuirks: [
+          'Gamma rays',
+          'Pulsar',
+          'Star quakes',
+          'Supernova remnant',
+        ],
+      },
+      {
+        label: 'Red supergiant',
+        habitability: 1/4,
+        planets: 1,
+        weight: engine.fn.lerp(1/3/2, 1/6/2, galaxy.age),
+        commonQuirks: [
+          'Asteroid belt',
+          'Highly metallic',
+          'Irregular spin',
+          'Low density',
+          'Low gravity',
+          'Mass ejections',
+          'Stellar winds',
+          'Super flares',
+          'Unusual spectra',
+        ],
+        rareQuirks: [
+          'Collapsing core',
+          'Distress beacon',
+          'Planetary nebula',
+          'Spaceship graveyard',
+        ],
+      },
+      {
+        label: 'Blue hypergiant',
+        habitability: 1/4,
+        planets: 1,
+        weight: engine.fn.lerp(1/3/2, 1/6/2, galaxy.age),
+        commonQuirks: [
+          'Asteroid belt',
+          'Highly metallic',
+          'Irregular spin',
+          'Low density',
+          'Low gravity',
+          'Mass ejections',
+          'Stellar winds',
+          'Super flares',
+          'Unusual spectra',
+        ],
+        rareQuirks: [
+          'Collapsing core',
+          'Distress beacon',
+          'Planetary nebula',
+          'Spaceship graveyard',
+        ],
+      },
+    ]
   }
 
   function getNamesForGalaxy(galaxyName) {

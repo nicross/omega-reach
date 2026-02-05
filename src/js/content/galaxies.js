@@ -24,6 +24,7 @@ content.galaxies = (() => {
 
     return {
       age: srand('age'),
+      habitability: srand('habitability'),
       mass: srand('mass'),
       name,
       type: engine.fn.chooseWeighted([
