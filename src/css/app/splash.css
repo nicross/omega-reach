@@ -29,7 +29,7 @@
     line-height: 0.75;
     opacity: 0;
     position: relative;
-    transform: translateY(2rem);
+    transform: translateY(-2rem) scale(0.125);
     transition: all 1s ease;
     transition-property: opacity, transform;
   }

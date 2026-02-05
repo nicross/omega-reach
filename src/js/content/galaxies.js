@@ -24,6 +24,7 @@ content.galaxies = (() => {
 
     return {
       age: srand('age'),
+      mass: srand('mass'),
       name,
       type: engine.fn.chooseWeighted([
         {label: 'Elliptical', weight: 1/3},
@@ -64,10 +65,6 @@ content.galaxies = (() => {
   }
 
   return {
-    // Not intended for use, instead prefer lazy loading via get() for individual entities
-    all: function () {
-      return this.names().map((name) => this.get(name))
-    },
     count: () => names.size,
     export: () => ({
       discovered: [...names],

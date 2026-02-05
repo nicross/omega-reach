@@ -55,7 +55,7 @@ app.screen.game.interact = (() => {
       }
 
       value = app.settings.computed.inputHold
-        ? engine.fn.accelerateValue(value, 1, 1/2)
+        ? engine.fn.accelerateValue(value, 1, 1)
         : 0
 
       rootElement.classList.add('a-game--interact-active')

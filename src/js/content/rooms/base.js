@@ -20,7 +20,7 @@ content.rooms.base = {
   extend: function (definition) {
     return engine.fn.extend(this, definition)
   },
-  import: function (state) {
+  import: function (state = {}) {
     this.state = {...this.defaultState, ...state}
     return this
   },

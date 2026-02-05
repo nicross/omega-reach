@@ -16,7 +16,9 @@ content.rooms.galaxy = content.rooms.invent({
   state: {},
   // Methods
   getGalaxy: function () {
-    return content.galaxies.get(this.state.name)
+    return this.state.name
+      ? content.galaxies.get(this.state.name)
+      : undefined
   },
   getDescription: function () {
     return `${this.getGalaxy().type} galaxy`
@@ -32,7 +34,9 @@ content.rooms.galaxy = content.rooms.invent({
   // Interaction
   canInteract: () => true,
   onInteract: function () {
-    // TODO: Discover star
+    const star = content.stars.new(this.getGalaxy().name)
+    content.rooms.star.setStarByName(star.name)
+    content.location.set('star')
   },
   // Attributes
   getAttributeLabels: function () {

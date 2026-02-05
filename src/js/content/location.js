@@ -3,11 +3,16 @@ content.location = (() => {
 
   let room
 
-  function load(id) {
+  function load(id, state) {
     room = content.rooms.get(id)
 
     if (!room) {
       return
+    }
+
+    // Import state to prevent errors when first loading the room
+    if (state) {
+      room.import(state)
     }
 
     room.enter()
@@ -31,8 +36,8 @@ content.location = (() => {
       }
     },
     get: () => room,
-    import: function ({id} = {}) {
-      load(id)
+    import: function ({id} = {}, states = {}) {
+      load(id, states[id])
 
       return this
     },
@@ -53,6 +58,6 @@ content.location = (() => {
   })
 })()
 
-engine.state.on('import', ({location}) => content.location.import(location))
+engine.state.on('import', ({location, rooms}) => content.location.import(location, rooms))
 engine.state.on('export', (data) => data.location = content.location.export())
 engine.state.on('reset', () => content.location.reset())
