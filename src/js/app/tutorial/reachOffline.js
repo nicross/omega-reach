@@ -4,7 +4,11 @@ app.tutorial.reachOffline = app.tutorial.invent({
   state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('reach'),
-  onActivate: function () {
+  onUpdate: function () {
+    if (!content.location.is('reach')) {
+      return
+    }
+
     [
       {
         title: `It's the Omega Reach.`,

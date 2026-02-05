@@ -3,10 +3,10 @@ content.rooms.atrium = content.rooms.invent({
   id: 'atrium',
   name: 'The atrium',
   description: 'At the center of time',
-  moveDownLabel: 'To gallery',
-  moveLeftLabel: 'To lobby',
-  moveRightLabel: 'To shop',
-  moveUpLabel: 'To reach',
+  moveDownLabel: 'To the gallery',
+  moveLeftLabel: 'To the lobby',
+  moveRightLabel: 'To the shop',
+  moveUpLabel: 'To the reach',
   // Transitions
   transitions: {
     up: 'reach',

@@ -4,6 +4,7 @@ app.tutorial.base = {
   // State
   active: false,
   complete: false,
+  initialState: {},
   state: {},
   // Main methods
   export: function () {
@@ -27,7 +28,22 @@ app.tutorial.base = {
 
     return this
   },
+  preventDouble: function (key = 'default') {
+    if (!this._preventDouble) {
+      this._preventDouble = new Set()
+    }
+
+    if (this._preventDouble.has(key)) {
+      return true
+    }
+
+    this._preventDouble.add(key)
+
+    return false
+  },
   reset: function () {
+    delete this._preventDouble
+
     this.active = false
     this.complete = false
     this.state = {}
@@ -51,6 +67,8 @@ app.tutorial.base = {
   },
   // Lifecycle
   markActive: function () {
+    this.state = {...this.initialState}
+
     this.active = true
     this.onActivate()
 

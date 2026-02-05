@@ -4,7 +4,11 @@ app.tutorial.horizon = app.tutorial.invent({
   state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('horizon'),
-  onActivate: function () {
+  onUpdate: function () {
+    if (!content.location.is('horizon')) {
+      return
+    }
+
     [
       {
         title: `It's full of galaxies!`,

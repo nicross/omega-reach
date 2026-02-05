@@ -4,7 +4,13 @@ app.tutorial.galleryEmpty = app.tutorial.invent({
   state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('gallery'),
-  onActivate: function () {
+  onUpdate: function () {
+    if (!content.location.is('gallery')) {
+      return
+    }
+
+    // TODO: Mark complete if gallery has instruments
+
     [
       {
         title: `Something's missing.`,

@@ -5,7 +5,7 @@ content.rooms.gallery = content.rooms.invent({
   description: 'Bereft of instruments',
   moveLeftLabel: 'Previous instrument',
   moveRightLabel: 'Next instrument',
-  moveUpLabel: 'To atrium',
+  moveUpLabel: 'To the atrium',
   // Transitions
   transitions: {
     up: 'atrium',
