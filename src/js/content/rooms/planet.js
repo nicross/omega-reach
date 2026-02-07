@@ -45,7 +45,7 @@ content.rooms.planet = content.rooms.invent({
   canInteract: function () {
     const planet = this.getPlanet()
 
-    return content.scans.get(planet.name) < planet.quirks.length + 1
+    return content.scans.get(planet.name) < 1 + planet.quirks.length + (planet.instrument ? 1 : 0)
   },
   onInteract: function () {
     const planet = this.getPlanet()
@@ -66,7 +66,15 @@ content.rooms.planet = content.rooms.invent({
       return message.join(', ')
     }
 
-    return `${planet.quirks[scans - 2].name} found`
+    // Quirks
+    if (scans < 1 + planet.quirks.length) {
+      return `${planet.quirks[scans - 2].name} found`
+    }
+
+    // Instrument
+    content.instruments.add(planet.name)
+
+    return `Instrument recovered`
   },
   // Attributes
   getAttributeLabels: function () {
@@ -98,6 +106,20 @@ content.rooms.planet = content.rooms.invent({
         attributes.push({
           label: 'Unexamined quirk',
           modifiers: ['undiscovered'],
+        })
+      }
+    }
+
+    if (planet.instrument) {
+      if (scans > 1 + planet.quirks.length) {
+        attributes.push({
+          label: 'Instrument recovered',
+          modifiers: ['instrument'],
+        })
+      } else {
+        attributes.push({
+          label: 'Unrecovered instrument',
+          modifiers: ['undiscovered','instrument'],
         })
       }
     }

@@ -43,7 +43,7 @@ content.rooms.moon = content.rooms.invent({
   canInteract: function () {
     const moon = this.getMoon()
 
-    return content.scans.get(moon.name) < moon.quirks.length + 1
+    return content.scans.get(moon.name) < 1 + moon.quirks.length + (moon.instrument ? 1 : 0)
   },
   onInteract: function () {
     const moon = this.getMoon()
@@ -60,7 +60,15 @@ content.rooms.moon = content.rooms.invent({
       return message.join(', ')
     }
 
-    return `${moon.quirks[scans - 2].name} found`
+    // Quirks
+    if (scans < 1 + moon.quirks.length) {
+      return `${moon.quirks[scans - 2].name} found`
+    }
+
+    // Instrument
+    content.instruments.add(moon.name)
+
+    return `Instrument recovered`
   },
   // Attributes
   getAttributeLabels: function () {
@@ -85,6 +93,20 @@ content.rooms.moon = content.rooms.invent({
         attributes.push({
           label: 'Unexamined quirk',
           modifiers: ['undiscovered'],
+        })
+      }
+    }
+
+    if (moon.instrument) {
+      if (scans > 1 + moon.quirks.length) {
+        attributes.push({
+          label: 'Instrument recovered',
+          modifiers: ['instrument'],
+        })
+      } else {
+        attributes.push({
+          label: 'Unrecovered instrument',
+          modifiers: ['undiscovered','instrument'],
         })
       }
     }

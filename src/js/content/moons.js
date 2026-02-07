@@ -17,13 +17,12 @@ content.moons = (() => {
     const moon = {
       age: srand('age') * planet.age,
       habitability: srand('habitability') * planet.habitability * type.habitability,
-      planet,
       mass: srand('mass') * planet.mass,
       name,
+      planet,
       quirks: [],
       radius: srand('radius'),
       type: type.label,
-      wildcard: srand('wildcard') * planet.wildcard,
     }
 
     if (type.commonQuirks.length && srand('quirk', 'common1', 'roll') < moon.wildcard) {
@@ -54,7 +53,7 @@ content.moons = (() => {
       })
     }
 
-    moon.instrument = srand('instrument', 'roll') < type.instrument * moon.wildcard/4
+    moon.instrument = srand('instrument', 'roll') < type.instrument * planet.star.wildcard/4
 
     return moon
   }

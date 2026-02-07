@@ -27,15 +27,14 @@ content.planets = (() => {
 
     const planet = {
       age: srand('age') * star.age,
-      children: Math.round(engine.fn.lerp(0, 6, srand('children') * type.moons)),
+      children: Math.round(engine.fn.lerpExp(0, 6, srand('children') * type.moons, 2)),
       habitability: srand('habitability') * star.habitability * type.habitability,
-      star,
       mass: srand('mass') * star.mass,
       name,
       quirks: [],
       radius: srand('radius'),
+      star,
       type: type.label,
-      wildcard: srand('wildcard') * star.wildcard,
     }
 
     if (type.commonQuirks.length && srand('quirk', 'common1', 'roll') < planet.wildcard) {
@@ -66,7 +65,7 @@ content.planets = (() => {
       })
     }
 
-    planet.instrument = srand('instrument', 'roll') < type.instrument * planet.wildcard/4
+    planet.instrument = srand('instrument', 'roll') < type.instrument * star.wildcard/4
 
     return planet
   }

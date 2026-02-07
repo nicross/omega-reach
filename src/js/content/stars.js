@@ -27,7 +27,7 @@ content.stars = (() => {
 
     const star = {
       age: srand('age') * galaxy.age,
-      children: Math.round(engine.fn.lerp(0, 12, srand('children') * type.planets)),
+      children: Math.round(engine.fn.lerpExp(0, 12, srand('children') * type.planets, 2)),
       habitability: srand('habitability') * galaxy.habitability * type.habitability,
       galaxy,
       mass: srand('mass') * galaxy.mass,
