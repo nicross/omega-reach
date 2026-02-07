@@ -14,5 +14,17 @@ content.rooms.atrium = content.rooms.invent({
     down: 'gallery',
     left: 'lobby',
   },
-  // ...
+  // Methods
+  getAttributeLabels: function () {
+    const attributes = []
+
+    if (content.instruments.hasUnscanned()) {
+      attributes.push({
+        label: 'Unappraised instruments',
+        modifiers: ['undiscovered'],
+      })
+    }
+
+    return attributes
+  },
 })

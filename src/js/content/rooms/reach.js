@@ -27,9 +27,11 @@ content.rooms.reach = content.rooms.invent({
     }
 
     // Prevent live region interrupting dialog open
+    /*
     if (!app.tutorial.reachOnline.complete) {
       return
     }
+    */
 
     return this.getAttributeLabels()[0]?.label
   },

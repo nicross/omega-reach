@@ -109,6 +109,15 @@ content.instruments = (() => {
       return instrument
     },
     has: (name) => states.has(name),
+    hasUnscanned: () => {
+      for (const [name, state] of states.entries()) {
+        if ((state.scans || 0) <= 0) {
+          return true
+        }
+      }
+
+      return false
+    },
     import: function (data = {}) {
       for (const [name, state] of Object.entries(data)) {
         states.set(name, {name, ...state})
