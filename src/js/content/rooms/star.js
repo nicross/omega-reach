@@ -23,7 +23,7 @@ content.rooms.star = content.rooms.invent({
   getDescription: function () {
     const star = this.getStar()
 
-    return content.stars.scanCount(star.name) > 0
+    return content.scans.is(star.name)
       ? star.type
       : 'Unexamined'
   },
@@ -31,7 +31,7 @@ content.rooms.star = content.rooms.invent({
     return this.getStar().name
   },
   isDiscovered: function () {
-    return content.stars.scanCount(this.getStar().name) > 0
+    return content.scans.is(this.getStar().name)
   },
   setStarByName: function (name) {
     this.state.name = name
@@ -42,14 +42,14 @@ content.rooms.star = content.rooms.invent({
   canInteract: function () {
     const star = this.getStar()
 
-    return content.stars.scanCount(star.name) < star.quirks.length + 1
+    return content.scans.get(star.name) < star.quirks.length + 1
   },
   onInteract: function () {
     const star = this.getStar()
-    const scanCount = content.stars.scan(star.name)
+    const scans = content.scans.increment(star.name)
 
     // Initial scan
-    if (scanCount == 1) {
+    if (scans == 1) {
       const message = []
 
       if (star.children) {
@@ -63,20 +63,20 @@ content.rooms.star = content.rooms.invent({
       return message.join(', ')
     }
 
-    return `${star.quirks[scanCount - 2].name} found`
+    return `${star.quirks[scans - 2].name} found`
   },
   // Attributes
   getAttributeLabels: function () {
     const star = this.getStar()
-    const scanCount = content.stars.scanCount(this.getStar().name)
+    const scans = content.scans.get(this.getStar().name)
 
-    if (!scanCount) {
+    if (!scans) {
       return []
     }
 
     const attributes = []
 
-    if (scanCount > 0 && star.children > 0) {
+    if (scans > 0 && star.children > 0) {
       attributes.push({
         label: `${star.children} planet${star.children == 1 ? '' : 's'}`,
         modifiers: [star.children > 8 ? 'rare' : ''],
@@ -86,7 +86,7 @@ content.rooms.star = content.rooms.invent({
     for (const i in star.quirks) {
       const quirk = star.quirks[i]
 
-      if (scanCount - 1 > i) {
+      if (scans - 1 > i) {
         attributes.push({
           label: quirk.name,
           modifiers: [quirk.isRare ? 'rare' : ''],
@@ -105,6 +105,12 @@ content.rooms.star = content.rooms.invent({
   canEnter: () => content.stars.namesForGalaxy(content.rooms.galaxy.getGalaxy()?.name).length > 0,
   canMoveLeft: () => content.stars.namesForGalaxy(content.rooms.galaxy.getGalaxy()?.name).length > 1,
   canMoveRight: () => content.stars.namesForGalaxy(content.rooms.galaxy.getGalaxy()?.name).length > 1,
+  canMoveUp: function () {
+    const star = this.getStar()
+
+    return content.scans.is(star.name)
+      && star.children > 0
+  },
   moveLeft: function () {
     const names = content.stars.namesForStar(this.getStar().name)
 

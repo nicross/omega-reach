@@ -1,7 +1,6 @@
 content.stars = (() => {
   const generated = new Map(),
-    namesByGalaxy = new Map(),
-    scansByName = new Map()
+    namesByGalaxy = new Map()
 
   const latinLetters = [
     'A', 'B', 'C', 'D', 'E',
@@ -33,10 +32,8 @@ content.stars = (() => {
       galaxy,
       mass: srand('mass') * galaxy.mass,
       name,
-      planets: [],
       quirks: [],
       radius: srand('radius'),
-      scanCount: getScansForName(name),
       type: type.label,
       wildcard: srand('wildcard') * galaxy.wildcard,
     }
@@ -89,8 +86,9 @@ content.stars = (() => {
           'Unusual spectra',
         ],
         rareQuirks: [
-          'Planetary nebula',
+          'Debris disk',
           'Distress beacon',
+          'Protostar',
           'Spaceship graveyard',
         ],
       },
@@ -105,13 +103,14 @@ content.stars = (() => {
           'Highly magnetic',
           'Highly metallic',
           'Irregular spin',
+          'Planetary nebula',
           'Unusual spectra',
         ],
         rareQuirks: [
+          'Collapsing core',
           'Distress beacon',
           'Runaway fusion',
           'Spaceship graveyard',
-          'Supernova remnant',
         ],
       },
       {
@@ -122,6 +121,7 @@ content.stars = (() => {
         commonQuirks: [
           'Dilated time',
           'Gravitational lens',
+          'Hawking radiation',
           'Irregular spin',
           'Photon sphere',
           'Relatavistic jets',
@@ -129,8 +129,9 @@ content.stars = (() => {
         ],
         rareQuirks: [
           'Accretion disk',
-          'Hawking radiation',
+          'Distress beacon',
           'Quasar',
+          'Spaceship graveyard',
           'Supernova remnant',
         ],
       },
@@ -141,15 +142,19 @@ content.stars = (() => {
         weight: engine.fn.lerp(0, 1/6/2, galaxy.age),
         commonQuirks: [
           'Dilated time',
+          'Gravitational lens',
           'Irregular spin',
+          'High density',
           'High gravity',
           'Highly magnetic',
           'Unusual spectra',
         ],
         rareQuirks: [
           'Gamma rays',
+          'Distress beacon',
           'Pulsar',
           'Star quakes',
+          'Spaceship graveyard',
           'Supernova remnant',
         ],
       },
@@ -171,9 +176,10 @@ content.stars = (() => {
         ],
         rareQuirks: [
           'Collapsing core',
+          'Debris disk',
           'Distress beacon',
-          'Planetary nebula',
           'Spaceship graveyard',
+          'Supernova candidate',
         ],
       },
       {
@@ -194,9 +200,10 @@ content.stars = (() => {
         ],
         rareQuirks: [
           'Collapsing core',
+          'Debris disk',
           'Distress beacon',
-          'Planetary nebula',
           'Spaceship graveyard',
+          'Supernova candidate',
         ],
       },
     ]
@@ -208,18 +215,6 @@ content.stars = (() => {
     }
 
     return namesByGalaxy.get(galaxyName)
-  }
-
-  function getScansForName(starName) {
-    if (!scansByName.has(starName)) {
-      scansByName.set(starName, 0)
-    }
-
-    return scansByName.get(starName)
-  }
-
-  function incrementScansForName(starName) {
-    scansByName.set(starName, getScansForName(starName) + 1)
   }
 
   function randomInteger(max) {
@@ -249,21 +244,13 @@ content.stars = (() => {
 
   return {
     export: () => {
-      const discovered = {},
-        scans = {}
+      const data = {}
 
       for (const [galaxyName, starNames] of namesByGalaxy.entries()) {
-        discovered[galaxyName] = [...starNames]
+        data[galaxyName] = [...starNames]
       }
 
-      for (const [starName, scanCount] of scansByName.entries()) {
-        scans[starName] = scanCount
-      }
-
-      return {
-        discovered,
-        scans,
-      }
+      return data
     },
     get: function (name) {
       if (!generated.has(name)) {
@@ -272,20 +259,13 @@ content.stars = (() => {
 
       return generated.get(name)
     },
-    import: function ({
-      discovered = {},
-      scans = {},
-    } = {}) {
-      for (const [galaxyName, starNames] of Object.entries(discovered)) {
+    import: function (data = {}) {
+      for (const [galaxyName, starNames] of Object.entries(data)) {
         const names = getNamesForGalaxy(galaxyName)
 
         for (const starName of starNames) {
           names.add(starName)
         }
-      }
-
-      for (const [starName, scanCount] of Object.entries(scans)) {
-        scansByName.set(starName, scanCount)
       }
 
       return this
@@ -300,15 +280,9 @@ content.stars = (() => {
     reset: function () {
       generated.clear()
       namesByGalaxy.clear()
-      scansByName.clear()
 
       return this
     },
-    scan: function (starName) {
-      incrementScansForName(starName)
-      return getScansForName(starName)
-    },
-    scanCount: (starName) => getScansForName(starName),
   }
 })()
 
