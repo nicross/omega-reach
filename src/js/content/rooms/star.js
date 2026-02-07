@@ -33,6 +33,11 @@ content.rooms.star = content.rooms.invent({
   getNameShort: function () {
     return this.getName().split(' ').pop()
   },
+  isComplete: function () {
+    return content.stars.isComplete(
+      this.getStar().name
+    )
+  },
   isDiscovered: function () {
     return content.scans.is(this.getStar().name)
   },
@@ -47,14 +52,16 @@ content.rooms.star = content.rooms.invent({
 
     return content.scans.get(star.name) < star.quirks.length + 1
   },
+  canInteractFreely: function () {
+    return !this.solution
+  },
   onInteract: function () {
     const star = this.getStar()
     const scans = content.scans.increment(star.name)
 
-    // Initial scan
-    if (scans == 1) {
-      const message = []
+    const message = []
 
+    if (scans == 1) {
       if (star.children) {
         message.push(`${star.children} planet${star.children == 1 ? '' : 's'} detected`)
       }
@@ -62,11 +69,15 @@ content.rooms.star = content.rooms.invent({
       if (star.quirks.length) {
         message.push(`${star.quirks.length} quirk${star.quirks.length == 1 ? '' : 's'} detected`)
       }
-
-      return message.join(', ')
+    } else {
+      message.push(`${star.quirks[scans - 2].name} found`)
     }
 
-    return `${star.quirks[scans - 2].name} found`
+    if (content.stars.isComplete(star.name)) {
+      message.push('Star complete')
+    }
+
+    return message.join(', ')
   },
   // Attributes
   getAttributeLabels: function () {

@@ -31,6 +31,11 @@ content.rooms.moon = content.rooms.invent({
   getNameShort: function () {
     return this.getName().split(' ').pop()
   },
+  isComplete: function () {
+    return content.moons.isComplete(
+      this.getMoon().name
+    )
+  },
   isDiscovered: function () {
     return content.scans.is(this.getMoon().name)
   },
@@ -45,31 +50,32 @@ content.rooms.moon = content.rooms.invent({
 
     return content.scans.get(moon.name) < 1 + moon.quirks.length + (moon.instrument ? 1 : 0)
   },
+  canInteractFreely: function () {
+    return !this.solution
+  },
   onInteract: function () {
     const moon = this.getMoon()
     const scans = content.scans.increment(moon.name)
 
+    const message = []
+
     // Initial scan
     if (scans == 1) {
-      const message = []
-
       if (moon.quirks.length) {
         message.push(`${moon.quirks.length} quirk${moon.quirks.length == 1 ? '' : 's'} detected`)
       }
-
-      return message.join(', ')
-    }
-
-    // Quirks
-    if (scans <= 1 + moon.quirks.length) {
-      return `${moon.quirks[scans - 2].name} found`
-    }
-
-    // Instrument
-    if (moon.instrument) {
+    } else if (scans <= 1 + moon.quirks.length) {
+      message.push(`${moon.quirks[scans - 2].name} found`)
+    } else if (moon.instrument) {
       content.instruments.add(moon.name)
-      return `Instrument recovered`
+      message.push(`Instrument recovered`)
     }
+
+    if (content.moons.isComplete(moon.name)) {
+      message.push('Moon complete')
+    }
+
+    return message.join(', ')
   },
   // Attributes
   getAttributeLabels: function () {

@@ -90,6 +90,11 @@ content.moons = (() => {
 
       return generated.get(name)
     },
+    isComplete: function (moonName) {
+      const moon = this.get(moonName)
+
+      return content.scans.get(moonName) >= 1 + moon.quirks.length + (moon.instrument ? 1 : 0)
+    },
     namesForPlanet: (planetName) => {
       const planet = content.planets.get(planetName)
       const names = []

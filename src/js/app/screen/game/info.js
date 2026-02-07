@@ -3,37 +3,6 @@ app.screen.game.info = (() => {
     descriptionElement = document.querySelector('.a-game--description'),
     nameElement = document.querySelector('.a-game--name')
 
-  function generateRandomInfo() {
-    const isDiscovered = Math.random() > 0.5
-
-    const info = {
-      attributes: [],
-      description: isDiscovered ? 'Object description' : 'Unexamined',
-      descriptionModifier: '',
-      isDiscovered,
-      name: `Object #${engine.fn.randomInt(1000, 9999)}`,
-      nameShort: '(short name)',
-    }
-
-    if (isDiscovered) {
-      const count = engine.fn.randomInt(0, 3)
-
-      for (let i = 0; i < count; i += 1) {
-        info.attributes.push(
-          engine.fn.choose([
-            {label: 'Common quirk', modifiers: []},
-            {label: 'Rare quirk', modifiers: ['rare']},
-            {label: 'Unexamined quirk', modifiers: ['undiscovered']},
-            {label: 'Unrecovered instrument', modifiers: ['undiscovered', 'instrument']},
-            {label: 'Instrument recovered', modifiers: ['instrument']},
-          ], Math.random())
-        )
-      }
-    }
-
-    return info
-  }
-
   function getRoomInfo() {
     const room = content.location.get()
 
@@ -41,6 +10,7 @@ app.screen.game.info = (() => {
       attributes: room.getAttributeLabels(),
       description: room.getDescription(),
       descriptionModifier: room.getDescriptionModifier(),
+      isComplete: room.isComplete(),
       isDiscovered: room.isDiscovered(),
       name: room.getName(),
       nameShort: room.getNameShort(),
@@ -53,18 +23,20 @@ app.screen.game.info = (() => {
         attributes,
         description,
         descriptionModifier,
+        isComplete,
         isDiscovered,
         name,
         nameShort,
       } = getRoomInfo()
 
+      descriptionElement.innerHTML = description
       nameElement.ariaLabel = nameShort
       nameElement.innerHTML = name
-      descriptionElement.innerHTML = description
 
-      attributesElement.innerHTML = attributes.map(
-        ({label, modifiers}) => `<li class="a-game--attribute${modifiers.map((modifier) => ` a-game--attribute-${modifier}`).join('')}">${label}</li>`
-      ).join('')
+      attributesElement.innerHTML = (isComplete ? `<li class="a-game--attribute a-game--attribute-complete"><i aria-hidden="true">✓</i>Complete</li>` : '')
+        + attributes.map(
+            ({label, modifiers}) => `<li class="a-game--attribute${modifiers.map((modifier) => ` a-game--attribute-${modifier}`).join('')}">${label}</li>`
+          ).join('')
 
       descriptionElement.className = 'a-game--description'
 

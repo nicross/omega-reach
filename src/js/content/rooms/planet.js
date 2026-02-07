@@ -33,6 +33,11 @@ content.rooms.planet = content.rooms.invent({
   getNameShort: function () {
     return this.getName().split(' ').pop()
   },
+  isComplete: function () {
+    return content.planets.isComplete(
+      this.getPlanet().name
+    )
+  },
   isDiscovered: function () {
     return content.scans.is(this.getPlanet().name)
   },
@@ -47,14 +52,16 @@ content.rooms.planet = content.rooms.invent({
 
     return content.scans.get(planet.name) < 1 + planet.quirks.length + (planet.instrument ? 1 : 0)
   },
+  canInteractFreely: function () {
+    return !this.solution
+  },
   onInteract: function () {
     const planet = this.getPlanet()
     const scans = content.scans.increment(planet.name)
 
-    // Initial scan
-    if (scans == 1) {
-      const message = []
+    const message = []
 
+    if (scans == 1) {
       if (planet.children) {
         message.push(`${planet.children} moon${planet.children == 1 ? '' : 's'} detected`)
       }
@@ -62,20 +69,18 @@ content.rooms.planet = content.rooms.invent({
       if (planet.quirks.length) {
         message.push(`${planet.quirks.length} quirk${planet.quirks.length == 1 ? '' : 's'} detected`)
       }
-
-      return message.join(', ')
-    }
-
-    // Quirks
-    if (scans <= 1 + planet.quirks.length) {
-      return `${planet.quirks[scans - 2].name} found`
-    }
-
-    // Instrument
-    if (planet.instrument) {
+    } else if (scans <= 1 + planet.quirks.length) {
+      message.push(`${planet.quirks[scans - 2].name} found`)
+    } else if (planet.instrument) {
       content.instruments.add(planet.name)
-      return `Instrument recovered`
+      message.push(`Instrument recovered`)
     }
+
+    if (content.planets.isComplete(planet.name)) {
+      message.push('Planet complete')
+    }
+
+    return message.join(', ')
   },
   // Attributes
   getAttributeLabels: function () {

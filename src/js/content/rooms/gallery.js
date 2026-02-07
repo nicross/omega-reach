@@ -37,6 +37,13 @@ content.rooms.gallery = content.rooms.invent({
   getName: function () {
     return this.getInstrument()?.name || 'The gallery'
   },
+  isComplete: function () {
+    const instrument = this.getInstrument()
+
+    return instrument
+      ? (instrument.state.scans || 0) >= 1 + instrument.quirks.length
+      : false
+  },
   isDiscovered: function () {
     return (this.getInstrument()?.state.scans || 0) > 0
   },
@@ -50,25 +57,34 @@ content.rooms.gallery = content.rooms.invent({
     const instrument = this.getInstrument()
 
     return instrument
-      ? (instrument.state.scans || 0) < instrument.quirks.length + 1
+      ? (instrument.state.scans || 0) < 1 + instrument.quirks.length
       : false
+  },
+  canInteractFreely: function () {
+    return Boolean(this.getInstrument())
+  },
+  canInteractFreely: function () {
+    return this.getInstrument() && !this.solution
   },
   onInteract: function () {
     const instrument = this.getInstrument()
     instrument.state.scans = (instrument.state.scans || 0) + 1
 
-    // Initial scan
-    if (instrument.state.scans == 1) {
-      const message = []
+    const message = []
 
+    if (instrument.state.scans == 1) {
       if (instrument.quirks.length) {
         message.push(`${instrument.quirks.length} quirk${instrument.quirks.length == 1 ? '' : 's'} detected`)
       }
-
-      return message.join(', ')
+    } else if (instrument.state.scans <= 1 + instrument.quirks.length) {
+      message.push(`${instrument.quirks[instrument.state.scans - 2].name} found`)
     }
 
-    return `${instrument.quirks[instrument.state.scans - 2].name} found`
+    if (this.isComplete()) {
+      message.push(`Instrument complete`)
+    }
+
+    return message.join(', ')
   },
   // Attributes
   getAttributeLabels: function () {

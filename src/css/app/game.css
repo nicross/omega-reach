@@ -23,7 +23,6 @@
   /* Information */
   .a-game--info {
     outline: none !important;
-    pointer-events: none;
   }
   .a-game--name {
     background-color: #000000;
@@ -70,6 +69,17 @@
   .a-game--attribute + .a-game--attribute {
     margin-top: 0.25em;
   }
+    .a-game--attribute-complete {
+      background-color: #55FFAA;
+      color: #000000;
+      font-family: FiraCodeMedium, monospace;
+      font-weight: 500;
+    }
+    .a-game--attribute-complete i {
+      font-family: RobotoRegular, sans-serif;
+      font-weight: 500;
+      margin-right: 0.5em;
+    }
     .a-game--attribute-rare {
       color: #FF6900;
       font-family: FiraCodeMedium, monospace;

@@ -59,9 +59,13 @@ content.rooms.base = {
   getNameShort: function () {
     return this.getName()
   },
+  isComplete: function () {
+    return false
+  },
   isDiscovered: () => true,
   // Interaction
   canInteract: () => false,
+  canInteractFreely: () => false,
   interact: function () {
     if (!this.canInteract()) {
       return this

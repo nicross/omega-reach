@@ -284,6 +284,21 @@ content.stars = (() => {
 
       return this
     },
+    isComplete: function (starName) {
+      const star = this.get(starName)
+
+      if (content.scans.get(starName) < 1 + star.quirks.length) {
+        return false
+      }
+
+      for (const planetName of content.planets.namesForStar(starName)) {
+        if (!content.planets.isComplete(planetName)) {
+          return false
+        }
+      }
+
+      return true
+    },
     namesForGalaxy: (galaxyName) => [...getNamesForGalaxy(galaxyName)],
     namesForStar: (starName) => [...getNamesForGalaxy(extractGalaxyName(starName))],
     new: function (galaxyName) {

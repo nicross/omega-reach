@@ -102,6 +102,21 @@ content.planets = (() => {
 
       return generated.get(name)
     },
+    isComplete: function (planetName) {
+      const planet = this.get(planetName)
+
+      if (content.scans.get(planetName) < 1 + planet.quirks.length + (planet.instrument ? 1 : 0)) {
+        return false
+      }
+
+      for (const moonName of content.moons.namesForPlanet(planetName)) {
+        if (!content.moons.isComplete(moonName)) {
+          return false
+        }
+      }
+
+      return true
+    },
     namesForStar: (starName) => {
       const star = content.stars.get(starName)
 
