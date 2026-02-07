@@ -49,6 +49,7 @@ content.rooms.galaxy = content.rooms.invent({
   },
   // Movement
   canEnter: () => content.galaxies.count() > 0,
+  canMoveDown: () => Boolean(app.tutorial.moonInstrument.complete),
   canMoveLeft: () => content.galaxies.count() > 1,
   canMoveRight: () => content.galaxies.count() > 1,
   moveLeft: function () {

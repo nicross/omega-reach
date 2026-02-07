@@ -20,7 +20,7 @@ app.tutorial.reachOnline = app.tutorial.invent({
         ],
       },
       {
-        title: `[Tutorial] Reaching:`,
+        title: `[Tutorial] The reach:`,
         description: () => ({
           gamepad: `Press <kbd>D-Pad Up</kbd> to extend it to the next zoom level. You may power it off and on while not in-use.`,
           keyboard: `Press the <kbd>Up Arrow</kbd> to extend it to the next zoom level. You may power it off and on while not in-use.`,

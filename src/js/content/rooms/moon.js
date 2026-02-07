@@ -61,14 +61,15 @@ content.rooms.moon = content.rooms.invent({
     }
 
     // Quirks
-    if (scans < 1 + moon.quirks.length) {
+    if (scans <= 1 + moon.quirks.length) {
       return `${moon.quirks[scans - 2].name} found`
     }
 
     // Instrument
-    content.instruments.add(moon.name)
-
-    return `Instrument recovered`
+    if (moon.instrument) {
+      content.instruments.add(moon.name)
+      return `Instrument recovered`
+    }
   },
   // Attributes
   getAttributeLabels: function () {
@@ -115,6 +116,7 @@ content.rooms.moon = content.rooms.invent({
   },
   // Movement
   canEnter: () => content.moons.namesForPlanet(content.rooms.planet.getPlanet()?.name).length > 0,
+  canMoveDown: () => Boolean(app.tutorial.moonInstrument.complete),
   canMoveLeft: () => content.moons.namesForPlanet(content.rooms.planet.getPlanet()?.name).length > 1,
   canMoveRight: () => content.moons.namesForPlanet(content.rooms.planet.getPlanet()?.name).length > 1,
   getMoveUpLabel: function () {

@@ -1,4 +1,4 @@
-content.rooms.shop = content.rooms.invent({
+content.rooms.lobby = content.rooms.invent({
   // Attributes
   id: 'lobby',
   name: 'The lobby',

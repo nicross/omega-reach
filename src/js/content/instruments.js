@@ -4,10 +4,22 @@ content.instruments = (() => {
 
   const defaultState = {}
 
+  const commonQuirks = [
+    'Common quirk',
+    'Common quirk',
+  ]
+
+  const rareQuirks = [
+    'Rare quirk',
+    'Rare quirk',
+  ]
+
   function generate(name) {
+    const isTutorial = name.includes(content.const.tutorialName)
+
     const srand = (seed) => engine.fn.srand('instrument', name, 'attribute', seed)()
 
-    const rarity = srand('rarity')
+    const rarity = isTutorial ? 0 : srand('rarity')
 
     const instrument = {
       name,
@@ -20,14 +32,48 @@ content.instruments = (() => {
       ], rarity).label,
     }
 
-    instrument.quirks.push({
-      name: 'Common quirk'
-    })
+    const quirks = {
+      common: [...commonQuirks],
+      rare: [...rareQuirks],
+    }
 
-    instrument.quirks.push({
-      isRare: true,
-      name: 'Rare quirk',
-    })
+    if (isTutorial || type.commonQuirks.length && srand('quirk', 'common1', 'roll') < rarity) {
+      instrument.quirks.push({
+        name: engine.fn.chooseSplice(
+          quirks.common,
+          srand('quirk', 'common1', 'type')
+        ),
+      })
+    }
+
+    if (!isTutorial && type.commonQuirks.length && srand('quirk', 'common2', 'roll') < rarity/2) {
+      instrument.quirks.push({
+        name: engine.fn.chooseSplice(
+          quirks.common,
+          srand('quirk', 'common2', 'type')
+        ),
+      })
+    }
+
+    if (!isTutorial && type.rareQuirks.length && srand('quirk', 'rare', 'roll') < rarity/3) {
+      instrument.quirks.push({
+        isRare: true,
+        name: engine.fn.chooseSplice(
+          quirks.rare,
+          srand('quirk', 'rare', 'type')
+        ),
+      })
+    }
+
+    if (!isTutorial && type.rareQuirks.length && srand('quirk', 'rare', 'roll') < rarity/4) {
+      instrument.quirks.push({
+        isRare: true,
+        name: engine.fn.chooseSplice(
+          quirks.rare,
+          srand('quirk', 'rare', 'type')
+        ),
+      })
+    }
 
     return instrument
   }

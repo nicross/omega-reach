@@ -7,6 +7,8 @@ content.moons = (() => {
   }
 
   function generate(name) {
+    const isTutorial = name.includes(content.const.tutorialName)
+
     const planetName = extractPlanetName(name)
     const planet = content.planets.get(planetName)
 
@@ -26,7 +28,7 @@ content.moons = (() => {
       wildcard: (srand('wildcard') + planet.wildcard) * 0.5,
     }
 
-    if (type.commonQuirks.length && srand('quirk', 'common1', 'roll') < moon.wildcard) {
+    if (!isTutorial && type.commonQuirks.length && srand('quirk', 'common1', 'roll') < moon.wildcard) {
       moon.quirks.push({
         name: engine.fn.chooseSplice(
           type.commonQuirks,
@@ -35,7 +37,7 @@ content.moons = (() => {
       })
     }
 
-    if (type.commonQuirks.length && srand('quirk', 'common2', 'roll') < moon.wildcard/2) {
+    if (!isTutorial && type.commonQuirks.length && srand('quirk', 'common2', 'roll') < moon.wildcard/2) {
       moon.quirks.push({
         name: engine.fn.chooseSplice(
           type.commonQuirks,
@@ -44,7 +46,7 @@ content.moons = (() => {
       })
     }
 
-    if (type.rareQuirks.length && srand('quirk', 'rare', 'roll') < moon.wildcard/3) {
+    if (!isTutorial && type.rareQuirks.length && srand('quirk', 'rare', 'roll') < moon.wildcard/3) {
       moon.quirks.push({
         isRare: true,
         name: engine.fn.chooseSplice(
@@ -54,7 +56,9 @@ content.moons = (() => {
       })
     }
 
-    moon.instrument = srand('instrument', 'roll') < type.instrument * moon.wildcard/4
+    moon.instrument = isTutorial
+      ? true
+      : srand('instrument', 'roll') < type.instrument * moon.wildcard/4
 
     return moon
   }

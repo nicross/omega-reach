@@ -3,7 +3,7 @@ app.tutorial.lobbyClosed = app.tutorial.invent({
   // State
   state: {},
   // Lifecycle
-  shouldActivate: () => content.location.is('lobby'),
+  shouldActivate: () => content.location.is('lobby') && !content.rooms.lobby.isOpen(),
   onUpdate: function () {
     if (!content.location.is('lobby')) {
       return

@@ -18,6 +18,8 @@ content.planets = (() => {
   }
 
   function generate(name) {
+    const isTutorial = name.includes(content.const.tutorialName)
+
     const starName = extractStarName(name)
     const star = content.galaxies.get(starName)
 
@@ -27,7 +29,7 @@ content.planets = (() => {
 
     const planet = {
       age: srand('age') * star.age,
-      children: Math.round(engine.fn.lerpExp(0, 6, srand('children') * type.moons, 2)),
+      children: isTutorial ? 1 : Math.round(engine.fn.lerpExp(0, 6, srand('children') * type.moons, 2)),
       habitability: srand('habitability') * star.habitability * type.habitability,
       mass: srand('mass') * star.mass,
       name,
@@ -38,7 +40,7 @@ content.planets = (() => {
       wildcard: (srand('wildcard') + star.wildcard) * 0.5,
     }
 
-    if (type.commonQuirks.length && srand('quirk', 'common1', 'roll') < planet.wildcard) {
+    if (!isTutorial && type.commonQuirks.length && srand('quirk', 'common1', 'roll') < planet.wildcard) {
       planet.quirks.push({
         name: engine.fn.chooseSplice(
           type.commonQuirks,
@@ -47,7 +49,7 @@ content.planets = (() => {
       })
     }
 
-    if (type.commonQuirks.length && srand('quirk', 'common2', 'roll') < planet.wildcard/2) {
+    if (!isTutorial && type.commonQuirks.length && srand('quirk', 'common2', 'roll') < planet.wildcard/2) {
       planet.quirks.push({
         name: engine.fn.chooseSplice(
           type.commonQuirks,
@@ -56,7 +58,7 @@ content.planets = (() => {
       })
     }
 
-    if (type.rareQuirks.length && srand('quirk', 'rare', 'roll') < planet.wildcard/3) {
+    if (isTutorial || type.rareQuirks.length && srand('quirk', 'rare', 'roll') < planet.wildcard/3) {
       planet.quirks.push({
         isRare: true,
         name: engine.fn.chooseSplice(
@@ -66,7 +68,9 @@ content.planets = (() => {
       })
     }
 
-    planet.instrument = srand('instrument', 'roll') < type.instrument * planet.wildcard/4
+    planet.instrument = isTutorial
+      ? false
+      : srand('instrument', 'roll') < type.instrument * planet.wildcard/4
 
     return planet
   }

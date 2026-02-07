@@ -3,13 +3,11 @@ app.tutorial.galleryEmpty = app.tutorial.invent({
   // State
   state: {},
   // Lifecycle
-  shouldActivate: () => content.location.is('gallery'),
+  shouldActivate: () => content.location.is('gallery') && content.instruments.count() == 0,
   onUpdate: function () {
     if (!content.location.is('gallery')) {
       return
     }
-
-    // TODO: Mark complete if gallery has instruments
 
     [
       {

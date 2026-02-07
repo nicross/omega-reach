@@ -18,6 +18,8 @@ content.stars = (() => {
   }
 
   function generate(name) {
+    const isTutorial = name.includes(content.const.tutorialName)
+
     const galaxyName = extractGalaxyName(name)
     const galaxy = content.galaxies.get(galaxyName)
 
@@ -27,7 +29,7 @@ content.stars = (() => {
 
     const star = {
       age: srand('age') * galaxy.age,
-      children: Math.round(engine.fn.lerpExp(0, 12, srand('children') * type.planets, 2)),
+      children: isTutorial ? 1 : Math.round(engine.fn.lerpExp(0, 12, srand('children') * type.planets, 2)),
       habitability: srand('habitability') * galaxy.habitability * type.habitability,
       galaxy,
       mass: srand('mass') * galaxy.mass,
@@ -38,7 +40,7 @@ content.stars = (() => {
       wildcard: (srand('wildcard') + galaxy.wildcard) * 0.5,
     }
 
-    if (type.commonQuirks.length && srand('quirk', 'common1', 'roll') < star.wildcard) {
+    if (isTutorial || type.commonQuirks.length && srand('quirk', 'common1', 'roll') < star.wildcard) {
       star.quirks.push({
         name: engine.fn.chooseSplice(
           type.commonQuirks,
@@ -47,7 +49,7 @@ content.stars = (() => {
       })
     }
 
-    if (type.commonQuirks.length && srand('quirk', 'common2', 'roll') < star.wildcard/2) {
+    if (!isTutorial && type.commonQuirks.length && srand('quirk', 'common2', 'roll') < star.wildcard/2) {
       star.quirks.push({
         name: engine.fn.chooseSplice(
           type.commonQuirks,
@@ -56,7 +58,7 @@ content.stars = (() => {
       })
     }
 
-    if (type.rareQuirks.length && srand('quirk', 'rare', 'roll') < star.wildcard/3) {
+    if (!isTutorial && type.rareQuirks.length && srand('quirk', 'rare', 'roll') < star.wildcard/3) {
       star.quirks.push({
         isRare: true,
         name: engine.fn.chooseSplice(
@@ -217,6 +219,16 @@ content.stars = (() => {
     return namesByGalaxy.get(galaxyName)
   }
 
+  function isEmpty() {
+    for (const starNames of namesByGalaxy.values()) {
+      if (starNames.size > 0) {
+        return false
+      }
+    }
+
+    return true
+  }
+
   function randomInteger(max) {
     return engine.fn.randomInt(1, max)
   }
@@ -243,6 +255,8 @@ content.stars = (() => {
   }
 
   return {
+    countForGalaxy: (galaxyName) => getNamesForGalaxy(galaxyName).size,
+    countForStar: (starName) => getNamesForGalaxy(extractGalaxyName(starName)).size,
     export: () => {
       const data = {}
 
@@ -273,7 +287,7 @@ content.stars = (() => {
     namesForGalaxy: (galaxyName) => [...getNamesForGalaxy(galaxyName)],
     namesForStar: (starName) => [...getNamesForGalaxy(extractGalaxyName(starName))],
     new: function (galaxyName) {
-      const name = uniqueName(galaxyName)
+      const name = isEmpty() ? `${galaxyName} ${content.const.tutorialName}` : uniqueName(galaxyName)
       getNamesForGalaxy(galaxyName).add(name)
       return this.get(name)
     },
