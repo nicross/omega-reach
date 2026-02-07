@@ -8,5 +8,15 @@ content.rooms.shop = content.rooms.invent({
   transitions: {
     right: 'atrium',
   },
+  // Methods
+  getDescription: function () {
+    return this.isOpen()
+      ? 'Open to visitors'
+      : 'Closed for the cycle'
+  },
+  isDiscovered: function () {
+    return this.isOpen()
+  },
+  isOpen: () => false,
   // ...
 })

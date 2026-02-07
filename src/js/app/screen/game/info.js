@@ -9,6 +9,7 @@ app.screen.game.info = (() => {
     const info = {
       attributes: [],
       description: isDiscovered ? 'Object description' : 'Unexamined',
+      descriptionModifier: '',
       isDiscovered,
       name: `Object #${engine.fn.randomInt(1000, 9999)}`,
       nameShort: '(short name)',
@@ -39,6 +40,7 @@ app.screen.game.info = (() => {
     return {
       attributes: room.getAttributeLabels(),
       description: room.getDescription(),
+      descriptionModifier: room.getDescriptionModifier(),
       isDiscovered: room.isDiscovered(),
       name: room.getName(),
       nameShort: room.getNameShort(),
@@ -50,6 +52,7 @@ app.screen.game.info = (() => {
       const {
         attributes,
         description,
+        descriptionModifier,
         isDiscovered,
         name,
         nameShort,
@@ -63,9 +66,13 @@ app.screen.game.info = (() => {
         ({label, modifiers}) => `<li class="a-game--attribute${modifiers.map((modifier) => ` a-game--attribute-${modifier}`).join('')}">${label}</li>`
       ).join('')
 
-      if (isDiscovered) {
-        descriptionElement.classList.remove('a-game--description-undiscovered')
-      } else {
+      descriptionElement.className = 'a-game--description'
+
+      if (descriptionModifier) {
+        descriptionElement.classList.add(`a-game--description-${descriptionModifier}`)
+      }
+
+      if (!isDiscovered) {
         descriptionElement.classList.add('a-game--description-undiscovered')
       }
 

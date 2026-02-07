@@ -21,7 +21,7 @@ content.planets = (() => {
     const starName = extractStarName(name)
     const star = content.galaxies.get(starName)
 
-    const srand = (seed) => engine.fn.srand('planet', name, 'attribute', seed)()
+    const srand = (...seed) => engine.fn.srand('planet', name, 'attribute', ...seed)()
 
     const type = engine.fn.chooseWeighted(generateTypes(star), srand('type'))
 
@@ -35,6 +35,7 @@ content.planets = (() => {
       radius: srand('radius'),
       star,
       type: type.label,
+      wildcard: (srand('wildcard') + star.wildcard) * 0.5,
     }
 
     if (type.commonQuirks.length && srand('quirk', 'common1', 'roll') < planet.wildcard) {
@@ -65,7 +66,7 @@ content.planets = (() => {
       })
     }
 
-    planet.instrument = srand('instrument', 'roll') < type.instrument * star.wildcard/4
+    planet.instrument = srand('instrument', 'roll') < type.instrument * planet.wildcard/4
 
     return planet
   }
@@ -78,8 +79,13 @@ content.planets = (() => {
         instrument: 1,
         moons: 1,
         weight: 1,
-        commonQuirks: [],
-        rareQuirks: [],
+        commonQuirks: [
+          'Common quirk',
+          'Common quirk',
+        ],
+        rareQuirks: [
+          'Rare quirk',
+        ],
       },
     ]
   }

@@ -35,6 +35,9 @@ content.rooms.base = {
   getDescription: function () {
     return this.description
   },
+  getDescriptionModifier: function () {
+    return ''
+  },
   getInteractLabel: function () {
     return this.interactLabel
   },

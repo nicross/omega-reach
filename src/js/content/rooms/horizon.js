@@ -14,7 +14,12 @@ content.rooms.horizon = content.rooms.invent({
   canInteract: () => true,
   onInteract: function () {
     const galaxy = content.galaxies.new()
+
     content.rooms.galaxy.setGalaxyByName(galaxy.name)
+    content.rooms.star.reset()
+    content.rooms.planet.reset()
+    content.rooms.moon.reset()
+
     content.location.set('galaxy')
   },
   // Attributes

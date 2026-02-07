@@ -14,9 +14,9 @@ content.instruments = (() => {
       quirks: [],
       rarity: engine.fn.chooseWeighted([
         {label: 'Common', weight: 1},
-        {label: 'Uncommon', weight: 1},
-        {label: 'Rare', weight: 1},
-        {label: 'Legendary', weight: 1},
+        {label: 'Uncommon', weight: 0.5},
+        {label: 'Rare', weight: 0.25},
+        {label: 'Legendary', weight: 0.125},
       ], rarity).label,
     }
 

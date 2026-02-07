@@ -41,6 +41,12 @@
     .a-game--description-undiscovered {
       color: #888888;
     }
+    .a-game--description-uncommon {
+      color: #55AAFF;
+    }
+    .a-game--description-legendary {
+      color: #FF55AA;
+    }
   .a-game--description:empty {
     display: none;
   }

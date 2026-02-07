@@ -20,7 +20,7 @@ content.galaxies = (() => {
   ]
 
   function generate(name) {
-    const srand = (seed) => engine.fn.srand('galaxy', name, 'attribute', seed)()
+    const srand = (...seed) => engine.fn.srand('galaxy', name, 'attribute', ...seed)()
 
     return {
       age: srand('age'),

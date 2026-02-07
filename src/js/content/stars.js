@@ -21,7 +21,7 @@ content.stars = (() => {
     const galaxyName = extractGalaxyName(name)
     const galaxy = content.galaxies.get(galaxyName)
 
-    const srand = (seed) => engine.fn.srand('star', name, 'attribute', seed)()
+    const srand = (...seed) => engine.fn.srand('star', name, 'attribute', ...seed)()
 
     const type = engine.fn.chooseWeighted(generateTypes(galaxy), srand('type'))
 
@@ -35,7 +35,7 @@ content.stars = (() => {
       quirks: [],
       radius: srand('radius'),
       type: type.label,
-      wildcard: srand('wildcard') * galaxy.wildcard,
+      wildcard: (srand('wildcard') + galaxy.wildcard) * 0.5,
     }
 
     if (type.commonQuirks.length && srand('quirk', 'common1', 'roll') < star.wildcard) {

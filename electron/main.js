@@ -40,7 +40,7 @@ function createWindow() {
     frame: false,
     fullscreen: true,
     icon: path.join(__dirname, '../public/favicon.png'),
-    title: package.name,
+    title: 'THE OMEGA REACH',
     webPreferences: {
       contextIsolation: true,
       devTools: false,

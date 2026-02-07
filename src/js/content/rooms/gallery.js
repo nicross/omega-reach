@@ -28,7 +28,11 @@ content.rooms.gallery = content.rooms.invent({
     return 'Bereft of instruments'
   },
   getDescriptionModifier: function () {
-    return this.getInstrument()?.rarity || ''
+    const instrument = this.getInstrument()
+
+    return instrument && instrument.state.scans > 0
+      ? instrument.rarity.toLowerCase()
+      : ''
   },
   getName: function () {
     return this.getInstrument()?.name || 'The gallery'
