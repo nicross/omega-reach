@@ -81,4 +81,12 @@ content.rooms.galaxy = content.rooms.invent({
 
     return this.move('right')
   },
+  moveUp: function () {
+    if (!content.rooms.star.getStar()) {
+      const names = content.stars.namesForGalaxy(this.getGalaxy().name)
+      content.rooms.star.setStarByName(names[0])
+    }
+
+    return this.move('up')
+  },
 })

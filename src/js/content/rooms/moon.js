@@ -117,6 +117,9 @@ content.rooms.moon = content.rooms.invent({
   canEnter: () => content.moons.namesForPlanet(content.rooms.planet.getPlanet()?.name).length > 0,
   canMoveLeft: () => content.moons.namesForPlanet(content.rooms.planet.getPlanet()?.name).length > 1,
   canMoveRight: () => content.moons.namesForPlanet(content.rooms.planet.getPlanet()?.name).length > 1,
+  getMoveUpLabel: function () {
+    return this.canMoveUp() ? 'Zoom in' : 'Max zoom reached'
+  },
   moveLeft: function () {
     const names = content.moons.namesForMoon(this.getMoon().name)
 

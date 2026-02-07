@@ -114,6 +114,9 @@ content.rooms.star = content.rooms.invent({
     return content.scans.is(star.name)
       && star.children > 0
   },
+  getMoveUpLabel: function () {
+    return this.canMoveUp() ? 'Zoom in' : 'Max zoom reached'
+  },
   moveLeft: function () {
     const names = content.stars.namesForStar(this.getStar().name)
 
