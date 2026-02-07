@@ -30,6 +30,9 @@ content.rooms.star = content.rooms.invent({
   getName: function () {
     return this.getStar().name
   },
+  getNameShort: function () {
+    return this.getName().split(' ').pop()
+  },
   isDiscovered: function () {
     return content.scans.is(this.getStar().name)
   },

@@ -11,6 +11,7 @@ app.screen.game.info = (() => {
       description: isDiscovered ? 'Object description' : 'Unexamined',
       isDiscovered,
       name: `Object #${engine.fn.randomInt(1000, 9999)}`,
+      nameShort: '(short name)',
     }
 
     if (isDiscovered) {
@@ -40,6 +41,7 @@ app.screen.game.info = (() => {
       description: room.getDescription(),
       isDiscovered: room.isDiscovered(),
       name: room.getName(),
+      nameShort: room.getNameShort(),
     }
   }
 
@@ -50,8 +52,10 @@ app.screen.game.info = (() => {
         description,
         isDiscovered,
         name,
+        nameShort,
       } = getRoomInfo()
 
+      nameElement.ariaLabel = nameShort
       nameElement.innerHTML = name
       descriptionElement.innerHTML = description
 

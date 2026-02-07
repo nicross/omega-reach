@@ -53,6 +53,9 @@ content.rooms.base = {
   getName: function () {
     return this.name
   },
+  getNameShort: function () {
+    return this.getName()
+  },
   isDiscovered: () => true,
   // Interaction
   canInteract: () => false,
