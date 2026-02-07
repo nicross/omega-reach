@@ -20,10 +20,10 @@ content.rooms.reach = content.rooms.invent({
     this.state.online = !this.state.online
 
     if (!this.state.online) {
-      content.rooms.galaxy?.reset()
-      content.rooms.star?.reset()
-      content.rooms.planet?.reset()
-      content.rooms.moon?.reset()
+      content.rooms.galaxy.reset()
+      content.rooms.star.reset()
+      content.rooms.planet.reset()
+      content.rooms.moon.reset()
     }
 
     return this.getAttributeLabels()[0]?.label

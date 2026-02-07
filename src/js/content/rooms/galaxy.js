@@ -60,6 +60,10 @@ content.rooms.galaxy = content.rooms.invent({
       ]
     )
 
+    content.rooms.star.reset()
+    content.rooms.planet.reset()
+    content.rooms.moon.reset()
+
     return this.move('left')
   },
   moveRight: function () {
@@ -70,6 +74,10 @@ content.rooms.galaxy = content.rooms.invent({
         engine.fn.wrap(names.indexOf(this.state.name) + 1, 0, names.length)
       ]
     )
+
+    content.rooms.star.reset()
+    content.rooms.planet.reset()
+    content.rooms.moon.reset()
 
     return this.move('right')
   },

@@ -1,0 +1,151 @@
+content.rooms.planet = content.rooms.invent({
+  // Attributes
+  id: 'planet',
+  name: '(Planet name)',
+  description: '(Planet description)',
+  moveDownLabel: 'Zoom out',
+  moveLeftLabel: 'Previous planet',
+  moveRightLabel: 'Next planet',
+  moveUpLabel: 'Zoom in',
+  // Transitions
+  transitions: {
+    up: 'moon',
+    down: 'star',
+  },
+  // State
+  state: {},
+  // Methods
+  getPlanet: function () {
+    return this.state.name
+      ? content.planets.get(this.state.name)
+      : undefined
+  },
+  getDescription: function () {
+    const planet = this.getPlanet()
+
+    return content.scans.is(planet.name)
+      ? planet.type
+      : 'Unexamined'
+  },
+  getName: function () {
+    return this.getPlanet().name
+  },
+  getNameShort: function () {
+    return this.getName().split(' ').pop()
+  },
+  isDiscovered: function () {
+    return content.scans.is(this.getPlanet().name)
+  },
+  setPlanetByName: function (name) {
+    this.state.name = name
+
+    return this
+  },
+  // Interaction
+  canInteract: function () {
+    const planet = this.getPlanet()
+
+    return content.scans.get(planet.name) < planet.quirks.length + 1
+  },
+  onInteract: function () {
+    const planet = this.getPlanet()
+    const scans = content.scans.increment(planet.name)
+
+    // Initial scan
+    if (scans == 1) {
+      const message = []
+
+      if (planet.children) {
+        message.push(`${planet.children} moon${planet.children == 1 ? '' : 's'} detected`)
+      }
+
+      if (planet.quirks.length) {
+        message.push(`${planet.quirks.length} quirk${planet.quirks.length == 1 ? '' : 's'} detected`)
+      }
+
+      return message.join(', ')
+    }
+
+    return `${planet.quirks[scans - 2].name} found`
+  },
+  // Attributes
+  getAttributeLabels: function () {
+    const planet = this.getPlanet()
+    const scans = content.scans.get(this.getPlanet().name)
+
+    if (!scans) {
+      return []
+    }
+
+    const attributes = []
+
+    if (scans > 0 && planet.children > 0) {
+      attributes.push({
+        label: `${planet.children} moon${planet.children == 1 ? '' : 's'}`,
+        modifiers: [planet.children > 4 ? 'rare' : ''],
+      })
+    }
+
+    for (const i in planet.quirks) {
+      const quirk = planet.quirks[i]
+
+      if (scans - 1 > i) {
+        attributes.push({
+          label: quirk.name,
+          modifiers: [quirk.isRare ? 'rare' : ''],
+        })
+      } else {
+        attributes.push({
+          label: 'Unexamined quirk',
+          modifiers: ['undiscovered'],
+        })
+      }
+    }
+
+    return attributes
+  },
+  // Movement
+  canEnter: () => content.planets.namesForStar(content.rooms.star.getStar()?.name).length > 0,
+  canMoveLeft: () => content.planets.namesForStar(content.rooms.star.getStar()?.name).length > 1,
+  canMoveRight: () => content.planets.namesForStar(content.rooms.star.getStar()?.name).length > 1,
+  canMoveUp: function () {
+    const planet = this.getPlanet()
+
+    return content.scans.is(planet.name)
+      && planet.children > 0
+  },
+  moveLeft: function () {
+    const names = content.planets.namesForPlanet(this.getPlanet().name)
+
+    this.setPlanetByName(
+      names[
+        engine.fn.wrap(names.indexOf(this.state.name) - 1, 0, names.length)
+      ]
+    )
+
+    content.rooms.moon.reset()
+
+    return this.move('left')
+  },
+  moveRight: function () {
+    const names = content.planets.namesForPlanet(this.getPlanet().name)
+
+    this.setPlanetByName(
+      names[
+        engine.fn.wrap(names.indexOf(this.state.name) + 1, 0, names.length)
+      ]
+    )
+
+    content.rooms.moon.reset()
+
+    return this.move('right')
+  },
+  moveUp: function () {
+    if (!content.rooms.moon.getMoon()) {
+      const names = content.moons.namesForPlanet(this.getPlanet().name)
+      content.rooms.moon.setMoonByName(names[0])
+    }
+
+    return this.move('up')
+  },
+})

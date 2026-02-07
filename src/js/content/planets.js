@@ -1,0 +1,117 @@
+content.planets = (() => {
+  const generated = new Map(),
+    namesByStar = new Map()
+
+  const latinLetters = [
+    'a', 'b', 'c', 'd', 'e',
+    'f', 'g', 'h', 'i', 'j',
+    'k', 'l', 'm', 'n', 'o',
+    'p', 'q', 'r', 's', 't',
+    'u', 'v', 'w', 'x', 'y',
+    'z',
+  ]
+
+  function extractStarName(name) {
+    const parts = name.split(' ')
+    parts.pop()
+    return parts.join(' ')
+  }
+
+  function generate(name) {
+    const starName = extractStarName(name)
+    const star = content.galaxies.get(starName)
+
+    const srand = (seed) => engine.fn.srand('planet', name, 'attribute', seed)()
+
+    const type = engine.fn.chooseWeighted(generateTypes(star), srand('type'))
+
+    const planet = {
+      age: srand('age') * star.age,
+      children: Math.round(engine.fn.lerp(0, 6, srand('children') * type.moons)),
+      habitability: srand('habitability') * star.habitability * type.habitability,
+      star,
+      mass: srand('mass') * star.mass,
+      name,
+      quirks: [],
+      radius: srand('radius'),
+      type: type.label,
+      wildcard: srand('wildcard') * star.wildcard,
+    }
+
+    if (type.commonQuirks.length && srand('quirk', 'common1', 'roll') < planet.wildcard) {
+      planet.quirks.push({
+        name: engine.fn.chooseSplice(
+          type.commonQuirks,
+          srand('quirk', 'common1', 'type')
+        ),
+      })
+    }
+
+    if (type.commonQuirks.length && srand('quirk', 'common2', 'roll') < planet.wildcard/2) {
+      planet.quirks.push({
+        name: engine.fn.chooseSplice(
+          type.commonQuirks,
+          srand('quirk', 'common2', 'type')
+        ),
+      })
+    }
+
+    if (type.rareQuirks.length && srand('quirk', 'rare', 'roll') < planet.wildcard/3) {
+      planet.quirks.push({
+        isRare: true,
+        name: engine.fn.chooseSplice(
+          type.rareQuirks,
+          srand('quirk', 'rare', 'type')
+        ),
+      })
+    }
+
+    planet.instrument = srand('instrument', 'roll') < type.instrument * planet.wildcard/4
+
+    return planet
+  }
+
+  function generateTypes(star) {
+    return [
+      {
+        label: 'Generic planet',
+        habitability: 1,
+        instrument: 1,
+        moons: 1,
+        weight: 1,
+        commonQuirks: [],
+        rareQuirks: [],
+      },
+    ]
+  }
+
+  return {
+    get: function (name) {
+      if (!generated.has(name)) {
+        generated.set(name, generate(name))
+      }
+
+      return generated.get(name)
+    },
+    namesForStar: (starName) => {
+      const star = content.stars.get(starName)
+
+      return latinLetters
+        .slice(1, 1 + star.children)
+        .map((designation) => `${star.name} ${designation}`)
+    },
+    namesForPlanet: function (planetName) {
+      return this.namesForStar(
+        extractStarName(planetName)
+      )
+    },
+    reset: function () {
+      generated.clear()
+      namesByStar.clear()
+
+      return this
+    },
+  }
+})()
+
+engine.state.on('reset', () => content.planets.reset())
