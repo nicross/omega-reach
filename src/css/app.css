@@ -76,7 +76,6 @@
 }
 
 /* Capsule mode */
-.a-app-capsule {}
 .a-app-capsule .a-game--info,
 .a-app-capsule .a-game--nav,
 .a-app-capsule .a-splash--details,
@@ -101,4 +100,26 @@
 }
 .a-app-capsule .a-splash--logoSymbol i {
   animation: none !important;
+}
+
+/* Immersive mode */
+.a-app-immersive .a-game--info,
+.a-app-immersive .a-game--live,
+.a-app-immersive .a-splash--details,
+.a-app-immersive .a-splash--instruction {
+  display: none;
+}
+.a-app-immersive .a-game--nav {
+  opacity: 0;
+}
+.a-app-immersive .a-game--nav {
+  transition: 0.25s opacity linear;
+}
+.a-app-immersive .a-game--nav:hover {
+  opacity: 1;
+}
+@media (pointer: coarse) {
+  .a-app-immersive .a-game--nav {
+    opacity: 1;
+  }
 }

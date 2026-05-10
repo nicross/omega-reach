@@ -8,6 +8,7 @@ const app = (() => {
 
   let isActive = false,
     isCapsule = false,
+    isImmersive = false,
     root
 
   return {
@@ -24,6 +25,7 @@ const app = (() => {
     component: {},
     isActive: () => isActive,
     isCapsule: () => isCapsule,
+    isImmersive: () => isImmersive,
     isElectron: () => typeof ElectronApi != 'undefined',
     name: () => 'shiftbacktick/omega-reach',
     quit: function () {
@@ -48,6 +50,17 @@ const app = (() => {
       } else {
         root.classList.remove('a-app-capsule')
         content.particles.setSpeed(1)
+      }
+
+      return this
+    },
+    setImmersive: function (value) {
+      isImmersive = Boolean(value)
+
+      if (isImmersive) {
+        root.classList.add('a-app-immersive')
+      } else {
+        root.classList.remove('a-app-immersive')
       }
 
       return this
