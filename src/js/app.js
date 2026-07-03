@@ -25,6 +25,7 @@ const app = (() => {
     component: {},
     isActive: () => isActive,
     isCapsule: () => isCapsule,
+    isDebug: () => Boolean(app.debug),
     isImmersive: () => isImmersive,
     isElectron: () => typeof ElectronApi != 'undefined',
     name: () => 'shiftbacktick/omega-reach',
