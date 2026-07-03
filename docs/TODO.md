@@ -1,1 +1,92 @@
 # TODO
+## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
+- Stellar objects
+  - Brown dawrf
+  - Ring galaxy
+  - Primordial black hole
+  - Moons should use same light source as parent planet
+- Volume sliders
+  - SFX
+  - Reach (separate channel from SFX)
+- Immersive mode
+  - Toggle in settings, defaults to off
+  - 0% opacity game UI, muted screen reader, except dialogs
+  - Improve behavior of enter/space and the interact button
+- Instrument adjustments
+  - Gain donations while playing instruments in gallery
+  - Track how long each instrument has been freely played
+- Cellar expansion
+  - Tiles to ascend/descend floors (one per floor, interact to teleport)
+  - The augury (-3 max sanity, once per run)
+  - The counterbalance (>50% -> +1 / <50% -> -1)
+  - The fountain (+1 sanity)
+  - The median (sanity -> 50%)
+  - The obelisk (+3 max sanity, once per run)
+  - the quagmire (+50% donations, once per run)
+  - The rift (-50% current sanity)
+  - The trove (+50% donations, once per run)
+- New rooms
+  - The emporium, north of lobby, empty
+  - The reliquary, south of lobby, empty
+- Tutorials
+  - How to navigate between cellar floors
+  - Automatic death upon entering fourth floor of cellar
+  - Separate the lore from tutorial text in more places, e.g. the gallery
+  - Rename the auction house to the emporium (and bold it) in the opening sequence
+  - Initial dialogs for the new empty rooms
+- MIDI interactions
+  - D#1 -> E3: -180 to -60deg
+  - F3 -> F#5: -60 to 60deg
+  - G5 -> G#7: 60 to 180deg
+  - Imagine a 5x5 grid, from left to right then bottom to top
+- Demo notice screen between splash and main menu
+
+## v1.3.x - Story expansion
+- Rare relics on planets to collect
+- Relic program (graphics + synth)
+- Relic series
+  - Reliquary tutorial
+  - Who discovered the cycles
+  - Earth, legendary cycle
+  - Earth, alternate cycle
+  - Invention of reach
+  - First reach war
+  - Second reach war
+  - Building the conservatory (to preserve the reach outside of cycles)
+- Initiate end of cycle from auction house
+  - Auctioneer appears in hall when 100% of instruments are fully appraised, more than 7
+  - Forced to sell each instrument: price is 0.1x value + seconds played
+  - Interact with each instrument (allow free play) to remove from inventory until empty
+  - Track number of auctions
+  - Each auction resets tutorials to re-experience dialogs (1 or more auctions is treated same as "tutorials" turned off)
+  - Each auction resets credits, but adds a cumulative multiplier to lobby donations for later cycles
+  - At end, ask to predict the fate of earth this cycle, reward if you choose the correct fate of earth
+  - Each auction resets discoveries / gallery / etc.
+  - Importantly, auctions will not reset the reliquary
+  - Essentially a NG+
+- Interactions
+  - Auctioneer, accidental first introduction
+  - Auctioneer, first auction
+  - Auctioneer, second auction
+  - Shopkeeper, cellar two first visit (repeatable per run)
+  - Shopkeeper, cellar three first visit (repeatable per run)
+  - Shopkeeper, cellar four first visit (repeatable per run)
+  - Shopkeeper, cellar four showdown (repeatable per run)
+- Side quests
+  - Shopkeeper tile in cellar floors 1, 2, 3
+  - Assign a random sidequest for the run:
+    - Collect an instrument for us
+    - Find (one of the tiles) for us
+    - Get to the next floor for us
+  - Return to shopkeeper for reward
+- Cellar fourth floor
+  - Gauntlet of tiles, like a combination lock with length of log(maxhp)
+  - Go left/right to find the next opening, go down once for an anomaly, go down again for next phase
+  - Penultimate tile is showdown with shopkeeper (branching RPS-like dialogs that reduce sanity)
+  - Get a relic (or instrument when all relics collected) on win, normal death sequence on loss
+  - Use final tile to return to entrance
+
+## v1.4.x - Steam release
+- Achievements
+- Import/export
+- Polish
