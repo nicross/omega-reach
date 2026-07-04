@@ -1,4 +1,7 @@
 # CHANGELOG
+## v1.2.0
+- Inverted the input at The horizon.
+
 ## v1.1.0
 - Added the stockroom.
 - Added two new planet and moon types.

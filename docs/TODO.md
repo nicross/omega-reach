@@ -20,9 +20,10 @@
   - The augury (-3 max sanity, once per run)
   - The counterbalance (>50% -> +1 / <50% -> -1)
   - The fountain (+1 sanity)
+  - The junction (+50% current sanity)
   - The median (sanity -> 50%)
   - The obelisk (+3 max sanity, once per run)
-  - the quagmire (+50% donations, once per run)
+  - The quagmire (-25% donations, once per run)
   - The rift (-50% current sanity)
   - The trove (+50% donations, once per run)
 - New rooms
