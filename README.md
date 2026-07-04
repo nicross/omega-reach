@@ -1,5 +1,5 @@
 # The Omega Reach
-A tactile universe explorer under development for [Games for Blind Gamers 5](https://itch.io/jam/games-for-blind-gamers-5).
+A tactile universe explorer initially created for [Games for Blind Gamers 5](https://itch.io/jam/games-for-blind-gamers-5).
 
 ## Getting started
 To get started, please use [npm](https://nodejs.org) to install the required dependencies:
