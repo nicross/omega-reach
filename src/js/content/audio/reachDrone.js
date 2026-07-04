@@ -1,6 +1,6 @@
 content.audio.reachDrone = (() => {
   const baseGain = engine.fn.fromDb(-12),
-    bus = content.audio.channel.default.createBus(),
+    bus = content.audio.channel.reach.createBus(),
     rootFrequency = engine.fn.fromMidi(24)
 
   let muffle = 0,

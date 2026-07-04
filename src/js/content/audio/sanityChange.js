@@ -1,6 +1,6 @@
 content.audio.sanityChange = (() => {
   const baseGain = engine.fn.fromDb(-12),
-    bus = content.audio.channel.default.createBus(),
+    bus = content.audio.channel.sfx.createBus(),
     rootFrequency = engine.fn.fromMidi(48)
 
   function trigger({

@@ -1,6 +1,6 @@
 content.audio.cellarHealth = (() => {
   const baseGain = engine.fn.fromDb(-15),
-    bus = content.audio.channel.default.createBus()
+    bus = content.audio.channel.sfx.createBus()
 
   let health = 0,
     synth

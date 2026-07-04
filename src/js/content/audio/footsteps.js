@@ -1,6 +1,6 @@
 content.audio.footsteps = (() => {
   const baseGain = engine.fn.fromDb(-6),
-    bus = content.audio.channel.default.createBus()
+    bus = content.audio.channel.sfx.createBus()
 
   function trigger({
     color,

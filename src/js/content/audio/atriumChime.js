@@ -1,6 +1,6 @@
 content.audio.atriumChime = (() => {
   const baseGain = engine.fn.fromDb(-7.5),
-    bus = content.audio.channel.default.createBus()
+    bus = content.audio.channel.sfx.createBus()
 
   function trigger({
     color,

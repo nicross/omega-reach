@@ -1,5 +1,7 @@
 # CHANGELOG
 ## v1.2.0
+- Added a slider for drone volume.
+- Added a slider for effect volume.
 - Inverted the input at The horizon.
 
 ## v1.1.0

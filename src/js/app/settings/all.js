@@ -75,11 +75,27 @@ app.settings.register('puzzleDifficulty', {
   default: 0.5,
 })
 
+app.settings.register('reachVolume', {
+  compute: (rawValue) => engine.fn.fromDb(engine.fn.lerpExp(engine.const.zeroDb, 0, rawValue, 0.1)),
+  default: 1,
+  update: function (computedValue) {
+    engine.fn.setParam(content.audio.channel.reach.param.gain, computedValue)
+  },
+})
+
 app.settings.register('reverbOn', {
   compute: (rawValue) => Boolean(rawValue),
   default: () => true,
   update: (computedValue) => {
     engine.mixer.reverb.setActive(computedValue)
+  },
+})
+
+app.settings.register('sfxVolume', {
+  compute: (rawValue) => engine.fn.fromDb(engine.fn.lerpExp(engine.const.zeroDb, 0, rawValue, 0.1)),
+  default: 1,
+  update: function (computedValue) {
+    engine.fn.setParam(content.audio.channel.sfx.param.gain, computedValue)
   },
 })
 

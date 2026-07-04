@@ -1,6 +1,6 @@
 content.audio.atriumAmbient = (() => {
   const baseGain = engine.fn.fromDb(-18),
-    bus = content.audio.channel.default.createBus(),
+    bus = content.audio.channel.sfx.createBus(),
     fields = {}
 
   const fieldNames = [

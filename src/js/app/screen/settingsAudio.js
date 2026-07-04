@@ -26,6 +26,8 @@ app.screen.settingsAudio = app.screenManager.invent({
       ['.a-settingsAudio--mainVolume', app.settings.raw.mainVolume, app.settings.setMainVolume],
       ['.a-settingsAudio--musicVolume', app.settings.raw.musicVolume, app.settings.setMusicVolume],
       ['.a-settingsAudio--polyphony', app.settings.raw.polyphony, app.settings.setPolyphony],
+      ['.a-settingsAudio--reachVolume', app.settings.raw.reachVolume, app.settings.setReachVolume],
+      ['.a-settingsAudio--sfxVolume', app.settings.raw.sfxVolume, app.settings.setSfxVolume],
     ].map(([selector, initialValue, setter]) => {
       const component = app.component.slider.hydrate(root.querySelector(selector), initialValue)
       component.on('change', () => setter(component.getValueAsFloat()))
