@@ -1,6 +1,6 @@
 app.utility.focus = (() => {
-  const focusableSelector = 'button, input, [tabindex="0"]',
-    focusableSelectorDescendent = 'button *, input *, [tabindex="0"] *',
+  const focusableSelector = 'a, button, input, [tabindex="0"]',
+    focusableSelectorDescendent = 'a *, button *, input *, [tabindex="0"] *',
     identity = (x) => x,
     notFocusableSelector = '[aria-hidden="true"], [aria-hidden="true"] *, [hidden], [hidden] *'
 

@@ -51,10 +51,33 @@ function createWindow() {
   // Prevent default hotkeys like Ctrl+R and Ctrl+W
   mainWindow.removeMenu()
 
-  // Automatically handle permissions requests like MIDI and pointer locks
+  // Handle new windows
+  mainWindow.webContents.setWindowOpenHandler(({url}) => {
+    if (url.startsWith('https:')) {
+      shell.openExternal(url)
+    }
+
+    return {
+      action: 'deny',
+    }
+  })
+
+  // Handle permissions requests
+  mainWindow.webContents.session.setPermissionCheckHandler((webContents, permission, requestingOrigin, details) => {
+    switch (permission) {
+      case 'midi':
+      case 'midiSysex':
+      case 'pointerLock':
+        return true
+    }
+
+    return false
+  })
+
   mainWindow.webContents.session.setPermissionRequestHandler((webContents, permission, callback) => {
     switch (permission) {
       case 'midi':
+      case 'midiSysex':
       case 'pointerLock':
         return callback(true)
     }

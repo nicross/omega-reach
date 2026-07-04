@@ -2,6 +2,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   border: 0.125em solid rgba(255, 255, 255, 0.5);
   color: #FFFFFF;
+  display: inline-block;
   font: inherit;
   letter-spacing: inherit;
   line-height: 1;

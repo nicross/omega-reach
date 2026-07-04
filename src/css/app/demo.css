@@ -1,0 +1,68 @@
+.a-demo {
+  display: block;
+  max-width: unset;
+  position: relative;
+}
+  .a-demo--dialog {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    margin-top: unset;
+    max-width: unset;
+    opacity: 1;
+    padding: 2em;
+    position: absolute;
+    top: 0;
+    transition: opacity 0.125s linear;
+    width: 100%;
+    z-index: 9;
+  }
+  .a-demo--dialogContent {
+    background-color: hsla(335deg 100% 5% / 75%);
+    max-width: 66ch;
+    padding: 2em;
+    width: 100%;
+  }
+  .a-demo--dialogText {
+    cursor: default !important;
+    outline: none !important;
+  }
+  .a-demo--dialogText * {
+    cursor: default !important;
+  }
+  .a-demo--dialogTitle {
+    font-family: FiraCodeMedium, monospace;
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .a-demo--dialogTitle:empty {
+    display: none;
+  }
+  .a-demo--dialogDescription {
+    font-family: RobotoLight, sans-serif;
+    font-weight: 300;
+    margin-top: 0.75em;
+  }
+  .a-demo--dialogDescription > * + * {
+    margin-top: 0.75em;
+  }
+  .a-demo--dialogDescription strong {
+    font-family: RobotoBold, sans-serif;
+    font-weight: 700;
+  }
+  .a-demo--dialogDescription ul {
+    padding-left: 1.5em;
+  }
+  .a-demo--dialogActions {
+    list-style-type: none;
+    margin-top: 1.5em;
+  }
+  .a-demo--dialogActions li {
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+  }

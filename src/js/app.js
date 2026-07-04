@@ -26,6 +26,7 @@ const app = (() => {
     isActive: () => isActive,
     isCapsule: () => isCapsule,
     isDebug: () => Boolean(app.debug),
+    isDemo: () => Boolean(app.demo),
     isImmersive: () => isImmersive,
     isElectron: () => typeof ElectronApi != 'undefined',
     name: () => 'shiftbacktick/omega-reach',

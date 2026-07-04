@@ -16,6 +16,7 @@ const zip = require('gulp-zip')
 
 const argv = require('yargs').argv,
   isDebug = argv.debug === true
+  isDemo = argv.demo === true
 
 gulp.task('build-css', () => {
   return gulp.src(
@@ -36,7 +37,7 @@ gulp.task('build-js', () => {
     concat('scripts.min.js')
   ).pipe(
     footer(
-      `;app.version=()=>'${package.version + (isDebug ? '-debug' : '')}';`
+      `;app.version=()=>'${package.version + (isDemo ? '-demo' : '') + (isDebug ? '-debug' : '')}';`
     )
   ).pipe(
     gulpif(!isDebug, iife(), header("'use strict';\n\n"))
@@ -163,6 +164,12 @@ function getAppJs() {
     'src/js/app/**/*.js',
   ]
 
+  if (!isDemo) {
+    srcs.push(
+      '!src/js/app/demo.js',
+    )
+  }
+
   if (!isDebug) {
     srcs.push(
       '!src/js/app/debug.js',
@@ -187,13 +194,7 @@ function getContentJs() {
     'src/js/content/programs/baseStar.js',
     'src/js/content/programs/basePlanet.js',
     // XXX: Moons extend planets
-    'src/js/content/programs/acidPlanet.js',
-    'src/js/content/programs/arcticPlanet.js',
-    'src/js/content/programs/desertPlanet.js',
-    'src/js/content/programs/hyceanPlanet.js',
-    'src/js/content/programs/lavaPlanet.js',
-    'src/js/content/programs/rockyPlanet.js',
-    'src/js/content/programs/terranPlanet.js',
+    'src/js/content/programs/*Planet.js',
     'src/js/content/programs/baseMoon.js',
     'src/js/content/rooms/base.js',
     'src/js/content/**/*.js',

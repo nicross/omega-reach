@@ -5,9 +5,6 @@
   - Ring galaxy
   - Primordial black hole
   - Moons should use same light source as parent planet
-- Volume sliders
-  - SFX
-  - Reach (separate channel from SFX)
 - Immersive mode
   - Toggle in settings, defaults to off
   - 0% opacity game UI, muted screen reader, except dialogs
@@ -40,7 +37,6 @@
   - F3 -> F#5: -60 to 60deg
   - G5 -> G#7: 60 to 180deg
   - Imagine a 5x5 grid, from left to right then bottom to top
-- Demo notice screen between splash and main menu
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect

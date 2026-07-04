@@ -1,5 +1,6 @@
 # CHANGELOG
 ## v1.2.0
+- Added a demo limitations dialog on startup.
 - Added a slider for drone volume.
 - Added a slider for effect volume.
 - Inverted the input at The horizon.

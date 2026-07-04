@@ -53,7 +53,7 @@ app.storage = (() => {
       return this
     },
     setVersion: function (value) {
-      version = value.replace('-debug', '')
+      version = value.replace('-debug', '').replace('-demo', '')
       return this
     },
   }
