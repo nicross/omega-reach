@@ -24,6 +24,9 @@
 
       return this
     },
+    getLightSource: function () {
+      return this.options.body.planet.lightSource.clone()
+    },
     getRotationRate: function () {return 0.2 * this.properties.rotationRate},
   }
 

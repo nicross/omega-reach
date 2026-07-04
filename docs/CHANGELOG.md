@@ -4,6 +4,7 @@
 - Added a slider for drone volume.
 - Added a slider for effect volume.
 - Inverted the input at The horizon.
+- Lit moons from same light source as their planets.
 - Updated desktop builds to Electron 42.
 
 ## v1.1.0

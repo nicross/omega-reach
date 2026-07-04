@@ -56,6 +56,11 @@ content.planets = (() => {
       habitability, // Pass raw habitability to children, not type habitability
       heat,
       index,
+      lightSource: engine.tool.vector3d.create({
+        x: srand('lightSourceX'),
+        y: engine.fn.lerp(-1, 1, srand('lightSourceY')),
+        z: engine.fn.lerp(-1, 1, srand('lightSourceZ')),
+      }).normalize(),
       mass: srand('mass') * star.mass,
       name,
       program: type.program || 'basePlanet',

@@ -5,11 +5,6 @@ content.programs.basePlanet = content.programs.invent({
     radius: {octaves: 2},
   },
   propertyDefinitions: {
-    lightSource: (srand) => engine.tool.vector3d.create({
-      x: srand(0, 1),
-      y: srand(-1, 1),
-      z: srand(-1, 1),
-    }).normalize(),
     radiusAlgorithm: (srand) => (x) => x,
     radiusPower: (srand) => srand(1, 2),
     radiusScale: (srand) => srand(1, 4),
@@ -17,7 +12,7 @@ content.programs.basePlanet = content.programs.invent({
     rotation: function (srand) {
       const tiltFactor  = this.hasAttribute('Extreme tilt') ? 1 : 16
 
-      return this.properties.lightSource.quaternion().conjugate().multiply(
+      return this.getLightSource().quaternion().conjugate().multiply(
         engine.tool.quaternion.fromEuler({
           pitch: srand(-1, 1) * engine.const.tau / tiltFactor,
           roll: srand(-1, 1) * engine.const.tau / tiltFactor,
@@ -75,7 +70,7 @@ content.programs.basePlanet = content.programs.invent({
   alterParticleColor: function (particle, point) {},
   alterParticleVertex: function (particle, point) {},
   getLightSource: function () {
-    return this.properties.lightSource.clone()
+    return this.options.body.lightSource.clone()
   },
   getRotation: function () {
     return content.scans.is(this.options.body.name)
