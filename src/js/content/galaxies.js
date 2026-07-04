@@ -32,11 +32,12 @@ content.galaxies = (() => {
       program: 'baseGalaxy',
       scale: [3,5,7,10,12],
       type: engine.fn.chooseWeighted([
-        {label: 'Elliptical', weight: 1/3},
-        {label: 'Lenticular', weight: 1/3/3},
-        {label: 'Irregular', weight: 1/3/3},
-        {label: 'Peculiar', weight: 1/3/3},
-        {label: 'Spiral', weight: 1/3},
+        {label: 'Elliptical', weight: 3/10},
+        {label: 'Lenticular', weight: 1/10},
+        {label: 'Irregular', weight: 1/10},
+        {label: 'Peculiar', weight: 1/10},
+        {label: 'Ring', weight: 1/10},
+        {label: 'Spiral', weight: 3/10},
       ], srand('type')).label,
       wildcard: srand('wildcard'),
     }

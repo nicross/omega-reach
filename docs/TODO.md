@@ -2,9 +2,7 @@
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
 - Stellar objects
   - Brown dawrf
-  - Ring galaxy
   - Primordial black hole
-  - Moons should use same light source as parent planet
 - Immersive mode
   - Toggle in settings, defaults to off
   - 0% opacity game UI, muted screen reader, except dialogs
