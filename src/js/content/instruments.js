@@ -2,7 +2,10 @@ content.instruments = (() => {
   const generated = new Map(),
     states = new Map()
 
-  const defaultState = {}
+  const defaultState = {
+    scans: 0,
+    time: 0,
+  }
 
   function firstName() {
     for (const name of states.keys()) {
@@ -312,6 +315,13 @@ content.instruments = (() => {
 
       const instrument = generated.get(name)
       instrument.state = states.get(name)
+
+      // Apply default states for saves prior to v1.2.0.
+      for (const [key, value] of Object.entries(defaultState)) {
+        if (!(key in instrument.state)) {
+          instrument.state[key] = value
+        }
+      }
 
       return instrument
     },

@@ -4,9 +4,6 @@
   - Toggle in settings, defaults to off
   - 0% opacity game UI, muted screen reader, except dialogs
   - Improve behavior of enter/space and the interact button
-- Instrument adjustments
-  - Gain donations while playing instruments in gallery
-  - Track how long each instrument has been freely played
 - Cellar expansion
   - Tiles to ascend/descend floors (one per floor, interact to teleport)
   - The augury (-3 max sanity, once per run)

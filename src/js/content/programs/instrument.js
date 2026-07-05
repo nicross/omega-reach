@@ -113,6 +113,14 @@ content.programs.instrument = content.programs.invent({
     this.properties.rotation = this.properties.rotation.multiply(
       this.properties.rotationVelocity.lerpFrom({}, engine.loop.delta() / 30)
     ).normalize()
+
+    // Handle time tracking and donations
+    if (this.synths.size && content.location.is('gallery') && content.location.get().isComplete()) {
+      const delta = engine.loop.delta()
+
+      this.options.instrument.state.time += delta
+      content.donations.add(delta * this.options.instrument.rarity * 10/60)
+    }
   },
   createSynth: function ({point, wrapper}) {
     const {

@@ -8,7 +8,7 @@ content.donations = (() => {
 
       return this
     },
-    amount: () => amount,
+    amount: () => Math.floor(amount),
     collect: function (value = 0) {
       value = engine.fn.clamp(Math.abs(value) || 0, 0, amount)
 
@@ -22,7 +22,7 @@ content.donations = (() => {
       amount,
       collected,
     }),
-    has: (value = 1) => value <= amount,
+    has: (value = 1) => value <= Math.floor(amount),
     import: function (data = {}) {
       amount = data.amount || 0
       collected = data.collected || 0
@@ -48,6 +48,7 @@ engine.state.on('import', ({donations}) => content.donations.import(donations))
 engine.state.on('reset', () => content.donations.reset())
 
 // Donation generation: must have at least one instrument, 3+ credits when fully scanning a body
+// Donations from instruments are handled in content.program.instrument.onUpdate()
 engine.ready(() => {
   const allowedRooms = new Set(['star','planet','moon'])
 

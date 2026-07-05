@@ -6,9 +6,12 @@
 - Added a demo limitations dialog on startup.
 - Added a slider for drone volume.
 - Added a slider for effect volume.
+- Accumulated donations when playing instruments in gallery.
+- Tracked time playing each instrument.
 - Inverted the input at The horizon.
 - Animated object rotations when transitioning.
 - Lit moons from same light source as their planets.
+- Updated the manual accordingly.
 - Updated desktop builds to Electron 42.
 
 ## v1.1.0
