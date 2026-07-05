@@ -88,7 +88,8 @@ void main(void) {
 }
 `
 
-  let program
+  let currentRotation,
+    program
 
   return {
     draw: function () {
@@ -171,6 +172,12 @@ void main(void) {
       gl.uniform3fv(program.uniforms['u_pointers[0]'], points)
 
       // Bind u_rotation
+      const targetRotation = activeProgram?.getRotation() || engine.tool.quaternion.identity()
+
+      currentRotation = currentRotation
+        ? currentRotation.lerpTo(targetRotation, engine.loop.delta() * speed)
+        : targetRotation
+
       const rotation = engine.tool.matrix4d.fromQuaternion(
         activeProgram?.getRotation() || engine.tool.quaternion.identity()
       ).transpose()
@@ -232,6 +239,8 @@ void main(void) {
       return this
     },
     unload: function () {
+      currentRotation = undefined
+
       return this
     },
   }
