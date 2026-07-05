@@ -45,6 +45,7 @@ content.audio = (() => {
     channel: {
       bypass: createChannel(true),
       default: createChannel(),
+      instrument: createChannel(),
       music: createChannel(),
       reach: createChannel(),
       sfx: createChannel(),

@@ -1,7 +1,7 @@
 content.programs.base = {
   // Attributes
   id: undefined,
-  channel: 'default',
+  channel: 'sfx',
   hasReverb: false,
   hasSynths: true,
   unscannedRadius: 1,

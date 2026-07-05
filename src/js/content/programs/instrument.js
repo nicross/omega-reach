@@ -1,5 +1,6 @@
 content.programs.instrument = content.programs.invent({
   id: 'instrument',
+  channel: 'instrument',
   hasReverb: true,
   hasSynths: true,
   unscannedRadius: 0.5,

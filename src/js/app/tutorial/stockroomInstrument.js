@@ -18,7 +18,11 @@ app.tutorial.stockroomInstrument = app.tutorial.invent({
             label: `Consider appraising ${content.stockroom.countGenerated() == 1 ? 'it' : 'them'}`,
           },
         ],
-        after: () => this.markComplete(),
+        after: () => {
+          this.markComplete()
+          content.solution.generate()
+          app.screen.game.interact.update()
+        },
       },
     ].forEach((x) => app.screen.game.dialog.push(x))
   },
