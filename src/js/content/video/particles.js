@@ -175,12 +175,10 @@ void main(void) {
       const targetRotation = activeProgram?.getRotation() || engine.tool.quaternion.identity()
 
       currentRotation = currentRotation
-        ? currentRotation.lerpTo(targetRotation, engine.loop.delta() * speed)
+        ? currentRotation.lerpTo(targetRotation, engine.loop.delta() * 24 * speed)
         : targetRotation
 
-      const rotation = engine.tool.matrix4d.fromQuaternion(
-        activeProgram?.getRotation() || engine.tool.quaternion.identity()
-      ).transpose()
+      const rotation = engine.tool.matrix4d.fromQuaternion(currentRotation).transpose()
 
       gl.uniformMatrix4fv(program.uniforms.u_rotation, false, rotation.elements)
 

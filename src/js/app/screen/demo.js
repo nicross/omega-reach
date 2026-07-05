@@ -29,7 +29,7 @@ app.screen.demo = app.screenManager.invent({
       focusables = app.utility.focus.selectFocusable(this.rootElement),
       ui = app.controls.ui()
 
-    if (focus === focusables[0] && (ui.confirm || ui.dialogA)) {
+    if (focus === focusables[0] && (ui.confirm || ui.dialogA || ui.dialogB)) {
       focusables[1].focus()
       return
     }
