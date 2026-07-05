@@ -1,6 +1,7 @@
 # CHANGELOG
 ## v1.2.0
 - Added a new galaxy type.
+- Added a new star type.
 - Added a new planet and moon type.
 - Added a demo limitations dialog on startup.
 - Added a slider for drone volume.

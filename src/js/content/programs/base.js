@@ -83,7 +83,7 @@ content.programs.base = {
         seed: [this.id, this.options.seed, name],
       })
 
-      this.fields[name].valueAt = function (point, scale, timeScale) {
+      this.fields[name].valueAt = function (point, scale = 1, timeScale = 1) {
         scale *= engine.tool.simplex3d.prototype.skewFactor
         return this.value(point.x * scale, point.y * scale, point.z * scale, point.time * timeScale)
       }

@@ -23,7 +23,7 @@ content.programs.blackHole = content.programs.invent({
       z: point.z,
     }, this.properties.radius4dSpatialScale, this.properties.radius4dTimeScale)
 
-    const radius = engine.fn.lerp(1, 3, this.options.body.radius) * this.radiusFactor * radius4d
+    const radius = engine.fn.lerp(2/3, 4/3, this.options.body.radius) * this.radiusFactor * radius4d
 
     particle.target.v = radius4d ** 8
     particle.target.x = point.x * radius

@@ -89,7 +89,7 @@ content.stars = (() => {
         program: 'mainSequence',
         habitability: 1,
         planets: 1,
-        weight: engine.fn.lerp(1/2, 0, galaxy.age),
+        weight: engine.fn.lerp(1, 0.5, galaxy.age),
         commonQuirks: [
           'Asteroid belt',
           'Highly metallic',
@@ -225,6 +225,31 @@ content.stars = (() => {
           'Supernova candidate',
         ],
       },
+      {
+       label: 'Brown dwarf',
+       program: 'brownDwarf',
+       habitability: 0,
+       planets: 2,
+       weight: engine.fn.lerp(1/6/2, 1/3/2, galaxy.age),
+       commonQuirks: [
+         'Anticyclonic storms',
+         'Asteroid belt',
+         'Gravity well',
+         'Failed protostar',
+         'Internal heating',
+         'Lithium bands',
+         'Methane atmosphere',
+         'Metallic rain',
+       ],
+       rareQuirks: [
+         'Debris disk',
+         'Distress beacon',
+         'Microbial life',
+         'Primordial life',
+         'Spaceship graveyard',
+         'X-ray source',
+       ],
+     },
     ]
   }
 
