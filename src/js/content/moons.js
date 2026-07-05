@@ -303,6 +303,7 @@ content.moons = (() => {
         rareQuirks: [
           'Captured asteroid',
           'Distress beacon',
+          'Retrograde orbit',
           'Spaceship graveyard',
         ],
       },
