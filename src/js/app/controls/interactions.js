@@ -213,6 +213,8 @@ app.controls.interactions = (() => {
     reset: function () {
       points.length = 0
 
+      app.controls.midi.reset()
+
       return this
     },
     update: function () {
@@ -229,6 +231,7 @@ app.controls.interactions = (() => {
           mousePrimaryPoint,
           gamepadLeftPoint,
           gamepadRightPoint,
+          ...app.controls.midi.getPoints(),
         )
 
         points = points.filter((x) => x)

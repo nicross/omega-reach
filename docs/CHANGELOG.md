@@ -6,6 +6,7 @@
 - Added a demo limitations dialog on startup.
 - Added a slider for drone volume.
 - Added a slider for effect volume.
+- Added support for MIDI input.
 - Accumulated donations when playing instruments in gallery.
 - Tracked time playing each instrument.
 - Inverted the input at The horizon.
