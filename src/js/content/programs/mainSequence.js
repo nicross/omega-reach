@@ -10,8 +10,8 @@ content.programs.mainSequence = content.programs.invent({
   alterParticleColor: function (particle, point) {
     const time = content.time.value()
 
-    particle.target.h = (engine.fn.lerp(45, -15, this.options.star.age * (1 - this.options.star.mass)) + (Math.sin(engine.const.tau * time * particle.twinkleFrequencies[0]) * 30)) / 360
-    particle.target.s = engine.fn.scale(Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1]), -1, 1, this.options.star.age, 1)
+    particle.target.h = (engine.fn.lerp(45, -15, this.options.body.age * (1 - this.options.body.mass)) + (Math.sin(engine.const.tau * time * particle.twinkleFrequencies[0]) * 30)) / 360
+    particle.target.s = engine.fn.scale(Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1]), -1, 1, this.options.body.age, 1)
     particle.target.v = engine.fn.scale(Math.sin(engine.const.tau * time * particle.twinkleFrequencies[2]), -1, 1, 0, 1)
 
     return true
@@ -19,7 +19,7 @@ content.programs.mainSequence = content.programs.invent({
   alterParticleVertex: function (particle, point) {
     const time = content.time.value()
 
-    const radius = engine.fn.lerp(2, 3, this.options.star.radius) + engine.fn.lerpExp(0, this.properties.radius4dAmplitude, this.fields.radius4d.valueAt({
+    const radius = engine.fn.lerp(2, 3, this.options.body.radius) + engine.fn.lerpExp(0, this.properties.radius4dAmplitude, this.fields.radius4d.valueAt({
       time,
       x: point.x,
       y: point.y,

@@ -284,6 +284,28 @@ content.moons = (() => {
           'Supervolcanoes',
         ],
       },
+      // Black holes
+      {
+        label: 'Black hole',
+        program: 'blackHoleMoon',
+        habitability: 0,
+        instrument: 0,
+        weight: planet.wildcard * planet.age * 0.5,
+        commonQuirks: [
+          'Dilated time',
+          'Dark matter candidate',
+          'Gravitational microlens',
+          'Hawking radiation',
+          'Irregular spin',
+          'Primordial',
+          'Unusual charge',
+        ],
+        rareQuirks: [
+          'Captured asteroid',
+          'Distress beacon',
+          'Spaceship graveyard',
+        ],
+      },
     ]
   }
 

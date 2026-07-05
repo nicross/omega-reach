@@ -4,6 +4,7 @@ content.programs.base = {
   channel: 'default',
   hasReverb: false,
   hasSynths: true,
+  unscannedRadius: 1,
   fieldDefinitions: {
     // Hash of names to objects for engine.fn.createNoise()
     rumble3d: {},
@@ -19,6 +20,7 @@ content.programs.base = {
   properties: {
     // Hash of generated values for this instance
   },
+  // State
   defaultState: {},
   state: {},
   // Methods
@@ -306,15 +308,15 @@ content.programs.base = {
   invertSynthX: () => false,
   // Particles
   alterParticle: function (particle) {},
-  alterParticleUnscanned: function (particle, radius = 1) {
+  alterParticleUnscanned: function (particle) {
     const index = content.sphereIndex.get()
 
     particle.target.h = 0
     particle.target.s = 0
     particle.target.v = 0.25
-    particle.target.x = particle.spheres[index].x * radius
-    particle.target.y = particle.spheres[index].y * radius
-    particle.target.z = particle.spheres[index].z * radius
+    particle.target.x = particle.spheres[index].x * this.unscannedRadius
+    particle.target.y = particle.spheres[index].y * this.unscannedRadius
+    particle.target.z = particle.spheres[index].z * this.unscannedRadius
   },
   getLightSource: () => engine.tool.vector3d.create(),
   getRotation: function () {

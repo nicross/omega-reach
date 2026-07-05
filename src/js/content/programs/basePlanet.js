@@ -1,6 +1,7 @@
 content.programs.basePlanet = content.programs.invent({
   id: 'basePlanet',
   bumpiness: 1,
+  unscannedRadius: 1,
   fieldDefinitions: {
     radius: {octaves: 2},
   },
@@ -41,7 +42,7 @@ content.programs.basePlanet = content.programs.invent({
       time = content.time.value()
 
     if (!isScanned) {
-      return this.alterParticleUnscanned(particle, 1)
+      return this.alterParticleUnscanned(particle)
     }
 
     if (!this.alterParticleVertex(particle, particle.spheres[index])) {

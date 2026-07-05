@@ -396,6 +396,30 @@ content.planets = (() => {
           'Supervolcanoes',
         ],
       },
+      // Black holes
+      {
+        label: 'Black hole',
+        program: 'blackHolePlanet',
+        habitability: 0,
+        instrument: 0,
+        moons: 2,
+        weight: star.wildcard * star.age * 0.5,
+        commonQuirks: [
+          'Dilated time',
+          'Dark matter candidate',
+          'Gravitational microlens',
+          'Hawking radiation',
+          'Irregular spin',
+          'Primordial',
+          'Unusual charge',
+        ],
+        rareQuirks: [
+          'Captured asteroid',
+          'Distress beacon',
+          'Retrograde orbit',
+          'Spaceship graveyard',
+        ],
+      },
     ]
   }
 

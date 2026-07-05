@@ -127,7 +127,7 @@ content.rooms.galaxy = content.rooms.invent({
     const galaxy = this.getGalaxy()
 
     content.programs.load(galaxy.program, {
-      galaxy,
+      body: galaxy,
       seed: galaxy.name,
     })
   },

@@ -2,6 +2,7 @@
   const baseDefinition = {
     id: 'baseMoon',
     bumpiness: 3,
+    unscannedRadius: 0.5,
     onLoad: function () {
       content.sphereIndex.randomize()
 
@@ -15,10 +16,6 @@
           particle.target.x *= radiusFactor
           particle.target.y *= radiusFactor
           particle.target.z *= radiusFactor
-        } else {
-          particle.target.x *= 0.5
-          particle.target.y *= 0.5
-          particle.target.z *= 0.5
         }
       }
 

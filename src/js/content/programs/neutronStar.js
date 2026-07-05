@@ -18,7 +18,7 @@ content.programs.neutronStar = content.programs.invent({
   alterParticleVertex: function (particle, point) {
     const time = content.time.value()
 
-    const radius = engine.fn.lerp(0.125, 0.25, this.options.star.radius) + engine.fn.lerpExp(0, this.properties.radius4dLength, this.fields.radius4d.valueAt({
+    const radius = engine.fn.lerp(0.125, 0.25, this.options.body.radius) + engine.fn.lerpExp(0, this.properties.radius4dLength, this.fields.radius4d.valueAt({
       time,
       x: point.x,
       y: point.y,

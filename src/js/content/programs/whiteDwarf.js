@@ -16,7 +16,7 @@ content.programs.whiteDwarf = content.programs.invent({
   alterParticleVertex: function (particle, point) {
     const time = content.time.value()
 
-    const radius = engine.fn.lerp(0.25, 0.75, this.options.star.radius) + engine.fn.lerp(0, 0.125, this.fields.radius4d.valueAt({
+    const radius = engine.fn.lerp(0.25, 0.75, this.options.body.radius) + engine.fn.lerp(0, 0.125, this.fields.radius4d.valueAt({
       time,
       x: point.x,
       y: point.y,

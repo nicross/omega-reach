@@ -1,5 +1,6 @@
 content.programs.baseStar = content.programs.invent({
   id: 'baseStar',
+  unscannedRadius: 2,
   fieldDefinitions: {
     radius4d: {type: 'simplex4d'},
   },
@@ -24,15 +25,15 @@ content.programs.baseStar = content.programs.invent({
   // Particles
   alterParticle: function (particle) {
     const index = content.sphereIndex.get(),
-      isScanned = content.scans.is(this.options.star.name),
+      isScanned = content.scans.is(this.options.body.name),
       time = content.time.value()
 
     if (!isScanned) {
-      return this.alterParticleUnscanned(particle, 2)
+      return this.alterParticleUnscanned(particle)
     }
 
     if (!this.alterParticleVertex(particle, particle.spheres[index])) {
-      const radius = engine.fn.lerp(2, 4, this.options.star.radius)
+      const radius = engine.fn.lerp(2, 4, this.options.body.radius)
         + (0.5 * this.fields.radius4d.valueAt({
             time,
             x: particle.spheres[index].x,
@@ -55,7 +56,7 @@ content.programs.baseStar = content.programs.invent({
   alterParticleColor: function (particle, point) {},
   alterParticleVertex: function (particle, point) {},
   getRotation: function () {
-    return content.scans.is(this.options.star.name)
+    return content.scans.is(this.options.body.name)
       ? this.properties.rotation
       : engine.tool.quaternion.identity()
   },
@@ -69,4 +70,6 @@ content.programs.baseStar = content.programs.invent({
       z: point.z,
     }, 2, 0.0125)
   },
+  // Planet and moon support
+  radiusFactor: 1,
 })

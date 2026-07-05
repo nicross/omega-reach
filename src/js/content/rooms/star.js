@@ -217,7 +217,7 @@ content.rooms.star = content.rooms.invent({
     const star = this.getStar()
 
     content.programs.load(star.program, {
-      star,
+      body: star,
       seed: star.name,
     })
   },
