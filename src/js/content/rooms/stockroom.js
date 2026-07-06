@@ -238,4 +238,10 @@ content.rooms.stockroom = content.rooms.invent({
       content.programs.load('stockroomEmpty')
     }
   },
+  // Atrium
+  getAtriumMuffle: () => 13/16,
+  getAtriumPan: () => 0,
+  // Reach
+  getReachMuffle: () => 1 - (1/32),
+  getReachPan: () => 0,
 })

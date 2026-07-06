@@ -12,6 +12,7 @@
 - Inverted the input at The horizon.
 - Animated object rotations when transitioning.
 - Lit moons from same light source as their planets.
+- Made the reach audible from the gallery and stockroom.
 - Updated the manual accordingly.
 - Updated desktop builds to Electron 42.
 

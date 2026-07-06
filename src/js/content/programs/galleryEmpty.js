@@ -1,9 +1,7 @@
 content.programs.galleryEmpty = content.programs.invent({
   id: 'galleryEmpty',
   // Synthesis
-  invertSynthX: function () {
-    return !content.solution.has()
-  },
+  invertSynthX: () => true,
   // Particles
   alterParticle: function (particle) {
     particle.target.h = 0

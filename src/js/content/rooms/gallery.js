@@ -243,4 +243,10 @@ content.rooms.gallery = content.rooms.invent({
 
     return this
   },
+  // Atrium
+  getAtriumMuffle: () => 1,
+  getAtriumPan: () => 0,
+  // Reach
+  getReachMuffle: () => 1 - (1/16),
+  getReachPan: () => 0,
 })
