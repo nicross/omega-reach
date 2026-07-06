@@ -8,27 +8,25 @@ app.controls.midi = (() => {
     sustainActive = false
 
   // Build mappings
-  let mappingNote = 25
+  let mappingNote = 0
 
-  for (let i = 0; i < 3; i += 1) {
-    for (let x = 0; x < 5; x += 1) {
-      for (let y = 0; y < 5; y += 1) {
-        const vector = engine.tool.vector3d.create({
-          ...engine.tool.vector2d.unitX().rotate(
-            engine.const.tau * (
-              0.5 + ((i + (x / 5)) / 3)
-            )
-          ),
-          z: [-0.666, -0.333, 0, 0.333, 0.666][y],
-        }).normalize()
+  for (let x = 0; x < 26; x += 1) {
+    for (let y = 0; y < 5; y += 1) {
+      const vector = engine.tool.vector3d.create({
+        ...engine.tool.vector2d.unitX().rotate(
+          engine.const.tau * (
+            0.5 + (x / 25)
+          )
+        ),
+        z: [-0.666, -0.333, 0, 0.333, 0.666][y],
+      }).normalize()
 
-        vector.depth = 0
-        vector.depthPrime = 0
-        vector.zPrime = vector.z
+      vector.depth = 0
+      vector.depthPrime = 0
+      vector.zPrime = vector.z
 
-        mappings.set(mappingNote, vector)
-        mappingNote += 1
-      }
+      mappings.set(mappingNote, vector)
+      mappingNote += 1
     }
   }
 
