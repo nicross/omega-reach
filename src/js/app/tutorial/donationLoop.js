@@ -225,6 +225,8 @@ app.tutorial.donationLoop = app.tutorial.invent({
               engine.fn.randomInt(10, 20)
             )
           }
+
+          this.state.visitorWood = true
         },
         title: () => (
           this.state.visitorWoodWeird
