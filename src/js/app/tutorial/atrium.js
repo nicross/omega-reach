@@ -35,7 +35,7 @@ app.tutorial.atrium = app.tutorial.invent({
       },
       {
         title: () => `${this.state.lazy ? 'No' : 'Of course'}, you're the curator!`,
-        description: `With the auction house cleared and the next cycle starting, the gallery sits criminally empty. It would be best for you to preserve as much as you can by using <strong>the reach</strong>.`,
+        description: `With <strong>the emporium</strong> cleared and the next cycle starting, <strong>the gallery</strong> sits criminally empty. It would be best for you to preserve as much as you can by using <strong>the reach</strong>.`,
         actions: [
           {
             label: 'Get to work',

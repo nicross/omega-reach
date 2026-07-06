@@ -14,7 +14,7 @@ app.screen.game.movement = (() => {
     down: function () {
       const e = {
         direction: 'down',
-        isFootstep: ['atrium','cellar','gallery','lobby','reach','shop','stockroom'].includes(content.location.id()),
+        isFootstep: ['atrium','cellar','emporium','gallery','lobby','reach','shop','stockroom'].includes(content.location.id()),
         isOut: ['horizon','galaxy','star','planet','moon'].includes(content.location.id()),
       }
 
@@ -68,7 +68,7 @@ app.screen.game.movement = (() => {
     up: function () {
       const e = {
         direction: 'up',
-        isFootstep: ['atrium','cellar','gallery','lobby','shop'].includes(content.location.id()),
+        isFootstep: ['atrium','cellar','gallery','lobby','reliquary','shop'].includes(content.location.id()),
         isIn: ['reach','horizon','galaxy','star','planet','moon'].includes(content.location.id()),
       }
 

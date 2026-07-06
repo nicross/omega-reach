@@ -1,5 +1,7 @@
 # CHANGELOG
 ## v1.2.0
+- Added the emporium.
+- Added the reliquary.
 - Added a new galaxy type.
 - Added a new star type.
 - Added a new planet and moon type.

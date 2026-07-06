@@ -4,10 +4,14 @@ content.rooms.lobby = content.rooms.invent({
   name: 'The lobby',
   description: 'Closed to visitors',
   defaultProgram: 'lobby',
+  moveDownLabel: 'To the reliquary',
   moveRightLabel: 'To the atrium',
+  moveUpLabel: 'To the emporium',
   // Transitions
   transitions: {
+    down: 'reliquary',
     right: 'atrium',
+    up: 'emporium',
   },
   // Methods
   getDescription: function () {

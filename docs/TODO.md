@@ -15,21 +15,13 @@
   - The quagmire (-25% donations, once per run)
   - The rift (-50% current sanity)
   - The trove (+50% donations, once per run)
-- New rooms
-  - The emporium, north of lobby, empty
-  - The reliquary, south of lobby, empty
 - Tutorials
   - Allow pausing during dialogs, but change message to say "Collection last saved (time ago)"
   - How to navigate between cellar floors
   - Automatic death upon entering fourth floor of cellar
   - Separate the lore from tutorial text in more places, e.g. the gallery
-  - Rename the auction house to the emporium (and bold it) in the opening sequence
   - Initial dialogs for the new empty rooms
-- MIDI interactions
-  - D#1 -> E3: -180 to -60deg
-  - F3 -> F#5: -60 to 60deg
-  - G5 -> G#7: 60 to 180deg
-  - Imagine a 5x5 grid, from left to right then bottom to top
+  - Update manual with emporium and reliquary
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect
