@@ -14,10 +14,6 @@ const app = (() => {
   return {
     activate: function () {
       isActive = true
-
-      root = document.querySelector('.a-app')
-      root.classList.add('a-app-active')
-
       readyContext.resolve()
 
       return this
@@ -34,6 +30,12 @@ const app = (() => {
       if (this.isElectron()) {
         ElectronApi.quit()
       }
+
+      return this
+    },
+    preActivate: function () {
+      root = document.querySelector('.a-app')
+      root.classList.add('a-app-active')
 
       return this
     },

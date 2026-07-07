@@ -111,10 +111,9 @@
 }
 .a-app-immersive .a-game--nav {
   opacity: 0;
-}
-.a-app-immersive .a-game--nav {
   transition: 0.25s opacity linear;
 }
+.a-app-immersive .a-game--nav:focus-within,
 .a-app-immersive .a-game--nav:hover {
   opacity: 1;
 }

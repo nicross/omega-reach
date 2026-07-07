@@ -29,6 +29,14 @@ app.settings.register('graphicsOn', {
   },
 })
 
+app.settings.register('immersiveOn', {
+  compute: (rawValue) => Boolean(rawValue),
+  default: false,
+  update: function (computedValue) {
+    app.setImmersive(computedValue)
+  },
+})
+
 app.settings.register('inputHold', {
   compute: (rawValue) => Boolean(rawValue),
   default: true,

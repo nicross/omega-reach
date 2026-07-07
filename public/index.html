@@ -12,6 +12,30 @@
       <canvas class="a-app--canvas"></canvas>
       <canvas class="a-app--overlaySupport"></canvas>
 
+      <div class="a-app--screen a-app--demo">
+        <section class="c-screen a-demo">
+          <div class="a-demo--dialog" role="dialog">
+            <div class="a-demo--dialogContent">
+              <div class="a-demo--dialogText" tabindex="0" aria-description="2 actions">
+                <h1 class="a-demo--dialogTitle">Demo limitations</h1>
+                <div class="a-demo--dialogDescription">
+                  <p>Freely explore the universe. Bring your progress into the full version, which features:</p>
+                  <ul>
+                    <li><strong>The reliquary</strong> and unique relics to collect.</li>
+                    <li><strong>The emporium</strong> and new universes to explore.</li>
+                    <li>More interactions with staff and guests.</li>
+                  </ul>
+                </div>
+              </div>
+              <ul class="a-demo--dialogActions">
+                <li><button class="c-menuButton a-demo--confirm" type="button">Continue to Demo</button></li>
+                <li><a class="c-menuButton" href="https://store.steampowered.com/app/4638520/THE_OMEGA_REACH/" target="_blank">Wishlist on Steam</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
       <div class="a-app--screen a-app--screen-transparent a-app--game">
         <section class="c-screen a-game" aria-label="Game" tabindex="-1">
           <div class="a-game--info" id="a-game--info" tabindex="0">
@@ -53,30 +77,6 @@
           </section>
 
           <div class="u-screenReader a-game--live" aria-live="assertive"></div>
-        </section>
-      </div>
-
-      <div class="a-app--screen a-app--demo">
-        <section class="c-screen a-demo">
-          <div class="a-demo--dialog" role="dialog">
-            <div class="a-demo--dialogContent">
-              <div class="a-demo--dialogText" tabindex="0" aria-description="2 actions">
-                <h1 class="a-demo--dialogTitle">Demo limitations</h1>
-                <div class="a-demo--dialogDescription">
-                  <p>Freely explore the universe. Bring your progress into the full version, which features:</p>
-                  <ul>
-                    <li><strong>The reliquary</strong> and unique relics to collect.</li>
-                    <li><strong>The emporium</strong> and new universes to explore.</li>
-                    <li>More interactions with staff and guests.</li>
-                  </ul>
-                </div>
-              </div>
-              <ul class="a-demo--dialogActions">
-                <li><button class="c-menuButton a-demo--confirm" type="button">Continue to Demo</button></li>
-                <li><a class="c-menuButton" href="https://store.steampowered.com/app/4638520/THE_OMEGA_REACH/" target="_blank">Wishlist on Steam</a></li>
-              </ul>
-            </div>
-          </div>
         </section>
       </div>
 
@@ -339,6 +339,15 @@
               <div class="c-screen--label" id="a-settingsVideo--graphicsOnLabel">Enable graphics</div>
               <div class="c-toggle a-settingsVideo--graphicsOn">
                 <button class="c-toggle--button" role="switch" aria-checked="false" aria-labeledby="a-settingsVideo--graphicsOnLabel">
+                  <span class="c-toggle--off">Off</span>
+                  <span class="c-toggle--on">On</span>
+                </button>
+              </div>
+            </li>
+            <li class="c-screen--field">
+              <div class="c-screen--label" id="a-settingsVideo--immersiveOnLabel">Immersive mode</div>
+              <div class="c-toggle a-settingsVideo--immersiveOn">
+                <button class="c-toggle--button" role="switch" aria-checked="false" aria-labeledby="a-settingsVideo--immersiveOnLabel">
                   <span class="c-toggle--off">Off</span>
                   <span class="c-toggle--on">On</span>
                 </button>

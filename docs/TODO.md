@@ -1,9 +1,6 @@
 # TODO
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
-- Immersive mode
-  - Toggle in settings, defaults to off
-  - 0% opacity game UI, muted screen reader, except dialogs
-  - Improve behavior of enter/space and the interact button
+- MIDI input preference
 - Cellar expansion
   - Tiles to ascend/descend floors (one per floor, interact to teleport)
   - The augury (-3 max sanity, once per run)

@@ -17,6 +17,7 @@ app.screen.game = app.screenManager.invent({
     this.infoElement = this.rootElement.querySelector('.a-game--info')
     this.leftElement = this.rootElement.querySelector('.a-game--left')
     this.menuElement = this.rootElement.querySelector('.a-game--menu')
+    this.navElement = this.rootElement.querySelector('.a-game--nav')
     this.rightElement = this.rootElement.querySelector('.a-game--right')
     this.interactElement = this.rootElement.querySelector('.a-game--interact')
     this.upElement = this.rootElement.querySelector('.a-game--up')
@@ -156,7 +157,9 @@ app.screen.game = app.screenManager.invent({
   },
   // Methods
   getFocusWithinTarget: function () {
-    return this.dialog.isOpen() ? this.dialogElement : this.infoElement
+    return this.dialog.isOpen()
+      ? this.dialogElement
+      : (app.isImmersive() ? this.rootElement : this.infoElement)
   },
   setBlanked: function (value) {
     if (value) {

@@ -34,6 +34,7 @@ app.screen.settingsVideo = app.screenManager.invent({
     // Toggles
     this.toggles = [
       ['.a-settingsVideo--graphicsOn', app.settings.raw.graphicsOn, app.settings.setGraphicsOn],
+      ['.a-settingsVideo--immersiveOn', app.settings.raw.immersiveOn, app.settings.setImmersiveOn],
     ].map(([selector, initialValue, setter]) => {
       const component = app.component.toggle.hydrate(root.querySelector(selector), initialValue)
       component.on('change', () => setter(component.getValue()))

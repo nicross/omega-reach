@@ -3,6 +3,7 @@
   await engine.ready()
 
   // Load and apply preferences
+  app.preActivate()
   await app.storage.ready()
   app.updates.apply()
   app.settings.load()
