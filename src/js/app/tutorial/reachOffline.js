@@ -32,8 +32,12 @@ app.tutorial.reachOffline = app.tutorial.invent({
             before: () => app.settings.setInputPreference('mouse'),
           },
           {
-            label: 'an array of keys.',
+            label: 'a grid of keys.',
             before: () => app.settings.setInputPreference('keyboard'),
+          },
+          {
+            label: 'a row of black and white keys.',
+            before: () => app.settings.setInputPreference('midi'),
           },
         ],
         after: () => {

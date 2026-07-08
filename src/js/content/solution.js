@@ -1,11 +1,30 @@
 content.solution = (() => {
   const minSequentialDistance = 1.5
 
+  const solutionStrategies = {
+    gamepad: () => engine.tool.vector3d.create({
+      x: engine.fn.randomFloat(-1, 1),
+      y: engine.fn.randomFloat(-1, 1),
+      z: engine.fn.randomFloat(-1, 1),
+    }).normalize(),
+    keyboard: () => engine.fn.choose([...Object.values(
+      app.controls.interactions.keyboardMappings()
+    )], Math.random()),
+    midi: () => engine.fn.choose([...Object.values(
+      app.controls.midi.getMappings()
+    )], Math.random()),
+    mouse: () => engine.tool.vector3d.create({
+      x: engine.fn.randomFloat(0, 1),
+      y: engine.fn.randomFloat(-1, 1),
+      z: engine.fn.randomFloat(-1, 1),
+    }).normalize(),
+  }
+
   let previous,
     solution
 
   return {
-    generate: function (preference = app.settings.computed.inputPreference) {
+    generate: function () {
       if (solution) {
         previous = solution
       }
@@ -17,23 +36,7 @@ content.solution = (() => {
       }
 
       do {
-        if (preference == 'keyboard') {
-          solution = engine.fn.choose([...Object.values(
-            app.controls.interactions.keyboardMappings()
-          )], Math.random())
-        } else if (preference == 'mouse') {
-          solution = engine.tool.vector3d.create({
-            x: engine.fn.randomFloat(0, 1),
-            y: engine.fn.randomFloat(-1, 1),
-            z: engine.fn.randomFloat(-1, 1),
-          }).normalize()
-        } else {
-          solution = engine.tool.vector3d.create({
-            x: engine.fn.randomFloat(-1, 1),
-            y: engine.fn.randomFloat(-1, 1),
-            z: engine.fn.randomFloat(-1, 1),
-          }).normalize()
-        }
+        solution = solutionStrategies[app.settings.computed.inputPreference]()
       } while (previous && previous.distance(solution) < minSequentialDistance)
 
       return this

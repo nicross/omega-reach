@@ -1,6 +1,5 @@
 # TODO
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
-- MIDI input preference
 - Cellar expansion
   - Tiles to ascend/descend floors (one per floor, interact to teleport)
   - The augury (-3 max sanity, once per run)

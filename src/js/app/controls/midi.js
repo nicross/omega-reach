@@ -12,6 +12,10 @@ app.controls.midi = (() => {
 
   for (let x = 0; x < 26; x += 1) {
     for (let y = 0; y < 5; y += 1) {
+      if (!engine.fn.between(mappingNote, 0, 127)) {
+        continue
+      }
+
       const vector = engine.tool.vector3d.create({
         ...engine.tool.vector2d.unitX().rotate(
           engine.const.tau * (
@@ -130,6 +134,19 @@ app.controls.midi = (() => {
   }
 
   return {
+    getMappings: () => {
+      const entries = {}
+
+      for (const [key, value] of mappings.entries()) {
+        entries[key] = engine.tool.vector3d.create({
+          x: value.x,
+          y: value.y,
+          z: value.zPrime,
+        })
+      }
+
+      return entries
+    },
     getPoints: () => notes.values().map((note) => {
       const mapping = mappings.get(note)
 
