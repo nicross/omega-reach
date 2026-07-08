@@ -26,7 +26,7 @@ app.tutorial.reachOnline = app.tutorial.invent({
           gamepad: `Press <kbd>D-Pad Up</kbd> to extend <strong>the reach</strong> to its next zoom level. You may press <kbd>D-Pad Down</kbd> to zoom out from any level at any time. Zoom in to proceed.`,
           keyboard: `Press the <kbd>Up Arrow</kbd> to extend <strong>the reach</strong> to its next zoom level. You may press the <kbd>Down Arrow</kbd> to zoom out from any level at any time. Zoom in to proceed.`,
           mouse: `Click the <kbd>Up Button</kbd> to extend <strong>the reach</strong> to its next zoom level. You may click the <kbd>Down Button</kbd> to zoom out from any level at any time. Zoom in to proceed.`,
-        }[app.settings.computed.inputPreference]),
+        }[this.getInputPreference()]),
         actions: [
           {
             label: 'Regain control',

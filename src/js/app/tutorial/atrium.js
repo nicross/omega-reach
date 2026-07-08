@@ -66,7 +66,7 @@ app.tutorial.atrium = app.tutorial.invent({
           gamepad: `Use the <kbd>Directional Pad</kbd> to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
           keyboard: `Use the <kbd>Arrow Keys</kbd> to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
           mouse: `Click the <kbd>Arrow Buttons</kbd> to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
-        }[app.settings.computed.inputPreference]),
+        }[this.getInputPreference()]),
         actions: [
           {
             label: 'Regain control',

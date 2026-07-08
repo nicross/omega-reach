@@ -27,7 +27,7 @@ app.tutorial.galleryComplete = app.tutorial.invent({
           gamepad: `Dislike anything? or just need credits for <strong>the shop</strong>? ${app.settings.computed.inputHold ? 'Hold' : 'Press'} the <kbd>A</kbd> button to sell any instrument. You will be prompted to confirm your choice.`,
           keyboard: `Dislike anything? or just need credits for <strong>the shop</strong>? ${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd> to sell any instrument. You will be prompted to confirm your choice.`,
           mouse: `Dislike anything? or just need credits for <strong>the shop</strong>? ${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Sell Button</kbd> to sell any instrument. You will be prompted to confirm your choice.`,
-        }[app.settings.computed.inputPreference]),
+        }[this.getInputPreference()]),
         actions: [
           {
             label: 'Regain control',

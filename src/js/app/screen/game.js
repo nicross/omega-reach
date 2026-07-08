@@ -75,6 +75,7 @@ app.screen.game = app.screenManager.invent({
     const threshold = {
       gamepad: 2/3,
       keyboard: 1/6,
+      midi: 2/3,
       mouse: 2/3,
     }[app.settings.computed.inputPreference] * app.settings.computed.puzzleDifficulty
 

@@ -82,7 +82,7 @@ app.tutorial.reachOffline = app.tutorial.invent({
           gamepad: `Hold one or both <kbd>Triggers</kbd> and move the <kbd>Analog Sticks</kbd> to interact. Locate the sweet spot using audio, visual, and haptic cues to proceed.`,
           keyboard: `Press one or more keys to interact. Each key points to a location. Locate the sweet spot using audio and visual cues to proceed.`,
           mouse: `Click to interact at that location. Locate the sweet spot using audio and visual cues to proceed.`,
-        }[app.settings.computed.inputPreference]),
+        }[this.getInputPreference()]),
         actions: [
           {
             label: 'Next tutorial',
@@ -96,7 +96,7 @@ app.tutorial.reachOffline = app.tutorial.invent({
           gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} the <kbd>A</kbd> button to skip the current interaction. You will not be penalized for doing so.`,
           keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd> to skip the current interaction. You will not be penalized for doing so.`,
           mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Examine Button</kbd> to skip the current interaction. You will not be penalized for doing so.`,
-        }[app.settings.computed.inputPreference]),
+        }[this.getInputPreference()]),
         actions: [
           {
             label: 'Regain control',

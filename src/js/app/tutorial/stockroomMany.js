@@ -17,7 +17,7 @@ app.tutorial.galleryMany = app.tutorial.invent({
           gamepad: `<strong>The stockroom</strong> can hold many instruments. Press <kbd>D-Pad Right</kbd> and <kbd>D-Pad Left</kbd> to navigate between the shopkeeper's wares.`,
           keyboard: `<strong>The stockroom</strong> can hold many instruments. Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd> to navigate between the shopkeeper's wares.`,
           mouse: `<strong>The stockroom</strong> can hold many instruments. Click the <kbd>Arrow Buttons</kbd> to navigate between the shopkeeper's wares.`,
-        }[app.settings.computed.inputPreference]),
+        }[this.getInputPreference()]),
         actions: [
           {
             label: 'Regain control',
