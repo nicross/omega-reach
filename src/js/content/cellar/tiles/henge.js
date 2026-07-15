@@ -1,48 +1,22 @@
 content.cellar.tiles.henge = content.cellar.tiles.invent({
   id: 'henge',
-  alwaysAudible: true,
-  isUnique: true,
   name: 'The henge',
   uniquePerRun: true,
   weight: 1/12,
-  getEffects: function () {
-    const effects = [],
-      scans = content.cellar.scans.get(this)
-
-    if (scans > 1 || !content.cellar.health.has(4)) {
-      effects.push({
-        apply: () => {
-          content.cellar.health.set(4)
-          content.audio.sanityChange.trigger({isUp: true})
-        },
-        attribute: {
-          label: 'Sanity restored',
-          modifiers: [],
-        },
-      })
+  onEnterEffects: function () {
+    if (content.cellar.health.has(4)) {
+      return
     }
 
-    effects.push({
-      apply: () => {},
+    content.cellar.health.set(4)
+    content.audio.sanityChange.trigger({isUp: true})
+
+    this.effectsOnEnter.push({
       attribute: {
-        label: 'Nexus of power',
-        modifiers: ['legendary'],
+        label: 'Sanity restored',
+        modifiers: [],
       },
     })
-
-    return effects
-  },
-  onEnter: function () {
-    const effects = this.getEffects()
-
-    for (const effect of effects) {
-      effect.apply()
-    }
-
-    content.cellar.scans.set(this, effects.length)
-  },
-  onExit: function () {
-    content.cellar.scans.set(this, 0)
   },
   alterParticle: function (particle) {
     const radius = 2.5
@@ -74,4 +48,4 @@ content.cellar.tiles.henge = content.cellar.tiles.invent({
     particle.target.s = engine.fn.lerpExp(0, 2/3 + Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1])/6, value, 0.5)
     particle.target.v = engine.fn.lerpExp(1, 1/2 + Math.sin(engine.const.tau * time * particle.twinkleFrequencies[2])/4, value, 0.5)
   },
-})
+}, content.cellar.tiles.baseUnique)

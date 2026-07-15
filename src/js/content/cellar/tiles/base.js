@@ -7,7 +7,7 @@ content.cellar.tiles.base = {
   uniquePerRun: false,
   weight: 1,
   // Instance properties
-  effects : undefined,
+  effects: undefined,
   note: undefined,
   prime: undefined,
   seed: undefined,

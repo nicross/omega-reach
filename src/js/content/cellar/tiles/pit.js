@@ -1,48 +1,22 @@
 content.cellar.tiles.pit = content.cellar.tiles.invent({
   id: 'pit',
-  alwaysAudible: true,
-  isUnique: true,
   name: 'The pit',
   uniquePerRun: true,
   weight: 1/12,
-  getEffects: function () {
-    const effects = [],
-      scans = content.cellar.scans.get(this)
-
-    if (scans > 1 || content.cellar.health.has(2)) {
-      effects.push({
-        apply: () => {
-          content.cellar.health.subtract(1)
-          content.audio.sanityChange.trigger({isUp: false})
-        },
-        attribute: {
-          label: 'Sanity drained',
-          modifiers: [],
-        },
-      })
+  onEnterEffects: function () {
+    if (!content.cellar.health.has(2)) {
+      return
     }
 
-    effects.push({
-      apply: () => {},
+    content.cellar.health.subtract(1)
+    content.audio.sanityChange.trigger({isUp: false})
+
+    this.effectsOnEnter.push({
       attribute: {
-        label: 'Nexus of power',
-        modifiers: ['legendary'],
+        label: 'Sanity drained',
+        modifiers: [],
       },
     })
-
-    return effects
-  },
-  onEnter: function () {
-    const effects = this.getEffects()
-
-    for (const effect of effects) {
-      effect.apply()
-    }
-
-    content.cellar.scans.set(this, effects.length)
-  },
-  onExit: function () {
-    content.cellar.scans.set(this, 0)
   },
   alterParticle: function (particle) {
     const radius = 10
@@ -70,4 +44,4 @@ content.cellar.tiles.pit = content.cellar.tiles.invent({
 
     particle.target.v *= 1 - distance
   },
-})
+}, content.cellar.tiles.baseUnique)

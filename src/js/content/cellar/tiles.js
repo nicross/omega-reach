@@ -111,11 +111,8 @@ content.cellar.tiles = (() => {
 
       return this
     },
-    invent: function (prototype) {
-      if (!this.base.isPrototypeOf(prototype)) {
-        prototype = this.base.extend(prototype)
-      }
-
+    invent: function (prototype, base = this.base) {
+      prototype = base.extend(prototype)
       registry.set(prototype.id, prototype)
 
       return prototype

@@ -236,6 +236,9 @@ content.rooms.cellar = content.rooms.invent({
   onEnter: function () {
     // XXX: Tile effects persist when saving/loading, do not call onEnter()
   },
+  onExit: function () {
+    // XXX: Tile effects persist when saving/loading, do not call onExit()
+  },
   updateProgram: function () {
     content.programs.load(this.defaultProgram)
   },

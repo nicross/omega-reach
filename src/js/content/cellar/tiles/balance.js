@@ -1,7 +1,5 @@
 content.cellar.tiles.balance = content.cellar.tiles.invent({
   id: 'balance',
-  alwaysAudible: true,
-  isUnique: true,
   name: 'The balance',
   uniquePerRun: true,
   weight: 1/12,
@@ -13,46 +11,23 @@ content.cellar.tiles.balance = content.cellar.tiles.invent({
       engine.fn.scale(current, 1, max, max, 1)
     )
   },
-  getEffects: function () {
-    const effects = [],
-      health = content.cellar.health.amount(),
-      scans = content.cellar.scans.get(this),
+  onEnterEffects: function () {
+    const health = content.cellar.health.amount(),
       target = this.calculateTargetHealth()
 
-    if (scans > 1 || health != target) {
-      effects.push({
-        apply: () => {
-          content.cellar.health.set(target)
-          content.audio.sanityChange.trigger({isUp: health < target})
-        },
-        attribute: {
-          label: 'Sanity inverted',
-          modifiers: [],
-        },
-      })
+    if (health == target) {
+      return
     }
 
-    effects.push({
-      apply: () => {},
+    content.cellar.health.set(target)
+    content.audio.sanityChange.trigger({isUp: health < target})
+
+    this.effectsOnEnter.push({
       attribute: {
-        label: 'Nexus of power',
-        modifiers: ['legendary'],
+        label: 'Sanity inverted',
+        modifiers: [],
       },
     })
-
-    return effects
-  },
-  onEnter: function () {
-    const effects = this.getEffects()
-
-    for (const effect of effects) {
-      effect.apply()
-    }
-
-    content.cellar.scans.set(this, effects.length)
-  },
-  onExit: function () {
-    content.cellar.scans.set(this, 0)
   },
   alterParticle: function (particle) {
     if (Math.abs(particle.target.x) > 10 || Math.abs(particle.target.y) > 10) {
@@ -65,4 +40,4 @@ content.cellar.tiles.balance = content.cellar.tiles.invent({
     particle.target.z += 2 * value
     particle.target.v *= 0.5 * (value + 1)
   },
-})
+}, content.cellar.tiles.baseUnique)
