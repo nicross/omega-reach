@@ -158,7 +158,7 @@ app.tutorial.shopLoop = app.tutorial.invent({
               ? `<q>Nice choice!</q>`
               : `<q>Makes sense.</q>`
           ),
-          description: `The shopkeeper disappears once more through the cellar door for their mandated lunch break.`,
+          description: `The shopkeeper disappears once more down the cellar door for their mandated lunch break.`,
           actions: [
             {
               label: 'Back to work',

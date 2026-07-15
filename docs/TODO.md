@@ -1,16 +1,19 @@
 # TODO
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
 - Cellar expansion
+  - Global tile effects
   - Tiles to ascend/descend floors (one per floor, interact to teleport)
-  - The augury (-3 max sanity, once per run)
-  - The counterbalance (>50% -> +1 / <50% -> -1)
-  - The fountain (+1 sanity)
-  - The junction (+50% current sanity)
-  - The median (sanity -> 50%)
-  - The obelisk (+3 max sanity, once per run)
-  - The quagmire (-25% donations, once per run)
-  - The rift (-50% current sanity)
-  - The trove (+50% donations, once per run)
+  - Check TODOs for graphics and global effects
+    - The augury
+    - The contraption
+    - The fountain
+    - The junction
+    - The median
+    - The obelisk
+    - The quagmire
+    - The rift
+    - The trove
+  - Document new tiles in manual
 - Tutorials
   - Allow pausing during dialogs, but change message to say "Collection last saved (time ago)"
   - How to navigate between cellar floors
@@ -18,6 +21,7 @@
   - Separate the lore from tutorial text in more places, e.g. the gallery
   - Initial dialogs for the new empty rooms
   - Update manual with emporium and reliquary
+- Revisit how gamepad is mapped onto sphere
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect

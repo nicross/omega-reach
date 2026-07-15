@@ -1,8 +1,7 @@
 content.cellar.tiles.balance = content.cellar.tiles.invent({
   id: 'balance',
   name: 'The balance',
-  uniquePerRun: true,
-  weight: 1/12,
+  uniquePerFloor: true,
   calculateTargetHealth: function () {
     const current = content.cellar.health.amount(),
       max = content.cellar.health.max()
@@ -12,6 +11,8 @@ content.cellar.tiles.balance = content.cellar.tiles.invent({
     )
   },
   onEnterEffects: function () {
+    // Health = max * (1 - (health / max))
+
     const health = content.cellar.health.amount(),
       target = this.calculateTargetHealth()
 
@@ -24,7 +25,7 @@ content.cellar.tiles.balance = content.cellar.tiles.invent({
 
     this.effectsOnEnter.push({
       attribute: {
-        label: 'Sanity inverted',
+        label: `Sanity ${health > target ? 'restored' : 'drained'}`,
         modifiers: [],
       },
     })

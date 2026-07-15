@@ -1,12 +1,13 @@
 content.cellar.tiles.ziggurat = content.cellar.tiles.invent({
   id: 'ziggurat',
   name: 'The ziggurat',
-  uniquePerRun: true,
-  weight: 1/12,
+  uniquePerFloor: true,
   defaultState: {
     delta: 0,
   },
   onEnterEffects: function () {
+    // Health trends toward 50% max
+
     const health = content.cellar.health.amount(),
       midpoint = Math.ceil(content.cellar.health.max() * 0.5)
 
@@ -24,7 +25,7 @@ content.cellar.tiles.ziggurat = content.cellar.tiles.invent({
 
       this.effectsOnEnter.push({
         attribute: {
-          label: `Sanity depleted`,
+          label: `Sanity drained`,
           modifiers: [],
         },
       })

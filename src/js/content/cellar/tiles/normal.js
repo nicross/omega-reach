@@ -210,5 +210,7 @@ content.cellar.tiles.normal = (() => {
 
       return this.extend(tile)
     },
+    // Total of all other tiles * 3 (i.e. 80% of all tiles are normal)
+    weight: ((2 * 4) + (9 * 1) + (4 * 1/4)) * 4,
   })
 })()

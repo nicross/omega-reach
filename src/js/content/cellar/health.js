@@ -27,6 +27,7 @@ content.cellar.health = (() => {
 
       return this
     },
+    isMax: () => amount == calculateMax(),
     max: () => calculateMax(),
     progress: () => amount / calculateMax(),
     reset: function () {

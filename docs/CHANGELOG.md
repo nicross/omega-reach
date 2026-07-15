@@ -5,6 +5,7 @@
 - Added a new galaxy type.
 - Added a new star type.
 - Added a new planet and moon type.
+- Added nine new tiles to the cellar.
 - Added a toggle for immersive mode.
 - Added support for MIDI input.
 - Added a slider for drone volume.
