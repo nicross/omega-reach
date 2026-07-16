@@ -1,10 +1,11 @@
 # TODO
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
 - Cellar expansion
-  - Tiles to ascend/descend floors (one per floor, interact to teleport)
+  - Interact to use ascent/descent
   - Check TODOs for graphics
-    - The augury
+    - The ascent
     - The contraption
+    - The descent
     - The fountain
     - The junction
     - The median
@@ -12,6 +13,7 @@
     - The quagmire
     - The rift
     - The trove
+    - the vision
   - Document new tiles in manual
 - Tutorials
   - Allow pausing during dialogs, but change message to say "Collection last saved (time ago)"

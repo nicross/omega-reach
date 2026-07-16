@@ -1,6 +1,6 @@
-content.cellar.tiles.augury = content.cellar.tiles.invent({
-  id: 'augury',
-  name: 'The augury',
+content.cellar.tiles.vision = content.cellar.tiles.invent({
+  id: 'vision',
+  name: 'The vision',
   uniquePerRun: true,
   weight: 1/2,
   defaultState: {

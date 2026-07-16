@@ -25,7 +25,7 @@ content.cellar.tiles.balance = content.cellar.tiles.invent({
 
     this.effectsOnEnter.push({
       attribute: {
-        label: `Sanity ${health > target ? 'restored' : 'drained'}`,
+        label: `Sanity ${health < target ? 'restored' : 'drained'}`,
         modifiers: [],
       },
     })

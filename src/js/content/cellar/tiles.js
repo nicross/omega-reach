@@ -73,6 +73,10 @@ content.cellar.tiles = (() => {
 
     // Combine all non-unique and unused-unique types
     for (const type of registry.values()) {
+      if (!type.canGenerate(tile)) {
+        continue
+      }
+      
       if (!type.isUnique) {
         nonUniqueTypes.push(type)
       } else if (!uniquesInUse.has(type.id)) {

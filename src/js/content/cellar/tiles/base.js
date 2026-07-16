@@ -18,6 +18,7 @@ content.cellar.tiles.base = {
   // State
   defaultState: {},
   // Generator
+  canGenerate: (tile) => true,
   generate: function (tile = {}) {
     return this.extend(tile)
   },

@@ -3,12 +3,12 @@ content.cellar.tiles.baseUnique = content.cellar.tiles.base.extend({
   effectsGlobal: [],
   effectsOnEnter: [],
   isUnique: true,
+  canGenerate: (tile) => engine.fn.between(tile.z, 0, -2), // Not past third floor
   getEffects: function () {
     return [
       ...this.effectsOnEnter,
       ...this.effectsGlobal,
       {
-        apply: () => {},
         attribute: {
           label: 'Nexus of power',
           modifiers: ['legendary'],
