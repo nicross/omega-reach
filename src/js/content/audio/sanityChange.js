@@ -5,7 +5,7 @@ content.audio.sanityChange = (() => {
 
   function trigger({
     delay = 1/12,
-    duration = 3/4,
+    duration = 1/2,
     isUp = true,
   } = {}) {
     const detune = engine.fn.randomFloat(-10, 10) + (isUp ? 0 : 600),

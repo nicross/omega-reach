@@ -29,7 +29,7 @@ content.cellar.tiles = (() => {
     const types = getTypes(tile)
     const type = engine.fn.chooseWeighted(types, srand())
 
-    if (type.isUnique) {
+    if (type.isUnique && !uniqueExists(tile)) {
       uniques.push({
         id: type.id,
         x: tile.x,
@@ -86,7 +86,29 @@ content.cellar.tiles = (() => {
     ]
   }
 
+  function uniqueExists(tile) {
+    for (const unique of uniques) {
+      if (unique.x == tile.x && unique.y == tile.y && unique.z == tile.z) {
+        return true
+      }
+    }
+
+    return false
+  }
+
   return {
+    calculateGlobalDonationRate: function () {
+      return uniques.reduce(
+        (value, tile) => value + this.get(tile).getGlobalDonationRate(),
+        0,
+      )
+    },
+    calculateGlobalHealthBonus: function () {
+      return uniques.reduce(
+        (value, tile) => value + this.get(tile).getGlobalHealthBonus(),
+        0,
+      )
+    },
     current: function () {
       return this.get(
         content.cellar.position.get()

@@ -1,9 +1,8 @@
 # TODO
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
 - Cellar expansion
-  - Global tile effects
   - Tiles to ascend/descend floors (one per floor, interact to teleport)
-  - Check TODOs for graphics and global effects
+  - Check TODOs for graphics
     - The augury
     - The contraption
     - The fountain

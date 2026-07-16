@@ -49,7 +49,9 @@ content.cellar.tiles.normal = (() => {
 
         return {
           apply: () => {
-            content.wallet.add(reward)
+            content.wallet.add(
+              Math.max(1, Math.round(reward * (1 + content.cellar.tiles.calculateGlobalDonationRate())))
+            )
           },
           attribute: {
             label: `${label} donation`,
@@ -69,7 +71,9 @@ content.cellar.tiles.normal = (() => {
 
         return {
           apply: () => {
-            content.wallet.add(reward)
+            content.wallet.add(
+              Math.max(1, Math.round(reward * (1 + content.cellar.tiles.calculateGlobalDonationRate())))
+            )
           },
           attribute: {
             label: `${label} donation`,
@@ -115,6 +119,10 @@ content.cellar.tiles.normal = (() => {
 
         return {
           apply: () => {
+            if (content.cellar.health.isMax()) {
+              return
+            }
+
             content.cellar.health.add(1)
             content.audio.sanityChange.trigger({isUp: true})
           },
@@ -139,6 +147,10 @@ content.cellar.tiles.normal = (() => {
 
         return {
           apply: () => {
+            if (content.cellar.health.isMax()) {
+              return
+            }
+
             content.cellar.health.setMax()
             content.audio.sanityChange.trigger({isUp: true})
           },
@@ -211,6 +223,6 @@ content.cellar.tiles.normal = (() => {
       return this.extend(tile)
     },
     // Total of all other tiles * 3 (i.e. 80% of all tiles are normal)
-    weight: ((2 * 4) + (9 * 1) + (4 * 1/4)) * 4,
+    weight: ((2 * 4) + (9 * 1) + (4 * 1/2)) * 4,
   })
 })()

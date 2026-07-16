@@ -3,9 +3,13 @@ content.cellar.health = (() => {
 
   let amount = 0
 
-  function calculateMax() {
+  function calculateMax(isRaw = false) {
     const count = content.instruments.count()
-    return 4 + Math.round(Math.sqrt(2 * count))
+    const raw = 4 + Math.round(Math.sqrt(2 * count))
+
+    return isRaw
+      ? raw
+      : raw + content.cellar.tiles.calculateGlobalHealthBonus()
   }
 
   return pubsub.decorate({
@@ -28,7 +32,7 @@ content.cellar.health = (() => {
       return this
     },
     isMax: () => amount == calculateMax(),
-    max: () => calculateMax(),
+    max: (isRaw = false) => calculateMax(isRaw),
     progress: () => amount / calculateMax(),
     reset: function () {
       amount = 0

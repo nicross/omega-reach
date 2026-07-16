@@ -2,8 +2,34 @@ content.cellar.tiles.augury = content.cellar.tiles.invent({
   id: 'augury',
   name: 'The augury',
   uniquePerRun: true,
-  weight: 1/4,
-  // TODO: Global effects (-3 max sanity, once per run)
+  weight: 1/2,
+  defaultState: {
+    entered: false,
+  },
+  effectsGlobal: [
+    {
+      attribute: {
+        label: `Weakened sanity`,
+        modifiers: [],
+      }
+    },
+  ],
+  getGlobalHealthBonus: () => -3,
+  onEnterEffects: function () {
+    if (this.state.entered) {
+      return
+    }
+
+    const health = content.cellar.health.amount()
+    const target = Math.max(1, health - this.getGlobalHealthBonus())
+
+    if (health > target) {
+      content.cellar.health.set(target)
+      content.audio.sanityChange.trigger({isUp: false})
+    }
+
+    this.state.entered = true
+  },
   alterParticle: function (particle) {
     // TODO: Cloud, centered at {0,0,2}, points oscilalting between floor and target
   },
