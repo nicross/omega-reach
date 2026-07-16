@@ -5,15 +5,16 @@
 - Added a new galaxy type.
 - Added a new star type.
 - Added a new planet and moon type.
-- Added nine new tiles to the cellar.
+- Added donations for playing instruments in the gallery.
+- Added eleven new unique tiles to the cellar.
+- Added three new floors to the cellar.
 - Added a toggle for immersive mode.
 - Added support for MIDI input.
 - Added a slider for drone volume.
 - Added a slider for effect volume.
 - Added a demo limitations dialog on startup.
-- Accumulated donations when playing instruments in gallery.
 - Tracked time playing each instrument.
-- Inverted the input at The horizon.
+- Inverted the input at the horizon.
 - Animated object rotations when transitioning.
 - Lit moons from same light source as their planets.
 - Made the reach audible from the gallery and stockroom.
