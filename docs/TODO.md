@@ -2,7 +2,7 @@
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
 - Cellar expansion
   - Interact to use ascent/descent
-  - Check TODOs for graphics
+  - Particle effects
     - The ascent
     - The contraption
     - The descent
@@ -14,7 +14,6 @@
     - The rift
     - The trove
     - the vision
-  - Document new tiles in manual
 - Tutorials
   - Allow pausing during dialogs, but change message to say "Collection last saved (time ago)"
   - How to navigate between cellar floors
