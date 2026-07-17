@@ -8,37 +8,42 @@ content.cellar.tiles = (() => {
     engine.tool.vector3d.create({x: 0, y: 1, z: 0}), // shop
     engine.tool.vector3d.create({x: -1, y: 1, z: 0}), // atrium
     engine.tool.vector3d.create({x: -1, y: 2, z: 0}), // reach
+    engine.tool.vector3d.create({x: -2, y: 2, z: 0}), // emporium
     engine.tool.vector3d.create({x: -2, y: 1, z: 0}), // lobby
+    engine.tool.vector3d.create({x: -2, y: 0, z: 0}), // reliquary
     engine.tool.vector3d.create({x: -1, y: 0, z: 0}), // gallery
   ]
 
   function generate(x, y, z) {
     const seed = ['cellar', content.cellar.run.count(), 'tile', x, y, z],
-      srand = engine.fn.srand(...seed)
+      srand = (name, ...args) => engine.fn.srand(...seed, name)(...args)
 
     const tile = {
       effects : [],
-      note: engine.fn.choose([1,2,3,4,5,6,7,8,10,11,12], srand()),
-      prime: engine.fn.choose([59, 61, 67, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113], srand()),
+      note: engine.fn.choose([1,2,3,4,5,6,7,8,10,11,12], srand('note')),
+      prime: engine.fn.choose([59, 61, 67, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113], srand('prime')),
       seed,
       x,
       y,
       z,
     }
 
+    // Determine the tile type
     const types = getTypes(tile)
-    const type = engine.fn.chooseWeighted(types, srand())
+    const type = engine.fn.chooseWeighted(types, srand('type'))
+
+    // Generate an instance of the tile type
+    const instance = type.generate(tile)
 
     if (type.isUnique && !uniqueExists(tile)) {
+      // Push a proxy for exporting later
       uniques.push({
-        id: type.id,
-        x: tile.x,
-        y: tile.y,
-        z: tile.z,
+        instance,
+        ...instance.export(),
       })
     }
 
-    return type.generate(tile)
+    return instance
   }
 
   function getTypes(tile) {
@@ -76,7 +81,7 @@ content.cellar.tiles = (() => {
       if (!type.canGenerate(tile)) {
         continue
       }
-      
+
       if (!type.isUnique) {
         nonUniqueTypes.push(type)
       } else if (!uniquesInUse.has(type.id)) {
@@ -119,7 +124,7 @@ content.cellar.tiles = (() => {
       )
     },
     export: () => ({
-      uniques: [...uniques],
+      uniques: uniques.map((x) => x.instance.export()),
     }),
     get: function ({x, y, z}) {
       if (!cache.has(x, y, z)) {
@@ -131,7 +136,16 @@ content.cellar.tiles = (() => {
     import: function (data = {}) {
       if (data.uniques?.length) {
         for (const unique of data.uniques) {
-          uniques.push(unique)
+          // Add a proxy to the uniques array, so the generator knows which type to use
+          const proxy = {...unique}
+          uniques.push(proxy)
+
+          // Generate it, put it into the cache, and import its state
+          const instance = this.get(unique)
+          instance.import(unique)
+
+          // Reference the instance from the proxy for exporting later
+          proxy.instance = instance
         }
       }
 

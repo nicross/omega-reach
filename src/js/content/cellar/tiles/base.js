@@ -31,14 +31,31 @@ content.cellar.tiles.base = {
 
     return instance
   },
+  export: function () {
+    return {
+      id: this.id,
+      state: {...this.state},
+      x: this.x,
+      y: this.y,
+      z: this.z,
+    }
+  },
   getName: function () {
     return this.name
   },
   getEffects: function () {
     return this.effects || []
   },
+  import: function (data = {}) {
+    this.state = {
+      ...this.defaultState,
+      ...(data.state || {}),
+    }
+
+    return this
+  },
   isFullyScanned: function () {
-    return content.cellar.scans.get(this) == this.getEffects().length
+    return content.cellar.scans.get(this) >= this.getEffects().length
   },
   onEnter: function () {},
   onExit: function () {},
