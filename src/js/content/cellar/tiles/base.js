@@ -32,6 +32,7 @@ content.cellar.tiles.base = {
 
     return instance
   },
+  getInteractLabelMore: () => {},
   export: function () {
     return {
       id: this.id,

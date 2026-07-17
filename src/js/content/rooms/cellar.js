@@ -60,6 +60,13 @@ content.rooms.cellar = content.rooms.invent({
       : true
   },
   canInteractFreely: () => true,
+  getInteractLabel: function () {
+    const tile = content.cellar.tiles.current()
+
+    return tile.isFullyScanned()
+      ? (tile.getInteractLabelMore() || this.interactLabel)
+      : this.interactLabel
+  },
   hasSolution: function () {
     const tile = content.cellar.tiles.current()
 

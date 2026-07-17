@@ -20,6 +20,7 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
   canInteractMore: function () {
     return !content.cellar.health.isMax() && content.wallet.has(this.calculateCost())
   },
+  getInteractLabelMore: () => 'Interact',
   incrementUses: function () {
     this.state.uses += 1
 
@@ -43,7 +44,9 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
     })
   },
   onInteractMore: function () {
-    content.location.emit('cellar-fountain', {tile: this})
+    content.location.emit('cellar-fountain', {
+      tile: this,
+    })
   },
   alterParticle: function (particle) {
     // TODO: Opposite of pit

@@ -56,10 +56,17 @@ content.cellar.tiles = (() => {
 
     // If known to be unique, force tile to be that type
     for (const unique of uniques) {
-      if (unique.x == tile.x && unique.y == tile.y && unique.z == tile.z) {
-        return [
-          registry.get(unique.id),
-        ]
+      if (unique.x == tile.x && unique.y == tile.y) {
+        if (unique.z == tile.z) {
+          return [
+            registry.get(unique.id),
+          ]
+        } else if (unique.z == tile.z + 1 && unique.id == 'descent') {
+          // Ascents are always directly above descents
+          return [
+            registry.get('ascent'),
+          ]
+        }
       }
     }
 
@@ -93,6 +100,19 @@ content.cellar.tiles = (() => {
       ...nonUniqueTypes,
       ...uniqueTypes,
     ]
+  }
+
+  function isAscent(tile) {
+    for (const unique of uniques) {
+      if (unique.x == tile.x && unique.y == tile.y && unique.z == tile.z) {
+        return unique.instance.isAscent
+      }
+      if (unique.x == tile.x && unique.y == tile.y && unique.z == tile.z + 1) {
+        return unique.instance.isDescent
+      }
+    }
+
+    return false
   }
 
   function uniqueExists(tile) {

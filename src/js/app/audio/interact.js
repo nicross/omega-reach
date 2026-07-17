@@ -1,6 +1,10 @@
 engine.ready(() => {
   app.screen.game.interact.on('trigger', ({action, room}) => {
-    if (['Sell','Steal','Return'].includes(action)) {
+    if (['Return','Sell','Steal'].includes(action)) {
+      return
+    }
+
+    if (room.id == 'cellar' && ['ascent','descent','fountain'].includes(content.cellar.tiles.current().id)) {
       return
     }
 
