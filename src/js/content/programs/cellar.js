@@ -22,8 +22,7 @@ content.programs.cellar = content.programs.invent({
   },
   // Particles
   alterParticle: function (particle) {
-    const hasSolution = content.solution.has(),
-      isOnline = content.rooms.reach.state.online,
+    const isOnline = content.rooms.reach.state.online,
       tile = content.cellar.tiles.current(),
       time = content.time.value()
 
@@ -75,7 +74,7 @@ content.programs.cellar = content.programs.invent({
 
     tile.alterParticle(particle)
 
-    if (hasSolution) {
+    if (!tile.isFullyScanned()) {
       const distance = Math.max(Math.abs(particle.target.x), Math.abs(particle.target.y))
 
       if (distance < 4) {

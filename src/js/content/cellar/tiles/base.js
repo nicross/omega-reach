@@ -23,6 +23,7 @@ content.cellar.tiles.base = {
     return this.extend(tile)
   },
   // Methods
+  canInteractMore: () => false,
   extend: function (definition = {}) {
     const instance = engine.fn.extend(this, definition)
 
@@ -46,6 +47,7 @@ content.cellar.tiles.base = {
   getEffects: function () {
     return this.effects || []
   },
+  hasSolutionMore: () => false,
   import: function (data = {}) {
     this.state = {
       ...this.defaultState,
@@ -57,8 +59,10 @@ content.cellar.tiles.base = {
   isFullyScanned: function () {
     return content.cellar.scans.get(this) >= this.getEffects().length
   },
-  onEnter: function () {},
-  onExit: function () {},
+  isIncompleteMore: () => false,
+  onEnter: () => {},
+  onExit: () => {},
+  onInteractMore: () => {},
   // Particles
   alterParticle: function (particle) {},
 }

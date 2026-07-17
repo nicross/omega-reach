@@ -55,20 +55,34 @@ content.rooms.cellar = content.rooms.invent({
   canInteract: function () {
     const tile = content.cellar.tiles.current()
 
-    const effects = tile.getEffects(),
-      scans = content.cellar.scans.get(tile)
-
-    return effects.length > scans
+    return tile.isFullyScanned()
+      ? tile.canInteractMore()
+      : true
   },
   canInteractFreely: () => true,
+  hasSolution: function () {
+    const tile = content.cellar.tiles.current()
+
+    return tile.isFullyScanned()
+      ? tile.hasSolutionMore()
+      : true
+  },
   isComplete: () => false,
   isIncomplete: function () {
-    return this.canInteract()
+    const tile = content.cellar.tiles.current()
+
+    return tile.isFullyScanned()
+      ? tile.isIncompleteMore()
+      : true
   },
   onInteract: function () {
-    const message = []
-
     const tile = content.cellar.tiles.current()
+
+    if (tile.isFullyScanned()) {
+      return tile.onInteractMore()
+    }
+
+    const message = []
 
     const effects = tile.getEffects(),
       scans = content.cellar.scans.increment(tile)
