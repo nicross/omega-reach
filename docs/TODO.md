@@ -14,13 +14,13 @@
     - The rift
     - The trove
     - The vision
-  - Interact to trade -2 credits for +1 sanity at the fountain (confirmation dialog)
 - Tutorials
   - Allow pausing during dialogs, but change message to say "Collection last saved (time ago)"
   - How to navigate between cellar floors
   - Automatic death upon entering fourth floor of cellar
   - Separate the lore from tutorial text in more places, e.g. the gallery
   - Initial dialogs for the new empty rooms
+  - A blurb when discovering a cellar tile for the first time?
 - Revisit how gamepad is mapped onto sphere
 
 ## v1.3.x - Story expansion
