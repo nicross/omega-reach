@@ -62,7 +62,7 @@ app.tutorial.donationLoop = app.tutorial.invent({
 
     app.screen.game.dialog.push({
       title: `Credits received!`,
-      description: `You collect <strong>${app.utility.format.currency(amount)}</strong> in donations from <strong>the lobby</strong>.`,
+      description: `You collect <strong class="a-game--dialogCurrency">${app.utility.format.currency(amount)}</strong> in donations from <strong>the lobby</strong>.`,
       actions: [
         {
           label: `Cheers!`,

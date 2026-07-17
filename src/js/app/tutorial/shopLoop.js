@@ -131,7 +131,7 @@ app.tutorial.shopLoop = app.tutorial.invent({
       ;[
         {
           title: `<q>I found this ${content.cellar.discovered.hasAny() ? 'before' : 'for'} you!</q>`,
-          description: `You will get <strong>${name}</strong> for <strong>${app.utility.format.currency(cost)}</strong>.`,
+          description: `You will get <strong>${name}</strong> for <strong class="a-game--dialogCurrency">${app.utility.format.currency(cost)}</strong>.`,
           actions: [
             {
               label: 'Buy it',

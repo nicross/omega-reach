@@ -16,6 +16,7 @@
 - Tracked time playing each instrument.
 - Inverted the input at the horizon.
 - Animated object rotations when transitioning.
+- Highlighted credits and sanity in dialogs.
 - Lit moons from same light source as their planets.
 - Made the reach audible from the gallery and stockroom.
 - Fixed a looping conversation in the lobby.
