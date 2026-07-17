@@ -19,7 +19,7 @@ content.cellar.tiles.juncture = content.cellar.tiles.invent({
 
     this.effectsOnEnter.push({
       attribute: {
-        label: 'Sanity restored',
+        label: 'Sanity recovered',
         modifiers: [],
       },
     })

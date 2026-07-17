@@ -37,7 +37,7 @@ content.cellar.tiles.ziggurat = content.cellar.tiles.invent({
 
       this.effectsOnEnter.push({
         attribute: {
-          label: `Sanity restored`,
+          label: `Sanity recovered`,
           modifiers: [],
         },
       })

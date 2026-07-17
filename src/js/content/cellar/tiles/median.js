@@ -17,7 +17,7 @@ content.cellar.tiles.median = content.cellar.tiles.invent({
 
     this.effectsOnEnter.push({
       attribute: {
-        label: `Sanity ${health < target ? 'restored' : 'drained'}`,
+        label: `Sanity ${health < target ? 'recovered' : 'drained'}`,
         modifiers: [],
       },
     })

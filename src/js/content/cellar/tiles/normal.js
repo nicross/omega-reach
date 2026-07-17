@@ -130,7 +130,7 @@ content.cellar.tiles.normal = (() => {
             label,
             modifiers: [],
           },
-          liveLabel: `${label} found, gained ${app.utility.format.health(1)}`,
+          liveLabel: `${label} found, sanity recovered`,
         }
       },
     },
@@ -158,7 +158,7 @@ content.cellar.tiles.normal = (() => {
             label,
             modifiers: [],
           },
-          liveLabel: `${label} found, sanity fully restored`,
+          liveLabel: `${label} found, sanity recovered`,
         }
       },
     },
