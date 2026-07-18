@@ -3,12 +3,14 @@ content.location.on('cellar-descent', ({tile}) => {
     tile.getDestination()
   )
 
+  content.rooms.cellar.updateNameShort()
   content.cellar.tiles.current().onEnter()
-
-  content.audio.zoom.trigger({
-    isIn: false,
-  })
 
   app.screen.game.update()
   app.tutorial.update()
+
+  // Get audio, haptics, live region, etc. updates for free
+  app.screen.game.movement.emit('move', {
+    isOut: true,
+  })
 })

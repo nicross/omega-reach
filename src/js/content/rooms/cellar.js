@@ -11,7 +11,15 @@ content.rooms.cellar = content.rooms.invent({
   },
   // Methods
   getName: function () {
-    return content.cellar.tiles.current()?.getName() || this.name
+    const tile = content.cellar.tiles.current()
+    const name = tile.getName() || this.name
+
+    return tile.z == 0
+      ? name
+      : `${name} B${Math.abs(tile.z) + 1}`
+  },
+  getNameShort: function () {
+    return this.nameShort
   },
   getDescription: function () {
     if (this.isEntrance()) {
@@ -159,6 +167,7 @@ content.rooms.cellar = content.rooms.invent({
     content.cellar.tiles.current()?.onEnter()
 
     content.solution.generate()
+    this.updateNameShort()
     this.updateProgram()
 
     content.location.emit('move', {
@@ -186,6 +195,8 @@ content.rooms.cellar = content.rooms.invent({
     content.cellar.tiles.current()?.onEnter()
 
     content.solution.generate()
+
+    this.updateNameShort()
     this.updateProgram()
 
     content.location.emit('move', {
@@ -213,6 +224,8 @@ content.rooms.cellar = content.rooms.invent({
     content.cellar.tiles.current()?.onEnter()
 
     content.solution.generate()
+
+    this.updateNameShort()
     this.updateProgram()
 
     content.location.emit('move', {
@@ -244,6 +257,8 @@ content.rooms.cellar = content.rooms.invent({
     content.cellar.tiles.current()?.onEnter()
 
     content.solution.generate()
+
+    this.updateNameShort()
     this.updateProgram()
 
     content.location.emit('move', {
@@ -256,9 +271,24 @@ content.rooms.cellar = content.rooms.invent({
   },
   onEnter: function () {
     // XXX: Tile effects persist when saving/loading, do not call onEnter()
+    this.updateNameShort()
   },
   onExit: function () {
     // XXX: Tile effects persist when saving/loading, do not call onExit()
+    this.clearNameShort()
+  },
+  clearNameShort: function () {
+    this.nameShort = ''
+    this.previousNameShort = ''
+  },
+  updateNameShort: function () {
+    const name = this.getName()
+
+    this.nameShort = name != this.previousNameShort
+      ? name
+      : ''
+
+    this.previousNameShort = name
   },
   updateProgram: function () {
     content.programs.load(this.defaultProgram)
