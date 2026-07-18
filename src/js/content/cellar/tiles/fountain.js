@@ -49,6 +49,28 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
     })
   },
   alterParticle: function (particle) {
-    // TODO: Opposite of pit
+    const radius = 10
+
+    if (Math.abs(particle.target.x) > radius || Math.abs(particle.target.y) > radius) {
+      return
+    }
+
+    let vector = engine.tool.vector2d.create(particle.target)
+    let distance = vector.distance() / radius
+
+    if (distance > 1) {
+      return
+    }
+
+    const time = content.time.value()
+    const scale = Math.sin(engine.const.tau * time / 30 * particle.twinkleFrequencies[0])
+
+    distance = (1 - (distance * Math.abs(scale))) ** 1.5
+
+    particle.target.x = vector.x * scale
+    particle.target.y = vector.y * scale
+    particle.target.z = particle.floor.z + (0.375 * distance)
+
+    particle.target.s = distance * (0.875 + (0.125 * Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1])))
   },
 }, content.cellar.tiles.baseUnique)

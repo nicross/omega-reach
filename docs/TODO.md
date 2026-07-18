@@ -2,10 +2,7 @@
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
 - Cellar expansion
   - Particle effects
-    - The ascent
     - The contraption
-    - The descent
-    - The fountain
     - The junction
     - The median
     - The obelisk

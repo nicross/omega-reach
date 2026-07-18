@@ -44,7 +44,7 @@ content.cellar.tiles.ziggurat = content.cellar.tiles.invent({
     }
   },
   alterParticle: function (particle) {
-    const radius = 10
+    const radius = 8
     const max = radius / Math.sqrt(2)
 
     if (engine.fn.distance({x: particle.target.x, y: particle.target.y}) > radius + 0.5) {
@@ -56,19 +56,22 @@ content.cellar.tiles.ziggurat = content.cellar.tiles.invent({
 
     vector = vector.rotate(
       engine.const.tau * time * 0.025 * this.state.delta
+    ).rotate(
+      engine.const.tau / 8
     )
 
     const distance = 1 - engine.fn.clamp(Math.max(Math.abs(vector.x), Math.abs(vector.y)) / max),
-      steps = 5
+      height = 4,
+      steps = 4
 
     if (distance > 0) {
       particle.target.v = 0.6 + (Math.sin(engine.const.tau * time * particle.twinkleFrequencies[2]) * 0.25)
     }
 
     if (distance == 0 || distance >= (steps - 1.5) / steps) {
-      particle.target.s = 0.166 + (Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1]) * 0.166)
+      particle.target.s = 0.666 + (Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1]) * 0.333)
     }
 
-    particle.target.z += Math.ceil(distance * steps) / steps * 5
+    particle.target.z += height * Math.ceil(distance * steps) / steps
   },
 }, content.cellar.tiles.baseUnique)

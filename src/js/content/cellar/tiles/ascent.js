@@ -46,7 +46,30 @@ content.cellar.tiles.ascent = content.cellar.tiles.invent({
     })
   },
   alterParticle: function (particle) {
-    // TODO: Column of light moving up
+    const radius = 3.333
+
+    if (Math.abs(particle.target.x) > radius || Math.abs(particle.target.y) > radius) {
+      return
+    }
+
+    let vector = engine.tool.vector2d.create(particle.target)
+    let distance = vector.distance()
+
+    if (distance > radius) {
+      return
+    }
+
+    const time = content.time.value()
+
+    vector = vector.normalize()
+      .scale(radius)
+      .rotate(engine.const.tau * time / 60)
+
+    particle.target.x = vector.x
+    particle.target.y = vector.y
+    particle.target.z = particle.floor.z + engine.fn.scale(Math.sin(engine.const.tau * time / 20 * particle.twinkleFrequencies[0]), -1, 1, 0, 10)
+
+    particle.target.s = 0.666 + (0.333 * Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1]))
   },
   // XXX: Does not extend baseUnique
   getGlobalDonationRate: () => 0,
