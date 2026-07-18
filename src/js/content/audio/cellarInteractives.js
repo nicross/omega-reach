@@ -27,19 +27,19 @@ content.audio.cellarInteractives = (() => {
       normal = relative.normalize()
 
     const gain = engine.fn.fromDb(
-        engine.fn.lerp(0, tile.isUnique ? -6 : -10.5, distanceRatio)
-      + (isFullyScanned && !tile.isUnique ? -4.5 : 0)
+        engine.fn.lerp(0, tile.isUnique ? -9 : -12, distanceRatio)
+      + (isFullyScanned && !tile.isUnique ? -6 : 0)
     )
 
     const rootFrequency = engine.fn.detune(
       engine.fn.fromMidi(42 + tile.note),
       (
-          engine.fn.scale(Math.abs(relative.x), 0, radius, 0, 1800)
+          engine.fn.scale(Math.abs(relative.x), 0, radius, 0, 1200)
         + engine.fn.scale(relative.y, -radius, radius, -1200, 1200)
       )
     )
 
-    const amDepth = gain * engine.fn.fromDb(tile.isUnique ? -6 : -12),
+    const amDepth = gain * engine.fn.fromDb(tile.isUnique || !isFullyScanned ? -6 : -3),
       when = engine.time()
 
     const synth = engine.synth.pwm({
@@ -60,7 +60,7 @@ content.audio.cellarInteractives = (() => {
     // Amplitude LFO
     synth.assign('am', engine.synth.lfo({
       depth: amDepth,
-      frequency: tile.isUnique ? tile.prime/7 : 5/tile.prime * engine.fn.lerp(1, 0.75, distanceRatio),
+      frequency: tile.isUnique ? tile.prime/7 : 5/tile.prime * engine.fn.lerp(1.5, 0.5, distanceRatio),
       when,
     }))
 
@@ -70,7 +70,7 @@ content.audio.cellarInteractives = (() => {
     // Color LFO
     synth.assign('cm', engine.synth.lfo({
       depth: 600,
-      frequency: tile.isUnique ? tile.prime/8 : 7/tile.prime * engine.fn.lerp(1, 0.5, distanceRatio),
+      frequency: tile.isUnique ? tile.prime/8 : 7/tile.prime * engine.fn.lerp(1.5, 0.5, distanceRatio),
       when,
     }))
 
@@ -90,7 +90,7 @@ content.audio.cellarInteractives = (() => {
     // Width LFO
     synth.assign('wm', engine.synth.lfo({
       depth: 0.125,
-      frequency: tile.isUnique ? tile.prime/10 : 3/tile.prime * engine.fn.lerp(1, 0.5, distanceRatio),
+      frequency: tile.isUnique ? tile.prime/5 : 3/tile.prime * engine.fn.lerp(1, 0.5, distanceRatio),
       when,
     }))
 

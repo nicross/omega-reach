@@ -301,7 +301,7 @@ content.rooms.cellar = content.rooms.invent({
       max = content.cellar.health.max(),
       value = engine.fn.clamp(distance / (max * 2))
 
-    return 1 - engine.fn.lerpExp(1/4, 0, value, 1/3)
+    return engine.fn.lerpExp(1/4, 1, value, 1/3)
   },
   getReachPan: () => -content.cellar.position.get().normalize().x,
 })
