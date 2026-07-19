@@ -8,6 +8,7 @@ content.cellar.tiles.base = {
   weight: 1,
   // Instance properties
   effects: undefined,
+  isActive: false,
   note: undefined,
   prime: undefined,
   seed: undefined,
@@ -23,6 +24,30 @@ content.cellar.tiles.base = {
     return this.extend(tile)
   },
   // Methods
+  activate: function () {
+    if (!this.isActive) {
+      this.isActive = true
+      this.onActivate()
+    }
+
+    return this
+  },
+  deactivate: function () {
+    if (this.isActive) {
+      this.isActive = false
+      this.onDeactivate()
+    }
+
+    return this
+  },
+  enter: function () {
+    this.activate()
+    this.onEnter()
+  },
+  exit: function () {
+    this.onExit()
+    this.deactivate()
+  },
   canInteractMore: () => false,
   extend: function (definition = {}) {
     const instance = engine.fn.extend(this, definition)
@@ -61,8 +86,10 @@ content.cellar.tiles.base = {
     return content.cellar.scans.get(this) >= this.getEffects().length
   },
   isIncompleteMore: () => false,
-  onEnter: () => {},
-  onExit: () => {},
+  onActivate: function () {},
+  onDeactivate: function () {},
+  onEnter: function () {},
+  onExit: function () {},
   onInteractMore: () => {},
   // Particles
   alterParticle: function (particle) {},

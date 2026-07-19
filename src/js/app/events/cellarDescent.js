@@ -4,7 +4,8 @@ content.location.on('cellar-descent', ({tile}) => {
   )
 
   content.rooms.cellar.updateNameShort()
-  content.cellar.tiles.current().onEnter()
+
+  // XXX: ascent tiles don't need onEnter/onExit/onActivate/onDeactivate
 
   app.screen.game.update()
   app.tutorial.update()

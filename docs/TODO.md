@@ -6,9 +6,7 @@
     - The junction
     - The median
     - The obelisk
-    - The quagmire
     - The rift
-    - The trove
     - The vision
 - Tutorials
   - Allow pausing during dialogs, but change message to say "Collection last saved (time ago)"

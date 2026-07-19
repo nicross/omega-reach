@@ -35,7 +35,6 @@ content.cellar.tiles.ascent = content.cellar.tiles.invent({
   onEnter: function () {
     content.cellar.scans.set(this, this.getEffects().length)
   },
-  onEnterEffects: function () {},
   onExit: function () {
     content.cellar.scans.set(this, 0)
   },
@@ -53,7 +52,7 @@ content.cellar.tiles.ascent = content.cellar.tiles.invent({
     }
 
     let vector = engine.tool.vector2d.create(particle.target)
-    let distance = vector.distance()
+    const distance = vector.distance()
 
     if (distance > radius) {
       return

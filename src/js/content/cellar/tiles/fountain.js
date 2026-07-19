@@ -69,7 +69,7 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
 
     particle.target.x = vector.x * scale
     particle.target.y = vector.y * scale
-    particle.target.z = particle.floor.z + (0.375 * distance)
+    particle.target.z += 0.375 * distance
 
     particle.target.s = distance * (0.875 + (0.125 * Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1])))
   },

@@ -151,7 +151,7 @@ content.rooms.cellar = content.rooms.invent({
       : 'No north'
   },
   moveDown: function () {
-    content.cellar.tiles.current()?.onExit()
+    content.cellar.tiles.current()?.exit()
 
     const next = content.cellar.position.get().add({y: -1})
     const isDiscovered = content.cellar.discovered.is(next)
@@ -164,7 +164,7 @@ content.rooms.cellar = content.rooms.invent({
     content.audio.cellarMovement.down()
 
     content.cellar.position.set(next)
-    content.cellar.tiles.current()?.onEnter()
+    content.cellar.tiles.current()?.enter()
 
     content.solution.generate()
     this.updateNameShort()
@@ -179,7 +179,7 @@ content.rooms.cellar = content.rooms.invent({
     return this.move('down')
   },
   moveLeft: function () {
-    content.cellar.tiles.current()?.onExit()
+    content.cellar.tiles.current()?.exit()
 
     const next = content.cellar.position.get().add({x: -1})
     const isDiscovered = content.cellar.discovered.is(next)
@@ -192,7 +192,7 @@ content.rooms.cellar = content.rooms.invent({
     content.audio.cellarMovement.left()
 
     content.cellar.position.set(next)
-    content.cellar.tiles.current()?.onEnter()
+    content.cellar.tiles.current()?.enter()
 
     content.solution.generate()
 
@@ -208,7 +208,7 @@ content.rooms.cellar = content.rooms.invent({
     return this.move('left')
   },
   moveRight: function () {
-    content.cellar.tiles.current()?.onExit()
+    content.cellar.tiles.current()?.exit()
 
     const next = content.cellar.position.get().add({x: 1})
     const isDiscovered = content.cellar.discovered.is(next)
@@ -221,7 +221,7 @@ content.rooms.cellar = content.rooms.invent({
     content.audio.cellarMovement.right()
 
     content.cellar.position.set(next)
-    content.cellar.tiles.current()?.onEnter()
+    content.cellar.tiles.current()?.enter()
 
     content.solution.generate()
 
@@ -237,7 +237,7 @@ content.rooms.cellar = content.rooms.invent({
     return this.move('right')
   },
   moveUp: function () {
-    content.cellar.tiles.current()?.onExit()
+    content.cellar.tiles.current()?.exit()
 
     if (this.isEntrance()) {
       return this.move('exit')
@@ -254,7 +254,7 @@ content.rooms.cellar = content.rooms.invent({
     content.audio.cellarMovement.up()
 
     content.cellar.position.set(next)
-    content.cellar.tiles.current()?.onEnter()
+    content.cellar.tiles.current()?.enter()
 
     content.solution.generate()
 
@@ -270,12 +270,16 @@ content.rooms.cellar = content.rooms.invent({
     return this.move('up')
   },
   onEnter: function () {
-    // XXX: Tile effects persist when saving/loading, do not call onEnter()
     this.updateNameShort()
+
+    // XXX: Tile effects persist when saving/loading, do not call onEnter()
+    content.cellar.tiles.current()?.activate()
   },
   onExit: function () {
-    // XXX: Tile effects persist when saving/loading, do not call onExit()
     this.clearNameShort()
+
+    // XXX: Tile effects persist when saving/loading, do not call onExit()
+    content.cellar.tiles.current()?.deactivate()
   },
   clearNameShort: function () {
     this.nameShort = ''
