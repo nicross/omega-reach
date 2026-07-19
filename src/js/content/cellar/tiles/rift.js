@@ -24,7 +24,46 @@ content.cellar.tiles.rift = content.cellar.tiles.invent({
       },
     })
   },
+  onActivate: function () {
+    this.zField = engine.fn.createNoise({
+      octaves: 4,
+      seed: ['rift', 'z', this.x, this.y, this.z],
+      type: 'simplex2d',
+    })
+
+    engine.ephemera.add(this.zField)
+  },
+  onDeactivate: function () {
+    engine.ephemera.remove(this.zField)
+    delete this.zField
+  },
   alterParticle: function (particle) {
-    // TODO: Simplex noise subtracting the floor
+    const radius = 10,
+      square = 10
+
+    if (Math.abs(particle.target.x) > square || Math.abs(particle.target.y) > square) {
+      return
+    }
+
+    const distance = 1 - (engine.tool.vector2d.create(particle.target).distance() / radius)
+
+    if (distance < 0) {
+      return
+    }
+
+    const time = content.time.value()
+
+    const value = this.zField.value(particle.floor.x / 5, particle.floor.y / 30)
+    const depth = content.fn.gain(value, 2) * (distance ** 0.75)
+
+    particle.target.s = engine.fn.lerpExp(
+      0,
+      0.75 + (0.25 * Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1])),
+      depth,
+      0.333,
+    )
+
+    particle.target.v = (1 - depth) ** 2
+    particle.target.z -= 5 * depth
   },
 }, content.cellar.tiles.baseUnique)

@@ -15,7 +15,7 @@ content.cellar.tiles.quagmire = content.cellar.tiles.invent({
   onActivate: function () {
     this.zField = engine.fn.createNoise({
       octaves: 3,
-      seed: ['trove', 'z', this.x, this.y, this.z],
+      seed: ['quagmire', 'z', this.x, this.y, this.z],
       type: 'simplex3d',
     })
 
