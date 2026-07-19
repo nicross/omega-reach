@@ -5,6 +5,7 @@ content.cellar.tiles.obelisk = content.cellar.tiles.invent({
   weight: 1/2,
   defaultState: {
     entered: false,
+    rotation: 0,
   },
   effectsGlobal: [
     {
@@ -16,6 +17,10 @@ content.cellar.tiles.obelisk = content.cellar.tiles.invent({
   ],
   getGlobalHealthBonus: () => 5,
   onEnterEffects: function () {
+    this.state.rotation = this.state.rotation
+      ? this.state.rotation * -1
+      : engine.fn.randomSign()
+
     if (this.state.entered) {
       return
     }
@@ -26,6 +31,36 @@ content.cellar.tiles.obelisk = content.cellar.tiles.invent({
     this.state.entered = true
   },
   alterParticle: function (particle) {
-    // TODO: Tall tower, concentrate particles in center
+    const radius = 5
+
+    if (Math.abs(particle.target.x) > radius || Math.abs(particle.target.y) > radius) {
+      return
+    }
+
+    // Convert to edges of a rectangular prism
+    const square = radius / Math.sqrt(2),
+      square2 = square / 1.618,
+      time = content.time.value()
+
+    let vector = engine.tool.vector2d.create({
+      x: engine.fn.closer(particle.target.x, -square, square),
+      y: engine.fn.closer(particle.target.y, -square2, square2),
+    })
+
+    particle.target.s = engine.fn.lerp(
+      // Full color
+      1,
+      // Twinkling white
+      0.5 + (0.5 * Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1])),
+      // Alternating oscillating columns
+      0.5 + (0.5 * Math.sin(Math.sign(vector.x * vector.y) * engine.const.tau * (time/6 + particle.value*3)))
+    )
+
+    // Rotate clockwise
+    vector = vector.rotate(this.state.rotation * engine.const.tau * time / 120)
+
+    particle.target.x = vector.x
+    particle.target.y = vector.y
+    particle.target.z += engine.fn.lerp(-5, 10, particle.value)
   },
 }, content.cellar.tiles.baseUnique)
