@@ -2,6 +2,7 @@ content.cellar.tiles.median = content.cellar.tiles.invent({
   id: 'median',
   name: 'The median',
   uniquePerFloor: true,
+  weight: 2,
   defaultState: {
     delta: 0,
   },

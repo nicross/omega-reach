@@ -2,7 +2,7 @@ content.cellar.tiles.quagmire = content.cellar.tiles.invent({
   id: 'quagmire',
   name: 'The quagmire',
   uniquePerRun: true,
-  weight: 1/2,
+  weight: 1,
   effectsGlobal: [
     {
       attribute: {

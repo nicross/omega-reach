@@ -5,7 +5,7 @@ content.cellar.tiles.ascent = content.cellar.tiles.invent({
   isAscent: true,
   isUnique: true,
   uniquePerFloor: true,
-  weight: 1,
+  weight: 4,
   canGenerate: (tile) => engine.fn.between(tile.z, -1, -3), // Not on first floor
   canInteractMore: () => true,
   getDestination: function () {

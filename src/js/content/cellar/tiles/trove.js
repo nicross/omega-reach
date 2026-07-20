@@ -2,7 +2,7 @@ content.cellar.tiles.trove = content.cellar.tiles.invent({
   id: 'trove',
   name: 'The trove',
   uniquePerRun: true,
-  weight: 1/2,
+  weight: 1,
   effectsGlobal: [
     {
       attribute: {

@@ -2,6 +2,7 @@ content.cellar.tiles.balance = content.cellar.tiles.invent({
   id: 'balance',
   name: 'The balance',
   uniquePerFloor: true,
+  weight: 2,
   calculateTargetHealth: function () {
     const current = content.cellar.health.amount(),
       max = content.cellar.health.max()

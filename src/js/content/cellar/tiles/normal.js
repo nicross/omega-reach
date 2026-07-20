@@ -222,7 +222,15 @@ content.cellar.tiles.normal = (() => {
 
       return this.extend(tile)
     },
-    // Total of all other tiles * 3 (i.e. 75% of all tiles are normal)
-    weight: ((2 * 4) + (11 * 1) + (4 * 1/2)) * 3,
+    // Total of all other tiles * 4 (i.e. 4/5 of all tiles are normal)
+    /*
+    Weights
+    8 - Fountain, Henge, Pit (easy mechanics)
+    6 - Juncture, Rift (amp them up)
+    4 - Ascent, Descent (exploring floors)
+    2 - Balance, Contraption, Median, Ziggurat (weird mechanics)
+    1 - Obelisk, Quagmire, Trove, Vision (run-changing)
+    */
+    weight: ((8 * 3) + (6 * 2) + (4 * 4) + (2 * 4) + (1 * 4)) * 4,
   })
 })()

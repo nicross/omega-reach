@@ -2,6 +2,7 @@ content.cellar.tiles.juncture = content.cellar.tiles.invent({
   id: 'juncture',
   name: 'The juncture',
   uniquePerFloor: true,
+  weight: 6,
   onEnterEffects: function () {
     // Health *= 1.5
 

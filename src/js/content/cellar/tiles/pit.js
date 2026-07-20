@@ -2,7 +2,7 @@ content.cellar.tiles.pit = content.cellar.tiles.invent({
   id: 'pit',
   name: 'The pit',
   uniquePerRun: true,
-  weight: 4,
+  weight: 8,
   onEnterEffects: function () {
     if (!content.cellar.health.has(2)) {
       return

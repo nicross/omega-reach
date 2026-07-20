@@ -2,6 +2,7 @@ content.cellar.tiles.contraption = content.cellar.tiles.invent({
   id: 'contraption',
   name: 'The contraption',
   uniquePerFloor: true,
+  weight: 2,
   defaultState: {
     delta: 0,
   },

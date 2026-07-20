@@ -2,6 +2,7 @@ content.cellar.tiles.ziggurat = content.cellar.tiles.invent({
   id: 'ziggurat',
   name: 'The ziggurat',
   uniquePerFloor: true,
+  weight: 2,
   defaultState: {
     delta: 0,
   },

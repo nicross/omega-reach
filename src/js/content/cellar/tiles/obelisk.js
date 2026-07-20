@@ -2,7 +2,7 @@ content.cellar.tiles.obelisk = content.cellar.tiles.invent({
   id: 'obelisk',
   name: 'The obelisk',
   uniquePerRun: true,
-  weight: 1/2,
+  weight: 1,
   defaultState: {
     entered: false,
     rotation: 0,

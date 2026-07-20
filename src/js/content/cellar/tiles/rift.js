@@ -2,6 +2,7 @@ content.cellar.tiles.rift = content.cellar.tiles.invent({
   id: 'rift',
   name: 'The rift',
   uniquePerFloor: true,
+  weight: 6,
   onEnterEffects: function () {
     // Health *= 0.5
 
