@@ -1,9 +1,5 @@
 # TODO
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
-- Cellar expansion
-  - Particle effects
-    - The contraption
-    - The junction
 - Tutorials
   - Allow pausing during dialogs, but change message to say "Collection last saved (time ago)"
   - How to navigate between cellar floors

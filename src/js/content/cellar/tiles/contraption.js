@@ -44,6 +44,25 @@ content.cellar.tiles.contraption = content.cellar.tiles.invent({
     }
   },
   alterParticle: function (particle) {
-    // TODO: Like ziggurat, but contracts/retracts from center (+/- based on this.state.delta)
+    const radius = 7.5
+
+    if (Math.abs(particle.target.x) > radius || Math.abs(particle.target.y) > radius) {
+      return
+    }
+
+    const grid = 7,
+      time = content.time.value()
+
+    if (!this.zMatrixTimer || this.zMatrixTimer < time) {
+      this.zMatrix = new Array(grid ** 2).fill().map(Math.random)
+      this.zMatrixTimer = time + 2
+    }
+
+    const index = Math.floor(engine.fn.scale(particle.target.x, -radius, radius, 0, grid))
+      + (grid * Math.floor(engine.fn.scale(particle.target.y, -radius, radius, 0, grid)))
+
+    particle.target.s = content.fn.gain(1 - this.zMatrix[index], 2)
+    particle.target.v = engine.fn.lerpExp(0.25, 1, this.zMatrix[index], 0.5)
+    particle.target.z += engine.fn.lerp(-1, 0, Math.round(this.zMatrix[index] * grid) / grid)
   },
 }, content.cellar.tiles.baseUnique)

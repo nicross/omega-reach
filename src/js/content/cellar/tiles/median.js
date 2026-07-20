@@ -20,7 +20,7 @@ content.cellar.tiles.median = content.cellar.tiles.invent({
     content.cellar.health.set(target)
     content.audio.sanityChange.trigger({isUp: health < target})
 
-    this.state.delta = health < target ? 1 : -1
+    this.state.delta = health < target ? -1 : 1
 
     this.effectsOnEnter.push({
       attribute: {
@@ -47,7 +47,7 @@ content.cellar.tiles.median = content.cellar.tiles.invent({
     const onPath = engine.fn.between(vector.x, -width, width) || engine.fn.between(vector.y, -width, width)
 
     particle.target.s = onPath ? 0 : 0.75 + (0.25 * Math.sin(engine.const.tau * particle.twinkleFrequencies[1]))
-    particle.target.v = onPath ? 1 : 0.25 + (0.25 * Math.sin(engine.const.tau * particle.twinkleFrequencies[0]))
+    particle.target.v = onPath ? 1 : 1/3 + (1/3 * Math.sin(engine.const.tau * particle.twinkleFrequencies[0]))
 
     vector = vector.rotate(this.state.delta * engine.const.tau * time/120)
 
