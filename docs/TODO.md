@@ -7,7 +7,6 @@
   - Separate the lore from tutorial text in more places, e.g. the gallery
   - Initial dialogs for the new empty rooms
   - A blurb when discovering a cellar tile for the first time?
-- Revisit how gamepad is mapped onto sphere
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect

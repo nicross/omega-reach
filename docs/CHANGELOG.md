@@ -20,6 +20,7 @@
 - Lit moons from same light source as their planets.
 - Made the reach audible from the gallery and stockroom.
 - Fixed a looping conversation in the lobby.
+- Improved gamepad interaction projection.
 - Updated the manual accordingly.
 - Updated desktop builds to Electron 42.
 

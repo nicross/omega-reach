@@ -118,14 +118,10 @@ app.controls.interactions = (() => {
       return
     }
 
-    const point = engine.tool.vector3d.create({
-      y: engine.input.gamepad.getAxis(mappings.yAxis),
-      z: engine.input.gamepad.getAxis(mappings.xAxis),
-    })
-
-    point.x = Math.sqrt(1 - point.distance()) || 0
-
-    const rotated = point.rotateQuaternion(mappings.rotation).normalize()
+    const rotated = engine.tool.vector3d.unitX().rotateEuler({
+      yaw: engine.input.gamepad.getAxis(mappings.yAxis) * engine.const.tau * 0.25,
+      pitch: engine.input.gamepad.getAxis(mappings.xAxis) * engine.const.tau * 0.25,
+    }).rotateQuaternion(mappings.rotation).normalize()
 
     rotated.depth = mappings.digital.reduce((value, button) => {
       return Math.max(value, engine.input.gamepad.isDigital(button) ? 1 : 0)
