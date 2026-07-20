@@ -28,7 +28,7 @@ content.programs.cellar = content.programs.invent({
 
     let isBoundary = false
 
-    particle.target.h = content.rooms.reach.state.online ? -25/360 : -1/3
+    particle.target.h = -25/360
     particle.target.s = 0
     particle.target.v = 1
     particle.target.x = particle.floor.x
