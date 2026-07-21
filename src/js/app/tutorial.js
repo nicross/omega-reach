@@ -72,4 +72,11 @@ engine.state.on('reset', () => app.tutorial.reset())
 engine.ready(() => {
   content.location.on('enter', () => app.tutorial.update())
   content.location.on('interact', () => app.tutorial.update())
+
+  // Handle cellar move events
+  content.location.on('move', ({isCellar}) => {
+    if (isCellar) {
+      app.tutorial.update()
+    }
+  })
 })

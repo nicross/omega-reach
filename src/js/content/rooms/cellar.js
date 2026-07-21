@@ -173,10 +173,9 @@ content.rooms.cellar = content.rooms.invent({
     content.location.emit('move', {
       direction: 'down',
       from: this,
+      isCellar: true,
       to: this,
     })
-
-    return this.move('down')
   },
   moveLeft: function () {
     content.cellar.tiles.current()?.exit()
@@ -202,10 +201,9 @@ content.rooms.cellar = content.rooms.invent({
     content.location.emit('move', {
       direction: 'left',
       from: this,
+      isCellar: true,
       to: this,
     })
-
-    return this.move('left')
   },
   moveRight: function () {
     content.cellar.tiles.current()?.exit()
@@ -231,10 +229,9 @@ content.rooms.cellar = content.rooms.invent({
     content.location.emit('move', {
       direction: 'right',
       from: this,
+      isCellar: true,
       to: this,
     })
-
-    return this.move('right')
   },
   moveUp: function () {
     content.cellar.tiles.current()?.exit()
@@ -264,10 +261,9 @@ content.rooms.cellar = content.rooms.invent({
     content.location.emit('move', {
       direction: 'up',
       from: this,
+      isCellar: true,
       to: this,
     })
-
-    return this.move('up')
   },
   onEnter: function () {
     this.updateNameShort()

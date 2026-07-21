@@ -56,6 +56,6 @@ content.cellar.tiles.juncture = content.cellar.tiles.invent({
 
     particle.target.x = vector.x
     particle.target.y = vector.y
-    particle.target.z += Math.sin(rotation) * 0.5
+    particle.target.z += Math.sin(rotation) * 1
   },
 }, content.cellar.tiles.baseUnique)

@@ -8,6 +8,8 @@ content.location.on('cellar-death', () => {
     stolenCount = content.stockroom.countStolen()
 
   content.cellar.deaths.increment()
+  content.cellar.health.set(0)
+
   content.stockroom.reset()
 
   content.donations.add(Math.round(penalty * engine.fn.randomFloat(0.25, 0.75)))
