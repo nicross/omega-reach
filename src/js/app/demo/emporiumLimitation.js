@@ -1,7 +1,7 @@
-app.tutorial.cellarLimitation = app.tutorial.invent({
-  id: 'cellarLimitation',
+app.tutorial.emporiumLimitation = app.tutorial.invent({
+  id: 'emporiumLimitation',
   // Lifecycle
-  shouldActivate: () => app.isDemo() && content.location.is('emporium'),
+  shouldActivate: () => content.location.is('emporium'),
   onUpdate: function () {
     if (!content.location.is('emporium')) {
       return
@@ -20,7 +20,7 @@ app.tutorial.cellarLimitation = app.tutorial.invent({
       },
       {
         title: `<q>Hey bidder! It's the curator…</q>`,
-        description: `It's the auctioneer and their cacophony of chanting. This time, their rhythmic stream of consciousness glissandos toward a tone which augments the art's <em>earthern roots</em>.`,
+        description: `It's the auctioneer and their cacophony of chanting. This time, their rhythmic stream of consciousness glissandos toward a tone which augments their <em>earthern roots</em>.`,
         actions: [
           {
             label: `Back to work`,

@@ -3,7 +3,6 @@
 - Tutorials
   - How to navigate between cellar floors
   - Separate the lore from tutorial text in more places, e.g. the gallery
-  - Initial dialogs for the new empty rooms
   - A blurb when discovering a cellar tile for the first time?
 - Generate off-limits areas inside cellar
 
