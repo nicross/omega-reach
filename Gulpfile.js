@@ -167,6 +167,8 @@ function getAppJs() {
   if (!isDemo) {
     srcs.push(
       '!src/js/app/demo.js',
+      '!src/js/app/demo/*.js',
+      '!src/js/app/demo/**/*.js',
     )
   }
 

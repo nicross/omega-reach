@@ -27,8 +27,8 @@ content.audio.cellarInteractives = (() => {
       normal = relative.normalize()
 
     const gain = engine.fn.fromDb(
-        engine.fn.lerp(0, tile.isUnique ? -9 : -12, distanceRatio)
-      + (isFullyScanned && !tile.isUnique ? -6 : 0)
+        engine.fn.lerp(0, tile.isUnique || isNearDeath ? -9 : -12, distanceRatio)
+      + (isFullyScanned && !tile.isUnique && !isNearDeath ? -6 : 0)
     )
 
     const rootFrequency = engine.fn.detune(

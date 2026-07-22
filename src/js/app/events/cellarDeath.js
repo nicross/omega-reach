@@ -77,7 +77,7 @@ content.location.on('cellar-death', () => {
 
     app.screen.game.dialog.push({
       title: `It's the atrium.`,
-      description: `You lose <strong class="a-game--dialogCurrency">${app.utility.format.currency(penalty)}</strong> to <strong>the cellar</strong> this run.`,
+      description: `You lost <strong class="a-game--dialogCurrency">${app.utility.format.currency(penalty)}</strong> to <strong>the cellar</strong> this run.`,
       actions: [
         {
           label: 'Wake up',

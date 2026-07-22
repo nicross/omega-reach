@@ -2,10 +2,10 @@
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
 - Tutorials
   - How to navigate between cellar floors
-  - Automatic death upon entering fourth floor of cellar
   - Separate the lore from tutorial text in more places, e.g. the gallery
   - Initial dialogs for the new empty rooms
   - A blurb when discovering a cellar tile for the first time?
+- Generate off-limits areas inside cellar
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect
