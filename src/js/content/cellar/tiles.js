@@ -28,11 +28,8 @@ content.cellar.tiles = (() => {
       z,
     }
 
-    // Determine the tile type
-    const types = getTypes(tile)
-    const type = engine.fn.chooseWeighted(types, srand('type'))
-
     // Generate an instance of the tile type
+    const type = getType(seed, tile)
     const instance = type.generate(tile)
 
     if (type.isUnique && !uniqueExists(tile)) {
@@ -46,32 +43,29 @@ content.cellar.tiles = (() => {
     return instance
   }
 
-  function getTypes(tile) {
+  function getType(seed, tile) {
+    const srand = (name, ...args) => engine.fn.srand(...seed, 'type', name)(...args)
+
     // Origin is always normal
+    // TODO: Make a separate tile for entrance
     if (tile.x == 0 && tile.y == 0 && tile.z == 0) {
-      return [
-        registry.get('normal'),
-      ]
+      return registry.get('normal')
     }
 
     // If known to be unique, force tile to be that type
     for (const unique of uniques) {
       if (unique.x == tile.x && unique.y == tile.y) {
         if (unique.z == tile.z) {
-          return [
-            registry.get(unique.id),
-          ]
+          return registry.get(unique.id)
         } else if (unique.z == tile.z + 1 && unique.id == 'descent') {
           // Ascents are always directly above descents
-          return [
-            registry.get('ascent'),
-          ]
+          return registry.get('ascent')
         }
       }
     }
 
     // Determine which unique types are already in-use
-    const nonUniqueTypes = [],
+    const normalTypes = [],
       uniqueTypes = [],
       uniquesInUse = new Set()
 
@@ -90,16 +84,19 @@ content.cellar.tiles = (() => {
       }
 
       if (!type.isUnique) {
-        nonUniqueTypes.push(type)
+        normalTypes.push(type)
       } else if (!uniquesInUse.has(type.id)) {
         uniqueTypes.push(type)
       }
     }
 
-    return [
-      ...nonUniqueTypes,
-      ...uniqueTypes,
-    ]
+    // Roll the dice (3/4, 4/5, 5/6, ... chance per floor)
+    const normalChance = (3 + Math.abs(tile.z))
+      / (4 + Math.abs(tile.z))
+
+    return srand('isNormal') < normalChance
+      ? engine.fn.chooseWeighted(normalTypes, srand('roll'))
+      : engine.fn.chooseWeighted(uniqueTypes, srand('roll'))
   }
 
   function isAscent(tile) {
@@ -183,6 +180,8 @@ content.cellar.tiles = (() => {
           return true
         }
       }
+
+      // TODO: Terrain generation in cellar
 
       return false
     },
