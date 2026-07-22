@@ -12,7 +12,7 @@
 - Added support for MIDI input.
 - Added a slider for drone volume.
 - Added a slider for effect volume.
-- Added a demo limitations dialog on startup.
+- Added demo limitations dialogs to explain what's missing.
 - Tracked time playing each instrument.
 - Inverted the input at the horizon.
 - Animated object rotations when transitioning.

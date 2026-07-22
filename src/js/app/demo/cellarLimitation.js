@@ -7,7 +7,7 @@ app.tutorial.cellarLimitation = app.tutorial.invent({
   // Lifecycle
   shouldActivate: () => app.isDemo() && content.location.is('cellar'),
   onUpdate: function () {
-    if (!(content.location.is('cellar') && content.cellar.position.get().z == -1)) {
+    if (!(content.location.is('cellar') && content.cellar.position.get().z == -3)) {
       return
     }
 
