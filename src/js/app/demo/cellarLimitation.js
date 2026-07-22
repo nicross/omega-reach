@@ -5,9 +5,9 @@ app.tutorial.cellarLimitation = app.tutorial.invent({
     tutorial: false,
   },
   // Lifecycle
-  shouldActivate: () => app.isDemo() && content.location.is('cellar'),
+  shouldActivate: () => app.isDemo() && content.location.is('cellar') && content.cellar.position.get().z == -3,
   onUpdate: function () {
-    if (!(content.location.is('cellar') && content.cellar.position.get().z == -3)) {
+    if (!(content.location.is('cellar'))) {
       return
     }
 
@@ -19,7 +19,7 @@ app.tutorial.cellarLimitation = app.tutorial.invent({
     if (!this.state.tutorial) {
       app.screen.game.dialog.push({
         tutorial: true,
-        title: `<span class="u-highlight">[Demo limitations]</span>`,
+        title: `<span class="u-highlight">[Demo limitation]</span>`,
         description: `You have reached the end of <strong>the cellar</strong>. Thanks for playing!`,
         actions: [
           {
