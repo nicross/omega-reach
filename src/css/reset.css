@@ -9,7 +9,3 @@
   padding: 0;
   text-decoration: none;
 }
-
-button, button *, button *::after, button *::before {
-  cursor: pointer;
-}

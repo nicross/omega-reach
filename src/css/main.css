@@ -27,6 +27,8 @@ html, body {
 
 [role="button"],
 [role="button"] *,
+a,
+a *,
 button,
 button * {
   cursor: pointer;
