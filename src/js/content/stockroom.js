@@ -56,6 +56,7 @@ content.stockroom = (() => {
       return this
     },
     isGenerated: (name) => generated.has(name),
+    isOpen: () => content.cellar.isRunning() && content.wallet.has(content.shop.getCost()),
     isStolen: (name) => stolen.has(name),
     keepStolen: function () {
       for (const name of stolen) {

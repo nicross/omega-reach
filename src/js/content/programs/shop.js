@@ -9,26 +9,26 @@ content.programs.shop = content.programs.invent({
   },
   // Particles
   alterParticle: function (particle) {
-    const isCellar = engine.fn.between(particle.floor.y, 10, 15) && content.cellar.isOpen(),
-      isOnline = content.rooms.reach.state.online,
+    const isOnline = content.rooms.reach.state.online,
+      isStockroom = engine.fn.between(particle.floor.y, 10, 15) && content.stockroom.isOpen(),
       time = content.time.value()
 
     let countertop = 0
 
     if (particle.floor.x < -10) {
       countertop = Math.max(0, -particle.floor.x - 10)
-    } else if (engine.fn.between(particle.floor.x, -7.5, -2.5) && !isCellar) {
+    } else if (engine.fn.between(particle.floor.x, -7.5, -2.5) && !isStockroom) {
       countertop = 1
     }
 
     particle.target.h = engine.fn.lerp(-25, 25, content.fn.gain(this.fields.flicker.valueAt({x: time}, 6), 1.5)) / 360
     particle.target.s = 0
     particle.target.v = 1
-    particle.target.x = isCellar ? particle.floor.x : Math.max(particle.floor.x, particle.floor.y > -10 ? -10 : -20)
+    particle.target.x = isStockroom ? particle.floor.x : Math.max(particle.floor.x, particle.floor.y > -10 ? -10 : -20)
     particle.target.y = particle.floor.y
     particle.target.z = particle.floor.z + (particle.floor.y > -10 ? countertop : Math.max(0, -particle.floor.x - 20))
 
-    if (isCellar) {
+    if (isStockroom) {
       particle.target.z = particle.floor.z
     }
 

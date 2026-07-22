@@ -174,7 +174,7 @@ content.rooms.stockroom = content.rooms.invent({
       : `<li class="a-game--attribute a-game--attribute-complete"><i aria-hidden="true">✓</i>Complete</li>`
   },
   // Movement
-  canEnter: () => content.cellar.isRunning(),
+  canEnter: () => content.stockroom.isOpen(),
   canMoveLeft: () => content.stockroom.countGenerated() > 1,
   canMoveRight: () => content.stockroom.countGenerated() > 1,
   moveLeft: function () {

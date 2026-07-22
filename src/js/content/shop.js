@@ -211,7 +211,7 @@ content.shop = (() => {
 
       return this
     },
-    isOpen: () => content.conservatory.isReady() && content.wallet.amount() >= getCost() && timer == 0,
+    isOpen: () => content.conservatory.isReady() && content.wallet.has(getCost()) && timer == 0,
     reset: function () {
       previous.clear()
       timer = cooldownTime

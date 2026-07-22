@@ -1,7 +1,6 @@
 # TODO
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
 - Tutorials
-  - Allow pausing during dialogs, but change message to say "Collection last saved (time ago)"
   - How to navigate between cellar floors
   - Automatic death upon entering fourth floor of cellar
   - Separate the lore from tutorial text in more places, e.g. the gallery

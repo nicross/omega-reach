@@ -19,6 +19,7 @@
 - Highlighted credits and sanity in dialogs.
 - Lit moons from same light source as their planets.
 - Made the reach audible from the gallery and stockroom.
+- Closed the stockroom when the shopkeeper would never return.
 - Fixed a looping conversation in the lobby.
 - Improved gamepad interaction projection.
 - Updated the manual accordingly.

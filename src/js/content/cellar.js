@@ -30,10 +30,7 @@ content.cellar = (() => {
         && this.isRunning()
     },
     isRunning: function () {
-      const health = this.health.amount()
-
-      // TODO: BUT NOT when health == 1 and zero interactive tiles remain, teleport back to shop at this point
-      return health >= 1
+      return this.health.amount() >= 1
     },
     reset: function () {
       this.deaths.reset()
