@@ -20,7 +20,7 @@ app.tutorial.reliquaryLimitation = app.tutorial.invent({
       },
       {
         title: `Echo? echo!`,
-        description: `An extracyclic energy resonates throughout <strong>the reliquary</strong>. Yet, its empty pedestals reject its calls when no relics confer a meaning.`,
+        description: `An extracyclic energy resonates throughout <strong>the reliquary</strong>. Yet, its empty pedestals reject its calls without relics to confer any meaning.`,
         actions: [
           {
             label: `Back to work`,

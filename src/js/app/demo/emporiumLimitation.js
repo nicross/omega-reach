@@ -19,8 +19,8 @@ app.tutorial.emporiumLimitation = app.tutorial.invent({
         ],
       },
       {
-        title: `<q>Hey bidder! It's the curator…</q>`,
-        description: `It's the auctioneer and their cacophony of chanting. This time, their rhythmic stream of consciousness glissandos toward a tone which augments their <em>earthern roots</em>.`,
+        title: `<q>No bidders! It's the curator…</q>`,
+        description: `It's the auctioneer and their cacophony of chanting. This time, their rhythmic stream of consciousness glissandos toward a tone below their <em>earthern roots</em>.`,
         actions: [
           {
             label: `Back to work`,

@@ -2,7 +2,7 @@ content.rooms.emporium = content.rooms.invent({
   // Attributes
   id: 'emporium',
   name: 'The emporium',
-  description: 'Free of bidders',
+  description: 'Bereft of bidders',
   defaultProgram: 'emporiumEmpty',
   moveDownLabel: 'To the lobby',
   // Transitions
