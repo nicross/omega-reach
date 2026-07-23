@@ -18,7 +18,6 @@ app.tutorial.cellarLimitation = app.tutorial.invent({
 
     if (!this.state.tutorial) {
       app.screen.game.dialog.push({
-        tutorial: true,
         title: `<span class="u-highlight">[Demo limitation]</span>`,
         description: `You have reached the end of <strong>the cellar</strong>. Thanks for playing!`,
         actions: [
