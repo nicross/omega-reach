@@ -23,7 +23,7 @@
 - Closed the stockroom when the shopkeeper would never return.
 - Fixed a looping conversation in the lobby.
 - Improved gamepad interaction projection.
-- Found a new font for the splash screen.
+- Found a new font for the logo.
 - Updated the manual accordingly.
 - Updated desktop builds to Electron 42.
 
