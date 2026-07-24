@@ -13,6 +13,8 @@ app.tutorial.shopLoop = app.tutorial.invent({
       return
     }
 
+    content.stockroom.setClosedFlag(true)
+
     if (!this.state.tutorial) {
       [
         {
@@ -21,7 +23,16 @@ app.tutorial.shopLoop = app.tutorial.invent({
           actions: [
             {
               label: 'Brace for it',
-              after: () => content.audio.reachSwitch.trigger(true, 0.25),
+              after: () => {
+                content.audio.reachSwitch.trigger(true, 0.25)
+                content.audio.footsteps.trigger({
+                  count: 6,
+                  delay: 1/5,
+                  duration: 1/6,
+                  pan: -0.333,
+                  velocity: 0.5,
+                })
+              },
             },
           ],
         },
@@ -199,9 +210,18 @@ app.tutorial.shopLoop = app.tutorial.invent({
   },
   // Methods
   startCellarRun: function () {
-    content.shop.resetTimer()
     content.cellar.startRun()
+    content.shop.resetTimer()
+    content.stockroom.setClosedFlag(false)
+
     content.audio.reachSwitch.trigger(false, 0.25)
+    content.audio.footsteps.trigger({
+      count: 7,
+      delay: 1/5,
+      duration: 1/6,
+      pan: 0.666,
+      velocity: 0.5,
+    })
 
     app.screen.game.update()
   },

@@ -14,9 +14,9 @@ content.rooms.emporium = content.rooms.invent({
   // Interactions
   canInteractFreely: () => true,
   // Atrium
-  getAtriumMuffle: () => 13/16,
+  getAtriumMuffle: () => 1,
   getAtriumPan: () => 0,
   // Reach
   getReachMuffle: () => 1 - (1/32),
-  getReachPan: () => 0,
+  getReachPan: () => 1/2,
 })

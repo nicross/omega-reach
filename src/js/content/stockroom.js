@@ -3,7 +3,8 @@ content.stockroom = (() => {
     instruments = new Map(),
     stolen = new Set()
 
-  let steals = 0
+  let isClosedFlag = false,
+    steals = 0
 
   return {
     countGenerated: () => generated.size,
@@ -56,7 +57,7 @@ content.stockroom = (() => {
       return this
     },
     isGenerated: (name) => generated.has(name),
-    isOpen: () => content.cellar.isRunning() && content.wallet.has(content.shop.getCost()),
+    isOpen: () => !isClosedFlag && content.cellar.isRunning() && content.wallet.has(content.shop.getCost()),
     isStolen: (name) => stolen.has(name),
     keepStolen: function () {
       for (const name of stolen) {
@@ -76,7 +77,13 @@ content.stockroom = (() => {
       instruments.clear()
       stolen.clear()
 
+      isClosedFlag = false
       steals = 0
+
+      return this
+    },
+    setClosedFlag: function (value) {
+      isClosedFlag = value
 
       return this
     },

@@ -4,34 +4,22 @@ content.programs.reliquaryEmpty = content.programs.invent({
   invertSynthX: () => true,
   // Particles
   alterParticle: function (particle) {
-    const radius = 2.5,
-      y = 10
+    const isFeature = Math.max(
+      engine.fn.clamp(engine.fn.scale(particle.floor.y, -12.5, -11.5, 0, 1)) * engine.fn.clamp(engine.fn.scale(particle.floor.y, -6.5, -5.5, 1, 0)),
+      engine.fn.clamp(engine.fn.scale(particle.floor.y, 12.5, 11.5, 0, 1)) * engine.fn.clamp(engine.fn.scale(particle.floor.y, 6.5, 5.5, 1, 0)),
+    ) * engine.fn.clamp(engine.fn.scale(particle.floor.x, -12.5, -40, 0, 1))
 
-    const distances = [
-      engine.tool.vector2d.create({x: -40, y}).distance(particle.target),
-      engine.tool.vector2d.create({x: -40, y: -y}).distance(particle.target),
-      engine.tool.vector2d.create({x: -30, y}).distance(particle.target),
-      engine.tool.vector2d.create({x: -30, y: -y}).distance(particle.target),
-      engine.tool.vector2d.create({x: -20, y}).distance(particle.target),
-      engine.tool.vector2d.create({x: -20, y: -y}).distance(particle.target),
-      engine.tool.vector2d.create({x: -10, y}).distance(particle.target),
-      engine.tool.vector2d.create({x: -10, y: -y}).distance(particle.target),
-      engine.tool.vector2d.create({x: 0, y}).distance(particle.target),
-      engine.tool.vector2d.create({x: 0, y: -y}).distance(particle.target),
-    ]
-
-    const closest = Math.min(...distances)
-
-    const isPedestal = closest < radius
-      ? content.fn.gain((1 - (closest / radius)) ** 0.75, 2)
-      : 0
+    const isExhibit = Math.max(
+      engine.fn.clamp(engine.fn.scale(particle.floor.y, -28.5, -27.5, 0, 1)) * engine.fn.clamp(engine.fn.scale(particle.floor.y, -25, -24, 1, 0)),
+      engine.fn.clamp(engine.fn.scale(particle.floor.y, 24, 25, 0, 1)) * engine.fn.clamp(engine.fn.scale(particle.floor.y, 27.5, 28.5, 1, 0)),
+    )
 
     particle.target.h = 0
     particle.target.s = 0
     particle.target.v = 1
     particle.target.x = particle.floor.x
     particle.target.y = particle.floor.y
-    particle.target.z = particle.floor.z + (isPedestal * 2.5)
+    particle.target.z = particle.floor.z + (isFeature * 27.5) + (isExhibit * 1)
   },
   // Rumble
   useNavigationalRumble: () => true,

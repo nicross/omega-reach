@@ -20,6 +20,7 @@ content.programs.lobby = content.programs.invent({
     particle.target.y = particle.floor.y
     particle.target.z = particle.floor.z + (isNorth ? 0 : (particle.floor.y < 10 ? Math.max(0, Math.abs(particle.floor.x) - 10) : Math.max(0, Math.abs(particle.floor.x) - 20)))
 
+    // Atrium waterfall
     if (particle.floor.y > 10 && particle.floor.x <= -20) {
       particle.target.h = isOnline ? particle.target.h : engine.fn.scale(Math.sin(engine.const.tau * time * particle.twinkleFrequencies[0]), -1, 1, -1/2, -1/4)
       particle.target.s = engine.fn.scale(Math.sin(engine.const.tau * time * particle.twinkleFrequencies[1]), -1, 1, 0.333, 1)
