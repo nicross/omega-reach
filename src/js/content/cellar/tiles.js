@@ -110,9 +110,9 @@ content.cellar.tiles = (() => {
       }
     }
 
-    // Roll the dice (3/4, 4/5, 5/6, ... chance per floor)
-    const normalChance = (3 + Math.abs(tile.z))
-      / (4 + Math.abs(tile.z))
+    // Roll the dice (5/6, 4/5, 3/4... chance per floor)
+    const normalChance = (5 - Math.abs(tile.z))
+      / (6 - Math.abs(tile.z))
 
     return srand('isNormal') < normalChance || !uniqueTypes.length
       ? engine.fn.chooseWeighted(normalTypes, srand('roll'))
@@ -139,17 +139,17 @@ content.cellar.tiles = (() => {
 
     // Distance from ascent on current floor
     const distance = [
-      16,
       12,
       8,
+      6,
       4,
     ][Math.abs(z)]
 
     // Scale of noise on current floor
     const scale = [
-      16,
       12,
       8,
+      6,
       4,
     ][Math.abs(z)] / engine.tool.simplex2d.prototype.skewFactor
 

@@ -1,10 +1,6 @@
 # TODO
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
-- Tutorials
-  - How to navigate between cellar floors
-  - Separate the lore from tutorial text in more places, e.g. the gallery
-  - A blurb when discovering a cellar tile for the first time?
-- Generate off-limits areas inside cellar
+- Blurbs when discovering a cellar tile for the first time (some tutorials)
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect
