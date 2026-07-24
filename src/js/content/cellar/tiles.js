@@ -14,6 +14,26 @@ content.cellar.tiles = (() => {
     engine.tool.vector3d.create({x: -1, y: 0, z: 0}), // gallery
   ]
 
+  const solidField = engine.fn.createNoise({
+    octaves: 4,
+    seed: ['cellar', 'tiles', 'solid'],
+    type: 'simplex2d',
+  })
+
+  engine.ephemera.add(solidField)
+
+  function find(criteria = {}) {
+    for (const unique of uniques) {
+      for (const [key, value] of Object.entries(criteria)) {
+        if (unique[key] !== value) {
+          continue
+        }
+      }
+
+      return unique
+    }
+  }
+
   function generate(x, y, z) {
     const seed = ['cellar', content.cellar.run.count(), 'tile', x, y, z],
       srand = (name, ...args) => engine.fn.srand(...seed, name)(...args)
@@ -94,7 +114,7 @@ content.cellar.tiles = (() => {
     const normalChance = (3 + Math.abs(tile.z))
       / (4 + Math.abs(tile.z))
 
-    return srand('isNormal') < normalChance
+    return srand('isNormal') < normalChance || !uniqueTypes.length
       ? engine.fn.chooseWeighted(normalTypes, srand('roll'))
       : engine.fn.chooseWeighted(uniqueTypes, srand('roll'))
   }
@@ -110,6 +130,45 @@ content.cellar.tiles = (() => {
     }
 
     return false
+  }
+
+  function isSolid(x, y, z) {
+    const ascent = engine.tool.vector2d.create(
+      z == 0 ? {} : find({z, id:'ascent'})
+    )
+
+    // Distance from ascent on current floor
+    const distance = [
+      16,
+      12,
+      8,
+      4,
+    ][Math.abs(z)]
+
+    // Scale of noise on current floor
+    const scale = [
+      16,
+      12,
+      8,
+      4,
+    ][Math.abs(z)] / engine.tool.simplex2d.prototype.skewFactor
+
+    // Threshold of noise on current floor
+    const threshold = [
+      0.5,
+      0.4833,
+      0.4666,
+      0.45,
+    ][Math.abs(z)]
+
+    return Math.max(
+      solidField.value(
+        x / scale, y / scale, (z + 0.5) * 10,
+      ),
+      1 - engine.fn.clamp(
+        ascent.distance({x, y}) / distance
+      ),
+    ) < threshold
   }
 
   function uniqueExists(tile) {
@@ -143,6 +202,7 @@ content.cellar.tiles = (() => {
     export: () => ({
       uniques: uniques.map((x) => x.instance.export()),
     }),
+    find,
     get: function ({x, y, z}) {
       if (!cache.has(x, y, z)) {
         cache.set(x, y, z, generate(x, y, z))
@@ -181,12 +241,11 @@ content.cellar.tiles = (() => {
         }
       }
 
-      // TODO: Terrain generation in cellar
-
-      return false
+      return isSolid(x, y, z)
     },
     reset: function () {
       cache.reset()
+      solidField.reset()
       uniques.length = 0
 
       return this
