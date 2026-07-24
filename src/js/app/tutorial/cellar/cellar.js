@@ -12,7 +12,7 @@ app.tutorial.cellar = app.tutorial.invent({
     [
       {
         title: `Was this always here?`,
-        description: `You follow the shopkeeper into the <em>earthen labyrinth</em> undetected. Perhaps this is a shortcut to wherever they find their wares? Yet, the darkness which enshrouds their footsteps seems to creep much further.`,
+        description: `You follow the shopkeeper into the <em>earthen labyrinth</em> undetected. Perhaps this is a shortcut to wherever they find their wares? Yet, the darkness which enshrouds their footsteps seems to creep much deeper than that.`,
         actions: [
           {
             label: 'Be careful',

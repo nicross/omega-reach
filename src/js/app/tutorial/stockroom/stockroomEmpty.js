@@ -12,7 +12,7 @@ app.tutorial.stockroomEmpty = app.tutorial.invent({
     [
       {
         title: `It's… empty?`,
-        description: `You slip into <strong>the stockroom</strong> without explicit approval. Lacking the shopkeeper's atypical personality, the hollow room exhibits similar acoustics to <strong>the gallery</strong>. What might they normally keep within this underused facility?`,
+        description: `You slip into <strong>the stockroom</strong> without explicit approval. Lacking the shopkeeper's frisky personality, the hollow room exhibits similar acoustics to <strong>the gallery</strong>. What might they normally keep within this facility?`,
         actions: [
           {
             label: 'Sneak back later',

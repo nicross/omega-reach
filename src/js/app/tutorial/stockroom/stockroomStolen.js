@@ -12,7 +12,7 @@ app.tutorial.stockroomStolen = app.tutorial.invent({
     [
       {
         title: `Is this truly you?`,
-        description: `By your decisive fist, the ecstatic thrill fills you like commanding <strong>the reach</strong>. Yet, to what end could this ecstacy beseech? Do you sincerely doubt the shopkeeper and your tactical synergy?`,
+        description: `By your decisive fist, the ecstatic thrill fills you like commanding <strong>the reach</strong>. Yet, to what end could this ecstacy beseech? Will you commit to deceiving the shopkeeper and your tactical synergy?`,
         actions: [
           {
             label: `Consider putting it back`,

@@ -12,7 +12,7 @@ app.tutorial.stockroomScanned = app.tutorial.invent({
     [
       {
         title: `It's exquisite!`,
-        description: `Why might the shopkeeper be hiding this gem? You mire the logistics and whether to be generous. If they were simply following their duties, then you'd eventually be exchanging these with your credits.`,
+        description: `Why might the shopkeeper be hiding this gem? You mire the logistics and whether to be generous. If they were simply following their duties, then you'd eventually be exchanging these for credits.`,
         actions: [
           {
             label: `Consider taking it`,
