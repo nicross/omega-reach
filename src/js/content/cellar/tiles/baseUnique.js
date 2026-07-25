@@ -4,6 +4,7 @@ content.cellar.tiles.baseUnique = content.cellar.tiles.base.extend({
   effectsOnEnter: [],
   isUnique: true,
   canGenerate: (tile) => engine.fn.between(tile.z, 0, -2), // Not past third floor
+  getDialogs: () => [],
   getEffects: function () {
     return [
       ...this.effectsOnEnter,
