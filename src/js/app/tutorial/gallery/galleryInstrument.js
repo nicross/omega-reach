@@ -1,7 +1,5 @@
 app.tutorial.galleryInstrument = app.tutorial.invent({
   id: 'galleryInstrument',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('gallery') && content.instruments.count() > 0,
   onUpdate: function () {

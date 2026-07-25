@@ -1,7 +1,5 @@
 app.tutorial.reachOff = app.tutorial.invent({
   id: 'reachOff',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('reach') && app.tutorial.reachOnline.complete && !content.rooms.reach.state.online,
   onUpdate: function () {

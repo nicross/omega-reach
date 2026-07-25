@@ -4,7 +4,7 @@ app.tutorial.base = {
   // State
   active: false,
   complete: false,
-  initialState: {},
+  defaultState: {},
   state: {},
   // Main methods
   export: function () {
@@ -67,7 +67,7 @@ app.tutorial.base = {
   },
   // Lifecycle
   markActive: function () {
-    this.state = {...this.initialState}
+    this.state = {...this.defaultState}
 
     this.active = true
     this.onActivate()

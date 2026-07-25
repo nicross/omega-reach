@@ -1,7 +1,5 @@
 app.tutorial.shopClosed = app.tutorial.invent({
   id: 'shopClosed',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('shop') && !content.rooms.shop.isOpen(),
   onUpdate: function () {

@@ -1,7 +1,5 @@
 app.tutorial.stockroomScanned = app.tutorial.invent({
   id: 'stockroomScanned',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('stockroom') && content.rooms.stockroom.isComplete(),
   onUpdate: function () {

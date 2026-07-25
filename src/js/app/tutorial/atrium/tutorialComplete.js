@@ -1,7 +1,5 @@
 app.tutorial.tutorialComplete = app.tutorial.invent({
   id: 'tutorialComplete',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('atrium') && content.conservatory.isOpen(),
   onUpdate: function () {

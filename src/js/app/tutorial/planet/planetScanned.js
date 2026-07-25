@@ -1,7 +1,5 @@
 app.tutorial.planetScanned = app.tutorial.invent({
   id: 'planetScanned',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('planet') && content.scans.is(content.rooms.planet.getPlanet().name),
   onUpdate: function () {

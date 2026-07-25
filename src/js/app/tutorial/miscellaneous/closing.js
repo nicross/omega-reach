@@ -1,7 +1,5 @@
 app.tutorial.closing = app.tutorial.invent({
   id: 'closing',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => app.tutorial.galleryComplete.complete && !content.conservatory.isOpen(),
   onUpdate: function () {

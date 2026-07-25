@@ -1,7 +1,5 @@
 app.tutorial.reachOnline = app.tutorial.invent({
   id: 'reachOnline',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.rooms.reach.state.online,
   onUpdate: function () {

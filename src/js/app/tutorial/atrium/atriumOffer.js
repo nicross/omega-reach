@@ -1,7 +1,5 @@
 app.tutorial.atriumOffer = app.tutorial.invent({
   id: 'atriumOffer',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('atrium') && content.shop.isOpen(),
   onUpdate: function () {

@@ -1,7 +1,5 @@
 app.tutorial.horizon = app.tutorial.invent({
   id: 'horizon',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('horizon'),
   onUpdate: function () {

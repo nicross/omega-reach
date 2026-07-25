@@ -1,7 +1,5 @@
 app.tutorial.planetMany = app.tutorial.invent({
   id: 'planetMany',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('planet') && content.planets.namesForPlanet(content.rooms.planet.getPlanet()?.name).length > 1,
   onUpdate: function () {

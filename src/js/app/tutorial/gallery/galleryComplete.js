@@ -1,7 +1,5 @@
 app.tutorial.galleryComplete = app.tutorial.invent({
   id: 'galleryComplete',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('gallery') && content.rooms.gallery.isComplete(),
   onUpdate: function () {

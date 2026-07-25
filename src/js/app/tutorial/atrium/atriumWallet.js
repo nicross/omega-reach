@@ -1,7 +1,5 @@
 app.tutorial.atriumWallet = app.tutorial.invent({
   id: 'atriumWallet',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('atrium') && content.wallet.has(51),
   onUpdate: function () {

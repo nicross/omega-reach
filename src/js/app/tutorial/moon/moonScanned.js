@@ -1,7 +1,5 @@
 app.tutorial.moonScanned = app.tutorial.invent({
   id: 'moonScanned',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('moon') && content.scans.is(content.rooms.moon.getMoon().name),
   onUpdate: function () {

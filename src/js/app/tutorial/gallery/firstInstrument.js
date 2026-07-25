@@ -1,7 +1,5 @@
 app.tutorial.firstInstrument = app.tutorial.invent({
   id: 'firstInstrument',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => (content.location.is('moon') || content.location.is('planet')) && content.instruments.count() > 0,
   onUpdate: function () {

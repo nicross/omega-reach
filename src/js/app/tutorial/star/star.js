@@ -1,7 +1,5 @@
 app.tutorial.star = app.tutorial.invent({
   id: 'star',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('star'),
   onUpdate: function () {

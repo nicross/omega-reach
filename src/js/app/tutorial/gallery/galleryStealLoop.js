@@ -1,7 +1,5 @@
 app.tutorial.galleryStealLoop = app.tutorial.invent({
   id: 'galleryStealLoop',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.stockroom.hasStolen(),
   onUpdate: function () {

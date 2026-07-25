@@ -1,7 +1,5 @@
 app.tutorial.galleryScanned = app.tutorial.invent({
   id: 'galleryScanned',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('gallery') && content.rooms.gallery.getInstrument()?.state.scans,
   onUpdate: function () {

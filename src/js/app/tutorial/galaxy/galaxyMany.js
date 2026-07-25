@@ -1,7 +1,5 @@
 app.tutorial.galaxyMany = app.tutorial.invent({
   id: 'galaxyMany',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('galaxy') && content.galaxies.count() > 1,
   onUpdate: function () {

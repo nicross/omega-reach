@@ -1,7 +1,5 @@
 app.tutorial.horizonUnlocked = app.tutorial.invent({
   id: 'horizonUnlocked',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('horizon') && app.tutorial.firstInstrument.complete,
   onUpdate: function () {

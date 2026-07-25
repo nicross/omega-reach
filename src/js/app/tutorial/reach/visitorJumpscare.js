@@ -1,7 +1,5 @@
 app.tutorial.visitorJumpscare = app.tutorial.invent({
   id: 'visitorJumpscare',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('horizon') && content.donations.has(100) && content.conservatory.isOpen(),
   onUpdate: function () {

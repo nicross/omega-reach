@@ -59,7 +59,7 @@ content.cellar.tiles.obelisk = content.cellar.tiles.invent({
     // Rotate clockwise
     vector = vector.rotate(this.state.rotation * engine.const.tau * time / 120)
 
-    const value = (0.5 + (0.5 * Math.sin(engine.const.tau * time/10 * particle.twinkleFrequencies[2]))) ** 3
+    const value = (0.5 + (0.5 * Math.sin(engine.const.tau * time/10 * particle.twinkleFrequencies[2]))) ** 4
 
     particle.target.x = engine.fn.lerp(vector.x, particle.floor.x, value)
     particle.target.y = engine.fn.lerp(vector.y, particle.floor.y, value)

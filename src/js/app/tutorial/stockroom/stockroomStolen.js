@@ -1,7 +1,5 @@
 app.tutorial.stockroomStolen = app.tutorial.invent({
   id: 'stockroomStolen',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('stockroom') && content.stockroom.hasStolen(),
   onUpdate: function () {

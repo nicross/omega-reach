@@ -1,7 +1,5 @@
 app.tutorial.cellar = app.tutorial.invent({
   id: 'cellar',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('cellar'),
   onUpdate: function () {

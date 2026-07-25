@@ -1,7 +1,5 @@
 app.tutorial.starScanned = app.tutorial.invent({
   id: 'starScanned',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('star') && content.scans.is(content.rooms.star.getStar().name),
   onUpdate: function () {

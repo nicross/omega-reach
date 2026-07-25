@@ -1,7 +1,5 @@
 app.tutorial.moonMany = app.tutorial.invent({
   id: 'moonMany',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('moon') && content.moons.namesForMoon(content.rooms.moon.getMoon()?.name).length > 1,
   onUpdate: function () {

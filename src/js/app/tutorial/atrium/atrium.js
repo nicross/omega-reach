@@ -1,7 +1,5 @@
 app.tutorial.atrium = app.tutorial.invent({
   id: 'atrium',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => true,
   onUpdate: function () {

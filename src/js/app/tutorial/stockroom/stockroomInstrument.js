@@ -1,7 +1,5 @@
 app.tutorial.stockroomInstrument = app.tutorial.invent({
   id: 'stockroomInstrument',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('stockroom') && content.stockroom.hasGenerated(),
   onUpdate: function () {

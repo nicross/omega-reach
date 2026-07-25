@@ -1,7 +1,5 @@
 app.tutorial.reopening = app.tutorial.invent({
   id: 'reopening',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => app.tutorial.tutorialComplete.complete && !content.conservatory.isOpen() && content.instruments.count() > 0,
   onUpdate: function () {

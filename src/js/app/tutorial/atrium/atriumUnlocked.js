@@ -1,7 +1,5 @@
 app.tutorial.atriumUnlocked = app.tutorial.invent({
   id: 'atriumUnlocked',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('atrium') && app.tutorial.firstInstrument.complete,
   onUpdate: function () {

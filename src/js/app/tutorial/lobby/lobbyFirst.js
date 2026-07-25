@@ -1,7 +1,5 @@
 app.tutorial.lobbyFirst = app.tutorial.invent({
   id: 'lobbyFirst',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('lobby'),
   onUpdate: function () {

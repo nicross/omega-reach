@@ -1,7 +1,5 @@
 app.tutorial.atriumDonations = app.tutorial.invent({
   id: 'atriumDonations',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('atrium') && content.donations.has(),
   onUpdate: function () {

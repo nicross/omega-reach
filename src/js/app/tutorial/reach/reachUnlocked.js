@@ -1,7 +1,5 @@
 app.tutorial.reachUnlocked = app.tutorial.invent({
   id: 'reachUnlocked',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('reach') && app.tutorial.firstInstrument.complete,
   onUpdate: function () {

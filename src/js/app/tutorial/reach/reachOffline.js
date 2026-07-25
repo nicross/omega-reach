@@ -1,7 +1,5 @@
 app.tutorial.reachOffline = app.tutorial.invent({
   id: 'reachOffline',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('reach'),
   onUpdate: function () {

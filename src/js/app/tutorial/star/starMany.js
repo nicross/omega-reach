@@ -1,7 +1,5 @@
 app.tutorial.starMany = app.tutorial.invent({
   id: 'starMany',
-  // State
-  state: {},
   // Lifecycle
   shouldActivate: () => content.location.is('star') && content.stars.countForStar(content.rooms.star.getStar()?.name) > 1,
   onUpdate: function () {
