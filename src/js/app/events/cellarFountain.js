@@ -4,10 +4,10 @@ content.location.on('cellar-fountain', ({tile}) => {
 
   app.screen.game.dialog.push({
     title: `Make an earthen wish?`,
-    description: `You will donate <strong class="a-game--dialogCurrency">${app.utility.format.currency(cost)}</strong> to recover up to <strong class="a-game--dialogHealth">${app.utility.format.health(recovery)}</strong>.`,
+    description: `You will recover <strong class="a-game--dialogHealth">${app.utility.format.health(recovery)}</strong> for <strong class="a-game--dialogCurrency">${app.utility.format.currency(cost)}</strong>.`,
     actions: [
       {
-        label: `Toss the credit${cost == 1 ? '' : 's'}`,
+        label: `Donate the credit${cost == 1 ? '' : 's'}`,
         after: () => {
           content.audio.sanityChange.trigger({isUp: true})
           content.cellar.health.add(recovery)

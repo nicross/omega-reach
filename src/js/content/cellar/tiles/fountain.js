@@ -36,7 +36,7 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
     return 1 + this.state.uses
   },
   canInteractMore: function () {
-    return !content.cellar.health.isMax() && content.wallet.has(this.calculateCost())
+    return content.wallet.has(this.calculateCost())
   },
   getInteractLabelMore: () => 'Interact',
   incrementUses: function () {

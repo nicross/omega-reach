@@ -55,7 +55,7 @@ content.cellar.tiles.normal = (() => {
           },
           attribute: {
             label: `${label} donation`,
-            modifiers: ['rare'],
+            modifiers: ['currency'],
           },
           liveLabel: `${label} donation found`,
         }
@@ -77,7 +77,7 @@ content.cellar.tiles.normal = (() => {
           },
           attribute: {
             label: `${label} donation`,
-            modifiers: ['rare'],
+            modifiers: ['currency'],
           },
           liveLabel: `${label} donation found`,
         }
@@ -183,14 +183,17 @@ content.cellar.tiles.normal = (() => {
           'Temporal distortion',
         ], srand())
 
-        let formatter = 'health'
+        let formatter
 
         return {
           apply: () => {
-            if ( content.cellar.barrier.has(1)) {
+            // Expend greed when near death
+            if (content.cellar.barrier.has(1) && content.cellar.health.has(1)) {
               formatter = 'barrier'
               content.cellar.barrier.subtract(1)
+              content.audio.barrierChange.trigger({isUp: false})
             } else {
+              formatter = 'health'
               content.cellar.health.subtract(1)
               content.audio.sanityChange.trigger({isUp: false})
             }

@@ -1,8 +1,23 @@
 content.cellar.tiles.pit = content.cellar.tiles.invent({
   id: 'pit',
   name: 'The pit',
-  uniquePerRun: true,
+  uniquePerFloor: true,
   weight: 8,
+  defaultState: {
+    uses: 0,
+  },
+  calculateCost: function () {
+    return content.wallet.amount() * (0.05 + (0.01 * this.state.uses))
+  },
+  canInteractMore: function () {
+    return content.wallet.has(this.calculateCost())
+  },
+  getInteractLabelMore: () => 'Interact',
+  incrementUses: function () {
+    this.state.uses += 1
+
+    return this
+  },
   onEnterEffects: function () {
     if (!content.cellar.health.has(2)) {
       return
@@ -16,6 +31,11 @@ content.cellar.tiles.pit = content.cellar.tiles.invent({
         label: 'Sanity drained',
         modifiers: [],
       },
+    })
+  },
+  onInteractMore: function () {
+    content.location.emit('cellar-pit', {
+      tile: this,
     })
   },
   alterParticle: function (particle) {

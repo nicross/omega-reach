@@ -50,7 +50,7 @@ content.rooms.cellar = content.rooms.invent({
 
     attributes.push({
       label: `${app.utility.format.health(content.cellar.health.amount())}`,
-      modifiers: ['legendary'],
+      modifiers: ['health'],
     })
 
     const barrier = content.cellar.barrier.amount()
@@ -58,7 +58,7 @@ content.rooms.cellar = content.rooms.invent({
     if (barrier) {
       attributes.push({
         label: `${app.utility.format.barrier(content.cellar.barrier.amount())}`,
-        modifiers: ['rare'],
+        modifiers: ['barrier'],
       })
     }
 

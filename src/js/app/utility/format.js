@@ -19,7 +19,7 @@ app.utility.format.coordinates = function ({x, y}) {
 }
 
 app.utility.format.barrier = function (x) {
-  return `${this.number(x)} <i><span aria-hidden="true" role="presentation" title="greed">†</span><span class="u-screenReader"> greed</span></i>`
+  return `${this.number(x)} <i><span aria-hidden="true" role="presentation" title="greed">⸸</span><span class="u-screenReader"> greed</span></i>`
 }
 
 app.utility.format.currency = function (x) {

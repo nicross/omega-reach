@@ -83,16 +83,19 @@
       font-weight: 500;
       margin-right: 0.5em;
     }
+    .a-game--attribute-health,
     .a-game--attribute-legendary {
       color: #FF55AA;
       font-family: FiraCodeMedium, monospace;
       font-weight: 500;
     }
+    .a-game--attribute-currency,
     .a-game--attribute-rare {
       color: #FFAA55;
       font-family: FiraCodeMedium, monospace;
       font-weight: 500;
     }
+    .a-game--attribute-barrier,
     .a-game--attribute-uncommon {
       color: #55AAFF;
       font-family: FiraCodeMedium, monospace;
@@ -278,6 +281,9 @@
   }
   .a-game--dialogDescription:empty {
     display: none;
+  }
+  .a-game--dialogBarrier {
+    color: #55AAFF;
   }
   .a-game--dialogCurrency {
     color: #FFAA55;
