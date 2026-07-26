@@ -183,16 +183,23 @@ content.cellar.tiles.normal = (() => {
           'Temporal distortion',
         ], srand())
 
+        let formatter = 'health'
+
         return {
           apply: () => {
-            content.cellar.health.subtract(1)
-            content.audio.sanityChange.trigger({isUp: false})
+            if ( content.cellar.barrier.has(1)) {
+              formatter = 'barrier'
+              content.cellar.barrier.subtract(1)
+            } else {
+              content.cellar.health.subtract(1)
+              content.audio.sanityChange.trigger({isUp: false})
+            }
           },
           attribute: {
             label,
             modifiers: [],
           },
-          liveLabel: `${label} found, lost ${app.utility.format.health(1)}`,
+          liveLabel: () => `${label} found, lost ${app.utility.format[formatter](1)}`,
         }
       },
     },

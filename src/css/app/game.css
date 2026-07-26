@@ -93,6 +93,11 @@
       font-family: FiraCodeMedium, monospace;
       font-weight: 500;
     }
+    .a-game--attribute-uncommon {
+      color: #55AAFF;
+      font-family: FiraCodeMedium, monospace;
+      font-weight: 500;
+    }
     .a-game--attribute-undiscovered {
       animation: a-game--attribute-undiscovered 1s ease 0s infinite alternate both;
     }

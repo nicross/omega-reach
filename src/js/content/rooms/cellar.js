@@ -53,6 +53,15 @@ content.rooms.cellar = content.rooms.invent({
       modifiers: ['legendary'],
     })
 
+    const barrier = content.cellar.barrier.amount()
+
+    if (barrier) {
+      attributes.push({
+        label: `${app.utility.format.barrier(content.cellar.barrier.amount())}`,
+        modifiers: ['rare'],
+      })
+    }
+
     return attributes
   },
   isDiscovered: function () {
@@ -99,13 +108,19 @@ content.rooms.cellar = content.rooms.invent({
 
     const message = []
 
+    // Increment scans and apply next effect
     const effects = tile.getEffects(),
       scans = content.cellar.scans.increment(tile)
 
     const effect = effects[scans - 1]
 
-    message.push(effect.liveLabel || effect.attribute.label)
     effect.apply()
+
+    message.push((
+      typeof effect.liveLabel == 'function'
+        ? effect.liveLabel()
+        : effect.liveLabel
+    ) || effect.attribute.label)
 
     // Force walls to update
     content.programs.get().loadProperties()
@@ -122,7 +137,9 @@ content.rooms.cellar = content.rooms.invent({
       content.location.emit('interact-complete', {room: this})
     }
 
-    return message.join(', ')
+    return message
+      .filter((x) => x)
+      .join(', ')
   },
   // Movement
   canEnter: () => content.cellar.isRunning(),

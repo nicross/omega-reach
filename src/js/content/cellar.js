@@ -2,6 +2,7 @@ content.cellar = (() => {
   return {
     export: function () {
       return {
+        barrier: this.barrier.export(),
         deaths: this.deaths.export(),
         discovered: this.discovered.export(),
         health: this.health.export(),
@@ -13,6 +14,7 @@ content.cellar = (() => {
       }
     },
     import: function (data = {}) {
+      this.barrier.import(data.barrier)
       this.deaths.import(data.deaths)
       this.discovered.import(data.discovered)
       this.health.import(data.health)
@@ -33,6 +35,7 @@ content.cellar = (() => {
       return this.health.amount() >= 1
     },
     reset: function () {
+      this.barrier.reset()
       this.deaths.reset()
       this.discovered.reset()
       this.health.reset()
@@ -53,6 +56,8 @@ content.cellar = (() => {
       this.tiles.reset()
 
       this.health.setMax()
+      this.barrier.reset()
+
       this.discovered.set(this.position.get())
       content.audio.cellarInteractives.reset()
 

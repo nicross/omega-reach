@@ -18,13 +18,17 @@ app.utility.format.coordinates = function ({x, y}) {
     : 'Origin'
 }
 
+app.utility.format.barrier = function (x) {
+  return `${this.number(x)} <i><span aria-hidden="true" role="presentation" title="greed">†</span><span class="u-screenReader"> greed</span></i>`
+}
+
 app.utility.format.currency = function (x) {
   const s = x == 1 ? '' : 's'
-  return `${this.number(x)} <i><i aria-hidden="true" role="presentation" title="credit${s}">¤</i><span class="u-screenReader"> credit${s}</span></i>`
+  return `${this.number(x)} <i><span aria-hidden="true" role="presentation" title="credit${s}">¤</span><span class="u-screenReader"> credit${s}</span></i>`
 }
 
 app.utility.format.health = function (x) {
-  return `${this.number(x)} <i><i aria-hidden="true" role="presentation" title="sanity">☥</i><span class="u-screenReader"> sanity</span></i>`
+  return `${this.number(x)} <i><span aria-hidden="true" role="presentation" title="sanity">☥</span><span class="u-screenReader"> sanity</span></i>`
 }
 
 app.utility.format.list = function (items = []) {

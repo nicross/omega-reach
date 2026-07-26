@@ -9,6 +9,7 @@
 - Added eleven new unique tiles to the cellar.
 - Added three new floors to the cellar.
 - Added random layouts to the cellar.
+- Added a new resource to the cellar.
 - Added a toggle for immersive mode.
 - Added support for MIDI input.
 - Added a slider for drone volume.
