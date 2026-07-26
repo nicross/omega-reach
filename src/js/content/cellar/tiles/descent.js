@@ -15,6 +15,22 @@ content.cellar.tiles.descent = content.cellar.tiles.invent({
       z: this.z - 1,
     })
   },
+  getDialogs: () => [
+    {
+      title: `It's an opening.`,
+      description: `The deep chasm into which <strong>the cellar</strong> proceeds is gently lit by drifting wisps of sanity. You approach its interminable darkness with…`,
+      actions: [
+        {label: 'curiosity.'},
+        {label: 'anxiety.'},
+        {label: 'incredulity.'},
+      ],
+    },
+    {
+      tutorial: true,
+      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The descent`,
+      description: `<kbd>Interact</kbd> to descend to the next level.`,
+    },
+  ],
   getEffects: function () {
     const labels = [
       'First',

@@ -23,6 +23,22 @@ app.tutorial.cellarUnique = app.tutorial.invent({
       return
     }
 
+    // Prevent double
+    if (this.preventDouble(tile.id)) {
+      return
+    }
+
+    // Add default actions
+    for (const dialog of dialogs) {
+      if (!dialog.actions?.length) {
+        dialog.actions = [
+          {
+            label: dialog.tutorial ? 'Regain control' : 'Keep going',
+          },
+        ]
+      }
+    }
+
     // Mark complete after last dialog
     const after = dialogs[dialogs.length - 1].after
 

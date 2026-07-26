@@ -6,6 +6,21 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
   defaultState: {
     uses: 0,
   },
+  getDialogs: () => [
+    {
+      title: `It's a fountain.`,
+      description: `A spring of sanity babbles calmly, submerging its menagerie of shinies acumulated across eternities. Legends say donating may improve one's <em>earthen luck</em>.`,
+      actions: [
+        {label: 'Smile wishfully'},
+        {label: 'Scoff snootily'},
+      ],
+    },
+    {
+      tutorial: true,
+      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The fountain`,
+      description: `<kbd>Interact</kbd> to donate credits for your sanity. You may recover them from <strong>the lobby</strong>.`,
+    },
+  ],
   calculateCost: function (uses = this.state.uses + 1) {
     // Fibonacci sequence, starting at second term: 1, 2, 3, 5, 8, 13...
     let x = 1,
@@ -16,6 +31,9 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
     }
 
     return x
+  },
+  calculateRecovery: function () {
+    return 1 + this.state.uses
   },
   canInteractMore: function () {
     return !content.cellar.health.isMax() && content.wallet.has(this.calculateCost())
