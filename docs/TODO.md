@@ -1,6 +1,5 @@
 # TODO
 ## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
-- Implement `content.audio.barrierChange`
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect

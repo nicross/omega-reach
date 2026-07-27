@@ -1,14 +1,14 @@
 content.audio.barrierChange = (() => {
   const baseGain = engine.fn.fromDb(-12),
     bus = content.audio.channel.sfx.createBus(),
-    rootFrequency = engine.fn.fromMidi(48)
+    rootFrequency = engine.fn.fromMidi(60)
 
   function trigger({
     delay = 1/12,
     duration = 1/2,
     isUp = true,
   } = {}) {
-    const detune = engine.fn.randomFloat(-10, 10) + (isUp ? 0 : 600),
+    const detune = engine.fn.randomFloat(-10, 10),
       modFrequency = engine.fn.randomFloat(7, 13),
       when = engine.time() + delay
 
@@ -17,17 +17,19 @@ content.audio.barrierChange = (() => {
       carrierDetune: detune,
       carrierFrequency: rootFrequency,
       carrierType: 'square',
-      modDepth: engine.fn.randomFloat(0.5, 1) * rootFrequency,
-      modFrequency: isUp ? engine.fn.randomFloat(4, 6) : engine.fn.randomFloat(14, 16),
-      modType: 'sawtooth',
+      modDepth: isUp ? 0 : engine.fn.randomFloat(0.25, 0.5) * rootFrequency,
+      modFrequency: 5,
+      modType: 'triangle',
       when,
     }).filtered({
+      detune,
       frequency: rootFrequency * 2,
     }).connect(bus)
 
-    synth.param.mod.frequency.exponentialRampToValueAtTime(isUp ? 15 : 5, when + duration)
+    synth.param.mod.frequency.exponentialRampToValueAtTime(15, when + duration)
 
-    synth.param.detune.linearRampToValueAtTime(isUp ? 1800 : -1800, when + duration)
+    synth.param.detune.linearRampToValueAtTime(detune + (isUp ? -1200 : 600), when + duration/8)
+    synth.param.detune.linearRampToValueAtTime(detune + (isUp ? 1200 : -1800), when + duration/4)
 
     synth.param.gain.linearRampToValueAtTime(baseGain, when + 1/48)
     synth.param.gain.linearRampToValueAtTime(engine.const.zeroGain, when + duration)

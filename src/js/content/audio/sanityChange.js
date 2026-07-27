@@ -22,6 +22,7 @@ content.audio.sanityChange = (() => {
       modType: 'sawtooth',
       when,
     }).filtered({
+      detune,
       frequency: rootFrequency * 2,
     }).connect(bus)
 
