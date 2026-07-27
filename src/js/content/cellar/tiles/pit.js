@@ -12,6 +12,21 @@ content.cellar.tiles.pit = content.cellar.tiles.invent({
   canInteractMore: function () {
     return content.wallet.has(this.calculateCost())
   },
+  getDialogs: () => [
+    {
+      title: `It's a sink.`,
+      description: `The air freezes as its sanity leaches into the vortex reeling at your feet. Perhaps it feeds greedily upon other tithings?`,
+      actions: [
+        {label: 'Exhale deeply'},
+        {label: 'Inhale sharply'},
+      ],
+    },
+    {
+      tutorial: true,
+      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The pit`,
+      description: `<kbd>Interact</kbd> to absolve your greed with credits.`,
+    },
+  ],
   getInteractLabelMore: () => 'Interact',
   incrementUses: function () {
     this.state.uses += 1

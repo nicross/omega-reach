@@ -9,9 +9,9 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
   getDialogs: () => [
     {
       title: `It's a fountain.`,
-      description: `A spring of sanity babbles calmly, submerging its menagerie of shinies acumulated across eternities. Legends say donating may improve one's <em>earthen luck</em>.`,
+      description: `A spring of sanity babbles calmly, submerging its menagerie of shinies accumulated across eternities. Legends say donating may improve one's <em>earthen luck</em>.`,
       actions: [
-        {label: 'Smile wishfully'},
+        {label: 'Smile whimsically'},
         {label: 'Scoff snootily'},
       ],
     },
