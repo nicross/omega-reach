@@ -28,6 +28,9 @@ content.cellar.tiles.baseUnique = content.cellar.tiles.base.extend({
   onEnterEffects: function () {},
   onExit: function () {
     this.effectsOnEnter = []
+    this.onExitEffects()
+
     content.cellar.scans.set(this, 0)
   },
+  onExitEffects: function () {},
 })

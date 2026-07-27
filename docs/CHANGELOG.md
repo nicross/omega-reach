@@ -6,7 +6,7 @@
 - Added a new star type.
 - Added a new planet and moon type.
 - Added donations for playing instruments in the gallery.
-- Added eleven new unique tiles to the cellar.
+- Added thirteen new unique tiles to the cellar.
 - Added three new floors to the cellar.
 - Added random layouts to the cellar.
 - Added a new resource to the cellar.
@@ -15,16 +15,16 @@
 - Added a slider for drone volume.
 - Added a slider for effect volume.
 - Added demo limitations dialogs to explain what's missing.
+- Improved input projections for the gamepad.
 - Tracked time playing each instrument.
 - Inverted the input at the horizon.
-- Animated object rotations when transitioning.
-- Highlighted credits and sanity in dialogs.
+- Animated object rotations when transitioning scenes.
+- Highlighted credits, sanity, and new resources in dialogs.
 - Lit moons from same light source as their planets.
 - Made the reach audible from the gallery and stockroom.
 - Improved the animations in existing rooms.
 - Closed the stockroom when the shopkeeper would never return.
 - Fixed a looping conversation in the lobby.
-- Improved gamepad interaction projection.
 - Found a new font for the logo.
 - Updated the manual accordingly.
 - Updated desktop builds to Electron 42.

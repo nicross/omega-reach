@@ -77,6 +77,17 @@ content.rooms.cellar = content.rooms.invent({
       : true
   },
   canInteractFreely: () => true,
+  getInteractJingle: function () {
+    const tile = content.cellar.tiles.current()
+    const scans = content.cellar.scans.get(tile)
+    const effects = tile.getEffects()
+
+    if (scans < effects.length) {
+      return 1
+    }
+
+    return 2
+  },
   getInteractLabel: function () {
     const tile = content.cellar.tiles.current()
 

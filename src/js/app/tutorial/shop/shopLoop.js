@@ -97,7 +97,7 @@ app.tutorial.shopLoop = app.tutorial.invent({
     }
 
     if (stealingDetected) {
-      content.audio.interactComplete.trigger({duration: 1})
+      content.audio.interactComplete.trigger()
 
       ;[
         {

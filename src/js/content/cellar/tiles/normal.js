@@ -15,16 +15,19 @@ content.cellar.tiles.normal = (() => {
       weight: 0.2,
       generate: (srand) => {
         const label = engine.fn.choose([
+          'Abandoned elevator',
           'Cracked ceiling',
           'Donation logs',
           'Employee records',
           'Guest ledgers',
           'Large cobwebs',
-          'Random detritis',
+          'Nothing really',
+          'Random detritus',
           'Recipe books',
           'Really nothing',
           'Stacked boxes',
           'Stacked newspapers',
+          'Unfinished shaft',
           'Uneven flooring',
           'Vestigial wiring',
         ], srand())
