@@ -24,13 +24,18 @@ content.cellar.tiles = (() => {
 
   function find(criteria = {}) {
     for (const unique of uniques) {
+      let found = true
+
       for (const [key, value] of Object.entries(criteria)) {
         if (unique[key] !== value) {
-          continue
+          found = false
+          break
         }
       }
 
-      return unique
+      if (found) {
+        return unique
+      }
     }
   }
 
@@ -134,7 +139,7 @@ content.cellar.tiles = (() => {
 
   function isSolid(x, y, z) {
     const ascent = engine.tool.vector2d.create(
-      z == 0 ? {} : find({z, id:'ascent'})
+      z == 0 ? {} : find({z, id: 'ascent'})
     )
 
     // Distance from ascent on current floor
