@@ -12,6 +12,7 @@ content.cellar.tiles.armory = content.cellar.tiles.invent({
     }
 
     content.cellar.barrier.add(3)
+    content.audio.barrierChange.trigger({isUp: true})
 
     this.effectsOnEnter.push({
       attribute: {

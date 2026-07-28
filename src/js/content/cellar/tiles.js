@@ -115,9 +115,9 @@ content.cellar.tiles = (() => {
       }
     }
 
-    // Roll the dice (5/6, 4/5, 3/4... chance per floor)
-    const normalChance = (5 - Math.abs(tile.z))
-      / (6 - Math.abs(tile.z))
+    // Roll the dice (7/8, 6/7, 5/6... chance per floor)
+    const normalChance = (7 - Math.abs(tile.z))
+      / (8 - Math.abs(tile.z))
 
     return srand('isNormal') < normalChance || !uniqueTypes.length
       ? engine.fn.chooseWeighted(normalTypes, srand('roll'))

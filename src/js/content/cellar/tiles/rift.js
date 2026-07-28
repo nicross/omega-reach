@@ -29,7 +29,7 @@ content.cellar.tiles.rift = content.cellar.tiles.invent({
     this.zField = engine.fn.createNoise({
       octaves: 4,
       seed: ['rift', 'z', this.x, this.y, this.z],
-      type: 'simplex2d',
+      type: 'simplex3d',
     })
 
     engine.ephemera.add(this.zField)
@@ -54,7 +54,7 @@ content.cellar.tiles.rift = content.cellar.tiles.invent({
 
     const time = content.time.value()
 
-    const value = this.zField.value(particle.floor.x / 5, particle.floor.y / 30)
+    const value = this.zField.value(particle.floor.x / 5, particle.floor.y / 30, time / 60)
     const depth = content.fn.gain(value, 2) * (distance ** 0.75)
 
     particle.target.s = engine.fn.lerpExp(
