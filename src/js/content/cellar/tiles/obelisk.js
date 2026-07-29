@@ -15,6 +15,7 @@ content.cellar.tiles.obelisk = content.cellar.tiles.invent({
       }
     },
   ],
+  canGenerate: (tile) => engine.fn.between(tile.z, -1, -2), // Not on first floor
   getGlobalHealthBonus: () => 5,
   onEnterEffects: function () {
     this.state.rotation = this.state.rotation

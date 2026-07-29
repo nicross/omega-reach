@@ -6,6 +6,7 @@ content.cellar.tiles.ziggurat = content.cellar.tiles.invent({
   defaultState: {
     delta: 0,
   },
+  canGenerate: (tile) => engine.fn.between(tile.z, -1, -2), // Not on first floor
   onEnterEffects: function () {
     // Health trends toward 50% max
 

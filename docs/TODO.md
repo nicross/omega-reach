@@ -1,7 +1,4 @@
 # TODO
-## v1.2.x - Steam Next Fest / GFBG redux / cellar expansion
-- Release announcement
-
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect
 - Relic program (graphics + synth)
