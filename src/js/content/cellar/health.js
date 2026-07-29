@@ -5,7 +5,7 @@ content.cellar.health = (() => {
 
   function calculateMax(isRaw = false) {
     const count = content.instruments.count()
-    const raw = 4 + Math.round(Math.sqrt(2 * count))
+    const raw = 4 + Math.round(Math.sqrt(4 * count))
 
     return isRaw
       ? raw
