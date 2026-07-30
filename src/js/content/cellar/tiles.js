@@ -34,9 +34,24 @@ content.cellar.tiles = (() => {
       }
 
       if (found) {
-        return unique
+        return unique.instance
       }
     }
+  }
+
+  function findAll(criteria = {}) {
+    const founds = []
+
+    for (const unique of uniques) {
+      for (const [key, value] of Object.entries(criteria)) {
+        if (unique[key] !== value) {
+          founds.push(unique.instance)
+          break
+        }
+      }
+    }
+
+    return founds
   }
 
   function generate(x, y, z) {
@@ -115,9 +130,9 @@ content.cellar.tiles = (() => {
       }
     }
 
-    // Roll the dice (7/8, 6/7, 5/6... chance per floor)
-    const normalChance = (7 - Math.abs(tile.z))
-      / (8 - Math.abs(tile.z))
+    // Roll the dice (6/7, 5/6, 4/5... chance per floor)
+    const normalChance = (6 - Math.abs(tile.z))
+      / (7 - Math.abs(tile.z))
 
     return srand('isNormal') < normalChance || !uniqueTypes.length
       ? engine.fn.chooseWeighted(normalTypes, srand('roll'))
@@ -208,6 +223,7 @@ content.cellar.tiles = (() => {
       uniques: uniques.map((x) => x.instance.export()),
     }),
     find,
+    findAll,
     get: function ({x, y, z}) {
       if (!cache.has(x, y, z)) {
         cache.set(x, y, z, generate(x, y, z))

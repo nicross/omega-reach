@@ -11,7 +11,7 @@ content.cellar.tiles.baseUnique = content.cellar.tiles.base.extend({
       ...this.effectsGlobal,
       {
         attribute: {
-          label: 'Nexus of power',
+          label: 'Radix of power',
           modifiers: ['legendary'],
         },
       },

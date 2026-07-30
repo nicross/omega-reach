@@ -1,5 +1,5 @@
 content.cellar.discovered = (() => {
-  const cache = engine.tool.cache2d.create(),
+  const cache = engine.tool.cache3d.create(),
     flattened = []
 
   return {
@@ -10,24 +10,24 @@ content.cellar.discovered = (() => {
     },
     hasAny: () => flattened.length > 1,
     import: function (data = {}) {
-      for (const [x, y] of data.vectors || []) {
-        flattened.push([x, y])
-        cache.set(x, y, true)
+      for (const [x, y, z] of data.vectors || []) {
+        flattened.push([x, y, z])
+        cache.set(x, y, z, true)
       }
 
       return this
     },
-    is: ({x, y}) => cache.has(x, y),
+    is: ({x, y, z}) => cache.has(x, y, z),
     reset: function () {
       cache.reset()
       flattened.length = 0
 
       return this
     },
-    set: function ({x, y}, value = true) {
-      if (!cache.has(x, y)) {
-        flattened.push([x, y])
-        cache.set(x, y, true)
+    set: function ({x, y, z}, value = true) {
+      if (!cache.has(x, y, z)) {
+        flattened.push([x, y, z])
+        cache.set(x, y, z, true)
       }
 
       return this

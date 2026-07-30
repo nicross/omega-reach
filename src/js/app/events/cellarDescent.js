@@ -6,6 +6,7 @@ content.location.on('cellar-descent', ({tile}) => {
   )
 
   content.rooms.cellar.updateNameShort()
+  content.rooms.cellar.updateProgram()
   content.cellar.tiles.current().enter()
 
   app.screen.game.update()

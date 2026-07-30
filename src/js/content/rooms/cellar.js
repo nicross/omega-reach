@@ -14,7 +14,7 @@ content.rooms.cellar = content.rooms.invent({
     const tile = content.cellar.tiles.current()
     const name = tile.getName() || this.name
 
-    return tile.z == 0
+    return tile.z == 0 || tile.isUniquePerRun
       ? name
       : `${name} B${Math.abs(tile.z) + 1}`
   },
