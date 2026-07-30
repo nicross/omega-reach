@@ -85,7 +85,9 @@ content.cellar.tiles.base = {
   isFullyScanned: function () {
     return content.cellar.scans.get(this) >= this.getEffects().length
   },
-  isIncompleteMore: () => false,
+  isIncompleteMore: function () {
+    return this.canInteractMore()
+  },
   onActivate: function () {},
   onDeactivate: function () {},
   onEnter: function () {},

@@ -1,5 +1,5 @@
 content.location.on('cellar-nexus', ({tile}) => {
-  const destinations = [
+  const destinations = [...new Set([
     // Entrance
     {x: 0, y: 0, z: 0, name: 'Cellar entrance', isEntrance: true},
     // All ascents
@@ -10,7 +10,7 @@ content.location.on('cellar-nexus', ({tile}) => {
     ...content.cellar.tiles.findAll({id: 'nexus'}).filter((x) => x !== tile),
     // All uniques
     ...content.cellar.tiles.findAll({isUniquePerRun: true}),
-  ]
+  ])]
 
   destinations.sort((a, b) => {
     if (a.isEntrance) {return -1}

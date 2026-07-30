@@ -5,16 +5,32 @@ content.cellar.tiles.nexus = content.cellar.tiles.invent({
   weight: 4,
   getDialogs: () => [
     {
-      title: `It's a checkpoint.`,
-      description: ``,
+      title: `It's a teleporter.`,
+      description: `Hourly, the obsolete machine might devour the sanity of a thousand <em>earthen suns</em>. Yet, you fancy its promising…`,
+      actions: [
+        {label: 'checkpoint.'},
+        {label: 'touchstone.'},
+        {label: 'loophole.'},
+        {label: 'escape.'},
+      ],
     },
     {
       tutorial: true,
       title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The nexus`,
-      description: `<kbd>Interact</kbd> to return to a previously-visited location.`,
+      description: `<kbd>Interact</kbd> to return to previously-visited locations.`,
     },
   ],
   canInteractMore: () => true,
+  getEffects: function () {
+    return [
+      {
+        attribute: {
+          label: `Quantum teleporter`,
+          modifiers: ['legendary'],
+        },
+      },
+    ]
+  },
   getInteractLabelMore: () => 'Teleport',
   onInteractMore: function () {
     content.location.emit('cellar-nexus', {

@@ -43,11 +43,17 @@ content.cellar.tiles = (() => {
     const founds = []
 
     for (const unique of uniques) {
+      let found = true
+
       for (const [key, value] of Object.entries(criteria)) {
         if (unique[key] !== value) {
-          founds.push(unique.instance)
+          found = false
           break
         }
+      }
+
+      if (found) {
+        founds.push(unique.instance)
       }
     }
 
