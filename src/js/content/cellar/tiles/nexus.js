@@ -15,13 +15,38 @@ content.cellar.tiles.nexus = content.cellar.tiles.invent({
     },
   ],
   canInteractMore: () => true,
-  getInteractLabelMore: () => 'Interact',
+  getInteractLabelMore: () => 'Teleport',
   onInteractMore: function () {
     content.location.emit('cellar-nexus', {
       tile: this,
     })
   },
   alterParticle: function (particle) {
+    const radius = 3.333
 
+    if (Math.abs(particle.target.x) > radius || Math.abs(particle.target.y) > radius) {
+      return
+    }
+
+    let vector = engine.tool.vector2d.create(particle.target)
+    const distance = vector.distance() / radius
+
+    if (distance > 1) {
+      return
+    }
+
+    const time = content.time.value()
+
+    vector = vector
+      .normalize()
+      .scale(0.5 + (0.5 * Math.sin(engine.const.tau * (time/5 + distance))))
+      .scale(radius)
+      .rotate(Math.sin(engine.const.tau * time/15 * particle.twinkleFrequencies[1]))
+
+    particle.target.x = vector.x
+    particle.target.y = vector.y
+    particle.target.z += (1 - distance) * 4
+
+    particle.target.s = 0.666 + (0.333 * Math.sin(engine.const.tau * time * particle.twinkleFrequencies[2]))
   },
 }, content.cellar.tiles.baseUnique)

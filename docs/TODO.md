@@ -1,6 +1,6 @@
 # TODO
 ## V1.2.0
-- Nexus description and particle effects
+- Nexus description
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect
