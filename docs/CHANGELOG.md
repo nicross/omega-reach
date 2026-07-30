@@ -6,7 +6,7 @@
 - Added a new star type.
 - Added a new planet and moon type.
 - Added donations for playing instruments in the gallery.
-- Added thirteen new unique tiles to the cellar.
+- Added fourteen new unique tiles to the cellar.
 - Added three new floors to the cellar.
 - Added random layouts to the cellar.
 - Added a new resource to the cellar.
