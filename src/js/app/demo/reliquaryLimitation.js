@@ -10,7 +10,7 @@ app.tutorial.reliquaryLimitation = app.tutorial.invent({
     ;[
       {
         title: `<span class="u-highlight">[Demo limitation]</span>`,
-        description: `<strong>The reliquary</strong> is not ready to house relics. Thanks for playing!`,
+        description: `<strong>The reliquary</strong> is not quite ready to display relics. Thanks for playing!`,
         actions: [
           {
             label: `Regain control`,

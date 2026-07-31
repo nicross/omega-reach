@@ -10,7 +10,7 @@ app.tutorial.emporiumLimitation = app.tutorial.invent({
     ;[
       {
         title: `<span class="u-highlight">[Demo limitation]</span>`,
-        description: `<strong>The emproium</strong> is not ready to host auctions. Thanks for playing!`,
+        description: `<strong>The emproium</strong> is not quite ready to host auctions. Thanks for playing!`,
         actions: [
           {
             label: `Regain control`,
