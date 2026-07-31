@@ -90,7 +90,7 @@ gulp.task('dist-electron', async () => {
     )
 
     merge(build, manual).pipe(
-      zip(path.replace('dist\\', '') + '.zip')
+      zip(path.replace('dist\\', '') + (isDemo ? '-demo' : '') + '.zip')
     ).pipe(
       gulp.dest('dist')
     )
@@ -107,7 +107,7 @@ gulp.task('dist-html5', () => {
     'public/scripts.min.js',
     'public/styles.min.css',
   ], {base: 'public'}).pipe(
-    zip(package.name + '-html5' + '.zip')
+    zip(package.name + '-html5' + (isDemo ? '-demo' : '') + '.zip')
   ).pipe(
     gulp.dest('dist')
   )
