@@ -105,10 +105,13 @@
       animation: a-game--attribute-undiscovered 1s ease 0s infinite alternate both;
     }
     .a-game--attribute-instrument {
-      background-color: #FFFFFF;
+      background-color: #FFAA55;
       color: #000000;
       font-family: FiraCodeMedium, monospace;
       font-weight: 500;
+    }
+    .a-game--attribute-instrument.a-game--attribute-undiscovered {
+      background-color: #FFFFFF;
     }
 
   /* Navigation */

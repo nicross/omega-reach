@@ -1,9 +1,9 @@
 content.location.on('cellar-ascent', ({tile}) => {
   tile.exit()
 
-  content.cellar.position.set(
-    tile.getDestination()
-  )
+  const destination = tile.getDestination()
+  content.cellar.position.set(destination)
+  content.cellar.discovered.set(destination, true)
 
   content.rooms.cellar.updateNameShort()
   content.rooms.cellar.updateProgram()

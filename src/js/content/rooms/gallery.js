@@ -36,7 +36,7 @@ content.rooms.gallery = content.rooms.invent({
   },
   getInteractLabel: function () {
     return this.getInstrument()
-      ? this.isDiscovered() ? (this.isComplete() ? 'Sell' : 'Examine') : 'Reveal'
+      ? this.isDiscovered() ? (this.isComplete() ? 'Sell' : 'Appraise') : 'Reveal'
       : 'Examine'
   },
   getName: function () {

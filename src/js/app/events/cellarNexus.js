@@ -8,8 +8,6 @@ content.location.on('cellar-nexus', ({tile}) => {
     ...content.cellar.tiles.findAll({id: 'descent'}).filter((x) => !content.cellar.tiles.find({id: 'ascent', z: x.z - 1})),
     // All nexuses
     ...content.cellar.tiles.findAll({id: 'nexus'}).filter((x) => x !== tile),
-    // All uniques
-    ...content.cellar.tiles.findAll({isUniquePerRun: true}),
   ])]
 
   destinations.sort((a, b) => {
@@ -18,7 +16,7 @@ content.location.on('cellar-nexus', ({tile}) => {
 
     return a.z == b.z
       ? a.name.localeCompare(b.name)
-      : a.z - b.z
+      : b.z - a.z
   })
 
   app.screen.game.dialog.push({
@@ -39,6 +37,7 @@ content.location.on('cellar-nexus', ({tile}) => {
     from.exit()
 
     content.cellar.position.set(to)
+    content.cellar.discovered.set(to, true)
 
     content.rooms.cellar.updateNameShort()
     content.rooms.cellar.updateProgram()
@@ -52,8 +51,7 @@ content.location.on('cellar-nexus', ({tile}) => {
       // Default settings, no sound
     })
 
-    content.audio.interactSuccess.trigger({index: 0})
-    content.audio.interactComplete.trigger()
+    content.audio.interactSuccess.trigger({index: 2})
   }
 
 })

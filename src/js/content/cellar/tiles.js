@@ -17,24 +17,24 @@ content.cellar.tiles = (() => {
   const solidField = engine.fn.createNoise({
     octaves: 4,
     seed: ['cellar', 'tiles', 'solid'],
-    type: 'simplex2d',
+    type: 'simplex3d',
   })
 
   engine.ephemera.add(solidField)
 
   function find(criteria = {}) {
-    for (const unique of uniques) {
+    for (const {instance} of uniques) {
       let found = true
 
       for (const [key, value] of Object.entries(criteria)) {
-        if (unique[key] !== value) {
+        if (instance[key] !== value) {
           found = false
           break
         }
       }
 
       if (found) {
-        return unique.instance
+        return instance
       }
     }
   }
@@ -42,18 +42,18 @@ content.cellar.tiles = (() => {
   function findAll(criteria = {}) {
     const founds = []
 
-    for (const unique of uniques) {
+    for (const {instance} of uniques) {
       let found = true
 
       for (const [key, value] of Object.entries(criteria)) {
-        if (unique[key] !== value) {
+        if (instance[key] !== value) {
           found = false
           break
         }
       }
 
       if (found) {
-        founds.push(unique.instance)
+        founds.push(instance)
       }
     }
 
@@ -136,9 +136,9 @@ content.cellar.tiles = (() => {
       }
     }
 
-    // Roll the dice (6/7, 5/6, 4/5... chance per floor)
-    const normalChance = (6 - Math.abs(tile.z))
-      / (7 - Math.abs(tile.z))
+    // Roll the dice (5/6, 4/5, 3/4... chance per floor)
+    const normalChance = (5 - Math.abs(tile.z))
+      / (6 - Math.abs(tile.z))
 
     return srand('isNormal') < normalChance || !uniqueTypes.length
       ? engine.fn.chooseWeighted(normalTypes, srand('roll'))
@@ -165,36 +165,35 @@ content.cellar.tiles = (() => {
 
     // Distance from ascent on current floor
     const distance = [
-      12,
-      8,
-      6,
-      4,
+      7,
+      5,
+      3,
+      1,
     ][Math.abs(z)]
+
+    if (ascent.distance({x, y}) < distance) {
+      return false
+    }
 
     // Scale of noise on current floor
     const scale = [
-      12,
-      8,
-      6,
-      4,
-    ][Math.abs(z)] / engine.tool.simplex2d.prototype.skewFactor
+      12.5,
+      10,
+      7.5,
+      5,
+    ][Math.abs(z)]
 
     // Threshold of noise on current floor
     const threshold = [
-      0.5,
-      0.4833,
-      0.4666,
-      0.45,
+      0.1125,
+      0.1,
+      0.0875,
+      0.075,
     ][Math.abs(z)]
 
-    return Math.max(
-      solidField.value(
-        x / scale, y / scale, (z + 0.5) * 10,
-      ),
-      1 - engine.fn.clamp(
-        ascent.distance({x, y}) / distance
-      ),
-    ) < threshold
+    return !engine.fn.between(solidField.value(
+      x / scale, y / scale, (z + 0.5) * 10,
+    ), 0.5 - threshold, 0.5 + threshold)
   }
 
   function uniqueExists(tile) {

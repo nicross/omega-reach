@@ -191,7 +191,7 @@ content.cellar.tiles.normal = (() => {
         return {
           apply: () => {
             // Expend greed when near death
-            if (content.cellar.barrier.has(1) && content.cellar.health.has(1)) {
+            if (content.cellar.barrier.has(1) && !content.cellar.health.has(2)) {
               formatter = 'barrier'
               content.cellar.barrier.subtract(1)
               content.audio.barrierChange.trigger({isUp: false})

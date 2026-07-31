@@ -24,11 +24,7 @@ content.cellar.tiles.kiln = content.cellar.tiles.invent({
       content.cellar.instruments.generateUniqueName()
     )
 
-    content.audio.interactSuccess.trigger({
-      index: 2,
-    })
-
-    content.audio.interactComplete.trigger()
+    content.audio.interactSuccess.trigger({index: 2})
 
     this.state.entered = true
   },
