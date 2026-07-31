@@ -2,7 +2,7 @@ app.updates = (() => {
   const registry = []
 
   function apply() {
-    const appVersion = app.version().replace('-debug', ''),
+    const appVersion = app.version().replace('-debug', '').replace('-demo', ''),
       storageVersions = app.storage.getVersions()
 
     // First time player
