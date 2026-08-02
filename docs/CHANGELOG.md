@@ -1,4 +1,7 @@
 # CHANGELOG
+## v1.2.1
+- Fixed a typo.
+
 ## v1.2.0
 - Added the emporium.
 - Added the reliquary.
