@@ -1,5 +1,7 @@
 # CHANGELOG
 ## v1.2.1
+- Added toggle for allowing inverse solutions.
+- Enabled inverse solutions by default.
 - Add cellar anomalies which grant greed.
 - Add symbols for cellar resources to tutorial prompts and manual.
 - Fixed a typo.

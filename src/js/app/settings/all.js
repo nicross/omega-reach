@@ -49,6 +49,11 @@ app.settings.register('inputPreference', {
   },
 })
 
+app.settings.register('inverseSolutions', {
+  compute: (rawValue) => Boolean(rawValue),
+  default: true,
+})
+
 app.settings.register('mainVolume', {
   compute: (rawValue) => engine.fn.fromDb(engine.fn.lerpExp(engine.const.zeroDb, 0, rawValue, 0.1)),
   default: 1,

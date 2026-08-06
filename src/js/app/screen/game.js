@@ -73,15 +73,20 @@ app.screen.game = app.screenManager.invent({
       interacted = false
 
     const threshold = {
-      gamepad: 2/3,
+      gamepad: 1/3,
       keyboard: 1/6,
-      midi: 2/3,
-      mouse: 2/3,
+      midi: 1/6,
+      mouse: 1/3,
     }[app.settings.computed.inputPreference] * app.settings.computed.puzzleDifficulty
 
     if (solution && content.location.get().canInteract()) {
       for (const interaction of interactions) {
-        const distance = engine.fn.distance(interaction, solution)
+        const distance = app.settings.computed.inverseSolutions
+          ? Math.min(
+              engine.fn.distance(interaction, solution),
+              engine.fn.distance(interaction, solution.inverse()),
+            )
+          : engine.fn.distance(interaction, solution)
 
         if (distance < closest) {
           closest = distance

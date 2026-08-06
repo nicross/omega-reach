@@ -32,7 +32,8 @@ app.screen.settingsGameplay = app.screenManager.invent({
 
     // Toggles
     this.toggles = [
-      ['.a-settingsGameplay--tutorialOn', app.settings.raw.tutorlaOn, app.settings.setTutorialOn],
+      ['.a-settingsGameplay--tutorialOn', app.settings.raw.tutorialOn, app.settings.setTutorialOn],
+      ['.a-settingsGameplay--inverseSolutions', app.settings.raw.inverseSolutions, app.settings.setInverseSolutions],
     ].map(([selector, initialValue, setter]) => {
       const component = app.component.toggle.hydrate(root.querySelector(selector), initialValue)
       component.on('change', () => setter(component.getValue()))

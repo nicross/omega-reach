@@ -1,6 +1,5 @@
 # TODO
 ## v1.2.x - Steam demo
-- Reduce friction when using KB+Mouse or dual joysticks, e.g. inputs are secretly dounled+inverted, or there are always two solutions to find
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect
