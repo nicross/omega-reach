@@ -3,16 +3,17 @@ content.cellar.tiles.normal = (() => {
     /*
     Chances
     0.3 - damage
-    0.2 - nothing
+    0.15 - nothing
     0.15 - small donation
     0.125 - heal
     0.1 - big donation
     0.075 - restore
     0.05 - instrument
+    0.05 - barrier
     */
     // Nothing
     {
-      weight: 0.2,
+      weight: 0.15,
       generate: (srand) => {
         const label = engine.fn.choose([
           'Abandoned elevator',
@@ -58,7 +59,7 @@ content.cellar.tiles.normal = (() => {
           },
           attribute: {
             label: `${label} donation`,
-            modifiers: ['currency'],
+            modifiers: ['rare'],
           },
           liveLabel: `${label} donation found`,
         }
@@ -80,7 +81,7 @@ content.cellar.tiles.normal = (() => {
           },
           attribute: {
             label: `${label} donation`,
-            modifiers: ['currency'],
+            modifiers: ['rare'],
           },
           liveLabel: `${label} donation found`,
         }
@@ -206,6 +207,34 @@ content.cellar.tiles.normal = (() => {
             modifiers: [],
           },
           liveLabel: () => `${label} found, lost ${app.utility.format[formatter](1)}`,
+        }
+      },
+    },
+    // Barrier
+    {
+      weight: 0.05,
+      generate: (srand) => {
+        const label = engine.fn.choose([
+          'Crude map',
+          'Effulgent mote',
+          'Fragile shield',
+          'Inscribed figurine',
+          'Mystical charm',
+          'Precautionary graffiti',
+          'Salt circle',
+          'Worn touchstone',
+        ], srand())
+
+        return {
+          apply: () => {
+            content.cellar.barrier.add(1)
+            content.audio.barrierChange.trigger({isUp: true})
+          },
+          attribute: {
+            label,
+            modifiers: ['uncommon'],
+          },
+          liveLabel: `${label} found, greed increased`,
         }
       },
     },
