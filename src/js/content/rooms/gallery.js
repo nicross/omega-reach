@@ -151,7 +151,7 @@ content.rooms.gallery = content.rooms.invent({
       attributes.push({
         label: app.utility.format.currency(instrument.value),
         labelPlain: `${instrument.value} credits`,
-        modifiers: ['instrument'],
+        modifiers: ['currency'],
       })
     }
 

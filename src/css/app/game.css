@@ -72,6 +72,16 @@
   .a-game--attribute + .a-game--attribute {
     margin-top: 0.25em;
   }
+    .a-game--attribute i {
+      font-family: sans-serif;
+      font-weight: 400;
+    }
+    .a-game--attribute-barrier {
+      background-color: #55AAFF;
+      color: #000000;
+      font-family: FiraCodeMedium, monospace;
+      font-weight: 500;
+    }
     .a-game--attribute-complete {
       background-color: #55FFAA;
       color: #000000;
@@ -79,23 +89,30 @@
       font-weight: 500;
     }
     .a-game--attribute-complete i {
-      font-family: RobotoRegular, sans-serif;
-      font-weight: 500;
       margin-right: 0.5em;
     }
-    .a-game--attribute-health,
+    .a-game--attribute-currency {
+      background-color: #FFAA55;
+      color: #000000;
+      font-family: FiraCodeMedium, monospace;
+      font-weight: 500;
+    }
+    .a-game--attribute-health {
+      background-color: #FF55AA;
+      color: #000000;
+      font-family: FiraCodeMedium, monospace;
+      font-weight: 500;
+    }
     .a-game--attribute-legendary {
       color: #FF55AA;
       font-family: FiraCodeMedium, monospace;
       font-weight: 500;
     }
-    .a-game--attribute-currency,
     .a-game--attribute-rare {
       color: #FFAA55;
       font-family: FiraCodeMedium, monospace;
       font-weight: 500;
     }
-    .a-game--attribute-barrier,
     .a-game--attribute-uncommon {
       color: #55AAFF;
       font-family: FiraCodeMedium, monospace;
@@ -262,6 +279,10 @@
     font-family: RobotoLight, sans-serif;
     font-weight: 300;
     margin-top: 0.75em;
+  }
+  .a-game--dialogDescription i {
+    font-family: sans-serif;
+    font-weight: 400;
   }
   .a-game--dialogDescription em {
     font-family: RobotoRegularItalic, sans-serif;

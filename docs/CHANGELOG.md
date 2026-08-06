@@ -1,5 +1,6 @@
 # CHANGELOG
 ## v1.2.1
+- Add symbols for cellar resources to tutorial prompts and manual.
 - Fixed a typo.
 
 ## v1.2.0

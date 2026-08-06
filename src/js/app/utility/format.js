@@ -19,16 +19,16 @@ app.utility.format.coordinates = function ({x, y}) {
 }
 
 app.utility.format.barrier = function (x) {
-  return `${this.number(x)} <i><span aria-hidden="true" role="presentation" title="greed">⸸</span><span class="u-screenReader"> greed</span></i>`
+  return `${this.number(x)} <i aria-hidden="true" role="presentation" title="Greed">⸸</i><span class="u-screenReader"> greed</span>`
 }
 
 app.utility.format.currency = function (x) {
   const s = x == 1 ? '' : 's'
-  return `${this.number(x)} <i><span aria-hidden="true" role="presentation" title="credit${s}">¤</span><span class="u-screenReader"> credit${s}</span></i>`
+  return `${this.number(x)} <i aria-hidden="true" role="presentation" title="Credit">¤</i><span class="u-screenReader"> credit${s}</span>`
 }
 
 app.utility.format.health = function (x) {
-  return `${this.number(x)} <i><span aria-hidden="true" role="presentation" title="sanity">☥</span><span class="u-screenReader"> sanity</span></i>`
+  return `${this.number(x)} <i aria-hidden="true" role="presentation" title="Sanity">☥</i><span class="u-screenReader"> sanity</span>`
 }
 
 app.utility.format.list = function (items = []) {

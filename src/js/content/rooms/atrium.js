@@ -49,7 +49,7 @@ content.rooms.atrium = content.rooms.invent({
       attributes.push({
         label: `${app.utility.format.currency(wallet)}`,
         labelPlain: `${wallet} credit${wallet == 1 ? '' : 's'}`,
-        modifiers: ['rare'],
+        modifiers: ['currency'],
       })
     }
 

@@ -21,7 +21,7 @@ app.tutorial.cellar = app.tutorial.invent({
       {
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Sanity`,
-        description: `<strong class="a-game--dialogHealth">Sanity</strong> is your main resource when exploring <strong>the cellar</strong>. Use it to reveal unexplored areas—but beware! You will faint if it reaches zero.`,
+        description: `<strong class="a-game--dialogHealth">Sanity <i aria-hidden="true" role="presentation" title="Sanity">☥</i></strong> is your main resource when exploring <strong>the cellar</strong>. Use it to reveal unexplored areas—but beware! You will faint if it reaches zero.`,
         actions: [
           {
             label: 'Regain control',
