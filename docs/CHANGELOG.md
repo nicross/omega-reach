@@ -9,6 +9,7 @@
 - Added an easter egg at the start of a new collection.
 - Muted a sound in the cellar to accentuate other sounds.
 - Improved race conditions with certain dialogs.
+- Prevented the demo notice from appearing more than once per session.
 - Fixed some typos.
 
 ## v1.2.0

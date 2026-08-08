@@ -5,11 +5,19 @@ app.screen.splash = app.screenManager.invent({
   rootSelector: '.a-splash',
   transitions: {
     interact: function () {
-      this.change(app.isDemo() ? 'demo' : 'mainMenu')
+      this.change(
+        app.isDemo() && !app.screen.splash.state.initial
+          ? 'demo'
+          : 'mainMenu'
+      )
+
+      app.screen.splash.state.initial = true
     },
   },
   // State
-  state: {},
+  state: {
+    initial: false,
+  },
   useBasicFocusMemory: false,
   // Hooks
   onReady: function () {
