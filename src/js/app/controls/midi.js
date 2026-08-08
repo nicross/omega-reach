@@ -3,7 +3,8 @@ app.controls.midi = (() => {
     notes = new Set(),
     sustained = new Set()
 
-  let modulation = 0.5,
+  let isSupported = false,
+    modulation = 0.5,
     pitchBend = 0,
     sustainActive = false
 
@@ -38,6 +39,8 @@ app.controls.midi = (() => {
   if ('requestMIDIAccess' in navigator) {
     engine.loop.once('frame', () => {
       navigator.requestMIDIAccess().then((midiAccess) => {
+        isSupported = true
+
         midiAccess.onstatechange = onMidiConnectionEvent
 
         Array.from(midiAccess.inputs).forEach((midiInput) => {
@@ -155,6 +158,7 @@ app.controls.midi = (() => {
 
       return mapping
     }),
+    isSupported: () => isSupported,
     reset: function () {
       kill()
 

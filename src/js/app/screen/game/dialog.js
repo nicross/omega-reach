@@ -98,6 +98,14 @@ app.screen.game.dialog = (() => {
     actionsElement.innerHTML = '';
 
     for (const action of (typeof actions == 'function' ? actions() : actions)) {
+      if ('filter' in action) {
+        if (typeof action.filter == 'function' && !action.filter()) {
+          continue
+        } else if (action.filter === false) {
+          continue
+        }
+      }
+
       const container = app.utility.dom.toElement(
         `<li><button class="c-menuButton" type="button">${action.label}</button></li>`
       )
