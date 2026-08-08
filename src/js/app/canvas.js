@@ -20,5 +20,15 @@ app.canvas = (() => {
     content.gl.recalculate()
   }
 
-  return {}
+  return {
+    setBlur: function (value) {
+      if (value) {
+        root.classList.add('a-app--canvas-blur')
+      } else {
+        root.classList.remove('a-app--canvas-blur')
+      }
+
+      return this
+    },
+  }
 })()

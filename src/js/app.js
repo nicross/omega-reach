@@ -69,6 +69,15 @@ const app = (() => {
 
       return this
     },
+    setRunning: function (value) {
+      if (value) {
+        root.classList.add('a-app-running')
+      } else {
+        root.classList.remove('a-app-running')
+      }
+
+      return this
+    },
     setUiScale: function (value) {
       document.documentElement.style.setProperty(`--ui-scale`, value)
 

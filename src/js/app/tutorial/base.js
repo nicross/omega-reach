@@ -25,7 +25,7 @@ app.tutorial.base = {
   } = {}) {
     this.active = active
     this.complete = complete
-    this.state = {...state}
+    this.state = {...this.defaultState, ...state}
 
     return this
   },

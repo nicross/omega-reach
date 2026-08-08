@@ -16,7 +16,7 @@
     pointer-events: none;
     position: absolute;
     top: 0;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
     transition-property: filter, opacity;
     width: 100%;
     z-index: 0;
@@ -24,6 +24,9 @@
     .a-app--canvas-blur {
       filter: blur(1em);
       opacity: 0;
+    }
+    .a-app-running .a-app--canvas {
+      transition-duration: 1s;
     }
   .a-app--overlaySupport {
     height: 100%;

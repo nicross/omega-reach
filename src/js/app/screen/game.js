@@ -37,22 +37,24 @@ app.screen.game = app.screenManager.invent({
   onEnter: function () {
     this.setBlanked(!app.settings.computed.graphicsOn)
 
-    //app.autosave.enable()
     app.autosave.trigger()
 
     engine.loop.resume()
 
     this.update()
     this.dialog.checkAdvance()
+
+    app.setRunning(true)
   },
   onExit: function () {
-    //app.autosave.disable()
     app.autosave.trigger()
 
     engine.loop.pause()
 
     app.controls.interactions.reset()
     content.programs.get()?.update()
+
+    app.setRunning(false)
   },
   onFrame: function () {
     this.interact.accelerate()
