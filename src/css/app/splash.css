@@ -92,10 +92,10 @@
 
 @keyframes a-splash--logoSymbol--i {
   0% {
-    transform: translateX(-50%) translateY(calc(-50% + 0.5rem));
+    transform: translateX(-50%) translateY(calc(-50% + (0.5em / 28)));
   }
   100% {
-    transform: translateX(-50%) translateY(calc(-50% - 0.5rem));
+    transform: translateX(-50%) translateY(calc(-50% - (0.5em / 28)));
   }
 }
 
