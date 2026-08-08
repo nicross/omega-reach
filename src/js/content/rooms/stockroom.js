@@ -38,7 +38,7 @@ content.rooms.stockroom = content.rooms.invent({
     const instrument = this.getInstrument()
 
     return instrument
-      ? this.isDiscovered() ? (this.isComplete() ? (content.stockroom.isStolen(instrument.name) ? 'Return' : 'Steal') : 'Examine') : 'Reveal'
+      ? this.isDiscovered() ? (this.isComplete() ? (content.stockroom.isStolen(instrument.name) ? 'Return' : 'Steal') : 'Appraise') : 'Reveal'
       : 'Examine'
   },
   getName: function () {

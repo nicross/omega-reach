@@ -25,7 +25,6 @@ content.programs.instrument = content.programs.invent({
     width: {},
     wmDepth: {},
     wmFrequency: {},
-    // TODO: haptics
     // Particles
     particleHue: {},
     particleSaturation: {},
@@ -73,6 +72,7 @@ content.programs.instrument = content.programs.invent({
     fmFrequencyCenter: (srand) => srand(),
     fmFrequencyRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
     fmFrequencyScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    mode: (srand) => srand(),
     scale: (srand) => srand(),
     widthCenter: (srand) => srand(),
     widthRange: function (srand) {return srand() * this.options.instrument.rarity * 0.25},
@@ -84,7 +84,6 @@ content.programs.instrument = content.programs.invent({
     wmFrequencyCenter: (srand) => srand(),
     wmFrequencyRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
     wmFrequencyScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
-    // TODO: Haptics
     // Particles
     particleHueCenter: (srand) => srand(-0.5, 0.5),
     particleHueRange: function (srand) {return (srand() * 0.125) + (this.options.instrument.rarity * 0.375)},
@@ -254,12 +253,15 @@ content.programs.instrument = content.programs.invent({
       [0,2,4,6,8,10],
     ], this.properties.scale)
 
+    const mode = engine.fn.choose(scale, this.properties.mode)
+    const modeDelta = -Math.floor((mode + 6) / 12)
+
     scale = [
-      ...scale.map((x) => x - 24),
-      ...scale.map((x) => x - 12),
-      ...scale.map((x) => x + 0),
-      ...scale.map((x) => x + 12),
-      ...scale.map((x) => x + 24),
+      ...scale.map((x) => x + mode + modeDelta - 24),
+      ...scale.map((x) => x + mode + modeDelta - 12),
+      ...scale.map((x) => x + mode + modeDelta + 0),
+      ...scale.map((x) => x + mode + modeDelta + 12),
+      ...scale.map((x) => x + mode + modeDelta + 24),
     ].sort((a, b) => a - b)
 
     scale = [...new Set(scale)]
