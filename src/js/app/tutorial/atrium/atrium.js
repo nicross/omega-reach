@@ -13,8 +13,8 @@ app.tutorial.atrium = app.tutorial.invent({
 
     [
       {
-        title: `Wake up.`,
-        description: `You stir from your nap at the center of time. A familiar warmth fills you as you flex your senses. Has it already been a quadrillion years?`,
+        title: this.state.sleeps > 0 ? `Wake up again.` : `Wake up.`,
+        description: `You stir from your nap at the center of time. A familiar warmth fills you as you flex your senses. Has it already been ${this.state.sleeps > 0 ? 'another' : 'a'} quadrillion years?`,
         before: () => app.canvas.setBlur(true),
         actions: [
           {
@@ -28,10 +28,10 @@ app.tutorial.atrium = app.tutorial.invent({
         description: `It connects the various rooms of <strong>The Omega Conservatory</strong>. From this vantage, everything seems to happen all at once through the above skylight. Perhaps you might dwell a bit longer to ponder its wonder?`,
         actions: [
           {
-            label: 'Snap out of it',
+            label: this.state.sleeps > 0 ? 'Snap out of it this time' : 'Snap out of it',
           },
           {
-            label: 'Fall back to sleep',
+            label: this.state.sleeps > 0 ? 'Snooze again' : 'Fall back to sleep',
             before: () => {
               app.canvas.setBlur(true)
 
@@ -45,6 +45,7 @@ app.tutorial.atrium = app.tutorial.invent({
                 ],
               }
 
+              // XXX: Duplicate the dialog to prevent visual flashes (and fully reset on game menu to prevent it from appearing on game load)
               app.screen.game.dialog.purgeQueue().push(dialog).push({
                 ...dialog,
                  before: () => {

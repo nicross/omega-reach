@@ -10,6 +10,7 @@ app.screen.game = app.screenManager.invent({
     sleep: function () {
       app.autosave.trigger()
       app.gameState.setLoaded(false)
+      app.screen.mainMenu.clearFocusMemory()
 
       // XXX: Autosave trigger uses setTimeout, so enqueue a state reset to prevent progress loss.
       setTimeout(() => engine.state.reset(), 1)

@@ -26,7 +26,7 @@ content.location.on('cellar-death', () => {
   if (!app.tutorial.death.complete) {
     [
       {
-        title: `<q>Wake up.</q>`,
+        title: `<q>Wake up again.</q>`,
         description: `<q>Let's just say I didn't see anything?</q> The shopkeeper posits between bites of fresh <em>earthen donuts</em>—with their restorative smell wafting in from the doorway upon which they smugly lean.`,
         actions: [
           {
@@ -83,7 +83,7 @@ content.location.on('cellar-death', () => {
       description: `You lost <strong class="a-game--dialogCurrency">${app.utility.format.currency(penalty)}</strong> to <strong>the cellar</strong> this run.`,
       actions: [
         {
-          label: 'Wake up',
+          label: 'Wake up again',
           after: () => app.canvas.setBlur(false),
         },
       ],
