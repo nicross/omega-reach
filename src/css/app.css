@@ -67,12 +67,6 @@
     .a-app--screen-transparent {
       background-color: transparent;
     }
-  .a-app--toasts {
-    left: 1.75rem;
-    position: absolute;
-    top: 1.75rem;
-    z-index: 4;
-  }
 
 .a-app-active {
   opacity: 1;
