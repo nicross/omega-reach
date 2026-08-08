@@ -36,8 +36,11 @@ content.solution = (() => {
         return this
       }
 
+      const isInverted = content.programs.get()?.invertSynthX() ? -1 : 1
+
       do {
         solution = solutionStrategies[app.settings.computed.inputPreference]()
+        solution.x *= isInverted
       } while (
            previous
         && previous.distance(solution) < minSequentialDistance

@@ -28,7 +28,8 @@ app.controls.midi = (() => {
 
       vector.depth = 0
       vector.depthPrime = 0
-      vector.zPrime = vector.z
+      vector.prime = vector.clone()
+      vector.target = vector.clone()
 
       mappings.set(mappingNote, vector)
       mappingNote += 1
@@ -141,11 +142,7 @@ app.controls.midi = (() => {
       const entries = {}
 
       for (const [key, value] of mappings.entries()) {
-        entries[key] = engine.tool.vector3d.create({
-          x: value.x,
-          y: value.y,
-          z: value.zPrime,
-        })
+        entries[key] = value.prime.clone()
       }
 
       return entries
@@ -154,7 +151,10 @@ app.controls.midi = (() => {
       const mapping = mappings.get(note)
 
       mapping.depth = mapping.depthPrime ** engine.fn.lerpExp(3, 1/3, modulation, 0.416)
-      mapping.z = mapping.zPrime + (pitchBend * 1/3)
+
+      mapping.target = mapping.prime.clone()
+      mapping.target.z += pitchBend * 1/3
+      mapping.target = mapping.target.normalize()
 
       return mapping
     }),

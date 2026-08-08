@@ -78,6 +78,11 @@ app.controls.interactions = (() => {
 
   let mouseAllowed = false
 
+  for (const vector of Object.values(keyboardMappings)) {
+    vector.prime = vector.clone()
+    vector.target = vector.clone()
+  }
+
   document.addEventListener('mousedown', (e) => mouseAllowed = !e.target.matches('button, button *'))
   document.addEventListener('mouseup', (e) => mouseAllowed = true)
 
@@ -136,12 +141,10 @@ app.controls.interactions = (() => {
     const left = getGamepadSide(gamepadMappings.left)
 
     if (left) {
-      gamepadLeftPoint = gamepadLeftPoint || {}
+      gamepadLeftPoint = gamepadLeftPoint || left.clone()
+
       gamepadLeftPoint.depth = left.depth
-      gamepadLeftPoint.x = left.x
-      gamepadLeftPoint.y = left.y
-      gamepadLeftPoint.z = left.z
-      gamepadLeftPoint.xPrime = gamepadLeftPoint.x
+      gamepadLeftPoint.target = left
     } else {
       gamepadLeftPoint = undefined
     }
@@ -149,12 +152,10 @@ app.controls.interactions = (() => {
     const right = getGamepadSide(gamepadMappings.right)
 
     if (right) {
-      gamepadRightPoint = gamepadRightPoint || {}
+      gamepadRightPoint = gamepadRightPoint || right.clone()
+
       gamepadRightPoint.depth = right.depth
-      gamepadRightPoint.x = right.x
-      gamepadRightPoint.y = right.y
-      gamepadRightPoint.z = right.z
-      gamepadRightPoint.xPrime = gamepadRightPoint.x
+      gamepadRightPoint.target = right
     } else {
       gamepadRightPoint = undefined
     }
@@ -181,35 +182,40 @@ app.controls.interactions = (() => {
     }).normalize()
 
     if (mouseAllowed && engine.input.mouse.isButton(0)) {
-      mousePrimaryPoint = mousePrimaryPoint || {}
+      mousePrimaryPoint = mousePrimaryPoint || point.clone()
+
       mousePrimaryPoint.depth = engine.fn.accelerateValue(mousePrimaryPoint.depth || 0, 1, 24)
-      mousePrimaryPoint.x = point.x
-      mousePrimaryPoint.y = point.y
-      mousePrimaryPoint.z = point.z
-      mousePrimaryPoint.xPrime = mousePrimaryPoint.x
+      mousePrimaryPoint.target = point
     } else {
       mousePrimaryPoint = undefined
     }
 
     if (mouseAllowed && engine.input.mouse.isButton(2)) {
-      mouseSecondaryPoint = mouseSecondaryPoint || {}
+      mouseSecondaryPoint = mouseSecondaryPoint || point.inverse()
+
       mouseSecondaryPoint.depth = engine.fn.accelerateValue(mouseSecondaryPoint.depth || 0, 1, 24)
-      mouseSecondaryPoint.x = -point.x
-      mouseSecondaryPoint.y = -point.y
-      mouseSecondaryPoint.z = -point.z
-      mouseSecondaryPoint.xPrime = mouseSecondaryPoint.x
+      mouseSecondaryPoint.target = point.inverse()
     } else {
       mouseSecondaryPoint = undefined
     }
   }
 
   return {
-    keyboardMappings: () => ({...keyboardMappings}),
+    keyboardMappings: () => {
+      const entries = {}
+
+      for (const [key, value] of Object.entries(keyboardMappings)) {
+        entries[key] = value.prime.clone()
+      }
+
+      return entries
+    },
     points: () => [...points],
     reset: function () {
       points.length = 0
 
       app.controls.midi.reset()
+      app.controls.touch.reset()
 
       return this
     },
@@ -228,6 +234,7 @@ app.controls.interactions = (() => {
           gamepadLeftPoint,
           gamepadRightPoint,
           ...app.controls.midi.getPoints(),
+          ...app.controls.touch.getPoints(),
         )
 
         points = points.filter((x) => x)
@@ -240,11 +247,9 @@ app.controls.interactions = (() => {
         const isInverted = content.programs.get()?.invertSynthX() ? -1 : 1
 
         for (const point of points) {
-          if (!('xPrime' in point)) {
-            point.xPrime = point.x
-          }
-
-          point.x = isInverted * point.xPrime
+          point.x = point.target.x * isInverted
+          point.y = point.target.y
+          point.z = point.target.z
         }
       }
 
