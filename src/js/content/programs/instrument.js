@@ -273,7 +273,7 @@ content.programs.instrument = content.programs.invent({
     )
 
     return engine.fn.fromMidi(
-      60 + scale[Math.round(value * (scale.length - 1))]
+      48 + scale[Math.round(value * (scale.length - 1))]
     )
   },
   calculateParameters: function (point) {
