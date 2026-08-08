@@ -1,6 +1,7 @@
 app.tutorial.base = {
   // Attributes
   id: undefined,
+  weight: 0,
   // State
   active: false,
   complete: false,

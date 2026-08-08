@@ -1,5 +1,6 @@
 app.tutorial.tutorialComplete = app.tutorial.invent({
   id: 'tutorialComplete',
+  weight: -1,
   // Lifecycle
   shouldActivate: () => content.location.is('atrium') && content.conservatory.isOpen(),
   onUpdate: function () {
@@ -13,7 +14,7 @@ app.tutorial.tutorialComplete = app.tutorial.invent({
         description: `You've remembered all of the basics for success this cycle. You may recall more later, but until then? Reach for the stars, gather their instruments, and curate the best collection in the universe!`,
         actions: [
           {
-            label: 'Live long and prosper',
+            label: 'Reach deeper and prosper',
           }
         ],
         after: () => this.markComplete(),

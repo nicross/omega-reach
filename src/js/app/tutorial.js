@@ -1,5 +1,12 @@
 app.tutorial = (() => {
-  const registry = new Map()
+  const registry = new Map(),
+    sorted = []
+
+  const sortDebounced = engine.fn.debounced(() => {
+    sorted.sort((a, b) => {
+      return a.weight - b.weight
+    })
+  }, 1)
 
   let isImported = false
 
@@ -33,6 +40,9 @@ app.tutorial = (() => {
 
       registry.set(prototype.id, prototype)
 
+      sorted.push(prototype)
+      sortDebounced()
+
       return prototype
     },
     isActive: function (id) {
@@ -44,7 +54,7 @@ app.tutorial = (() => {
     reset: function () {
       isImported = false
 
-      for (const [id, tutorial] of registry.entries()) {
+      for (const tutorial of registry.values()) {
         tutorial.reset()
       }
 
@@ -55,7 +65,7 @@ app.tutorial = (() => {
         return this
       }
 
-      for (const [id, tutorial] of registry.entries()) {
+      for (const tutorial of sorted) {
         tutorial.update()
       }
 

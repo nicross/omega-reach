@@ -4,6 +4,7 @@
 - Enabled inverse solutions by default.
 - Add cellar anomalies which grant greed.
 - Add symbols for cellar resources to tutorial prompts and manual.
+- Improved race conditons with certain dialogs.
 - Fixed a typo.
 
 ## v1.2.0

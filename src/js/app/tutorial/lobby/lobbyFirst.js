@@ -1,9 +1,10 @@
 app.tutorial.lobbyFirst = app.tutorial.invent({
   id: 'lobbyFirst',
+  weight: -1,
   // Lifecycle
   shouldActivate: () => content.location.is('lobby'),
   onUpdate: function () {
-    if (!content.location.is('lobby') || content.donations.has()) {
+    if (!content.location.is('lobby')) {
       return
     }
 
@@ -13,7 +14,7 @@ app.tutorial.lobbyFirst = app.tutorial.invent({
         description: `Even when it's accepting visitors, finding a conversation in <strong>the lobby</strong> is rare. At least the <em>earthen wood</em> adorning the ceiling is always an alluring appeal? You could recall every detail of the cycle it was installed.`,
         actions: [
           {
-            label: 'Come back later',
+            label: content.donations.has() ? 'Look around' : 'Come back later',
           }
         ],
         after: () => this.markComplete(),
