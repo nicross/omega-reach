@@ -93,7 +93,7 @@ app.screen.game = app.screenManager.invent({
 
     if (solution && content.location.get().canInteract()) {
       for (const interaction of interactions) {
-        const distance = app.settings.computed.inverseSolutions
+        const distance = content.solution.isMirror()
           ? Math.min(
               engine.fn.distance(interaction, solution),
               engine.fn.distance(interaction, solution.inverse()),

@@ -49,11 +49,6 @@ app.settings.register('inputPreference', {
   },
 })
 
-app.settings.register('inverseSolutions', {
-  compute: (rawValue) => Boolean(rawValue),
-  default: true,
-})
-
 app.settings.register('mainVolume', {
   compute: (rawValue) => engine.fn.fromDb(engine.fn.lerpExp(engine.const.zeroDb, 0, rawValue, 0.1)),
   default: 1,
@@ -70,9 +65,17 @@ app.settings.register('musicVolume', {
   },
 })
 
+app.settings.register('mirrorSolutions', {
+  compute: (rawValue) => Boolean(rawValue),
+  default: true,
+  update: function (computedValue) {
+    content.solution.setMirror(computedValue)
+  },
+})
+
 app.settings.register('particleLimit', {
   compute: (rawValue) => engine.fn.clamp(Number(rawValue || 0)),
-  default: 0.5,
+  default: 1,
   update: function (computedValue) {
     content.particles.setLimit(computedValue)
   },

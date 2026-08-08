@@ -1,5 +1,5 @@
 content.solution = (() => {
-  const minSequentialDistance = 1.5
+  const minSequentialDistance = 1
 
   const solutionStrategies = {
     gamepad: () => engine.tool.vector3d.create({
@@ -20,7 +20,8 @@ content.solution = (() => {
     }).normalize(),
   }
 
-  let previous,
+  let isMirror = false,
+    previous,
     solution
 
   return {
@@ -37,15 +38,25 @@ content.solution = (() => {
 
       do {
         solution = solutionStrategies[app.settings.computed.inputPreference]()
-      } while (previous && previous.distance(solution) < minSequentialDistance)
+      } while (
+           previous
+        && previous.distance(solution) < minSequentialDistance
+        && (!isMirror || previous.distance(solution) > 2 - minSequentialDistance)
+      )
 
       return this
     },
     get: () => solution,
     has: () => Boolean(solution),
+    isMirror: () => isMirror,
     reset: function () {
       previous = undefined
       solution = undefined
+
+      return this
+    },
+    setMirror: function (value) {
+      isMirror = Boolean(value)
 
       return this
     },
