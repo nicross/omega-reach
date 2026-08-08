@@ -13,7 +13,11 @@ engine.ready(() => {
     })
   })
 
-  content.location.on('interact-complete', () => content.audio.interactComplete.trigger())
+  content.location.on('interact-complete', () => {
+    if (!content.location.is('cellar')) {
+      content.audio.interactComplete.trigger()
+    }
+  })
 
   // XXX: Kill the proximity synth
   app.screen.game.dialog.on('advance', (e) => {

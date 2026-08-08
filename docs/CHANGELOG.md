@@ -1,11 +1,12 @@
 # CHANGELOG
 ## v1.2.1
-- Added toggle for allowing inverse solutions (enabled by default).
+- Added toggle for allowing mirrored solutions (enabled by default).
 - Added random musical modes to the instruments.
 - Added cellar anomalies which grant greed.
 - Added symbols for cellar resources to tutorial prompts and manual.
 - Added animations when the curator is asleep.
 - Added an easter egg at the start of a new collection.
+- Muted a sound in the cellar to accentuate other sounds.
 - Improved race conditions with certain dialogs.
 - Fixed some typos.
 
