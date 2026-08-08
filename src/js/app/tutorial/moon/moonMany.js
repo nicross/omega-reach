@@ -15,11 +15,12 @@ app.tutorial.moonMany = app.tutorial.invent({
       {
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Moons:`,
-        description: () => ({
-          gamepad: `Some planets have multiple moons to examine. Press <kbd>D-Pad Right</kbd> and <kbd>D-Pad Left</kbd> to navigate between the moons around this planet.`,
-          keyboard: `Some planets have multiple moons to examine. Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd> to navigate between the moons around this planet.`,
-          mouse: `Some planets have multiple moons to examine. Click the <kbd>Arrow Buttons</kbd> to navigate between the moons around this planet.`,
-        }[this.getInputPreference()]),
+        description: () => `Some planets have multiple moons to examine. ` + ({
+          gamepad: `Press <kbd>D-Pad Right</kbd> and <kbd>D-Pad Left</kbd>`,
+          keyboard: `Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd>`,
+          mouse: `Click the <kbd>Arrow Buttons</kbd>`,
+          touch: `Tap the <kbd>Arrow Buttons</kbd>`,
+        }[this.getInputPreference()]) + ` to navigate between the moons around this planet.`,
         actions: [
           {
             label: 'Regain control',

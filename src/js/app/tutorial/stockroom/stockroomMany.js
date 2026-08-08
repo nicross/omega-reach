@@ -1,5 +1,5 @@
-app.tutorial.galleryMany = app.tutorial.invent({
-  id: 'galleryMany',
+app.tutorial.stockroomMany = app.tutorial.invent({
+  id: 'stockroomMany',
   // Lifecycle
   shouldActivate: () => content.location.is('stockroom') && content.stockroom.countGenerated() > 1,
   onUpdate: function () {
@@ -11,11 +11,12 @@ app.tutorial.galleryMany = app.tutorial.invent({
       {
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Wares:`,
-        description: () => ({
-          gamepad: `<strong>The stockroom</strong> can hold many instruments. Press <kbd>D-Pad Right</kbd> and <kbd>D-Pad Left</kbd> to navigate between the shopkeeper's wares.`,
-          keyboard: `<strong>The stockroom</strong> can hold many instruments. Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd> to navigate between the shopkeeper's wares.`,
-          mouse: `<strong>The stockroom</strong> can hold many instruments. Click the <kbd>Arrow Buttons</kbd> to navigate between the shopkeeper's wares.`,
-        }[this.getInputPreference()]),
+        description: () => `<strong>The stockroom</strong> can hold many instruments. ` + ({
+          gamepad: `Press <kbd>D-Pad Right</kbd> and <kbd>D-Pad Left</kbd>`,
+          keyboard: `Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd>`,
+          mouse: `Click the <kbd>Arrow Buttons</kbd>`,
+          touch: `Tap the <kbd>Arrow Buttons</kbd>`,
+        }[this.getInputPreference()]) + ` to navigate between the shopkeeper's wares.`,
         actions: [
           {
             label: 'Regain control',

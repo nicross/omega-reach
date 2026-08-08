@@ -10,7 +10,7 @@ app.tutorial.cellarBarrier = app.tutorial.invent({
     [
       {
         tutorial: true,
-        title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Greed`,
+        title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Greed:`,
         description: `<strong class="a-game--dialogBarrier">Greed <i aria-hidden="true" role="presentation" title="Greed">⸸</i></strong> will protect you when exploring <strong>the cellar</strong>. It is spent whenever your sanity would otherwise reach zero.`,
         actions: [
           {

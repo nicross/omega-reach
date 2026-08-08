@@ -167,7 +167,7 @@ app.controls.interactions = (() => {
     for (let [key, vector] of Object.entries(keyboardMappings)) {
       if (engine.input.keyboard.is(key)) {
         keyboardPoints.push(vector)
-        vector.depth = engine.fn.accelerateValue(vector.depth || 0, 1, 24)
+        vector.depth = engine.fn.accelerateValue(vector.depth || 0, 1, 32)
       } else {
         vector.depth = 0
       }
@@ -184,7 +184,7 @@ app.controls.interactions = (() => {
     if (mouseAllowed && engine.input.mouse.isButton(0)) {
       mousePrimaryPoint = mousePrimaryPoint || point.clone()
 
-      mousePrimaryPoint.depth = engine.fn.accelerateValue(mousePrimaryPoint.depth || 0, 1, 24)
+      mousePrimaryPoint.depth = engine.fn.accelerateValue(mousePrimaryPoint.depth || 0, 1, 32)
       mousePrimaryPoint.target = point
     } else {
       mousePrimaryPoint = undefined
@@ -193,7 +193,7 @@ app.controls.interactions = (() => {
     if (mouseAllowed && engine.input.mouse.isButton(2)) {
       mouseSecondaryPoint = mouseSecondaryPoint || point.inverse()
 
-      mouseSecondaryPoint.depth = engine.fn.accelerateValue(mouseSecondaryPoint.depth || 0, 1, 24)
+      mouseSecondaryPoint.depth = engine.fn.accelerateValue(mouseSecondaryPoint.depth || 0, 1, 32)
       mouseSecondaryPoint.target = point.inverse()
     } else {
       mouseSecondaryPoint = undefined

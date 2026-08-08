@@ -37,6 +37,10 @@ app.tutorial.reachOffline = app.tutorial.invent({
             label: 'a row of black and white keys.',
             before: () => app.settings.setInputPreference('midi'),
           },
+          {
+            label: 'a screen.',
+            before: () => app.settings.setInputPreference('touch'),
+          },
         ],
         after: () => {
           app.settings.save()
@@ -78,8 +82,9 @@ app.tutorial.reachOffline = app.tutorial.invent({
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Interacting:`,
         description: () => ({
           gamepad: `Hold one or both <kbd>Triggers</kbd> and move the <kbd>Analog Sticks</kbd> to interact. Locate the sweet spot using audio, visual, and haptic cues to proceed.`,
-          keyboard: `Press one or more keys to interact. Each key points to a location. Locate the sweet spot using audio and visual cues to proceed.`,
-          mouse: `Click to interact at that location. Locate the sweet spot using audio and visual cues to proceed.`,
+          keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'}  one or more keys to interact. Each key points to a location. Locate the sweet spot using audio and visual cues to proceed.`,
+          mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'}  to interact at that location. Locate the sweet spot using audio and visual cues to proceed.`,
+          touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'}  to interact at that location. Locate the sweet spot using audio and visual cues to proceed.`,
         }[this.getInputPreference()]),
         actions: [
           {
@@ -91,10 +96,11 @@ app.tutorial.reachOffline = app.tutorial.invent({
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Skipping:`,
         description: () => ({
-          gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} the <kbd>A</kbd> button to skip the current interaction. You will not be penalized for doing so.`,
-          keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd> to skip the current interaction. You will not be penalized for doing so.`,
-          mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Examine Button</kbd> to skip the current interaction. You will not be penalized for doing so.`,
-        }[this.getInputPreference()]),
+          gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} the <kbd>A</kbd> button`,
+          keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd>`,
+          mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Examine Button</kbd>`,
+          touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Examine Button</kbd>`,
+        }[this.getInputPreference()]) + ` to skip the current interaction. You will not be penalized for doing so.`,
         actions: [
           {
             label: 'Regain control',

@@ -15,11 +15,12 @@ app.tutorial.planetMany = app.tutorial.invent({
       {
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Planets:`,
-        description: () => ({
-          gamepad: `Some stars have multiple planets to examine. Press <kbd>D-Pad Right</kbd> and <kbd>D-Pad Left</kbd> to navigate between the planets around this star.`,
-          keyboard: `Some stars have multiple planets to examine. Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd> to navigate between the planets around this star.`,
-          mouse: `Some stars have multiple planets to examine. Click the <kbd>Arrow Buttons</kbd> to navigate between the planets around this star.`,
-        }[this.getInputPreference()]),
+        description: () => `Some stars have multiple planets to examine. ` + ({
+          gamepad: `Press <kbd>D-Pad Right</kbd> and <kbd>D-Pad Left</kbd>`,
+          keyboard: `Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd>`,
+          mouse: `Click the <kbd>Arrow Buttons</kbd>`,
+          touch: `Tap the <kbd>Arrow Buttons</kbd>`,
+        }[this.getInputPreference()]) + ` to navigate between the planets around this star.`,
         actions: [
           {
             label: 'Regain control',

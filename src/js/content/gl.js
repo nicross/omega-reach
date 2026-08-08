@@ -29,6 +29,7 @@ content.gl = (() => {
     gl.viewport(0, 0, width, height)
 
     aspect = width / height
+    hfov = aspect > 1 ? Math.PI / 2 : Math.PI / engine.fn.lerp(8, 2, aspect)
     vfov = hfov / aspect
   }
 
@@ -74,12 +75,6 @@ content.gl = (() => {
     },
     setDrawDistance: function (value) {
       drawDistance = value
-
-      return this
-    },
-    setHfov: function (value) {
-      hfov = value
-      vfov = hfov / aspect
 
       return this
     },

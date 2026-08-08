@@ -89,6 +89,7 @@ app.screen.game = app.screenManager.invent({
       keyboard: 1/6,
       midi: 1/6,
       mouse: 1/3,
+      touch: 1/3,
     }[app.settings.computed.inputPreference] * app.settings.computed.puzzleDifficulty
 
     if (solution && content.location.get().canInteract()) {
@@ -161,12 +162,18 @@ app.screen.game = app.screenManager.invent({
       }
     }
 
-    if (app.settings.computed.inputHold) {
-      if (game.interact && (focus === this.interactElement || !focus?.matches('button,[role="button"]'))) {
-        return this.interact.increment()
-      } else if (focus === this.interactElement && engine.input.mouse.isButton(0)) {
-        return this.interact.increment()
-      }
+    if (
+      app.settings.computed.inputHold
+      && (
+           // Hold interact control
+           (game.interact && (focus === this.interactElement || !focus?.matches('button,[role="button"]')))
+           // Click and hold interact button
+        || (focus === this.interactElement && engine.input.mouse.isButton(0))
+           // Touch and hold interact button
+        || (this.interact.isTouched())
+      )
+    ) {
+      return this.interact.increment()
     }
 
     if (!interacted) {

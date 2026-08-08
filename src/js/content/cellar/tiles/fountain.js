@@ -17,7 +17,7 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
     },
     {
       tutorial: true,
-      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The fountain`,
+      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The fountain:`,
       description: `<kbd>Interact</kbd> to donate credits for your sanity. You may recover them from <strong>the lobby</strong>.`,
     },
   ],

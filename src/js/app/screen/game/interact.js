@@ -6,6 +6,7 @@ app.screen.game.interact = (() => {
 
   let canInteract,
     isCooldown = false,
+    isTouched = false,
     lastFrame = 0,
     proximity = 0,
     proximityAccelerated = 0,
@@ -17,6 +18,10 @@ app.screen.game.interact = (() => {
       app.screen.game.interact.click()
     }
   })
+
+  rootElement.addEventListener('touchcancel', () => isTouched = false)
+  rootElement.addEventListener('touchend', () => isTouched = false)
+  rootElement.addEventListener('touchstart', () => isTouched = true)
 
   function trigger() {
     isCooldown = true
@@ -87,6 +92,7 @@ app.screen.game.interact = (() => {
 
       return this
     },
+    isTouched: () => isTouched,
     proximity: () => proximity,
     proximityAccelerated: () => proximityAccelerated,
     setCooldown: function (nextValue) {

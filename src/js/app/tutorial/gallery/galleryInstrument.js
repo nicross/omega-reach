@@ -14,7 +14,7 @@ app.tutorial.galleryInstrument = app.tutorial.invent({
         description: `They're your <em>earthen bread and butter</em>—or what keeps the conservatory's lights on. Interact to reveal more details about an instrument.`,
         actions: [
           {
-            label: 'Regain control',
+            label: content.instruments.count() > 1 ? 'Next tutorial' : 'Regain control',
           }
         ],
         after: () => this.markComplete(),

@@ -18,6 +18,11 @@ content.solution = (() => {
       y: engine.fn.randomFloat(-1, 1),
       z: engine.fn.randomFloat(-1, 1),
     }).normalize(),
+    touch: () => engine.tool.vector3d.create({
+      x: engine.fn.randomFloat(0, 1),
+      y: engine.fn.randomFloat(-1, 1),
+      z: engine.fn.randomFloat(-1, 1),
+    }).normalize(),
   }
 
   let isMirror = false,

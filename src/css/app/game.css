@@ -23,6 +23,7 @@
   /* Information */
   .a-game--info {
     outline: none !important;
+    z-index: 1;
   }
   .a-game--name {
     background-color: #000000;
@@ -324,6 +325,16 @@
   }
   .a-game--dialogActions-block li {
     display: block;
+  }
+
+  /* Touch */
+  .a-game--touch {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
   }
 
 @keyframes a-game--attribute-undiscovered {

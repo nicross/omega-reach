@@ -88,10 +88,11 @@ app.tutorial.atrium = app.tutorial.invent({
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Moving:`,
         description: () => ({
-          gamepad: `Use the <kbd>Directional Pad</kbd> to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
-          keyboard: `Use the <kbd>Arrow Keys</kbd> to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
-          mouse: `Click the <kbd>Arrow Buttons</kbd> to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
-        }[this.getInputPreference()]),
+          gamepad: `Use the <kbd>Directional Pad</kbd>`,
+          keyboard: `Use the <kbd>Arrow Keys</kbd>`,
+          mouse: `Click the <kbd>Arrow Buttons</kbd>`,
+          touch: `Tap the <kbd>Arrow Buttons</kbd>`,
+        }[this.getInputPreference()]) + ` to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
         actions: [
           {
             label: 'Regain control',

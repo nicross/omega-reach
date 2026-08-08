@@ -28,6 +28,7 @@ app.screen.settingsInput = app.screenManager.invent({
         {value: 'mouse', label: 'Mouse (front hemisphere)'},
         {value: 'keyboard', label: 'Keyboard (fixed points)'},
         {value: 'midi', label: 'MIDI (fixed points)'},
+        {value: 'touch', label: 'Touch (front hemisphere)'},
       ]],
     ].map(([selector, initialValue, setter, options]) => {
       const component = app.component.select.hydrate(root.querySelector(selector), initialValue, options)

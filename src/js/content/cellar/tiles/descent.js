@@ -27,7 +27,7 @@ content.cellar.tiles.descent = content.cellar.tiles.invent({
     },
     {
       tutorial: true,
-      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The descent`,
+      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The descent:`,
       description: `<kbd>Interact</kbd> to descend to the next level.`,
     },
   ],

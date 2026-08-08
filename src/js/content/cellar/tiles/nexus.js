@@ -17,7 +17,7 @@ content.cellar.tiles.nexus = content.cellar.tiles.invent({
     },
     {
       tutorial: true,
-      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The nexus`,
+      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The nexus:`,
       description: `<kbd>Interact</kbd> to return to previously-visited locations.`,
     },
   ],

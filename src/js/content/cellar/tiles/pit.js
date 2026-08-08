@@ -23,7 +23,7 @@ content.cellar.tiles.pit = content.cellar.tiles.invent({
     },
     {
       tutorial: true,
-      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The pit`,
+      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The pit:`,
       description: `<kbd>Interact</kbd> to absolve your greed with credits.`,
     },
   ],

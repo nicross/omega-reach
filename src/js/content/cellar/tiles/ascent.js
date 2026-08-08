@@ -18,7 +18,7 @@ content.cellar.tiles.ascent = content.cellar.tiles.invent({
   getDialogs: () => [
     {
       tutorial: true,
-      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The ascent`,
+      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The ascent:`,
       description: `<kbd>Interact</kbd> again to ascend to the previous level.`,
     },
   ],

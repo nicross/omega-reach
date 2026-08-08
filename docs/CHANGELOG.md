@@ -1,6 +1,7 @@
 # CHANGELOG
 ## v1.2.1
-- Added toggle for allowing mirrored solutions (enabled by default).
+- Added support for touch input.
+- Added toggle for mirrored solutions (enabled by default).
 - Added random musical modes to the instruments.
 - Reduced overall instrument frequencies by an octave.
 - Added cellar anomalies which grant greed.
@@ -8,7 +9,7 @@
 - Added animations when the curator is asleep.
 - Added an easter egg at the start of a new collection.
 - Muted a sound in the cellar to accentuate other sounds.
-- Improved race conditions with certain dialogs.
+- Improved the order, flow, and wording of certain dialogs.
 - Increased the default interface scale and particle density.
 - Standardized the splash animation across interface scales.
 - Prevented the demo notice from appearing more than once per session.
