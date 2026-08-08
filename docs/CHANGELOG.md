@@ -1,11 +1,11 @@
 # CHANGELOG
 ## v1.2.1
-- Added toggle for allowing inverse solutions.
-- Enabled inverse solutions by default.
-- Add cellar anomalies which grant greed.
-- Add symbols for cellar resources to tutorial prompts and manual.
+- Added toggle for allowing inverse solutions (enabled by default).
+- Added cellar anomalies which grant greed.
+- Added symbols for cellar resources to tutorial prompts and manual.
+- Added animations when the curator is asleep.
 - Improved race conditons with certain dialogs.
-- Fixed a typo.
+- Fixed some typos.
 
 ## v1.2.0
 - Added the emporium.

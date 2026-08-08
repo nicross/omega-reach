@@ -11,9 +11,11 @@ app.tutorial.atrium = app.tutorial.invent({
       {
         title: `Wake up.`,
         description: `You stir from your nap at the center of time. A familiar warmth fills you as you flex your senses. Has it already been a quadrillion years?`,
+        before: () => app.canvas.setBlur(true),
         actions: [
           {
             label: 'Look around',
+            after: () => app.canvas.setBlur(false),
           }
         ],
       },

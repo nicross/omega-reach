@@ -32,6 +32,7 @@ app.tutorial.cellarLimitation = app.tutorial.invent({
     app.screen.game.dialog.push({
       title: `What was that?`,
       description: `Swiftly the air swells and you…`,
+      before: () => app.canvas.setBlur(true),
       actions: [
         {
           label: `brace for it.`,
