@@ -7,6 +7,15 @@ app.screen.game = app.screenManager.invent({
     pause: function () {
       this.change('gameMenu')
     },
+    sleep: function () {
+      app.autosave.trigger()
+      app.gameState.setLoaded(false)
+
+      // XXX: Autosave trigger uses setTimeout, so enqueue a state reset to prevent progress loss.
+      setTimeout(() => engine.state.reset(), 1)
+
+      this.change('splash')
+    },
   },
   // State
   state: {},

@@ -52,6 +52,9 @@ app.screen.mainMenu = app.screenManager.invent({
   },
   onEnter: function () {
     this.rootElement.querySelector('.a-mainMenu--action-continue').hidden = !app.storage.game.has()
+
+    // XXX: For easter egg in app.tutorial.atrium
+    app.screen.game.dialog.reset()
   },
   onExit: function () {},
   onFrame: function () {

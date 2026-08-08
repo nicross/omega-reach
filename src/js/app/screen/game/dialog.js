@@ -185,8 +185,26 @@ app.screen.game.dialog = (() => {
       return this
     },
     isOpen: () => isOpen,
+    purgeQueue: function () {
+      queue.length = 0
+
+      return this
+    },
     push: function (dialog) {
       queue.push(dialog)
+
+      return this
+    },
+    queue: () => [...queue],
+    reset: function () {
+      current = undefined
+      queue.length = 0
+
+      document.querySelector('.a-game--info').removeAttribute('aria-hidden')
+      document.querySelector('.a-game--nav').removeAttribute('aria-hidden')
+      rootElement.setAttribute('aria-hidden', true)
+
+      isOpen = false
 
       return this
     },

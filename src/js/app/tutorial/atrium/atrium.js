@@ -1,5 +1,9 @@
 app.tutorial.atrium = app.tutorial.invent({
   id: 'atrium',
+  // State
+  defaultState: {
+    sleeps: 0,
+  },
   // Lifecycle
   shouldActivate: () => true,
   onUpdate: function () {
@@ -24,17 +28,37 @@ app.tutorial.atrium = app.tutorial.invent({
         description: `It connects the various rooms of <strong>The Omega Conservatory</strong>. From this vantage, everything seems to happen all at once through the above skylight. Perhaps you might dwell a bit longer to ponder its wonder?`,
         actions: [
           {
-            label: 'Fall back to sleep',
-            before: () => this.state.lazy = true,
+            label: 'Snap out of it',
           },
           {
-            label: 'Snap out of it',
-            before: () => this.state.lazy = false,
-          }
+            label: 'Fall back to sleep',
+            before: () => {
+              app.canvas.setBlur(true)
+
+              const dialog = {
+                title: 'Just a little longer…',
+                description: `You drift back into your nap at the center of time, figuring that the universe will remain there in some form when you ${this.state.sleeps > 0 ? '<em>finally</em> decide' : 'decide'} to get back to work.`,
+                actions: [
+                  {
+                    label: 'Fade to black',
+                  },
+                ],
+              }
+
+              app.screen.game.dialog.purgeQueue().push(dialog).push({
+                ...dialog,
+                 before: () => {
+                   this.state.sleeps += 1
+                   app.screen.game.dialog.purgeQueue()
+                   app.screenManager.dispatch('sleep')
+                 },
+              })
+            },
+          },
         ],
       },
       {
-        title: () => `${this.state.lazy ? 'No' : 'Of course'}, you're the curator!`,
+        title: () => `Right, you're the curator!`,
         description: `With <strong>the emporium</strong> cleared and the next cycle starting, <strong>the gallery</strong> sits criminally empty. It would be best for you to preserve as much as you can by using <strong>the reach</strong>.`,
         actions: [
           {

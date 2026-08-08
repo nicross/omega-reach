@@ -4,6 +4,7 @@
 - Added cellar anomalies which grant greed.
 - Added symbols for cellar resources to tutorial prompts and manual.
 - Added animations when the curator is asleep.
+- Added an easter egg at the start of a new collection.
 - Improved race conditons with certain dialogs.
 - Fixed some typos.
 
