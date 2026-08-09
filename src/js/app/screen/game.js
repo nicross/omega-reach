@@ -84,13 +84,7 @@ app.screen.game = app.screenManager.invent({
     let closest = Infinity,
       interacted = false
 
-    const threshold = {
-      gamepad: 1/3,
-      keyboard: 1/6,
-      midi: 1/6,
-      mouse: 1/3,
-      touch: 1/3,
-    }[app.settings.computed.inputPreference] * app.settings.computed.puzzleDifficulty
+    const threshold = 1/3 * app.settings.computed.puzzleDifficulty
 
     if (solution && content.location.get().canInteract()) {
       for (const interaction of interactions) {

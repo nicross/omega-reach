@@ -15,7 +15,7 @@ app.tutorial.reopening = app.tutorial.invent({
       {
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Reopening:`,
-        description: `Beware! <strong>The Omega Conservatory</strong> is still closed to visitors. <strong>The gallery</strong> must have an appraised instrument for it to reopen to the public.`,
+        description: `Beware! <strong>The Omega Conservatory</strong> is still closed to visitors. <strong>The gallery</strong> must have an instrument revealed for it to reopen to the public.`,
         actions: [
           {
             label: 'Regain control',

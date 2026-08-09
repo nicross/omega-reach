@@ -11,7 +11,7 @@ app.tutorial.galleryScanned = app.tutorial.invent({
       {
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Visitors:`,
-        description: `Congratulations! <strong>The Omega Conservatory</strong> is now open to visitors. <strong>The gallery</strong> must have an appraised instrument for it to remain open.`,
+        description: `Congratulations! <strong>The Omega Conservatory</strong> is now open to visitors. <strong>The gallery</strong> must have an instrument revealed for it to remain open.`,
         actions: [
           {
             label: 'Next tutorial',
