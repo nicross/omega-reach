@@ -13,6 +13,7 @@
 - Standardized the splash animation across interface scales.
 - Improved support for portrait orientation on mobile.
 - Prevented the demo notice from appearing more than once per session.
+- Fixed a keyboard focus issue in immersive mode.
 - Updated the manual accordingly.
 
 ## v1.2.0

@@ -1,7 +1,8 @@
 app.screen.game.info = (() => {
   const attributesElement = document.querySelector('.a-game--attributes'),
     descriptionElement = document.querySelector('.a-game--description'),
-    nameElement = document.querySelector('.a-game--name')
+    nameElement = document.querySelector('.a-game--name'),
+    rootElement = document.querySelector('.a-game--info')
 
   function getRoomInfo() {
     const room = content.location.get()
@@ -71,6 +72,8 @@ app.screen.game.info = (() => {
       if (!isDiscovered) {
         descriptionElement.classList.add('a-game--description-undiscovered')
       }
+
+      rootElement.hidden = app.settings.computed.immersiveOn
 
       return this
     },
