@@ -23,6 +23,7 @@
   /* Information */
   .a-game--info {
     outline: none !important;
+    position: relative;
     z-index: 1;
   }
   .a-game--name {
