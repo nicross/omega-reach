@@ -18,7 +18,12 @@ content.cellar.tiles.fountain = content.cellar.tiles.invent({
     {
       tutorial: true,
       title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The fountain:`,
-      description: `<kbd>Interact</kbd> to donate credits for your sanity. You may recover them from <strong>the lobby</strong>.`,
+      description: () => ({
+        gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} any <kbd>Face Button</kbd>`,
+        keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd>`,
+        mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Interact Button</kbd>`,
+        touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Interact Button</kbd>`,
+      }[app.tutorial.getInputPreference()]) + ` to donate credits for your sanity. You may recover them from <strong>the lobby</strong>.`
     },
   ],
   calculateCost: function (uses = this.state.uses + 1) {
