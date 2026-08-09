@@ -21,12 +21,12 @@ app.tutorial.galleryComplete = app.tutorial.invent({
       {
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Selling:`,
-        description: () => `Dislike anything? or just need <strong class="a-game--dialogCurrency">credits <i aria-hidden="true" role="presentation" title="Credit">¤</i></strong> for <strong>the shop</strong>? ` + ({
-          gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} the <kbd>A</kbd> button`,
+        description: () => `Dislike anything? or just need some funds for <strong>the shop</strong>? ` + ({
+          gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} any <kbd>Face Button</kbd>`,
           keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd>`,
           mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Sell Button</kbd>`,
           touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Sell Button</kbd>`,
-        }[this.getInputPreference()]) + ` to sell any instrument. You will be prompted to confirm your choice.`,
+        }[app.tutorial.getInputPreference()]) + ` to sell any instrument. You will be prompted to confirm your choice.`,
         actions: [
           {
             label: 'Regain control',

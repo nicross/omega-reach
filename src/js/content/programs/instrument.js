@@ -115,10 +115,11 @@ content.programs.instrument = content.programs.invent({
 
     // Handle time tracking and donations
     if (this.synths.size && content.location.is('gallery') && content.location.get().isComplete()) {
-      const delta = engine.loop.delta()
+      const delta = engine.loop.delta(),
+        rarity = engine.fn.lerp(1/3, 1, this.options.instrument.rarity)
 
       this.options.instrument.state.time += delta
-      content.donations.add(delta * this.options.instrument.rarity * 10/60)
+      content.donations.add(delta * rarity * 15/60)
     }
   },
   createSynth: function ({point, wrapper}) {

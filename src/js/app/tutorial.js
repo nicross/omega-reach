@@ -21,6 +21,17 @@ app.tutorial = (() => {
       return states
     },
     get: (id) => registry.get(id),
+    getInputPreference: (raw = false) => {
+      const aliases = {
+        midi: 'keyboard',
+      }
+
+      const preference = app.settings.computed.inputPreference
+
+      return !raw && aliases[preference]
+        ? aliases[preference]
+        : preference
+    },
     import: function (states = {}) {
       for (const [id, tutorial] of registry.entries()) {
         if (id in states) {

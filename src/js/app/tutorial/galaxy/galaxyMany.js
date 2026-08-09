@@ -20,7 +20,7 @@ app.tutorial.galaxyMany = app.tutorial.invent({
           keyboard: `Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd>`,
           mouse: `Click the <kbd>Arrow Buttons</kbd>`,
           touch: `Tap the <kbd>Arrow Buttons</kbd>`,
-        }[this.getInputPreference()]) + ` to navigate between the galaxies you've reached.`,
+        }[app.tutorial.getInputPreference()]) + ` to navigate between the galaxies you've reached.`,
         actions: [
           {
             label: 'Regain control',

@@ -20,7 +20,7 @@ app.tutorial.planetMany = app.tutorial.invent({
           keyboard: `Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd>`,
           mouse: `Click the <kbd>Arrow Buttons</kbd>`,
           touch: `Tap the <kbd>Arrow Buttons</kbd>`,
-        }[this.getInputPreference()]) + ` to navigate between the planets around this star.`,
+        }[app.tutorial.getInputPreference()]) + ` to navigate between the planets around this star.`,
         actions: [
           {
             label: 'Regain control',

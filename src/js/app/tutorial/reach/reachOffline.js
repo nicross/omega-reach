@@ -85,7 +85,7 @@ app.tutorial.reachOffline = app.tutorial.invent({
           keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'}  one or more keys to interact. Each key points to a location. Locate the sweet spot using audio and visual cues to proceed.`,
           mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'}  to interact at that location. Locate the sweet spot using audio and visual cues to proceed.`,
           touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'}  to interact at that location. Locate the sweet spot using audio and visual cues to proceed.`,
-        }[this.getInputPreference()]),
+        }[app.tutorial.getInputPreference()]),
         actions: [
           {
             label: 'Next tutorial',
@@ -96,11 +96,11 @@ app.tutorial.reachOffline = app.tutorial.invent({
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Skipping:`,
         description: () => ({
-          gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} the <kbd>A</kbd> button`,
+          gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} any <kbd>Face Button</kbd>`,
           keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd>`,
-          mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Examine Button</kbd>`,
-          touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Examine Button</kbd>`,
-        }[this.getInputPreference()]) + ` to skip the current interaction. You will not be penalized for doing so.`,
+          mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Interact Button</kbd>`,
+          touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Interact Button</kbd>`,
+        }[app.tutorial.getInputPreference()]) + ` to skip any interaction. You will not be penalized for doing so.`,
         actions: [
           {
             label: 'Regain control',

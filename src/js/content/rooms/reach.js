@@ -17,6 +17,13 @@ content.rooms.reach = content.rooms.invent({
   },
   // Interaction
   canInteract: () => Boolean(!app.tutorial.reachOnline.complete || app.tutorial.reachUnlocked.complete || !app.settings.computed.tutorialOn),
+  getInteractLabel: function () {
+    if (!app.tutorial.reachOnline.complete) {
+      return 'Interact'
+    }
+
+    return this.state.online ? 'Deactivate' : 'Activate'
+  },
   getInteractJingle: function () {
     return this.state.online ? 2 : 0
   },
@@ -41,7 +48,7 @@ content.rooms.reach = content.rooms.invent({
     return [
       {
         label: `Ability ${this.state.online ? 'online' : 'offline'}`,
-        modifiers: this.state.online ? ['rare'] : ['undiscovered'],
+        modifiers: this.state.online ? ['legendary'] : ['undiscovered'],
       },
     ]
   },

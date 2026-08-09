@@ -92,7 +92,7 @@ app.tutorial.atrium = app.tutorial.invent({
           keyboard: `Use the <kbd>Arrow Keys</kbd>`,
           mouse: `Click the <kbd>Arrow Buttons</kbd>`,
           touch: `Tap the <kbd>Arrow Buttons</kbd>`,
-        }[this.getInputPreference()]) + ` to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
+        }[app.tutorial.getInputPreference()]) + ` to navigate the conservatory. Find your way to <strong>the reach</strong> to fulfill your duties.`,
         actions: [
           {
             label: 'Regain control',

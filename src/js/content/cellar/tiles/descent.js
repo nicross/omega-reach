@@ -28,7 +28,12 @@ content.cellar.tiles.descent = content.cellar.tiles.invent({
     {
       tutorial: true,
       title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The descent:`,
-      description: `<kbd>Interact</kbd> to descend to the next level.`,
+      description: () => ({
+        gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} any <kbd>Face Button</kbd>`,
+        keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd>`,
+        mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Descent Button</kbd>`,
+        touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Descent Button</kbd>`,
+      }[app.tutorial.getInputPreference()]) + ` to descend to the next level.`,
     },
   ],
   getEffects: function () {

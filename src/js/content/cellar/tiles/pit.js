@@ -15,7 +15,7 @@ content.cellar.tiles.pit = content.cellar.tiles.invent({
   getDialogs: () => [
     {
       title: `It's a sink.`,
-      description: `The air freezes as its sanity leaches into the vortex reeling at your feet. Perhaps it feeds greedily upon other tithings?`,
+      description: `The air freezes as its sanity leaches into the vortex reeling at your feet. Perhaps it greedily feeds upon other tithings?`,
       actions: [
         {label: 'Exhale deeply'},
         {label: 'Inhale sharply'},
@@ -24,7 +24,12 @@ content.cellar.tiles.pit = content.cellar.tiles.invent({
     {
       tutorial: true,
       title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> The pit:`,
-      description: `<kbd>Interact</kbd> to absolve your greed with credits.`,
+      description: () => ({
+        gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} any <kbd>Face Button</kbd>`,
+        keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd>`,
+        mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Interact Button</kbd>`,
+        touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Interact Button</kbd>`,
+      }[app.tutorial.getInputPreference()]) + ` to absolve your greed with credits.`,
     },
   ],
   getInteractLabelMore: () => 'Interact',

@@ -87,16 +87,4 @@ app.tutorial.base = {
   onComplete: () => {},
   onUpdate: () => {},
   shouldActivate: () => false,
-  // Input preference
-  getInputPreference: (raw = false) => {
-    const aliases = {
-      midi: 'keyboard',
-    }
-
-    const preference = app.settings.computed.inputPreference
-
-    return !raw && aliases[preference]
-      ? aliases[preference]
-      : preference
-  }
 }

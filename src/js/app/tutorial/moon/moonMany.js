@@ -20,7 +20,7 @@ app.tutorial.moonMany = app.tutorial.invent({
           keyboard: `Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd>`,
           mouse: `Click the <kbd>Arrow Buttons</kbd>`,
           touch: `Tap the <kbd>Arrow Buttons</kbd>`,
-        }[this.getInputPreference()]) + ` to navigate between the moons around this planet.`,
+        }[app.tutorial.getInputPreference()]) + ` to navigate between the moons around this planet.`,
         actions: [
           {
             label: 'Regain control',

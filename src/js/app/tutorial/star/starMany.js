@@ -20,7 +20,7 @@ app.tutorial.starMany = app.tutorial.invent({
           keyboard: `Press <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd>.`,
           mouse: `Click the <kbd>Arrow Buttons</kbd>`,
           touch: `Tap the <kbd>Arrow Buttons</kbd>`,
-        }[this.getInputPreference()]) + ` to navigate between the stars you've reached within this galaxy.`,
+        }[app.tutorial.getInputPreference()]) + ` to navigate between the stars you've reached within this galaxy.`,
         actions: [
           {
             label: 'Regain control',
