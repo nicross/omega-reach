@@ -23,7 +23,8 @@ app.screen.game.dialog = (() => {
     titleElement = document.querySelector('.a-game--dialogTitle')
 
   let current,
-    isOpen
+    isOpen,
+    toClose = false
 
   rootElement.setAttribute('aria-hidden', 'true')
   app.utility.focus.trap(rootElement)
@@ -31,47 +32,73 @@ app.screen.game.dialog = (() => {
   function advance() {
     const next = queue.shift()
 
-    if (next) {
-      if (next.tutorial && !app.settings.computed.tutorialOn) {
-        if (next.before) {
-          next.before()
-        }
+    // Enqueue close when no next
+    if (!next) {
+      if (isOpen) {
+        enqueueClose()
+      }
+      return
+    }
 
-        advance()
+    // Skip tutorials
+    if (next.tutorial && !app.settings.computed.tutorialOn) {
+      if (next.before) {
+        next.before()
+      }
 
-        if (next.after) {
-          next.after()
-        }
+      advance()
 
+      if (next.after) {
+        next.after()
+      }
+
+      return
+    }
+
+    // Advance
+    current = next
+    toClose = false
+
+    render(next)
+
+    if (!isOpen) {
+      open()
+    } else {
+      app.utility.focus.setWithin(rootElement)
+    }
+
+    pubsub.emit('advance')
+  }
+
+  function enqueueClose() {
+    if (toClose) {
+      return
+    }
+
+    toClose = true
+
+    engine.loop.once('frame', () => {
+      if (!toClose) {
         return
       }
 
-      current = next
-      render(next)
+      document.querySelector('.a-game--info').removeAttribute('aria-hidden')
+      document.querySelector('.a-game--nav').removeAttribute('aria-hidden')
 
-      if (!isOpen) {
-        open()
-      } else {
-        app.utility.focus.setWithin(rootElement)
-      }
+      app.utility.focus.set(
+        app.utility.focus.isFocusable(app.screen.game.infoElement)
+          ? app.screen.game.infoElement
+          : app.screen.game.rootElement
+      )
 
-      pubsub.emit('advance')
-    } else if (isOpen) {
-      close()
+      rootElement.setAttribute('aria-hidden', true)
+
       current = undefined
+      isOpen = false
+      toClose = false
 
       pubsub.emit('close')
-    }
-  }
-
-  function close() {
-    document.querySelector('.a-game--info').removeAttribute('aria-hidden')
-    document.querySelector('.a-game--nav').removeAttribute('aria-hidden')
-
-    app.utility.focus.set(app.screen.game.infoElement)
-    rootElement.setAttribute('aria-hidden', true)
-
-    isOpen = false
+    })
   }
 
   function render({
@@ -149,7 +176,7 @@ app.screen.game.dialog = (() => {
 
   return pubsub.decorate({
     checkAdvance: function () {
-      if (!isOpen) {
+      if (!isOpen || toClose) {
         advance()
       }
 
@@ -213,6 +240,7 @@ app.screen.game.dialog = (() => {
       rootElement.setAttribute('aria-hidden', true)
 
       isOpen = false
+      toClose = false
 
       return this
     },
