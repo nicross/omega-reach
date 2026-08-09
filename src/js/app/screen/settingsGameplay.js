@@ -34,6 +34,7 @@ app.screen.settingsGameplay = app.screenManager.invent({
     this.toggles = [
       ['.a-settingsGameplay--tutorialOn', app.settings.raw.tutorialOn, app.settings.setTutorialOn],
       ['.a-settingsGameplay--mirrorSolutions', app.settings.raw.mirrorSolutions, app.settings.setMirrorSolutions],
+      ['.a-settingsGameplay--immersiveOn', app.settings.raw.immersiveOn, app.settings.setImmersiveOn],
     ].map(([selector, initialValue, setter]) => {
       const component = app.component.toggle.hydrate(root.querySelector(selector), initialValue)
       component.on('change', () => setter(component.getValue()))

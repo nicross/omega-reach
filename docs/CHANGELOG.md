@@ -16,6 +16,7 @@
 - Fixed screen reader announcements when reaching galaxies and stars.
 - Fixed screen reader announcements when revealing instruments.
 - Fixed a keyboard focus issue in immersive mode.
+- Moved the toggle for immersive mode to the gameplay settings screen.
 - Updated the manual accordingly.
 
 ## v1.2.0
