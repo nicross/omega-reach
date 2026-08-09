@@ -104,6 +104,8 @@ content.rooms.gallery = content.rooms.invent({
     const message = []
 
     if (instrument.state.scans == 1) {
+      message.push(`${instrument.rarityLabel} instrument revealed`)
+
       if (instrument.quirks.length) {
         message.push(`${instrument.quirks.length} quirk${instrument.quirks.length == 1 ? '' : 's'} detected`)
       }
