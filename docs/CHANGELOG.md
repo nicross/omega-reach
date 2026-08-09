@@ -1,18 +1,17 @@
 # CHANGELOG
 ## v1.2.1
 - Added support for touch input.
-- Added a toggle for mirrored solutions (enabled by default).
+- Added a toggle for mirrored interaction solutions (enabled by default).
 - Added random musical modes to the instruments.
 - Increased the variety of instruments across rarities.
-- Improved the order, flow, and wording of certain dialogs.
-- Added cellar anomalies which grant greed.
-- Added symbols for certain resources to tutorial.
+- Improved the order, flow, and wording of some dialogs.
+- Added symbols for resources to their tutorial dialogs.
+- Added an easter egg to dialogs when starting a new collection.
 - Added animations when the curator is asleep.
-- Added an easter egg at the start of a new collection.
-- Muted a sound in the cellar to accentuate other sounds.
+- Added rare cellar anomalies which grant greed.
 - Increased the default interface scale and particle density.
 - Standardized the splash animation across interface scales.
-- Improved support for portrait orientation.
+- Improved support for portrait orientation on mobile.
 - Prevented the demo notice from appearing more than once per session.
 - Updated the manual accordingly.
 
