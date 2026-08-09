@@ -1,5 +1,11 @@
 # TODO
-## v1.2.x - Steam demo
+## v1.2.2+ - Steam demo
+- Break audio settings into mixer and performance screens
+- Improve demo limitation dialogs for emporium and reliquary
+- Intro/tutorial for cellar anomalies
+- More descriptions of unique cellar tiles
+- Expand cellar floors as max sanity increases
+- A reusable/parameterized sound for unique cellar tiles
 
 ## v1.3.x - Story expansion
 - Rare relics on planets to collect
