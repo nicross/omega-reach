@@ -3,7 +3,7 @@
 - Added support for touch input.
 - Added a toggle for mirrored solutions (enabled by default).
 - Added random musical modes to the instruments.
-- Reduced overall instrument frequencies by an octave.
+- Increased the variety of instruments across rarities.
 - Improved the order, flow, and wording of certain dialogs.
 - Added cellar anomalies which grant greed.
 - Added symbols for certain resources to tutorial.

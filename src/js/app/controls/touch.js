@@ -97,7 +97,7 @@ app.controls.touch = (() => {
     getPoints: () => {
       // Update depths
       for (const vector of touches.values()) {
-        vector.depth = engine.fn.accelerateValue(vector.depth || 0, 1, 24)
+        vector.depth = engine.fn.accelerateValue(vector.depth || 0, 1, 12)
       }
 
       // Return shallow copy

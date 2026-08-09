@@ -33,78 +33,78 @@ content.programs.instrument = content.programs.invent({
   },
   propertyDefinitions: {
     // Synthesis
-    amType: (srand) => engine.fn.choose(['sine','triangle'], srand()),
+    amType: (srand) => engine.fn.choose(['sine','triangle','sawtooth'], srand()),
     amDepthCenter: (srand) => srand(),
     amDepthRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    amDepthScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    amDepthScale: function (srand) {return srand() * this.options.instrument.rarity},
     amFrequencyCenter: (srand) => srand(),
     amFrequencyRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    amFrequencyScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    amFrequencyScale: function (srand) {return srand() * this.options.instrument.rarity},
     cmType: (srand) => engine.fn.choose(['sine','triangle','sawtooth'], srand()),
     cmDepthCenter: (srand) => srand(),
     cmDepthRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    cmDepthScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    cmDepthScale: function (srand) {return srand() * this.options.instrument.rarity},
     cmFrequencyCenter: (srand) => srand(),
     cmFrequencyRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    cmFrequencyScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    cmFrequencyScale: function (srand) {return srand() * this.options.instrument.rarity},
     carrierType: (srand) => engine.fn.choose(['sine','triangle','square','sawtooth'], srand()),
     colorCenter: function (srand) {return engine.fn.lerp(srand(), 0.5, this.options.instrument.rarity)},
     colorRange: function (srand) {return engine.fn.lerp(srand(), 1, this.options.instrument.rarity) * 0.5},
-    colorScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    colorScale: function (srand) {return srand() * this.options.instrument.rarity},
     detuneRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    detuneScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    detuneScale: function (srand) {return srand() * this.options.instrument.rarity},
     dmType: (srand) => engine.fn.choose(['sine','triangle','sawtooth'], srand()),
     dmDepthCenter: (srand) => srand(),
     dmDepthRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    dmDepthScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    dmDepthScale: function (srand) {return srand() * this.options.instrument.rarity},
     dmFrequencyCenter: (srand) => srand(),
     dmFrequencyRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    dmFrequencyScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    dmFrequencyScale: function (srand) {return srand() * this.options.instrument.rarity},
     frequencyCenter: (srand) => srand(),
-    frequencyRange: function (srand) {return engine.fn.lerp(srand(), 1, this.options.instrument.rarity) * 0.5},
-    frequencyScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    frequencyRange: function (srand) {return ((srand() * 0.25) + (this.options.instrument.rarity * 0.75)) * 0.5},
+    frequencyScale: function (srand) {return (srand() * 0.25) + (this.options.instrument.rarity * 0.75)},
     fmType: (srand) => engine.fn.choose(['sine','triangle','square','sawtooth'], srand()),
     fmDepthCenter: (srand) => srand(),
     fmDepthRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    fmDepthScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    fmDepthScale: function (srand) {return srand() * this.options.instrument.rarity},
     fmDetuneRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    fmDetuneScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    fmDetuneScale: function (srand) {return srand() * this.options.instrument.rarity},
     fmFrequencyCenter: (srand) => srand(),
     fmFrequencyRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    fmFrequencyScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    fmFrequencyScale: function (srand) {return srand() * this.options.instrument.rarity},
     mode: (srand) => srand(),
     scale: (srand) => srand(),
     widthCenter: (srand) => srand(),
     widthRange: function (srand) {return srand() * this.options.instrument.rarity * 0.25},
-    widthScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    widthScale: function (srand) {return srand() * this.options.instrument.rarity},
     wmType: (srand) => engine.fn.choose(['sine','triangle','sawtooth'], srand()),
     wmDepthCenter: (srand) => srand(),
     wmDepthRange: function (srand) {return srand() * this.options.instrument.rarity * 0.25},
-    wmDepthScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    wmDepthScale: function (srand) {return srand() * this.options.instrument.rarity},
     wmFrequencyCenter: (srand) => srand(),
     wmFrequencyRange: function (srand) {return srand() * this.options.instrument.rarity * 0.5},
-    wmFrequencyScale: function (srand) {return srand() * (1 - this.options.instrument.rarity)},
+    wmFrequencyScale: function (srand) {return srand() * this.options.instrument.rarity},
     // Particles
     particleHueCenter: (srand) => srand(-0.5, 0.5),
     particleHueRange: function (srand) {return (srand() * 0.125) + (this.options.instrument.rarity * 0.375)},
-    particleHueScale: function (srand) {return engine.fn.lerp(1, 2, (srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
+    particleHueScale: function (srand) {return engine.fn.lerp(1, 3, (srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
     particleHueMax: function () {return this.properties.particleHueCenter + this.properties.particleHueRange},
     particleHueMin: function () {return this.properties.particleHueCenter - this.properties.particleHueRange},
     particleRadiusPower: (srand) => srand(1, 3),
-    particleRadiusScale: function (srand) {return engine.fn.lerp(1, 2, (srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
+    particleRadiusScale: function (srand) {return engine.fn.lerp(1, 3, (srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
     particleSaturationCenter: (srand) => srand(),
     particleSaturationRange: function (srand) {return ((srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
-    particleSaturationScale: function (srand) {return engine.fn.lerp(1, 2, (srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
+    particleSaturationScale: function (srand) {return engine.fn.lerp(1, 3, (srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
     particleSaturationMax: function () {return engine.fn.clamp(this.properties.particleSaturationCenter + this.properties.particleSaturationRange)},
     particleSaturationMin: function () {return engine.fn.clamp(this.properties.particleSaturationCenter - this.properties.particleSaturationRange)},
     particleValueCenter: (srand) => srand(0.5, 1),
     particleValueRange: function (srand) {return ((srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
-    particleValueScale: function (srand) {return engine.fn.lerp(1, 2, (srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
+    particleValueScale: function (srand) {return engine.fn.lerp(1, 3, (srand() * 0.25) + (this.options.instrument.rarity * 0.75))},
     particleValueMax: function () {return engine.fn.clamp(this.properties.particleValueCenter + this.properties.particleValueRange)},
     particleValueMin: function () {return engine.fn.clamp(this.properties.particleValueCenter - this.properties.particleValueRange)},
-    particleScaleX: function (srand) {return engine.fn.lerp(1, srand(0.5, 1.5), this.options.instrument.rarity)},
-    particleScaleY: function (srand) {return engine.fn.lerp(1, srand(0.5, 1.5), this.options.instrument.rarity)},
-    particleScaleZ: function (srand) {return engine.fn.lerp(1, srand(0.5, 1.5), this.options.instrument.rarity)},
+    particleScaleX: function (srand) {return engine.fn.lerp(1, srand(0.125, 1.875), this.options.instrument.rarity)},
+    particleScaleY: function (srand) {return engine.fn.lerp(1, srand(0.125, 1.875), this.options.instrument.rarity)},
+    particleScaleZ: function (srand) {return engine.fn.lerp(1, srand(0.125, 1.875), this.options.instrument.rarity)},
     rotation: () => engine.tool.quaternion.fromEuler({pitch: engine.fn.randomFloat(-Math.PI, Math.PI), roll: engine.fn.randomFloat(-Math.PI, Math.PI), yaw: engine.fn.randomFloat(-Math.PI, Math.PI)}).normalize(),
     rotationVelocity: () => engine.tool.quaternion.fromEuler({pitch: engine.fn.randomFloat(-Math.PI, Math.PI), roll: engine.fn.randomFloat(-Math.PI, Math.PI), yaw: engine.fn.randomFloat(-Math.PI, Math.PI)}).normalize(),
   },
@@ -243,6 +243,12 @@ content.programs.instrument = content.programs.invent({
     }
   },
   calculateFrequency: function (point) {
+    const maxNote = 96,
+      minNote = 24,
+      octaves = [-3, -2, -1, 0, 1, 2, 3].map((x) => x * 12),
+      rootNote = 60
+
+    // Choose the scale type
     let scale = engine.fn.choose([
       [0,1,2,3,4,5,6,7,8,9,10,11],
       [0,12,17,24,28,31],
@@ -254,27 +260,37 @@ content.programs.instrument = content.programs.invent({
       [0,2,4,6,8,10],
     ], this.properties.scale)
 
+    // Choose the mode
     const mode = engine.fn.choose(scale, this.properties.mode)
-    const modeDelta = -Math.floor((mode + 6) / 12)
+    const modeDelta = -Math.floor(mode / 12) * 12
 
-    scale = [
-      ...scale.map((x) => x + mode + modeDelta - 24),
-      ...scale.map((x) => x + mode + modeDelta - 12),
-      ...scale.map((x) => x + mode + modeDelta + 0),
-      ...scale.map((x) => x + mode + modeDelta + 12),
-      ...scale.map((x) => x + mode + modeDelta + 24),
-    ].sort((a, b) => a - b)
+    // Convert scale into all possible notes in the mode
+    scale = scale.reduce((notes, note) => {
+      for (const octave of octaves) {
+        const value = rootNote + note + mode + modeDelta + octave
 
+        if (engine.fn.between(value, minNote, maxNote)) {
+          notes.push(value)
+        }
+      }
+
+      return notes
+    }, [])
+
+    // Sort unique notes
+    scale.sort((a, b) => a - b)
     scale = [...new Set(scale)]
 
+    // Determine note value at point
     const value = engine.fn.lerp(
       engine.fn.clamp(this.properties.frequencyCenter - this.properties.frequencyRange),
       engine.fn.clamp(this.properties.frequencyCenter + this.properties.frequencyRange),
-      this.fields.frequency.valueAt(point, engine.fn.lerp(1, 2, this.properties.frequencyScale))
+      this.fields.frequency.valueAt(point, engine.fn.lerpExp(1, 3, this.properties.frequencyScale, 3/2))
     )
 
+    // Return as frequency
     return engine.fn.fromMidi(
-      48 + scale[Math.round(value * (scale.length - 1))]
+      scale[Math.round(value * (scale.length - 1))]
     )
   },
   calculateParameters: function (point) {
@@ -347,7 +363,7 @@ content.programs.instrument = content.programs.invent({
       return this.alterParticleUnscanned(particle)
     }
 
-    const radius = engine.fn.lerpExp(1, 4, this.fields.particleRadius.valueAt(particle.spheres[index], this.properties.particleRadiusScale), this.properties.particleRadiusPower)
+    const radius = engine.fn.lerpExp(1, 3, this.fields.particleRadius.valueAt(particle.spheres[index], this.properties.particleRadiusScale), this.properties.particleRadiusPower)
 
     particle.target.s = engine.fn.lerp(this.properties.particleSaturationMin, this.properties.particleSaturationMax, this.fields.particleSaturation.valueAt(particle.spheres[index], this.properties.particleSaturationScale))
     particle.target.v = Math.max(particle.target.s, engine.fn.lerp(this.properties.particleValueMin, this.properties.particleValueMax, this.fields.particleValue.valueAt(particle.spheres[index], this.properties.particleValueScale)))
