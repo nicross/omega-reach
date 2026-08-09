@@ -4,6 +4,7 @@
   clip-path: inset(50);
   border: 0;
   height: 1px;
+  outline: none !important;
   overflow: hidden;
   padding: 0;
   position: absolute;

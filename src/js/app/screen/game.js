@@ -24,6 +24,7 @@ app.screen.game = app.screenManager.invent({
   onReady: function () {
     this.dialogElement = this.rootElement.querySelector('.a-game--dialog')
     this.downElement = this.rootElement.querySelector('.a-game--down')
+    this.fauxInfoElement = this.rootElement.querySelector('.a-game--fauxInfo')
     this.infoElement = this.rootElement.querySelector('.a-game--info')
     this.leftElement = this.rootElement.querySelector('.a-game--left')
     this.menuElement = this.rootElement.querySelector('.a-game--menu')
@@ -190,12 +191,16 @@ app.screen.game = app.screenManager.invent({
     return this
   },
   // Movement
-  update: function () {
+  update: async function () {
+    // Move focus to prevent unnecessary speech from screen readers
+    if (app.utility.focus.isWithin(app.screen.game.navElement)) {
+      app.utility.focus.set(app.screen.game.fauxInfoElement)
+      await engine.fn.promise(0)
+    }
+
     this.info.update()
     this.movement.update()
     this.interact.update().setCooldown(true)
-
-    this.infoElement.focus()
 
     return this
   },

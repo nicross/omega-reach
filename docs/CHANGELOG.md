@@ -12,12 +12,13 @@
 - Increased the default interface scale and particle density.
 - Standardized the splash animation across interface scales.
 - Improved support for portrait orientation on mobile.
-- Added unique notes to hovering and focusing movement controls.
-- Prevented the demo notice from appearing more than once per session.
+- Added unique notes to hovering and focusing movement buttons.
+- Improved screen reader behavior when using movement buttons.
 - Fixed screen reader announcements when reaching galaxies and stars.
 - Fixed screen reader announcements when revealing instruments.
 - Fixed a keyboard focus issue in immersive mode.
 - Moved the toggle for immersive mode to the gameplay settings screen.
+- Prevented the demo notice from appearing more than once per session.
 - Updated the manual accordingly.
 
 ## v1.2.0
