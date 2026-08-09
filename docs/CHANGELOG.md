@@ -12,6 +12,7 @@
 - Increased the default interface scale and particle density.
 - Standardized the splash animation across interface scales.
 - Improved support for portrait orientation on mobile.
+- Added unique notes to hovering and focusing movement controls.
 - Prevented the demo notice from appearing more than once per session.
 - Fixed screen reader announcements when reaching galaxies and stars.
 - Fixed screen reader announcements when revealing instruments.

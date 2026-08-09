@@ -42,11 +42,24 @@ document.addEventListener('focusin', (e) => {
   }
 
   content.audio.ui.focus({
-    enabled: e.target.matches('.c-menuButton, .c-select, .c-select *, .c-slider, .c-slider *, .c-toggle, .c-toggle *, .a-game--nav button') && e.target.getAttribute('aria-disabled') != 'true',
+    enabled: e.target.matches('.c-menuButton, .c-select, .c-select *, .c-slider, .c-slider *, .c-toggle, .c-toggle *, .a-game--nav button, .a-game--nav button *') && e.target.getAttribute('aria-disabled') != 'true',
+    note: (() => {
+      const selectorNotes = {
+        '.a-game--down': 63,
+        '.a-game--interact, .a-game--interact *': 65,
+        '.a-game--left': 70,
+        '.a-game--right': 67,
+        '.a-game--up': 72,
+      }
+
+      for (const [selector, note] of Object.entries(selectorNotes)) {
+        if (e.target.matches(selector)) {
+          return note - 12
+        }
+      }
+    })(),
     pan: e.target.matches('.a-game--left, .a-game--right') ? (e.target.matches('.a-game--right') ? 1/2 : -1/2) : 0,
-    strength: e.target.matches('.c-menuButton, .a-game--interact, .a-game--menu') ? 1 : (
-      e.target.matches('.a-game--down') ? -0.5 : (e.target.matches('.a-game--left, .a-game--right') ? 0 : 0.5)
-    ),
+    strength: 1,
   })
 })
 
@@ -70,11 +83,24 @@ document.addEventListener('mouseover', (e) => {
 
   // XXX: Copied via focusing
   content.audio.ui.focus({
-    enabled: e.target.matches('.c-menuButton, .c-select, .c-select *, .c-slider, .c-slider *, .c-toggle, .c-toggle *, .a-game--nav button') && e.target.getAttribute('aria-disabled') != 'true',
+    enabled: e.target.matches('.c-menuButton, .c-select, .c-select *, .c-slider, .c-slider *, .c-toggle, .c-toggle *, .a-game--nav button, .a-game--nav button *') && e.target.getAttribute('aria-disabled') != 'true',
+    note: (() => {
+      const selectorNotes = {
+        '.a-game--down': 63,
+        '.a-game--interact, .a-game--interact *': 65,
+        '.a-game--left': 70,
+        '.a-game--right': 67,
+        '.a-game--up': 72,
+      }
+
+      for (const [selector, note] of Object.entries(selectorNotes)) {
+        if (e.target.matches(selector)) {
+          return note - 12
+        }
+      }
+    })(),
     pan: e.target.matches('.a-game--left, .a-game--right') ? (e.target.matches('.a-game--right') ? 1/2 : -1/2) : 0,
-    strength: e.target.matches('.c-menuButton, .a-game--interact, .a-game--menu') ? 1 : (
-      e.target.matches('.a-game--down') ? -0.5 : (e.target.matches('.a-game--left, .a-game--right') ? 0 : 0.5)
-    ),
+    strength: 1,
   })
 })
 

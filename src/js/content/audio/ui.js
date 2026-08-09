@@ -49,12 +49,13 @@ content.audio.ui.click = function ({
 
 content.audio.ui.focus = function ({
   enabled = 0,
+  note = 48,
   pan = 0,
   strength = 0,
 }) {
   const bus = content.audio.ui.bus(),
-    duration = engine.fn.randomFloat(1/24, 1/16),
-    frequency = engine.fn.fromMidi(enabled ? 48 : 42),
+    duration = enabled ? 1/16 : 1/24,
+    frequency = engine.fn.fromMidi(note),
     now = engine.time()
 
   const synth = engine.synth.pwm({
@@ -63,7 +64,7 @@ content.audio.ui.focus = function ({
     type: enabled ? 'sine' : 'sawtooth',
     width: engine.fn.randomFloat(0.25, 0.75),
   }).filtered({
-    frequency: frequency * (enabled ? 0.5 : 1),
+    frequency: frequency * 0.5 * (enabled ? 1 : 0.75),
   }).connect(bus)
 
   if (pan) {
