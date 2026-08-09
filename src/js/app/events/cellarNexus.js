@@ -20,7 +20,7 @@ content.location.on('cellar-nexus', ({tile}) => {
   })
 
   app.screen.game.dialog.push({
-    title: `<span class="u-highlight">[Choose a destination]</span>`,
+    title: `<span class="u-highlight">[Choose destination…]</span>`,
     description: `You will be disintegrated and reintegrated upon reaching your destination. <strong>The Omega Conservatory</strong> is not liable for any unintended side effects.`,
     actions: [
       ...destinations.map((to) => ({
