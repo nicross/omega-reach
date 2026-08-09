@@ -37,7 +37,12 @@ content.rooms.galaxy = content.rooms.invent({
   onInteract: function () {
     const star = content.stars.new(this.getGalaxy().name)
     content.rooms.star.setStarByName(star.name)
-    content.location.set('star')
+
+    content.rooms.planet.reset()
+    content.rooms.moon.reset()
+
+    // XXX: Movement is handled by app.screen.game.movement
+    //this.moveUp()
   },
   // Attributes
   getAttributeLabels: function () {

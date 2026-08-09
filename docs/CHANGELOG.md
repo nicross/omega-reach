@@ -13,6 +13,7 @@
 - Standardized the splash animation across interface scales.
 - Improved support for portrait orientation on mobile.
 - Prevented the demo notice from appearing more than once per session.
+- Fixed screen reader announcements when reaching galaxies and stars.
 - Fixed screen reader announcements when revealing instruments.
 - Fixed a keyboard focus issue in immersive mode.
 - Updated the manual accordingly.

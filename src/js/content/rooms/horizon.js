@@ -16,13 +16,14 @@ content.rooms.horizon = content.rooms.invent({
   canInteract: () => Boolean(!app.tutorial.galaxy.complete || app.tutorial.horizonUnlocked.complete || !app.settings.computed.tutorialOn),
   onInteract: function () {
     const galaxy = content.galaxies.new()
-
     content.rooms.galaxy.setGalaxyByName(galaxy.name)
+
     content.rooms.star.reset()
     content.rooms.planet.reset()
     content.rooms.moon.reset()
 
-    content.location.set('galaxy')
+    // XXX: Movement is handled by app.screen.game.movement
+    //this.moveUp()
   },
   // Attributes
   getAttributeLabels: function () {

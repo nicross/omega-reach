@@ -134,3 +134,11 @@ app.screen.game.interact = (() => {
     valueAccelerated: () => valueAccelerated,
   })
 })()
+
+// Handle zooms when interacting with horizon and galaxy
+app.screen.game.interact.on('trigger', ({room}) => {
+  if (['horizon','galaxy'].includes(room.id)) {
+    // Update to allow first star from new galaxy
+    return app.screen.game.movement.update().up()
+  }
+})

@@ -35,13 +35,4 @@ engine.ready(() => {
       })
     }
   })
-
-  // Handle zooms when interacting with horizon and galaxy
-  app.screen.game.interact.on('trigger', ({room}) => {
-    if (['horizon','galaxy'].includes(room.id)) {
-      return content.audio.zoom.trigger({
-        isIn: true,
-      })
-    }
-  })
 })
