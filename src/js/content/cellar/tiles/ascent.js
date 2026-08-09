@@ -22,9 +22,9 @@ content.cellar.tiles.ascent = content.cellar.tiles.invent({
       description: () => ({
         gamepad: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} any <kbd>Face Button</kbd>`,
         keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd>`,
-        mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Descend Button</kbd>`,
-        touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Descend Button</kbd>`,
-      }[app.tutorial.getInputPreference()]) + ` to ascend to the previous level.`,
+        mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Ascend Button</kbd>`,
+        touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Ascend Button</kbd>`,
+      }[app.tutorial.getInputPreference()]) + ` to return to the previous level of <strong>the cellar</strong>.`,
     },
   ],
   getEffects: function () {

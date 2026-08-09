@@ -9,11 +9,11 @@ content.location.on('cellar-descent', ({tile}) => {
   content.rooms.cellar.updateProgram()
   content.cellar.tiles.current().enter()
 
-  app.screen.game.update()
-  app.tutorial.update()
-
   // Get audio, haptics, live region, etc. updates for free
   app.screen.game.movement.emit('move', {
     isOut: true,
   })
+
+  app.screen.game.update()
+  app.tutorial.update()
 })

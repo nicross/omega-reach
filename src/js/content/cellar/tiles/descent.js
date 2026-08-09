@@ -33,7 +33,7 @@ content.cellar.tiles.descent = content.cellar.tiles.invent({
         keyboard: `${app.settings.computed.inputHold ? 'Hold' : 'Press'} <kbd>Enter</kbd> or <kbd>Spacebar</kbd>`,
         mouse: `${app.settings.computed.inputHold ? 'Click and hold' : 'Click'} the <kbd>Descent Button</kbd>`,
         touch: `${app.settings.computed.inputHold ? 'Tap and hold' : 'Tap'} the <kbd>Descent Button</kbd>`,
-      }[app.tutorial.getInputPreference()]) + ` to descend to the next level.`,
+      }[app.tutorial.getInputPreference()]) + ` to delve into the next level of <strong>the cellar</strong>.`,
     },
   ],
   getEffects: function () {

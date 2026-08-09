@@ -20,15 +20,15 @@ content.location.on('cellar-nexus', ({tile}) => {
   })
 
   app.screen.game.dialog.push({
-    title: `Choose a destination`,
+    title: `<span class="u-highlight">[Choose a destination]</span>`,
     description: `You will be disintegrated and reintegrated upon reaching your destination. <strong>The Omega Conservatory</strong> is not liable for any unintended side effects.`,
     actions: [
       ...destinations.map((to) => ({
-        label: to.z == 0 || tile.isUniquePerRun ? to.name : `${to.name} B${Math.abs(to.z) + 1}`,
+        label: (to.isEntrance || tile.isUniquePerRun) ? to.name : `${to.name} B${Math.abs(to.z) + 1}`,
         after: () => travel(tile, to),
       })),
       {
-        label: 'Not now',
+        label: 'Stay here',
       },
     ],
   })
@@ -43,15 +43,15 @@ content.location.on('cellar-nexus', ({tile}) => {
     content.rooms.cellar.updateProgram()
     content.cellar.tiles.current().enter()
 
-    app.screen.game.update()
-    app.tutorial.update()
-
     // Get audio, haptics, live region, etc. updates for free
     app.screen.game.movement.emit('move', {
       // Default settings, no sound
     })
 
     content.audio.interactSuccess.trigger({index: 2})
+
+    app.screen.game.update()
+    app.tutorial.update()
   }
 
 })
