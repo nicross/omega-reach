@@ -1,10 +1,12 @@
 app.tutorial.shopLoop = app.tutorial.invent({
   id: 'shopLoop',
   // State
-  state: {
+  defaultState: {
+    bought: false,
     tutorial: false,
     tutorialStockroom: false,
     visitorPineapple: false,
+    visitorPineappleGreet: false,
   },
   // Lifecycle
   shouldActivate: () => content.shop.isOpen(),
@@ -194,7 +196,7 @@ app.tutorial.shopLoop = app.tutorial.invent({
       })
     }
 
-    if (!this.state.tutorialStockroom && hasStolen) {
+    if (!this.state.tutorialStockroom && stealingDetected) {
       app.screen.game.dialog.push({
         tutorial: true,
         title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Theft:`,
