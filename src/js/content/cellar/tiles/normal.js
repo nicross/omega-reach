@@ -3,17 +3,17 @@ content.cellar.tiles.normal = (() => {
     /*
     Chances
     0.3 - damage
-    0.15 - nothing
+    0.175 - nothing
     0.15 - small donation
     0.125 - heal
     0.1 - big donation
     0.075 - restore
     0.05 - instrument
-    0.05 - barrier
+    0.025 - barrier
     */
     // Nothing
     {
-      weight: 0.15,
+      weight: 0.175,
       generate: (srand) => {
         const label = engine.fn.choose([
           'Abandoned elevator',
@@ -212,16 +212,17 @@ content.cellar.tiles.normal = (() => {
     },
     // Barrier
     {
-      weight: 0.05,
+      weight: 0.025,
       generate: (srand) => {
         const label = engine.fn.choose([
-          'Crude map',
+          'Apocryphal rune',
           'Effulgent mote',
           'Fragile shield',
+          'Golden hammer',
           'Inscribed figurine',
           'Mystical charm',
-          'Precautionary graffiti',
-          'Salt circle',
+          'Protective circle',
+          'Silver bullet',
           'Worn touchstone',
         ], srand())
 
