@@ -6,12 +6,12 @@
 - Increased the variety of instruments across rarities.
 - Improved the order, flow, and wording of some dialogs.
 - Added symbols for resources to their tutorial dialogs.
-- Added an easter egg to dialogs when starting a new collection.
+- Added an easter egg when starting a new collection.
 - Added animations when the curator is asleep.
 - Added rare cellar anomalies which grant greed.
 - Increased the default interface scale and particle density.
 - Standardized the splash animation across interface scales.
-- Improved support for portrait orientation on mobile.
+- Improved support for portrait orientation.
 - Added unique notes to hovering and focusing movement buttons.
 - Improved screen reader behavior when using movement buttons.
 - Fixed screen reader announcements when reaching galaxies and stars.
