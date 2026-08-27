@@ -1,5 +1,5 @@
 # TODO
-## v1.2.2+ - Steam demo
+## v1.2.3 - Steam demo (due 2026-10-02)
 - Break audio settings into mixer and performance screens
 - Improve demo limitations dialogs
 - Improve mirrored solutions
@@ -11,7 +11,7 @@
 - Demo ends cellar runs at B6
 - A reusable/parameterized sound for unique cellar tiles
 
-## v2.0.0 - Story expansion
+## v2.0.0 - Story expansion (Q2 2027)
 - Add relics to planets/moons
 - Relic program
 - Relic dialogs
@@ -43,7 +43,7 @@
   - Gate shopkeeper cellar confrontations behind using the emporium
   - Demo ends cellar runs at B10
 
-## v3.0.0 - Steam release (spoilers in notebook)
+## v3.0.0 - Steam release (Q3 2027, spoilers in notebook)
 - Cellar B10 sequence (`[redacted]`, dialogs, guaranteed relic at end)
 - Cellar end sequence: The `[redacted]` at the center of time
 - Achievements
