@@ -1,58 +1,50 @@
 # TODO
 ## v1.2.2+ - Steam demo
 - Break audio settings into mixer and performance screens
-- Improve demo limitation dialogs for emporium and reliquary
-- Intro/tutorial for cellar anomalies
+- Improve demo limitations dialogs
+- Improve mirrored solutions
+- Auctioneer introduction in emporium
+- Tutorial for first cellar anomaly
+- Lost visitor in cellar dialogue and consequences
+- Shopkeeper, descent B3 (once per run)
 - More descriptions of unique cellar tiles
-- Expand cellar floors as max sanity increases
+- Demo ends cellar runs at B6
 - A reusable/parameterized sound for unique cellar tiles
 
-## v1.3.x - Story expansion
-- Rare relics on planets to collect
-- Relic program (graphics + synth)
-- Relic series
+## v2.0.0 - Story expansion
+- Add relics to planets/moons
+- Relic program
+- Relic dialogs
   - Reliquary tutorial
-  - Who discovered the cycles
+  - Discovery of the cycles
   - Earth, legendary cycle
   - Earth, alternate cycle
-  - Invention of reach
+  - Earth, failed cycle
+  - Invention of the reach
   - First reach war
   - Second reach war
-  - Building the conservatory (to preserve the reach outside of cycles)
-- Initiate end of cycle from auction house
-  - Auctioneer appears in hall when 100% of instruments are fully appraised, more than 7
+  - Building the conservatory
+  - Rare fungus
+- Initiate end of cycle from auction house (NG+)
+  - Auctioneer appears in hall when 100% of instruments are fully appraised, must have between 8 and 16
   - Forced to sell each instrument: price is 0.1x value + seconds played
   - Interact with each instrument (allow free play) to remove from inventory until empty
   - Track number of auctions
   - Each auction resets tutorials to re-experience dialogs (1 or more auctions is treated same as "tutorials" turned off)
-  - Each auction resets credits, but adds a cumulative multiplier to lobby donations for later cycles
-  - At end, ask to predict the fate of earth this cycle, reward if you choose the correct fate of earth
-  - Each auction resets discoveries / gallery / etc.
-  - Importantly, auctions will not reset the reliquary
-  - Essentially a NG+
+  - Start with percentage of credits from auction
+  - At end, ask to predict the fate of earth this cycle, credit bonus if correct
+  - Each auction resets discoveries / gallery / etc. but not reliquary
+  - Rare easter eggs: oversleep and miss full cycle, some constant is wrong and galaxies never form, unexpected stowaway wakes you up mid-sleep
 - Interactions
-  - Auctioneer, accidental first introduction
   - Auctioneer, first auction
   - Auctioneer, second auction
-  - Shopkeeper, cellar two first visit (repeatable per run)
-  - Shopkeeper, cellar three first visit (repeatable per run)
-  - Shopkeeper, cellar four first visit (repeatable per run)
-  - Shopkeeper, cellar four showdown (repeatable per run)
-- Side quests
-  - Shopkeeper tile in cellar floors 1, 2, 3
-  - Assign a random sidequest for the run:
-    - Collect an instrument for us
-    - Find (one of the tiles) for us
-    - Get to the next floor for us
-  - Return to shopkeeper for reward
-- Cellar fourth floor
-  - Gauntlet of tiles, like a combination lock with length of log(maxhp)
-  - Go left/right to find the next opening, go down once for an anomaly, go down again for next phase
-  - Penultimate tile is showdown with shopkeeper (branching RPS-like dialogs that reduce sanity)
-  - Get a relic (or instrument when all relics collected) on win, normal death sequence on loss
-  - Use final tile to return to entrance
+  - Shopkeeper, cellar B6 descent (once per run)
+  - Shopkeeper, cellar B9 descent (once per run)
+  - Gate shopkeeper cellar confrontations behind using the emporium
+  - Demo ends cellar runs at B10
 
-## v1.4.x - Steam release
+## v3.0.0 - Steam release (spoilers in notebook)
+- Cellar B10 sequence (`[redacted]`, dialogs, guaranteed relic at end)
+- Cellar end sequence: The `[redacted]` at the center of time
 - Achievements
-- Import/export
 - Polish
