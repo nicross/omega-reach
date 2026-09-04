@@ -7,9 +7,10 @@
 - Tutorial for first cellar anomaly
 - Lost visitor in cellar dialogue and consequences
 - Shopkeeper, descent B3 (once per run)
-- More descriptions of unique cellar tiles
+- Intergalactic inspector, first interaction
 - Demo ends cellar runs at B6
 - A reusable/parameterized sound for unique cellar tiles
+- More descriptions of unique cellar tiles
 
 ## v2.0.0 - Story expansion (Q2 2027)
 - Add relics to planets/moons
@@ -38,6 +39,8 @@
 - Interactions
   - Auctioneer, first auction
   - Auctioneer, second auction
+  - Intergalactic inspector, second interaction
+  - Intergalactic inspector, third interaction
   - Shopkeeper, cellar B6 descent (once per run)
   - Shopkeeper, cellar B9 descent (once per run)
   - Gate shopkeeper cellar confrontations behind using the emporium
@@ -47,4 +50,3 @@
 - Cellar B10 sequence (`[redacted]`, dialogs, guaranteed relic at end)
 - Cellar end sequence: The `[redacted]` at the center of time
 - Achievements
-- Polish
