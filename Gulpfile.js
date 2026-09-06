@@ -16,7 +16,7 @@ const zip = require('gulp-zip')
 
 const argv = require('yargs').argv,
   isDebug = argv.debug === true
-  isDemo = argv.demo === true
+  isFull = argv.full === true
 
 gulp.task('build-css', () => {
   return gulp.src(
@@ -37,7 +37,7 @@ gulp.task('build-js', () => {
     concat('scripts.min.js')
   ).pipe(
     footer(
-      `;app.version=()=>'${package.version + (isDemo ? '-demo' : '') + (isDebug ? '-debug' : '')}';`
+      `;app.version=()=>'${package.version + (isFull ? '' : '-demo') + (isDebug ? '-debug' : '')}';`
     )
   ).pipe(
     gulpif(!isDebug, iife(), header("'use strict';\n\n"))
@@ -90,7 +90,7 @@ gulp.task('dist-electron', async () => {
     )
 
     merge(build, manual).pipe(
-      zip(path.replace('dist\\', '') + (isDemo ? '-demo' : '') + '.zip')
+      zip(path.replace('dist\\', '') + (isFull ? '' : '-demo') + '.zip')
     ).pipe(
       gulp.dest('dist')
     )
@@ -107,7 +107,7 @@ gulp.task('dist-html5', () => {
     'public/scripts.min.js',
     'public/styles.min.css',
   ], {base: 'public'}).pipe(
-    zip(package.name + '-html5' + (isDemo ? '-demo' : '') + '.zip')
+    zip(package.name + '-html5' + (isFull ? '' : '-demo') + '.zip')
   ).pipe(
     gulp.dest('dist')
   )
@@ -164,7 +164,7 @@ function getAppJs() {
     'src/js/app/**/*.js',
   ]
 
-  if (!isDemo) {
+  if (isFull) {
     srcs.push(
       '!src/js/app/demo.js',
       '!src/js/app/demo/*.js',

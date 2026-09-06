@@ -54,4 +54,4 @@ npx gulp dev
 | Flag | Description |
 | - | - |
 | `--debug` | Suppresses minification. |
-| `--demo` | With the demo notice and paid features removed. |
+| `--full` | With paid features and demo notices removed. |
