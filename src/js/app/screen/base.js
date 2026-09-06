@@ -46,7 +46,7 @@ app.screen.base = {
     this.onExit(...args)
 
     if (this.useBasicFocusMemory) {
-      if (['back','mainMenu','quit','resume'].includes(args[0].event)) {
+      if (['back','mainMenu','quit','resume','splash'].includes(args[0].event)) {
         this.clearFocusMemory()
       } else {
         this.rememberBasicFocus()

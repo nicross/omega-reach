@@ -15,8 +15,6 @@ app.screen.gameMenu = app.screenManager.invent({
       this.change('settings')
     },
     splash: function () {
-      app.screen.gameMenu.clearFocusMemory()
-
       app.autosave.trigger()
       app.gameState.setLoaded(false)
 

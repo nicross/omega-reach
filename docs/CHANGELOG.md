@@ -2,6 +2,7 @@
 ## v1.2.2
 - Improved demo limtiation dialogs.
 - Split audio settings into mixer and performance screens.
+- Fixed focus memory when exiting to main menu.
 
 ## v1.2.1
 - Added support for touch input.
