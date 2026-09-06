@@ -1,5 +1,6 @@
 # CHANGELOG
 ## v1.2.2
+- Improved demo limtiation dialogs.
 - Split audio settings into mixer and performance screens.
 
 ## v1.2.1

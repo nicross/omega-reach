@@ -1,8 +1,6 @@
 # TODO
 ## v1.2.3 - Steam demo (due 2026-10-02)
-- Improve demo limitations dialogs
 - Improve mirrored solutions
-- Auctioneer introduction in emporium
 - Tutorial for first cellar anomaly
 - Lost visitor in cellar dialogue and consequences
 - Shopkeeper, descent B3 (once per run)
@@ -36,6 +34,7 @@
   - Each auction resets discoveries / gallery / etc. but not reliquary
   - Rare easter eggs: oversleep and miss full cycle, some constant is wrong and galaxies never form, unexpected stowaway wakes you up mid-sleep
 - Interactions
+  - Auctioneer, introduction
   - Auctioneer, first auction
   - Auctioneer, second auction
   - Intergalactic inspector, second interaction
