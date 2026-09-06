@@ -1,4 +1,7 @@
 # CHANGELOG
+## v1.2.2
+- Split audio settings into mixer and performance screens.
+
 ## v1.2.1
 - Added support for touch input.
 - Added a toggle for mirrored interaction solutions (enabled by default).

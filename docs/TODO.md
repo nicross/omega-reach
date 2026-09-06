@@ -1,6 +1,5 @@
 # TODO
 ## v1.2.3 - Steam demo (due 2026-10-02)
-- Break audio settings into mixer and performance screens
 - Improve demo limitations dialogs
 - Improve mirrored solutions
 - Auctioneer introduction in emporium

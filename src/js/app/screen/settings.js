@@ -4,8 +4,11 @@ app.screen.settings = app.screenManager.invent({
   parentSelector: '.a-app--settings',
   rootSelector: '.a-settings',
   transitions: {
-    audio: function () {
-      this.change('settingsAudio')
+    audioMixer: function () {
+      this.change('settingsAudioMixer')
+    },
+    audioPerformance: function () {
+      this.change('settingsAudioPerformance')
     },
     back: function () {
       this.change(app.gameState.isLoaded() ? 'gameMenu' : 'mainMenu')
@@ -29,7 +32,8 @@ app.screen.settings = app.screenManager.invent({
 
     // Buttons
     Object.entries({
-      audio: root.querySelector('.a-settings--audio'),
+      audioMixer: root.querySelector('.a-settings--audioMixer'),
+      audioPerformance: root.querySelector('.a-settings--audioPerformance'),
       back: root.querySelector('.a-settings--back'),
       gameplay: root.querySelector('.a-settings--gameplay'),
       input: root.querySelector('.a-settings--input'),

@@ -1,8 +1,8 @@
-app.screen.settingsAudio = app.screenManager.invent({
+app.screen.settingsAudioMixer = app.screenManager.invent({
   // Attributes
-  id: 'settingsAudio',
-  parentSelector: '.a-app--settingsAudio',
-  rootSelector: '.a-settingsAudio',
+  id: 'settingsAudioMixer',
+  parentSelector: '.a-app--settingsAudioMixer',
+  rootSelector: '.a-settingsAudioMixer',
   transitions: {
     back: function () {
       this.change('settings')
@@ -16,30 +16,20 @@ app.screen.settingsAudio = app.screenManager.invent({
 
     // Buttons
     Object.entries({
-      back: root.querySelector('.a-settingsAudio--back'),
+      back: root.querySelector('.a-settingsAudioMixer--back'),
     }).forEach(([event, element]) => {
       element.addEventListener('click', () => app.screenManager.dispatch(event))
     })
 
     // Sliders
     this.sliders = [
-      ['.a-settingsAudio--mainVolume', app.settings.raw.mainVolume, app.settings.setMainVolume],
-      ['.a-settingsAudio--musicVolume', app.settings.raw.musicVolume, app.settings.setMusicVolume],
-      ['.a-settingsAudio--polyphony', app.settings.raw.polyphony, app.settings.setPolyphony],
-      ['.a-settingsAudio--reachVolume', app.settings.raw.reachVolume, app.settings.setReachVolume],
-      ['.a-settingsAudio--sfxVolume', app.settings.raw.sfxVolume, app.settings.setSfxVolume],
+      ['.a-settingsAudioMixer--mainVolume', app.settings.raw.mainVolume, app.settings.setMainVolume],
+      ['.a-settingsAudioMixer--musicVolume', app.settings.raw.musicVolume, app.settings.setMusicVolume],
+      ['.a-settingsAudioMixer--reachVolume', app.settings.raw.reachVolume, app.settings.setReachVolume],
+      ['.a-settingsAudioMixer--sfxVolume', app.settings.raw.sfxVolume, app.settings.setSfxVolume],
     ].map(([selector, initialValue, setter]) => {
       const component = app.component.slider.hydrate(root.querySelector(selector), initialValue)
       component.on('change', () => setter(component.getValueAsFloat()))
-      return component
-    })
-
-    // Toggles
-    this.toggles = [
-      ['.a-settingsAudio--reverbOn', app.settings.raw.reverbOn, app.settings.setReverbOn],
-    ].map(([selector, initialValue, setter]) => {
-      const component = app.component.toggle.hydrate(root.querySelector(selector), initialValue)
-      component.on('change', () => setter(component.getValue()))
       return component
     })
   },
