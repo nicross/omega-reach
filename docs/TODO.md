@@ -1,7 +1,6 @@
 # TODO
 ## v1.2.3 - Steam demo (due 2026-10-02)
 - Improve mirrored solutions
-- Tutorial for first cellar anomaly
 - Lost visitor in cellar dialogue and consequences
 - Shopkeeper, descent B3 (once per run)
 - Intergalactic inspector, first interaction

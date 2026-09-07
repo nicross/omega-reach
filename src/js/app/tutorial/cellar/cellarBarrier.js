@@ -3,7 +3,7 @@ app.tutorial.cellarBarrier = app.tutorial.invent({
   // Lifecycle
   shouldActivate: () => content.location.is('cellar'),
   onUpdate: function () {
-    if (!content.location.is('cellar') || !content.cellar.barrier.has(1)) {
+    if (!(content.location.is('cellar') && content.cellar.barrier.has(1))) {
       return
     }
 

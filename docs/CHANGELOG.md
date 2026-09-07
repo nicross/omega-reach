@@ -1,6 +1,7 @@
 # CHANGELOG
 ## v1.2.2
 - Improved demo limtiation dialogs.
+- Added more tutorial dialogs to the cellar.
 - Split audio settings into mixer and performance screens.
 - Fixed focus memory when exiting to main menu.
 

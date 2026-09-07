@@ -19,12 +19,15 @@ app.tutorial.cellarUnique = app.tutorial.invent({
     // Get dialogs, ignoring tiles without them (but don't mark complete)
     const dialogs = tile.getDialogs()
 
-    if (!dialogs.length) {
+    // Prevent double
+    if (this.preventDouble(tile.id)) {
       return
     }
 
-    // Prevent double
-    if (this.preventDouble(tile.id)) {
+    // First tutorial
+    this.enqueueFirstTutorial(dialogs.length > 0)
+
+    if (!dialogs.length) {
       return
     }
 
@@ -52,5 +55,22 @@ app.tutorial.cellarUnique = app.tutorial.invent({
 
     // Enqueue them
     dialogs.forEach((x) => app.screen.game.dialog.push(x))
+  },
+  enqueueFirstTutorial: function (hasMoreDialogs) {
+    if (this.state._first) {
+      return
+    }
+
+    app.screen.game.dialog.push({
+      tutorial: true,
+      title: `<span class="u-highlight">[Tutorial]</span> <span class="u-screenReader">for</span> Radices of power:`,
+      description: `<strong>The cellar</strong> is peppered with special landmarks having unique effects. Exploit them to dive deeper.`,
+      actions: [
+        {
+          label: hasMoreDialogs ? 'Next tutorial' : 'Regain control',
+        }
+      ],
+      after: () => this.state._first = true,
+    })
   },
 })
